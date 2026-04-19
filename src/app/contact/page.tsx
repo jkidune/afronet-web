@@ -40,7 +40,7 @@ function PhoneIcon() {
 // ── Variants ─────────────────────────────────────────────────────────────────
 const fadeUp: any = {
     hidden: { opacity: 0, y: 24, filter: 'blur(3px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.34, 0.14, 0.13, 0.91] } },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.34, 0.14, 0.13, 0.91] as [number, number, number, number] } },
 };
 
 const staggerContainer: any = {

@@ -105,7 +105,7 @@ export default function BlogPostClient({ article, related }: Props) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="relative z-10 w-full max-w-[1100px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-[24px] p-8 lg:p-12 flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <div className="flex flex-col gap-4 flex-1">

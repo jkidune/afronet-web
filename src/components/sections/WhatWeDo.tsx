@@ -49,7 +49,7 @@ const fadeUp: Variants = {
         filter: 'blur(0px)',
         transition: {
             duration: 0.7,
-            ease: [0.34, 0.14, 0.13, 0.91],
+            ease: [0.34, 0.14, 0.13, 0.91] as [number, number, number, number],
             delay: i * 0.11,
         },
     }),

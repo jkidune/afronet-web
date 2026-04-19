@@ -34,7 +34,7 @@ const fadeUp: Variants = {
         opacity: 1,
         y: 0,
         filter: 'blur(0px)',
-        transition: { duration: 0.7, ease: [0.34, 0.14, 0.13, 0.91] },
+        transition: { duration: 0.7, ease: [0.34, 0.14, 0.13, 0.91] as [number, number, number, number] },
     },
 };
 
@@ -88,7 +88,7 @@ function FaqItem({ question, answer, isOpen, onClick }: { question: string, answ
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.34, 0.14, 0.13, 0.91] }}
+                        transition={{ duration: 0.35, ease: [0.34, 0.14, 0.13, 0.91] as [number, number, number, number] }}
                     >
                         <p
                             className="pb-8 text-[16px] md:text-[18px] leading-[1.5] text-[#434343] m-0 max-w-[800px]"

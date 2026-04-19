@@ -98,7 +98,7 @@ function AnimatedCounter({ to }: { to: number }) {
         if (!inView) return;
         const controls = animate(count, to, {
             duration: 1.6,
-            ease: [0.0, 0.0, 0.2, 1],
+            ease: [0.0, 0.0, 0.2, 1] as [number, number, number, number],
             onUpdate: (v) => setDisplay(Math.round(v)),
         });
         return controls.stop;

@@ -30,7 +30,7 @@ const statStyles = [
 // ── Variants ──────────────────────────────────────────────────────────────────
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 };
 
 const staggerContainer = {
@@ -73,7 +73,7 @@ export default function ProgrammeClient({ data }: { data: ProgrammeData }) {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="text-[48px] md:text-[64px] lg:text-[80px] leading-[1.05] text-[#000000] font-normal max-w-[1000px]"
           style={{ fontFamily: 'var(--font-editorial)' }}
         >
@@ -84,7 +84,7 @@ export default function ProgrammeClient({ data }: { data: ProgrammeData }) {
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="relative w-full h-[50vh] lg:h-[70vh] rounded-[16px] overflow-hidden mt-4"
         >
           <Image src={data.heroImage} alt={data.heroAlt} fill className="object-cover" priority />
