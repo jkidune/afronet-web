@@ -157,7 +157,7 @@ export default function Programme() {
                         <motion.div custom={6} variants={fadeUp} className="flex flex-wrap gap-[16px] md:gap-[20px] mt-2">
 
                             {/* Button 1: Yellow Background */}
-                            <Link href="/programme/iiaba" className="inline-flex items-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors group/btn1" style={{ textDecoration: 'none' }}>
+                            <Link href="/programme/iiaba-initiative-institutional-innovations-for-organic-agriculture" className="inline-flex items-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors group/btn1" style={{ textDecoration: 'none' }}>
                                 <span className="font-medium text-[0.9rem] text-[#05351B] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>
                                     Learn more
                                 </span>

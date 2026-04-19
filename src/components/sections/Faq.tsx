@@ -104,12 +104,12 @@ function FaqItem({ question, answer, isOpen, onClick }: { question: string, answ
 }
 
 // ── Main Component ────────────────────────────────────────────────────────────
-export default function Faq() {
+export default function Faq({ bgClass = 'bg-[#FFFFFF]' }: { bgClass?: string }) {
     // Track which accordion is open. Null means all are closed.
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section id="faq" className="relative w-full py-16 md:py-24 lg:py-[120px] px-6 bg-[#FFFFFF] overflow-hidden">
+        <section id="faq" className={`relative w-full py-16 md:py-24 lg:py-[120px] px-6 ${bgClass} overflow-hidden`}>
             <div className="w-full max-w-[1312px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-[100px] xl:gap-[160px] relative z-10">
 
                 {/* ── Left Column: Intro ───────────────────────────────────── */}

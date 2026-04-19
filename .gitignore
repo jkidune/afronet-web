@@ -10,6 +10,12 @@
 !.yarn/releases
 !.yarn/versions
 
+node_modules/
+.next/
+.DS_Store
+.env.local
+dist
+
 # testing
 /coverage
 
@@ -39,3 +45,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Agent / AI files
+AGENTS.md
+CLAUDE*
+PROJECT_PLAN.md
+STYLE.md
+content*.md

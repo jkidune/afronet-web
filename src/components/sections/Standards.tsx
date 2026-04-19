@@ -87,7 +87,7 @@ export default function Standards() {
                                 <p className="text-[16px] leading-[1.4] text-[#FFFFFF] m-0 max-w-[320px]" style={{ fontFamily: 'var(--font-display)' }}>
                                     Community-based organic certification approach
                                 </p>
-                                <Link href="/programme#pgs" className="inline-flex items-center bg-[#05351B] rounded-full p-1 pl-5 gap-4 hover:bg-[#111111] transition-colors group/btn self-start" style={{ textDecoration: 'none' }}>
+                                <Link href="https://www.ifoam.bio/our-work/how/standards-certification/participatory-guarantee-systems" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-[#05351B] rounded-full p-1 pl-5 gap-4 hover:bg-[#111111] transition-colors group/btn self-start" style={{ textDecoration: 'none' }}>
                                     <span className="font-medium text-[0.9rem] text-[#FFD900] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>Learn more</span>
                                     <div className="w-[36px] h-[36px] bg-[#FFD900] rounded-full flex items-center justify-center text-[#05351B] group-hover/btn:scale-105 transition-transform"><ArrowNE size={13} /></div>
                                 </Link>
@@ -124,7 +124,7 @@ export default function Standards() {
                                 <p className="text-[16px] leading-[1.4] text-[#FFFFFF] m-0 max-w-[320px]" style={{ fontFamily: 'var(--font-display)' }}>
                                     Harmonizing organic production guidelines
                                 </p>
-                                <Link href="/programme#eaops" className="inline-flex items-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors group/btn self-start" style={{ textDecoration: 'none' }}>
+                                <Link href="https://www.koan.co.ke/wp-content/uploads/2020/08/East_African_Organic_products_standard.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors group/btn self-start" style={{ textDecoration: 'none' }}>
                                     <span className="font-medium text-[0.9rem] text-[#05351B] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>Learn more</span>
                                     <div className="w-[36px] h-[36px] bg-[#05351B] rounded-full flex items-center justify-center text-[#FFD900] group-hover/btn:scale-105 transition-transform"><ArrowNE size={13} /></div>
                                 </Link>
@@ -161,7 +161,7 @@ export default function Standards() {
                                 <p className="text-[16px] leading-[1.4] text-[#FFFFFF] m-0 max-w-[320px]" style={{ fontFamily: 'var(--font-display)' }}>
                                     Evidence-based policy recommendations
                                 </p>
-                                <Link href="/programme#policy" className="inline-flex items-center bg-[#05351B] rounded-full p-1 pl-5 gap-4 hover:bg-[#111111] transition-colors group/btn self-start" style={{ textDecoration: 'none' }}>
+                                <Link href="https://orgprints.org/id/eprint/45140/1/1245-Policy-Brief_2023-Web.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-[#05351B] rounded-full p-1 pl-5 gap-4 hover:bg-[#111111] transition-colors group/btn self-start" style={{ textDecoration: 'none' }}>
                                     <span className="font-medium text-[0.9rem] text-[#FFD900] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>Read more</span>
                                     <div className="w-[36px] h-[36px] bg-[#FFD900] rounded-full flex items-center justify-center text-[#05351B] group-hover/btn:scale-105 transition-transform"><ArrowNE size={13} /></div>
                                 </Link>

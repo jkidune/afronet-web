@@ -49,7 +49,7 @@ export default function Header() {
         >
             {/* ── Glass pill ─────────────────────────────────────────────── */}
             <div
-                className={`w-full max-w-[1084px] h-[58px] rounded-[14px] flex items-center justify-between px-3 transition-all duration-300 ${
+                className={`relative z-50 w-full max-w-[1084px] h-[58px] rounded-[14px] flex items-center justify-between px-3 transition-all duration-300 ${
                     isScrolled
                         ? 'bg-white/70 backdrop-blur-xl shadow-md shadow-black/10 border border-white/40'
                         : 'bg-white/45 backdrop-blur-md border border-white/20'
