@@ -2,9 +2,15 @@
 const nextConfig = {
   images: {
     remotePatterns: [
+
       {
         protocol: 'https',
         hostname: 'afronet.bio',
+        pathname: '/wp-content/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cms.afronet.bio',
         pathname: '/wp-content/uploads/**',
       },
       {
