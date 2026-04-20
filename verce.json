@@ -1,0 +1,14 @@
+{
+    "redirects": [
+        {
+            "source": "/wp-json/:path*",
+            "destination": "https://cms.afronet.bio/wp-json/:path*",
+            "permanent": false
+        },
+        {
+            "source": "/wp-admin/:path*",
+            "destination": "https://cms.afronet.bio/wp-admin/:path*",
+            "permanent": false
+        }
+    ]
+}
