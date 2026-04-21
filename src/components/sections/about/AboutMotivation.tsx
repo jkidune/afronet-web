@@ -6,6 +6,7 @@ import {
     useScroll,
     useTransform,
     useMotionValue,
+    useSpring,
     useInView,
     animate,
     type MotionValue,
@@ -21,14 +22,12 @@ const STATS = [
     { label: 'Policy Discussions', numericValue: 50, suffix: '+', bg: 'bg-[#EFEFEF]', numColor: 'text-[#111111]', labelColor: 'text-[#555555]' },
 ];
 
-// ─── Scroll timeline for the 250 vh track ────────────────────────────────────
-// 30% → 50%   Stage 2: entire UI fades out
-// 45% → 100%  Stage 3: video scales from card → full screen
-const FADE_START = 0.30;
-const FADE_END = 0.50;
-const VID_START = 0.45;
+// ─── Scroll stages ────────────────────────────────────────────────────────────
+const FADE_START = 0.30;   // UI begins fading out / video begins fading in
+const FADE_END   = 0.52;   // UI fully gone / video fully opaque
+const VID_START  = 0.40;   // video starts scaling up
 
-// ─── Word — single scrubbing word ────────────────────────────────────────────
+// ─── Word ─────────────────────────────────────────────────────────────────────
 function Word({
     word,
     scrollProgress,
@@ -51,36 +50,25 @@ function Word({
     );
 }
 
-// ─── ScrubbingText — Driven by its own viewport intersection ─────────────────
+// ─── ScrubbingText ────────────────────────────────────────────────────────────
 function ScrubbingText({ text }: { text: string }) {
     const textRef = useRef<HTMLParagraphElement>(null);
-
-    // This tracks the text as it enters the viewport, independent of the section pin
     const { scrollYProgress } = useScroll({
         target: textRef,
         offset: ['start 85%', 'end 50%'],
     });
-
     const words = text.split(' ');
-
     return (
         <p
             ref={textRef}
-            className="text-[16px] sm:text-[18px] lg:text-[22px] leading-[1.7] text-[#000000] m-0 font-normal flex flex-wrap"
+            className="text-[17px] sm:text-[18px] lg:text-[22px] leading-[1.7] text-[#000000] m-0 font-normal flex flex-wrap"
             style={{ fontFamily: 'var(--font-body)' }}
         >
             {words.map((word, i) => {
-                // Distribute the 0-1 progress evenly across all words
                 const start = i / words.length;
                 const end = start + 1 / words.length;
                 return (
-                    <Word
-                        key={i}
-                        word={word}
-                        scrollProgress={scrollYProgress}
-                        start={start}
-                        end={end}
-                    />
+                    <Word key={i} word={word} scrollProgress={scrollYProgress} start={start} end={end} />
                 );
             })}
         </p>
@@ -141,57 +129,83 @@ function StatCard({ label, numericValue, suffix, bg, numColor, labelColor }: (ty
 export default function AboutMotivation() {
     const trackRef = useRef<HTMLDivElement>(null);
 
+    // Mouse parallax — smooth spring-lerp following cursor
+    const rawMouseX = useMotionValue(0);
+    const smoothMouseX = useSpring(rawMouseX, { stiffness: 55, damping: 20 });
+
+    useEffect(() => {
+        const onMouseMove = (e: MouseEvent) => {
+            // Normalise to -1 … +1
+            rawMouseX.set((e.clientX / window.innerWidth - 0.5) * 2);
+        };
+        window.addEventListener('mousemove', onMouseMove);
+        return () => window.removeEventListener('mousemove', onMouseMove);
+    }, [rawMouseX]);
+
     const { scrollYProgress } = useScroll({
         target: trackRef,
         offset: ['start start', 'end end'],
     });
 
-    // Stage 2: everything except video fades out
+    // ── UI (text + stat cards) fades out ─────────────────────────────────────
     const uiOpacity = useTransform(scrollYProgress, [FADE_START, FADE_END], [1, 0]);
 
-    // Stage 3: video card scales from natural size → full screen
+    // ── Video: card at natural size (1) → fills the screen (~6×) ─────────────
     const videoScale = useTransform(scrollYProgress, [VID_START, 1.0], [1, 6]);
-    const videoBorderRadius = useTransform(scrollYProgress, [VID_START, VID_START + 0.28], [12, 0]);
+
+    // ── Video: drifts up as it scales so it stays visually centred on screen ──
+    const videoTranslateY = useTransform(scrollYProgress, [VID_START, 1.0], ['0vh', '-10vh']);
+
+    // ── Video: subtle mouse-driven X drift ────────────────────────────────────
+    const videoTranslateX = useTransform(smoothMouseX, [-1, 1], ['-1.5%', '1.5%']);
+
+    // ── Border radius: card → full-bleed ─────────────────────────────────────
+    const videoBorderRadius = useTransform(scrollYProgress, [VID_START, VID_START + 0.25], [14, 0]);
 
     return (
-        <section ref={trackRef} className="relative w-full bg-[#FFFFFF]" style={{ height: '250vh' }}>
+        // On mobile: normal flow section (no sticky, no 250vh)
+        // On desktop: 250vh track with sticky pin
+        <section
+            ref={trackRef}
+            className="relative w-full bg-[#FFFFFF] lg:h-[250vh]"
+        >
+            {/* lg: sticky + clipped; mobile: relative + auto height */}
+            <div className="relative lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden">
 
-            <div className="sticky top-0 w-full h-screen overflow-hidden">
-                <div className="absolute inset-0 flex items-center">
-                    <div className="w-full max-w-[1312px] mx-auto px-4 sm:px-5 lg:px-10 py-5 sm:py-7 lg:py-16 flex flex-col lg:flex-row gap-4 sm:gap-5 lg:gap-16">
+                {/* ── Layout ── */}
+                {/* Mobile: normal flow with padding. Desktop: absolute centered. */}
+                <div className="lg:absolute lg:inset-0 flex lg:items-center">
+                    <div className="w-full max-w-[1312px] mx-auto px-4 sm:px-5 lg:px-10 py-12 sm:py-16 lg:py-16 flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-16">
 
-                        {/* ── Left column: pill + heading ── */}
+                        {/* Left: pill + heading — fades out on desktop only */}
                         <motion.div
                             style={{ opacity: uiOpacity }}
                             className="w-full lg:w-[300px] flex-shrink-0 flex flex-col items-start gap-2 sm:gap-3 lg:gap-5"
                         >
-                            <div className="flex items-center px-3 sm:px-4 py-[4px] sm:py-[5px] border border-black/20 rounded-full">
+                            <div className="flex items-center px-4 py-[5px] border border-black/20 rounded-full">
                                 <span
-                                    className="text-[12px] sm:text-[13px] lg:text-[15px] text-[#000000] leading-snug"
+                                    className="text-[15px] text-[#000000] leading-snug"
                                     style={{ fontFamily: 'var(--font-editorial)' }}
                                 >
                                     AfrONet
                                 </span>
                             </div>
                             <h2
-                                className="text-[24px] sm:text-[30px] lg:text-[50px] leading-[1.05] text-[#000000] m-0 font-normal"
+                                className="text-[32px] sm:text-[36px] lg:text-[50px] leading-[1.05] text-[#000000] m-0 font-normal"
                                 style={{ fontFamily: 'var(--font-editorial)' }}
                             >
                                 Our<br />motivation
                             </h2>
                         </motion.div>
 
-                        {/* ── Right column ── */}
+                        {/* Right: text + bento grid */}
                         <div className="flex-1 flex flex-col gap-3 sm:gap-5 lg:gap-10">
-
-                            {/* Scrubbing text now handles its own intersection observer natively */}
                             <motion.div style={{ opacity: uiOpacity }}>
                                 <ScrubbingText text={MOTIVATION_TEXT} />
                             </motion.div>
 
-                            {/* ── Bento grid ── */}
+                            {/* 2-col bento: 3 stat cards + video as 4th item */}
                             <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4 w-full">
-
                                 {STATS.map((s, i) => (
                                     <motion.div
                                         key={i}
@@ -202,31 +216,51 @@ export default function AboutMotivation() {
                                     </motion.div>
                                 ))}
 
-                                <div className="col-span-2 lg:col-span-1 relative h-[115px] sm:h-[150px] lg:h-[220px]">
-                                    <motion.div
-                                        style={{
-                                            scale: videoScale,
-                                            borderRadius: videoBorderRadius,
-                                            transformOrigin: '50% 100%',
-                                        }}
-                                        className="absolute inset-0 overflow-hidden bg-[#111] shadow-lg"
-                                    >
-                                        <video
-                                            src="/videos/farming-video.mp4"
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="absolute inset-0 w-full h-full object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                                    </motion.div>
+                                {/* Video card — mobile: plain card, no animation */}
+                                <div className="col-span-2 lg:hidden h-[160px] sm:h-[200px] rounded-[14px] overflow-hidden bg-[#111] relative">
+                                    <video
+                                        src="/videos/farming-video.mp4"
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                        className="absolute inset-0 w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                                 </div>
 
+                                {/* Video card — desktop: premium scale animation */}
+                                <div className="hidden lg:block lg:col-span-1 relative lg:h-[220px]">
+                                    <motion.div
+                                        style={{ x: videoTranslateX }}
+                                        className="absolute inset-0"
+                                    >
+                                        <motion.div
+                                            className="absolute inset-0 overflow-hidden bg-[#111] shadow-xl will-change-transform"
+                                            style={{
+                                                scale: videoScale,
+                                                y: videoTranslateY,
+                                                borderRadius: videoBorderRadius,
+                                                transformOrigin: '50% 50%',
+                                            }}
+                                        >
+                                            <video
+                                                src="/videos/farming-video.mp4"
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="absolute inset-0 w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                                        </motion.div>
+                                    </motion.div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     );
