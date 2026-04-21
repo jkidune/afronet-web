@@ -123,28 +123,10 @@ export default function BlogPostClient({ article, related }: Props) {
             </h1>
           </div>
 
-          <div className="flex flex-row md:flex-col items-center md:items-start gap-4">
-            {/* Author chip */}
-            <div className="flex items-center gap-3 bg-white/10 p-2 pr-6 rounded-full border border-white/20">
-              {article.author.avatar ? (
-                <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0">
-                  <Image src={article.author.avatar} alt={article.author.name} fill className="object-cover" />
-                </div>
-              ) : (
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0 text-white text-[16px]">
-                  {article.author.name.charAt(0)}
-                </div>
-              )}
-              <span className="text-white text-[15px] font-medium" style={{ fontFamily: 'var(--font-display)' }}>
-                {article.author.name}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 text-white/80 text-[14px]" style={{ fontFamily: 'var(--font-display)' }}>
-              <span>{article.date}</span>
-              <span className="w-1 h-1 rounded-full bg-white/40" />
-              <span>{article.readTime}</span>
-            </div>
+          <div className="flex items-center gap-2 text-white/80 text-[14px]" style={{ fontFamily: 'var(--font-display)' }}>
+            <span>{article.date}</span>
+            <span className="w-1 h-1 rounded-full bg-white/40" />
+            <span>{article.readTime}</span>
           </div>
         </motion.div>
       </section>
