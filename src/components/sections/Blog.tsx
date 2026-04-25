@@ -77,7 +77,7 @@ export default function Blog({ articles }: Props) {
                 >
                     {articles.map((article, index) => (
                         <motion.div key={index} custom={index + 3} variants={fadeUp} className="group flex flex-col w-full h-full">
-                            <Link href={article.href} className="flex flex-col w-full h-full" style={{ textDecoration: 'none' }}>
+                            <Link href={article.href} className="flex flex-col w-full h-full has-slide" style={{ textDecoration: 'none' }}>
 
                                 <div className="relative w-full aspect-[4/3] rounded-[8px] overflow-hidden mb-6 bg-[#F5F5F5]">
                                     <Image src={article.image} alt={article.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -105,8 +105,14 @@ export default function Blog({ articles }: Props) {
                                     </p>
 
                                     <div className="mt-auto inline-flex items-center gap-2 font-medium text-[16px] text-[#05351B] group-hover:text-[#0B8C47] transition-colors">
-                                        <span style={{ fontFamily: 'var(--font-display)' }}>Read more</span>
-                                        <ArrowNE size={16} />
+                                        <span className="slide-wrap" style={{ fontFamily: 'var(--font-display)' }}>
+                                            <span className="slide-out">Read more</span>
+                                            <span className="slide-in">Read more</span>
+                                        </span>
+                                        <span className="relative overflow-hidden w-4 h-4 inline-flex items-center justify-center">
+                                            <span className="slide-icon-out"><ArrowNE size={16} /></span>
+                                            <span className="slide-icon-in"><ArrowNE size={16} /></span>
+                                        </span>
                                     </div>
                                 </div>
 
@@ -117,8 +123,11 @@ export default function Blog({ articles }: Props) {
 
                 {/* View all link */}
                 <div className="flex justify-center">
-                    <Link href="/news" className="px-8 py-3 rounded-full border border-[#000000]/20 text-[16px] text-[#000000] hover:bg-[#05351B] hover:text-white hover:border-[#05351B] transition-all duration-300" style={{ fontFamily: 'var(--font-display)' }}>
-                        View all articles
+                    <Link href="/news" className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-[#000000]/20 text-[16px] text-[#000000] hover:bg-[#05351B] hover:text-white hover:border-[#05351B] transition-all duration-300 has-slide overflow-hidden" style={{ fontFamily: 'var(--font-display)' }}>
+                        <span className="slide-wrap">
+                            <span className="slide-out">View all articles</span>
+                            <span className="slide-in">View all articles</span>
+                        </span>
                     </Link>
                 </div>
 

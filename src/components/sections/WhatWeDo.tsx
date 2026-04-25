@@ -159,7 +159,7 @@ export default function WhatWeDo() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[16px] w-full"
                 >
                     {pillars.map((pillar, index) => (
-                        <Link key={index} href={pillar.href} style={{ textDecoration: 'none' }}>
+                        <Link key={index} href={pillar.href} style={{ textDecoration: 'none' }} className="has-slide">
                             <motion.div
                                 custom={index + 4}
                                 variants={fadeUp}
@@ -205,8 +205,9 @@ export default function WhatWeDo() {
                                     </div>
 
                                     {/* Arrow Button (Transparent w/ dark border -> Yellow fill w/ dark icon on hover) */}
-                                    <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center border border-[#000000]/20 text-[#000000] group-hover:border-[#FFD900] group-hover:bg-[#FFD900] group-hover:text-[#05351B] transition-all duration-500">
-                                        <ArrowNE size={20} />
+                                    <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center border border-[#000000]/20 text-[#000000] group-hover:border-[#FFD900] group-hover:bg-[#FFD900] group-hover:text-[#05351B] transition-all duration-500 relative overflow-hidden">
+                                        <span className="slide-icon-out"><ArrowNE size={20} /></span>
+                                        <span className="slide-icon-in"><ArrowNE size={20} /></span>
                                     </div>
 
                                 </div>

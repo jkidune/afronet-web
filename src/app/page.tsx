@@ -1,6 +1,7 @@
 // src/app/page.tsx
 import Hero from '@/components/sections/Hero';
 import Impact from '@/components/sections/Impact';
+import Partners from '@/components/sections/Partners';
 import WhatWeDo from '@/components/sections/WhatWeDo';
 import Programme from '@/components/sections/Programme';
 import Standards from '@/components/sections/Standards';
@@ -54,6 +55,7 @@ export default async function Home() {
     <main>
       <Hero />
       <Impact />
+      <Partners />
       <WhatWeDo />
       <Programme />
       <Standards />

@@ -6,11 +6,10 @@ import Link from 'next/link';
 
 // ── Variants ─────────────────────────────────────────────────────────────────
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24, filter: 'blur(3px)' },
+    hidden: { opacity: 0, y: 24 },
     visible: (i: number) => ({
         opacity: 1,
         y: 0,
-        filter: 'blur(0px)',
         transition: {
             duration: 0.7,
             ease: [0.34, 0.14, 0.13, 0.91] as [number, number, number, number],
@@ -129,15 +128,17 @@ export default function Hero() {
                                 initial="hidden"
                                 animate="visible"
                             >
-                                <Link href="/programme" className="hero-cta group">
+                                <Link href="/programme" className="hero-cta has-slide">
                                     <span
-                                        style={{ fontFamily: 'var(--font-display)', textDecoration: 'none' }}
-                                        className="font-medium text-[0.9rem] text-black whitespace-nowrap"
+                                        className="slide-wrap font-medium text-[0.9rem] whitespace-nowrap"
+                                        style={{ fontFamily: 'var(--font-display)', color: 'inherit' }}
                                     >
-                                        See Our Programmes
+                                        <span className="slide-out">See Our Programmes</span>
+                                        <span className="slide-in">See Our Programmes</span>
                                     </span>
-                                    <span className="hero-cta-icon group-hover:bg-[#2d5a27] group-hover:scale-105">
-                                        <ArrowNE size={12} />
+                                    <span className="hero-cta-icon">
+                                        <span className="slide-icon-out"><ArrowNE size={12} /></span>
+                                        <span className="slide-icon-in"><ArrowNE size={12} /></span>
                                     </span>
                                 </Link>
                             </motion.div>

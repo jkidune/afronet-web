@@ -73,12 +73,14 @@ export default function Mission() {
                 </div>
 
                 {/* Refined CTA Button - Strictly Centered */}
-                <Link href="/about" className="inline-flex items-center justify-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors group/btn mx-auto mt-2" style={{ textDecoration: 'none' }}>
-                    <span className="font-medium text-[0.9rem] text-[#05351B] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>
-                        About us
+                <Link href="/about" className="inline-flex items-center justify-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors has-slide mx-auto mt-2" style={{ textDecoration: 'none' }}>
+                    <span className="slide-wrap font-medium text-[0.9rem] text-[#05351B] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>
+                        <span className="slide-out">About us</span>
+                        <span className="slide-in">About us</span>
                     </span>
-                    <div className="w-[36px] h-[36px] bg-[#05351B] rounded-full flex items-center justify-center text-[#FFD900] group-hover/btn:scale-105 transition-transform">
-                        <ArrowNE size={13} />
+                    <div className="w-[36px] h-[36px] bg-[#05351B] rounded-full flex items-center justify-center text-[#FFD900] relative overflow-hidden">
+                        <span className="slide-icon-out"><ArrowNE size={13} /></span>
+                        <span className="slide-icon-in"><ArrowNE size={13} /></span>
                     </div>
                 </Link>
 

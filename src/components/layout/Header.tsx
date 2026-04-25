@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
+    { name: 'HOME', href: '/' },
     { name: 'PROGRAMME', href: '/programme' },
     { name: 'ABOUT', href: '/about' },
     { name: 'NEWS & INSIGHTS', href: '/news' },
@@ -90,12 +91,16 @@ export default function Header() {
                 <div className="hidden lg:flex">
                 <Link
                     href="/contact"
-                    className="contact-btn group"
+                    className="contact-btn has-slide"
                     style={{ textDecoration: 'none' }}
                 >
-                    <span className="contact-btn-label">Contact Us</span>
-                    <span className="contact-btn-icon group-hover:scale-105 group-hover:bg-white/20">
-                        <ArrowNE size={11} />
+                    <span className="slide-wrap">
+                        <span className="contact-btn-label slide-out">Contact Us</span>
+                        <span className="contact-btn-label slide-in">Contact Us</span>
+                    </span>
+                    <span className="contact-btn-icon">
+                        <span className="slide-icon-out"><ArrowNE size={11} /></span>
+                        <span className="slide-icon-in"><ArrowNE size={11} /></span>
                     </span>
                 </Link>
                 </div>
