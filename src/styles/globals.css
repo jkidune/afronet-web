@@ -729,6 +729,11 @@ nav a {
    PARTNER TICKER
    ============================================================ */
 
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
