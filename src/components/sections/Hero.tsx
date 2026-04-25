@@ -196,7 +196,7 @@ export default function Hero() {
                                 variants={fadeUp}
                                 initial="hidden"
                                 animate="visible"
-                                className="flex flex-col gap-5"
+                                className="flex flex-col gap-5 items-start"
                             >
                                 <Link href="/programme" className="hero-cta has-slide">
                                     <span
