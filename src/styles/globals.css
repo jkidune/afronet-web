@@ -737,10 +737,8 @@ nav a {
 .ticker-track {
   display: flex;
   align-items: center;
-  gap: 5rem;
   width: max-content;
   animation: ticker-scroll 28s linear infinite;
-  padding-block: 0.75rem;
 }
 
 .ticker-track:hover {
@@ -752,7 +750,9 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
+  height: 80px;
+  /* padding-inline instead of gap: symmetric spacing = no visible seam at loop point */
+  padding-inline: 3rem;
 }
 
 .partner-logo {
