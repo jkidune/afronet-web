@@ -51,7 +51,7 @@ export default function Partners() {
                     </span>
                 </div>
                 <p
-                    className="text-[#777777] text-[15px] text-center m-0 max-w-[480px]"
+                    className="text-[#777777] text-[18px] leading-[1.4] text-center m-0 max-w-[520px]"
                     style={{ fontFamily: 'var(--font-display)' }}
                 >
                     Supported by international organisations driving sustainable agriculture across Africa
