@@ -1,27 +1,8 @@
 'use client';
 
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, useCallback } from 'react';
-
-// ── Config ────────────────────────────────────────────────────────────────────
-const SLIDE_DURATION = 6000; // ms per slide
-
-const slides = [
-    {
-        src: '/images/slider images/slider-1.jpg',
-        alt: 'African woman harvesting vegetables in a field',
-    },
-    {
-        src: '/images/slider images/slider-2.jpg',
-        alt: 'Organic farmers working across East Africa',
-    },
-    {
-        src: '/images/slider images/slider-3.jpg',
-        alt: 'Sustainable agroecology practices across Africa',
-    },
-];
 
 // ── Variants ─────────────────────────────────────────────────────────────────
 const fadeUp: Variants = {
@@ -37,7 +18,7 @@ const fadeUp: Variants = {
     }),
 };
 
-// ── Arrow icon ────────────────────────────────────────────────────────────────
+// ── Arrow icon (↗ top-right) ──────────────────────────────────────────────────
 function ArrowNE({ size = 13 }: { size?: number }) {
     return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
@@ -54,79 +35,26 @@ function ArrowNE({ size = 13 }: { size?: number }) {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function Hero() {
-    const [current, setCurrent] = useState(0);
-
-    const next = useCallback(() => setCurrent(prev => (prev + 1) % slides.length), []);
-    const goTo = useCallback((i: number) => setCurrent(i), []);
-
-    // Auto-advance
-    useEffect(() => {
-        const t = setTimeout(next, SLIDE_DURATION);
-        return () => clearTimeout(t);
-    }, [current, next]);
-
     return (
         <section
             id="hero"
             className="relative w-full h-svh min-h-[560px] overflow-hidden bg-[#05351B]"
         >
-            {/* ── Slide backgrounds ─────────────────────────────────────── */}
-            <AnimatePresence initial={false}>
-                <motion.div
-                    key={current}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1.1, ease: 'easeInOut' }}
-                    className="absolute inset-0 z-0 pointer-events-none"
-                >
-                    {/* Ken Burns — subtle zoom-in over the slide duration */}
-                    <motion.div
-                        className="absolute inset-0"
-                        initial={{ scale: 1.0 }}
-                        animate={{ scale: 1.07 }}
-                        transition={{ duration: SLIDE_DURATION / 1000 + 1.5, ease: 'linear' }}
-                    >
-                        <Image
-                            src={slides[current].src}
-                            alt={slides[current].alt}
-                            fill
-                            priority={current === 0}
-                            className="object-cover object-center"
-                        />
-                    </motion.div>
+            {/* Background */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <Image
+                    src="/images/hero-bg.jpg"
+                    alt="African woman harvesting vegetables in a field"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-black/40" />
+                {/* Bottom gradient for text legibility */}
+                <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-black/50 to-transparent" />
+            </div>
 
-                    {/* Dark overlay */}
-                    <div className="absolute inset-0 bg-black/40" />
-                    {/* Bottom gradient for text legibility */}
-                    <div className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-black/60 to-transparent" />
-                </motion.div>
-            </AnimatePresence>
-
-            {/* ── Slide counter (desktop top-right) ─────────────────────── */}
-            <motion.div
-                custom={0}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="absolute top-[88px] right-6 md:right-10 lg:right-12 z-10 hidden lg:flex items-center gap-[6px]"
-            >
-                <span
-                    className="text-white font-semibold tabular-nums"
-                    style={{ fontFamily: 'var(--font-display)', fontSize: '0.78rem', letterSpacing: '0.04em' }}
-                >
-                    {String(current + 1).padStart(2, '0')}
-                </span>
-                <span className="text-white/35 text-[0.72rem]">/</span>
-                <span
-                    className="text-white/50 tabular-nums"
-                    style={{ fontFamily: 'var(--font-display)', fontSize: '0.78rem', letterSpacing: '0.04em' }}
-                >
-                    {String(slides.length).padStart(2, '0')}
-                </span>
-            </motion.div>
-
-            {/* ── Content block — anchored to bottom ────────────────────── */}
+            {/* ── Content block — absolute bottom anchor ────────────────── */}
             <div className="absolute bottom-0 left-0 right-0 z-10 px-5 md:px-10 lg:px-12 pb-6 md:pb-8 lg:pb-10">
                 <div className="max-w-[1320px] mx-auto">
                     <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-10">
@@ -155,48 +83,48 @@ export default function Hero() {
                             </motion.div>
 
                             {/* Heading */}
-                            <motion.h1
-                                custom={1}
-                                variants={fadeUp}
-                                initial="hidden"
-                                animate="visible"
-                                style={{
-                                    fontFamily: 'var(--font-editorial)',
-                                    fontWeight: 400,
-                                    fontStyle: 'normal',
-                                    color: '#ffffff',
-                                    lineHeight: 1.02,
-                                    textWrap: 'nowrap' as const,
-                                    fontSize: 'clamp(1.9rem, 5.5svh, 3.8rem)',
-                                }}
-                            >
-                                <span className="block">Making Africa an</span>
-                                <span className="block">Organic Food Basket</span>
-                            </motion.h1>
+                            <div className="flex flex-col gap-3 md:gap-4">
+                                <motion.h1
+                                    custom={1}
+                                    variants={fadeUp}
+                                    initial="hidden"
+                                    animate="visible"
+                                    style={{
+                                        fontFamily: 'var(--font-editorial)',
+                                        fontWeight: 400,
+                                        fontStyle: 'normal',
+                                        color: '#ffffff',
+                                        lineHeight: 1.02,
+                                        textWrap: 'nowrap' as const,
+                                        fontSize: 'clamp(1.9rem, 5.5svh, 3.8rem)',
+                                    }}
+                                >
+                                    <span className="block">Making Africa an</span>
+                                    <span className="block">Organic Food Basket</span>
+                                </motion.h1>
 
-                            {/* Subtitle */}
-                            <motion.p
-                                custom={2}
-                                variants={fadeUp}
-                                initial="hidden"
-                                animate="visible"
-                                className="font-normal leading-relaxed text-[#ecdfd0]"
-                                style={{
-                                    fontFamily: 'var(--font-display)',
-                                    fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)',
-                                    maxWidth: '38ch',
-                                }}
-                            >
-                                Uniting Africa to grow resilient, trusted organic food systems
-                            </motion.p>
+                                <motion.p
+                                    custom={2}
+                                    variants={fadeUp}
+                                    initial="hidden"
+                                    animate="visible"
+                                    className="font-normal leading-relaxed text-[#ecdfd0]"
+                                    style={{
+                                        fontFamily: 'var(--font-display)',
+                                        fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)',
+                                        maxWidth: '38ch',
+                                    }}
+                                >
+                                    Uniting Africa to grow resilient, trusted organic food systems
+                                </motion.p>
+                            </div>
 
-                            {/* CTA + progress indicators */}
+                            {/* CTA button */}
                             <motion.div
                                 custom={3}
                                 variants={fadeUp}
                                 initial="hidden"
                                 animate="visible"
-                                className="flex flex-col gap-5 items-start"
                             >
                                 <Link href="/programme" className="hero-cta has-slide">
                                     <span
@@ -211,34 +139,6 @@ export default function Hero() {
                                         <span className="slide-icon-in"><ArrowNE size={12} /></span>
                                     </span>
                                 </Link>
-
-                                {/* Slide progress bars */}
-                                <div className="flex items-center gap-[6px]">
-                                    {slides.map((_, i) => (
-                                        <button
-                                            key={i}
-                                            onClick={() => goTo(i)}
-                                            aria-label={`Go to slide ${i + 1}`}
-                                            className="relative h-[3px] rounded-full overflow-hidden border-0 p-0 cursor-pointer"
-                                            style={{
-                                                width: i === current ? '52px' : '20px',
-                                                background: 'rgba(255,255,255,0.28)',
-                                                transition: 'width 0.35s ease',
-                                            }}
-                                        >
-                                            {i === current && (
-                                                <span
-                                                    key={`progress-${current}`}
-                                                    className="absolute inset-y-0 left-0 w-full bg-white rounded-full"
-                                                    style={{
-                                                        transformOrigin: 'left center',
-                                                        animation: `hero-progress ${SLIDE_DURATION}ms linear forwards`,
-                                                    }}
-                                                />
-                                            )}
-                                        </button>
-                                    ))}
-                                </div>
                             </motion.div>
                         </div>
 
@@ -274,7 +174,11 @@ export default function Hero() {
                                 <div className="h-px bg-white/15" />
 
                                 <div className="news-panel-body">
-                                    <Link href="/news" className="news-item group" style={{ textDecoration: 'none' }}>
+                                    <Link
+                                        href="/news"
+                                        className="news-item group"
+                                        style={{ textDecoration: 'none' }}
+                                    >
                                         <p
                                             className="leading-snug text-white/90 group-hover:text-white transition-colors"
                                             style={{ fontFamily: 'var(--font-display)', fontSize: '0.82rem', maxWidth: 'none' }}
