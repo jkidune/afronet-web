@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
+import { Download } from 'lucide-react';
 
 // ── Animation variants ────────────────────────────────────────────────────────
 const fadeUp = {
@@ -73,7 +74,7 @@ export default function AboutMission() {
                         className="text-[34px] md:text-[44px] lg:text-[54px] leading-[1.08] text-[#000000] m-0 font-normal"
                         style={{ fontFamily: 'var(--font-editorial)' }}
                     >
-                        Our mission is to catalyse Africa's organic transformation
+                        Our mission is to catalyse Africa&apos;s organic transformation
                     </motion.h2>
 
                     {/* Body paragraphs — Manrope */}
@@ -103,6 +104,32 @@ export default function AboutMission() {
                         actors — enabling income growth, equity, and a food system built
                         on trust, from African soil to the global table.
                     </motion.p>
+
+                    <motion.div
+                        custom={5}
+                        initial="hidden"
+                        animate={inView ? 'visible' : 'hidden'}
+                        variants={fadeUp}
+                    >
+                        <a
+                            href="/AfrONet%20Profile.pdf"
+                            download
+                            className="inline-flex items-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors group/profile-btn self-start"
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <span className="relative h-[1.25em] overflow-hidden font-medium text-[0.9rem] text-[#05351B] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>
+                                <span className="block transition-transform duration-500 ease-out group-hover/profile-btn:-translate-y-full">
+                                    Download AfrONet Profile
+                                </span>
+                                <span className="absolute left-0 top-full block transition-transform duration-500 ease-out group-hover/profile-btn:-translate-y-full">
+                                    Download AfrONet Profile
+                                </span>
+                            </span>
+                            <span className="w-[36px] h-[36px] bg-[#05351B] rounded-full flex items-center justify-center text-[#FFD900] group-hover/profile-btn:scale-105 transition-transform">
+                                <Download size={14} strokeWidth={2.3} />
+                            </span>
+                        </a>
+                    </motion.div>
 
                 </div>
             </div>
