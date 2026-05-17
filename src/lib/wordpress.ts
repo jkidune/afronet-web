@@ -1,7 +1,7 @@
 // src/lib/wordpress.ts
 // All WordPress REST API fetch functions for afronet.bio
 // Uses Next.js fetch with ISR revalidation — no client-side fetching needed.
-import type { WPPost, WPProgramme, WPTestimonial, WPPage } from '@/types/wordpress';
+import type { WPFile, WPPost, WPProgramme, WPTestimonial, WPPage } from '@/types/wordpress';
 
 const WP_BASE = process.env.NEXT_PUBLIC_WP_API_URL || 'https://afronet.bio/wp-json/wp/v2';
 
@@ -97,7 +97,7 @@ const CPT_SLUG = 'programme'; // ← adjust this if different
  */
 export async function getAllProgrammes(): Promise<WPProgramme[]> {
   return wpFetch<WPProgramme[]>(
-    `/${CPT_SLUG}?_embed=true&per_page=20&status=publish&orderby=date&order=desc`,
+    `/${CPT_SLUG}?_embed=true&acf_format=standard&per_page=20&status=publish&orderby=date&order=desc`,
     REVALIDATE_LIST,
   );
 }
@@ -107,10 +107,20 @@ export async function getAllProgrammes(): Promise<WPProgramme[]> {
  */
 export async function getProgrammeBySlug(slug: string): Promise<WPProgramme | null> {
   const items = await wpFetch<WPProgramme[]>(
-    `/${CPT_SLUG}?_embed=true&slug=${encodeURIComponent(slug)}&status=publish`,
+    `/${CPT_SLUG}?_embed=true&acf_format=standard&slug=${encodeURIComponent(slug)}&status=publish`,
     REVALIDATE_POST,
   );
   return items[0] ?? null;
+}
+
+/**
+ * Fetch a media attachment by ID.
+ * Used as a fallback when ACF returns a file attachment ID instead of a URL/object.
+ */
+export async function getMediaById(id: number): Promise<WPFile | null> {
+  if (!Number.isFinite(id) || id <= 0) return null;
+
+  return wpFetch<WPFile>(`/media/${id}`, REVALIDATE_POST);
 }
 
 /**

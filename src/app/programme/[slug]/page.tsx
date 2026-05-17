@@ -1,11 +1,47 @@
 // src/app/programme/[slug]/page.tsx
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProgrammeBySlug } from '@/lib/wordpress';
-import { getFeaturedImageUrl, getFeaturedImageAlt, stripHtml } from '@/types/wordpress';
+import { getMediaById, getProgrammeBySlug } from '@/lib/wordpress';
+import { getFeaturedImageUrl, getFeaturedImageAlt, stripHtml, type WPFile } from '@/types/wordpress';
 import ProgrammeClient from './ProgrammeClient';
 
 export const dynamic = 'force-dynamic';
+
+async function getProgrammePdfDocument(file: WPFile | string | number | null | undefined) {
+  if (!file) return null;
+
+  if (typeof file === 'string') {
+    return {
+      label: 'Download PDF',
+      url: file,
+      filename: file.split('/').pop() || 'project-document.pdf',
+    };
+  }
+
+  if (typeof file === 'number') {
+    const media = await getMediaById(file);
+    const url = media?.source_url || media?.url;
+    const title = typeof media?.title === 'string' ? media.title : media?.title?.rendered;
+
+    return url
+      ? {
+          label: title || 'Download PDF',
+          url,
+          filename: media?.filename || url.split('/').pop() || 'project-document.pdf',
+        }
+      : null;
+  }
+
+  const url = file.url || file.source_url;
+  if (!url) return null;
+  const title = typeof file.title === 'string' ? file.title : file.title?.rendered;
+
+  return {
+    label: title || 'Download PDF',
+    url,
+    filename: file.filename || url.split('/').pop() || 'project-document.pdf',
+  };
+}
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
@@ -37,6 +73,7 @@ export default async function ProgrammeSlugPage(
   if (!programme) notFound();
 
   const acf = programme.acf || {};
+  const document = await getProgrammePdfDocument(acf.project_pdf);
 
   // Shape flat ACF fields into structured data for the UI
   const data = {
@@ -48,6 +85,7 @@ export default async function ProgrammeSlugPage(
     budget:        acf.budget || '',
     heroImage:     getFeaturedImageUrl(programme),
     heroAlt:       getFeaturedImageAlt(programme) || stripHtml(programme.title.rendered),
+    document,
     // Overview: split on newlines so paragraphs render separately
     overview: acf.overview
       ? acf.overview.split('\n').map((p: string) => p.trim()).filter(Boolean)
