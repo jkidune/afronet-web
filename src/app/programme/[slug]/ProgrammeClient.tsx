@@ -4,6 +4,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Download } from 'lucide-react';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface ProgrammeData {
@@ -15,6 +16,11 @@ interface ProgrammeData {
   budget: string;
   heroImage: string;
   heroAlt: string;
+  document: {
+    label: string;
+    url: string;
+    filename: string;
+  } | null;
   overview: string[];
   objectives: { title: string; desc: string }[];
   stats: { label: string; value: string }[];
@@ -28,11 +34,6 @@ const statStyles = [
 ];
 
 // ── Variants ──────────────────────────────────────────────────────────────────
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
-};
-
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -56,29 +57,60 @@ export default function ProgrammeClient({ data }: { data: ProgrammeData }) {
       {/* ── 1. Header & Hero Image ────────────────────────────────────────── */}
       <section className="w-full max-w-[1312px] mx-auto px-6 flex flex-col gap-8">
 
-        {/* Back + Category */}
-        <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex items-center justify-between w-full">
+        {/* Back */}
+        <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex items-center w-full">
           <Link href="/programme" className="flex items-center gap-3 text-[#434343] hover:text-[#05351B] transition-colors group">
             <div className="w-10 h-10 rounded-full bg-[#F5F5F5] group-hover:bg-[#F3EDE4] flex items-center justify-center transition-colors">
               <ArrowLeft size={16} />
             </div>
             <span className="text-[16px] font-medium uppercase tracking-wider" style={{ fontFamily: 'var(--font-display)' }}>Back to Programmes</span>
           </Link>
-          <div className="px-4 py-1.5 border border-[#000000]/20 rounded-full">
+        </motion.div>
+
+        {/* Category */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          className="flex w-full"
+        >
+          <div className="px-4 py-1.5 border border-[#000000]/20 rounded-full self-start">
             <span className="text-[14px] text-[#000000] font-normal" style={{ fontFamily: 'var(--font-display)' }}>{data.category}</span>
           </div>
         </motion.div>
 
-        {/* Title */}
-        <motion.h1
+        {/* Title + Download */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          className="text-[48px] md:text-[64px] lg:text-[80px] leading-[1.05] text-[#000000] font-normal max-w-[1000px]"
-          style={{ fontFamily: 'var(--font-editorial)' }}
+          className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between w-full"
         >
-          {data.title}
-        </motion.h1>
+          <h1
+            className="text-[48px] md:text-[64px] lg:text-[80px] leading-[1.05] text-[#000000] font-normal max-w-[1000px]"
+            style={{ fontFamily: 'var(--font-editorial)' }}
+          >
+            {data.title}
+          </h1>
+
+          {data.document?.url && (
+            <a
+              href={data.document.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-[#FFD900] rounded-full p-1 pl-5 gap-4 hover:bg-[#e5c300] transition-colors group/btn self-start lg:self-end lg:mb-2 lg:shrink-0"
+              style={{ textDecoration: 'none' }}
+              aria-label={`Download ${data.document.filename}`}
+            >
+              <span className="font-medium text-[0.9rem] text-[#05351B] whitespace-nowrap" style={{ fontFamily: 'var(--font-display)' }}>
+                {data.document.label}
+              </span>
+              <div className="w-[36px] h-[36px] bg-[#05351B] rounded-full flex items-center justify-center text-[#FFD900] group-hover/btn:scale-105 transition-transform">
+                <Download size={15} strokeWidth={2.3} />
+              </div>
+            </a>
+          )}
+        </motion.div>
 
         {/* Hero Image */}
         <motion.div

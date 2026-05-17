@@ -16,6 +16,17 @@ export interface WPImage {
   };
 }
 
+export interface WPFile {
+  id?: number;
+  ID?: number;
+  url?: string;
+  source_url?: string;
+  title?: string | { rendered?: string };
+  filename?: string;
+  filesize?: number;
+  mime_type?: string;
+}
+
 export interface WPAuthor {
   id: number;
   name: string;
@@ -97,6 +108,7 @@ export interface WPProgramme {
     stat_2_value?: string;
     stat_3_label?: string;
     stat_3_value?: string;
+    project_pdf?: WPFile | string | number | null;
   };
 }
 
