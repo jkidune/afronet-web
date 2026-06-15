@@ -74,7 +74,7 @@ export default function DesignTestPage() {
           <div style={{ marginBottom: "var(--spacing-8)", padding: "var(--spacing-6)", background: "var(--color-surface-warm)", borderRadius: "var(--radius-lg)" }}>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "var(--spacing-4)" }}>Editorial Font — Instrument Serif</p>
             <p style={{ fontFamily: "var(--font-editorial)", fontSize: "var(--text-2xl)", fontStyle: "italic", color: "var(--color-text)" }}>
-              "Making Africa an Organic Food Basket"
+              &ldquo;Making Africa an Organic Food Basket&rdquo;
             </p>
             <p style={{ fontFamily: "var(--font-editorial)", fontSize: "var(--text-lg)", fontStyle: "italic", color: "var(--color-text-muted)", marginTop: "var(--spacing-3)" }}>
               Testimonials, pull quotes, hero subtitles

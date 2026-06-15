@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 // ── Icons ────────────────────────────────────────────────────────────────────
 function ArrowNE({ size = 13 }: { size?: number }) {
@@ -39,12 +40,12 @@ function PhoneIcon() {
 }
 
 // ── Variants ─────────────────────────────────────────────────────────────────
-const fadeUp: any = {
+const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24, filter: 'blur(3px)' },
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.34, 0.14, 0.13, 0.91] as [number, number, number, number] } },
 };
 
-const staggerContainer: any = {
+const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };

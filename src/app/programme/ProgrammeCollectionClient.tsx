@@ -66,7 +66,7 @@ export default function ProgrammeCollectionClient({ programmes }: Props) {
             className="text-[18px] md:text-[20px] leading-[1.6] text-[#434343] m-0 font-normal max-w-[650px] mt-2 mb-4"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            AfrONet's programmes build the institutional foundations for a thriving organic sector — from policy and markets to certification and capacity.
+            AfrONet&apos;s programmes build the institutional foundations for a thriving organic sector — from policy and markets to certification and capacity.
           </motion.p>
 
         </motion.div>

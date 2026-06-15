@@ -114,7 +114,7 @@ export default function WhatWeDo() {
                             className="text-[#000000] text-[32px] md:text-[40px] leading-[1.1] m-0"
                             style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'normal', fontWeight: 400 }}
                         >
-                            Enabling Africa's Organic & Agroecology Transition
+                            Enabling Africa&apos;s Organic & Agroecology Transition
                         </motion.h2>
                     </div>
 
@@ -145,7 +145,7 @@ export default function WhatWeDo() {
                             className="text-[#434343] text-[18px] leading-[1.4] m-0"
                             style={{ fontFamily: 'var(--font-display)', fontStyle: 'normal', fontWeight: 400 }}
                         >
-                            Our mission is to strengthen Africa's organic ecosystem—connecting NOAMs, farmer organizations, policymakers, researchers, and markets. We support the development and adoption of trusted standards, build institutional capacity, and translate evidence into field-use tools.
+                            Our mission is to strengthen Africa&apos;s organic ecosystem—connecting NOAMs, farmer organizations, policymakers, researchers, and markets. We support the development and adoption of trusted standards, build institutional capacity, and translate evidence into field-use tools.
                         </motion.p>
                     </div>
                 </motion.div>

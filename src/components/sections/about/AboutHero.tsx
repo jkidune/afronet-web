@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import Image from 'next/image';
 
 // ── Image Ticker Data ────────────────────────────────────────────────────────
@@ -13,7 +14,7 @@ const tickerImages = [
 ];
 
 // ── Variants ─────────────────────────────────────────────────────────────────
-const fadeUp: any = {
+const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24, filter: 'blur(3px)' },
     visible: {
         opacity: 1,
@@ -23,7 +24,7 @@ const fadeUp: any = {
     },
 };
 
-const staggerContainer: any = {
+const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
@@ -53,7 +54,7 @@ export default function AboutHero() {
                         className="text-[40px] md:text-[56px] lg:text-[64px] leading-[1.1] text-[#000000] m-0 font-normal text-center"
                         style={{ fontFamily: 'var(--font-editorial)' }}
                     >
-                        Catalyzing Africa's Organic Agriculture
+                        Catalyzing Africa&apos;s Organic Agriculture
                     </motion.h1>
 
                     <motion.p
