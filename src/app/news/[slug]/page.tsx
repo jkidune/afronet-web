@@ -7,8 +7,6 @@ import {
     getFeaturedImageAlt,
     formatWPDate,
     readingTime,
-    getAuthorName,
-    getAuthorAvatar,
     getCategoryNames,
     stripHtml,
 } from '@/types/wordpress';
@@ -47,27 +45,25 @@ export default async function BlogPostPage(
     const post = await getPostBySlug(slug);
     if (!post) notFound();
 
-    const related = await getRelatedPosts(post.id, post.categories, 2);
+    const related = await getRelatedPosts(post.id, post.categories, 3);
+    const categoryNames = getCategoryNames(post).map(stripHtml);
 
     const article = {
         title: stripHtml(post.title.rendered),
         content: post.content.rendered,
         excerpt: stripHtml(post.excerpt.rendered),
-        category: getCategoryNames(post)[0] || 'News',
-        categories: getCategoryNames(post),
+        category: categoryNames[0] || 'News',
+        categories: categoryNames,
         date: formatWPDate(post.date),
         readTime: readingTime(post.content.rendered),
-        author: {
-            name: getAuthorName(post),
-            avatar: getAuthorAvatar(post),
-        },
         heroImage: getFeaturedImageUrl(post),
         heroAlt: getFeaturedImageAlt(post) || stripHtml(post.title.rendered),
     };
 
     const relatedArticles = related.map((r) => ({
         title: stripHtml(r.title.rendered),
-        category: getCategoryNames(r)[0] || 'News',
+        category: getCategoryNames(r).map(stripHtml)[0] || 'News',
+        date: formatWPDate(r.date),
         image: getFeaturedImageUrl(r),
         alt: getFeaturedImageAlt(r) || stripHtml(r.title.rendered),
         href: `/news/${r.slug}`,
