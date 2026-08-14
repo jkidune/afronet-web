@@ -1,0 +1,13 @@
+{
+  "name": "afronet-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AfrONet (African Organic Network) public website — static HTML/CSS/JS, deployed to Cloudflare Workers as static assets. No build step.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.100.0"
+  }
+}

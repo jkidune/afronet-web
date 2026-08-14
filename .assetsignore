@@ -1,0 +1,11 @@
+afronet-web-OLD/
+.remember/
+.git/
+node_modules/
+*.docx
+*.pdf
+CLAUDE.md
+wrangler.jsonc
+package.json
+package-lock.json
+.assetsignore
