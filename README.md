@@ -5,7 +5,7 @@ This file provides guidance when working with code in this repository.
 
 The Afronet (African Organic Network, afronet.bio) marketing website — a static HTML site. It is served locally via XAMPP/Apache from `c:\xampp\htdocs\AFRONET`, so the dev workflow is: edit HTML/CSS/JS directly, then view at `http://localhost/AFRONET/`. There is no build step, bundler, or test suite — every page is hand-authored static markup. A `package.json`/`wrangler.jsonc` pair exists solely so `wrangler deploy` can push this directory to Cloudflare Workers as static assets (see "Deployment" below) — running `npm install` only pulls in `wrangler` itself, nothing feeds into the site's HTML/CSS/JS.
 
-This directory is **not a git repository**. Treat file changes as directly live; there is no commit/diff safety net.
+This directory **is** a git repository (https://github.com/jkidune/afronet-web). The local XAMPP working copy at `c:\xampp\htdocs\AFRONET` is not itself a repo, but changes made there get synced into this repo — that's the commit/diff safety net.
 
 `afronet-web-OLD/` is a separate Next.js + WordPress-headless rebuild of this same site. Despite the folder name, **it is the codebase currently live in production at afronet.bio** (confirmed via response headers: `Server: cloudflare`, `x-opennext: 1` — deployed via OpenNext to a Cloudflare Worker named `afronet-web`), backed by a live WordPress instance at `cms.afronet.bio` (Hostinger). This static site (the AFRONET root) is the intended *replacement* for it, not a live sibling — until the migration/cutover happens, treat afronet-web-OLD as "what's actually live," and leave it alone unless explicitly asked to work in it.
 
