@@ -136,6 +136,35 @@
             width: 100%;
             justify-content: center;
         }
+        .event-register-modal__result-title {
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 8px;
+        }
+        .event-register-modal__result-meta {
+            background: var(--grdeen-gray, #f6f7f2);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--grdeen-text, #626f62);
+        }
+        .event-register-modal__result-meta span {
+            display: block;
+        }
+        .event-register-modal__result-body {
+            background: #fbfdfb;
+            border: 1px solid #d8e0d8;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: var(--grdeen-text-dark, #07370a);
+            max-height: 220px;
+            overflow-y: auto;
+        }
     </style>
 
 </head>
@@ -1081,6 +1110,23 @@
                     <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continue to Email</span>
                 </button>
             </form>
+            <div class="event-register-modal__result" style="display:none;">
+                <h4 class="event-register-modal__result-title">Your email is ready</h4>
+                <p class="event-register-modal__subtitle">Addressed to <strong>info@afronet.bio</strong>. Open your email app to send it, or copy the message below.</p>
+                <div class="event-register-modal__result-meta">
+                    <span><strong>To:</strong> info@afronet.bio</span>
+                    <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
+                </div>
+                <div class="event-register-modal__result-body js-result-body"></div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <a href="#" class="grdeen-btn js-open-mailto" style="justify-content:center;">
+                        <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Open Email App</span>
+                    </a>
+                    <button type="button" class="grdeen-btn grdeen-btn--outline js-copy-message" style="justify-content:center;">
+                        <span><i class="fas fa-copy" style="margin-right:8px;"></i>Copy Message</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.event-register-modal -->
@@ -1120,6 +1166,23 @@
                     <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continue to Email</span>
                 </button>
             </form>
+            <div class="event-register-modal__result" style="display:none;">
+                <h4 class="event-register-modal__result-title">Your email is ready</h4>
+                <p class="event-register-modal__subtitle">Addressed to <strong>info@afronet.bio</strong>. Open your email app to send it, or copy the message below.</p>
+                <div class="event-register-modal__result-meta">
+                    <span><strong>To:</strong> info@afronet.bio</span>
+                    <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
+                </div>
+                <div class="event-register-modal__result-body js-result-body"></div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <a href="#" class="grdeen-btn js-open-mailto" style="justify-content:center;">
+                        <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Open Email App</span>
+                    </a>
+                    <button type="button" class="grdeen-btn grdeen-btn--outline js-copy-message" style="justify-content:center;">
+                        <span><i class="fas fa-copy" style="margin-right:8px;"></i>Copy Message</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.event-register-modal -->
@@ -1165,6 +1228,23 @@
                     <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continue to Email</span>
                 </button>
             </form>
+            <div class="event-register-modal__result" style="display:none;">
+                <h4 class="event-register-modal__result-title">Your email is ready</h4>
+                <p class="event-register-modal__subtitle">Addressed to <strong>info@afronet.bio</strong>. Open your email app to send it, or copy the message below.</p>
+                <div class="event-register-modal__result-meta">
+                    <span><strong>To:</strong> info@afronet.bio</span>
+                    <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
+                </div>
+                <div class="event-register-modal__result-body js-result-body"></div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <a href="#" class="grdeen-btn js-open-mailto" style="justify-content:center;">
+                        <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Open Email App</span>
+                    </a>
+                    <button type="button" class="grdeen-btn grdeen-btn--outline js-copy-message" style="justify-content:center;">
+                        <span><i class="fas fa-copy" style="margin-right:8px;"></i>Copy Message</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.event-register-modal -->
@@ -1211,6 +1291,11 @@
             function closeModals() {
                 $modals.removeClass("is-open");
                 $("body").css("overflow", "");
+                $modals.each(function () {
+                    var $modal = $(this);
+                    $modal.find(".event-register-modal__result").hide();
+                    $modal.find("form").show();
+                });
             }
 
             $(document).on("click", ".event-register-toggler", function (e) {
@@ -1246,8 +1331,48 @@
                 }
             };
 
+            function copyText(text, $btn) {
+                function copied() {
+                    var $span = $btn.find("span");
+                    var original = $span.html();
+                    $span.html('<i class="fas fa-check" style="margin-right:8px;"></i>Copied!');
+                    setTimeout(function () { $span.html(original); }, 2000);
+                }
+                function legacyCopy() {
+                    var $ta = $("<textarea>").val(text).appendTo("body").css({ position: "fixed", opacity: 0 });
+                    $ta.select();
+                    try { document.execCommand("copy"); } catch (err) {}
+                    $ta.remove();
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(copied, function () {
+                        legacyCopy();
+                        copied();
+                    });
+                } else {
+                    legacyCopy();
+                    copied();
+                }
+            }
+
+            function showResult($modal, config, lines) {
+                var $form = $modal.find("form");
+                var $result = $modal.find(".event-register-modal__result");
+                var name = $.trim($form.find('[name="name"]').val()) || "";
+                var subject = config.subject + (name ? " — " + name : "");
+                var bodyText = lines.join("\n");
+                var mailto = "mailto:info@afronet.bio?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyText);
+                $result.find(".js-result-subject").text(subject);
+                $result.find(".js-result-body").text(bodyText);
+                $result.find(".js-open-mailto").attr("href", mailto);
+                $form.hide();
+                $result.show();
+                return mailto;
+            }
+
             Object.keys(mailtoForms).forEach(function (selector) {
                 var config = mailtoForms[selector];
+                var $modal = $(selector).closest(".event-register-modal");
                 $(selector).on("submit", function (e) {
                     e.preventDefault();
                     var $form = $(this);
@@ -1259,11 +1384,17 @@
                         if (!val) return;
                         lines.push(config.labels[name] + ": " + val);
                     });
-                    var name = $.trim($form.find('[name="name"]').val()) || "";
-                    var subject = config.subject + (name ? " — " + name : "");
-                    var mailto = "mailto:info@afronet.bio?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+                    var mailto = showResult($modal, config, lines);
                     window.location.href = mailto;
-                    closeModals();
+                });
+                $modal.on("click", ".js-open-mailto", function (e) {
+                    e.preventDefault();
+                    window.location.href = this.href;
+                });
+                $modal.on("click", ".js-copy-message", function (e) {
+                    e.preventDefault();
+                    var text = $modal.find(".event-register-modal__result-body").text();
+                    copyText(text, $(this));
                 });
             });
         })(jQuery);
