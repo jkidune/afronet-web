@@ -4,7 +4,6 @@ afronet-web-OLD/
 node_modules/
 *.docx
 *.pdf
-CLAUDE.md
 wrangler.jsonc
 package.json
 package-lock.json
