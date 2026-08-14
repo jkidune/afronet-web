@@ -1,0 +1,3 @@
+NEXTJS_ENV=development
+NEXT_PUBLIC_SITE_URL=https://afronet.bio
+NEXT_PUBLIC_WP_API_URL=https://cms.afronet.bio/wp-json/wp/v2
