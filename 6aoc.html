@@ -1112,7 +1112,7 @@
             </form>
             <div class="event-register-modal__result" style="display:none;">
                 <h4 class="event-register-modal__result-title">Your email is ready</h4>
-                <p class="event-register-modal__subtitle">Addressed to <strong>mgeta.daud@afronet.bio</strong>. Gmail will open with your details pre-filled — just press send, or copy the message below.</p>
+                <p class="event-register-modal__subtitle">Addressed to <strong>mgeta.daud@afronet.bio</strong>. Your email will open with your details pre-filled — just press send, or copy the message below.</p>
                 <div class="event-register-modal__result-meta">
                     <span><strong>To:</strong> mgeta.daud@afronet.bio</span>
                     <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
@@ -1168,7 +1168,7 @@
             </form>
             <div class="event-register-modal__result" style="display:none;">
                 <h4 class="event-register-modal__result-title">Your email is ready</h4>
-                <p class="event-register-modal__subtitle">Addressed to <strong>mgeta.daud@afronet.bio</strong>. Gmail will open with your details pre-filled — just press send, or copy the message below.</p>
+                <p class="event-register-modal__subtitle">Addressed to <strong>mgeta.daud@afronet.bio</strong>. Your email will open with your details pre-filled — just press send, or copy the message below.</p>
                 <div class="event-register-modal__result-meta">
                     <span><strong>To:</strong> mgeta.daud@afronet.bio</span>
                     <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
@@ -1230,7 +1230,7 @@
             </form>
             <div class="event-register-modal__result" style="display:none;">
                 <h4 class="event-register-modal__result-title">Your email is ready</h4>
-                <p class="event-register-modal__subtitle">Addressed to <strong>mgeta.daud@afronet.bio</strong>. Gmail will open with your details pre-filled — just press send, or copy the message below.</p>
+                <p class="event-register-modal__subtitle">Addressed to <strong>mgeta.daud@afronet.bio</strong>. Your email will open with your details pre-filled — just press send, or copy the message below.</p>
                 <div class="event-register-modal__result-meta">
                     <span><strong>To:</strong> mgeta.daud@afronet.bio</span>
                     <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
@@ -1355,16 +1355,28 @@
                 }
             }
 
+            function isMobileDevice() {
+                return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.mobile === true);
+            }
+
             function showResult($modal, config, lines) {
                 var $form = $modal.find("form");
                 var $result = $modal.find(".event-register-modal__result");
                 var name = $.trim($form.find('[name="name"]').val()) || "";
                 var subject = config.subject + (name ? " — " + name : "");
                 var bodyText = lines.join("\n");
-                var composeUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=mgeta.daud@afronet.bio&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyText);
+                var params = "subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyText);
+                var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=mgeta.daud@afronet.bio&" + params;
+                var mailtoUrl = "mailto:mgeta.daud@afronet.bio?" + params;
+                var composeUrl = isMobileDevice() ? mailtoUrl : gmailUrl;
                 $result.find(".js-result-subject").text(subject);
                 $result.find(".js-result-body").text(bodyText);
-                $result.find(".js-open-mailto").attr("href", composeUrl);
+                $result.find(".js-open-mailto")
+                    .attr("href", composeUrl)
+                    .find("span")
+                    .html(isMobileDevice()
+                        ? '<i class="fas fa-envelope" style="margin-right:8px;"></i>Open Email App'
+                        : '<i class="fas fa-paper-plane" style="margin-right:8px;"></i>Open in Gmail');
                 $form.hide();
                 $result.show();
                 return composeUrl;
@@ -1385,11 +1397,19 @@
                         lines.push(config.labels[name] + ": " + val);
                     });
                     var composeUrl = showResult($modal, config, lines);
-                    window.open(composeUrl, "_blank");
+                    if (isMobileDevice()) {
+                        window.location.href = composeUrl;
+                    } else {
+                        window.open(composeUrl, "_blank");
+                    }
                 });
                 $modal.on("click", ".js-open-mailto", function (e) {
                     e.preventDefault();
-                    window.open(this.href, "_blank");
+                    if (isMobileDevice()) {
+                        window.location.href = this.href;
+                    } else {
+                        window.open(this.href, "_blank");
+                    }
                 });
                 $modal.on("click", ".js-copy-message", function (e) {
                     e.preventDefault();
