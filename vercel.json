@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/wp-json/:path*",
+            "destination": "https://cms.afronet.bio/wp-json/:path*"
+        },
+        {
+            "source": "/wp-admin/:path*",
+            "destination": "https://cms.afronet.bio/wp-admin/:path*"
+        }
+    ]
+}

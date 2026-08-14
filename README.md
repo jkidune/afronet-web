@@ -1,33 +1,168 @@
+# AfrONet Website
 
-This file provides guidance when working with code in this repository.
+AfrONet's public website built with Next.js App Router and WordPress REST API content. The app is prepared for Cloudflare deployment through OpenNext.
 
-## What this project is
+## Stack
 
-The Afronet (African Organic Network, afronet.bio) marketing website — a static HTML site. It is served locally via XAMPP/Apache from `c:\xampp\htdocs\AFRONET`, so the dev workflow is: edit HTML/CSS/JS directly, then view at `http://localhost/AFRONET/`. There is no build step, bundler, or test suite — every page is hand-authored static markup. A `package.json`/`wrangler.jsonc` pair exists solely so `wrangler deploy` can push this directory to Cloudflare Workers as static assets (see "Deployment" below) — running `npm install` only pulls in `wrangler` itself, nothing feeds into the site's HTML/CSS/JS.
+- Next.js 16 App Router
+- React 19
+- Tailwind CSS 4
+- Framer Motion for page and section animation
+- WordPress REST API for posts, pages, programmes, testimonials, categories, and media
+- OpenNext Cloudflare + Wrangler for Cloudflare Workers deployment
 
-This directory **is** a git repository (https://github.com/jkidune/afronet-web). The local XAMPP working copy at `c:\xampp\htdocs\AFRONET` is not itself a repo, but changes made there get synced into this repo — that's the commit/diff safety net.
+## Local Development
 
-`afronet-web-OLD/` is a separate Next.js + WordPress-headless rebuild of this same site. Despite the folder name, **it is the codebase currently live in production at afronet.bio** (confirmed via response headers: `Server: cloudflare`, `x-opennext: 1` — deployed via OpenNext to a Cloudflare Worker named `afronet-web`), backed by a live WordPress instance at `cms.afronet.bio` (Hostinger). This static site (the AFRONET root) is the intended *replacement* for it, not a live sibling — until the migration/cutover happens, treat afronet-web-OLD as "what's actually live," and leave it alone unless explicitly asked to work in it.
+Install dependencies:
 
-## Deployment
+```bash
+npm install
+```
 
-`wrangler.jsonc` at the repo root deploys this directory to Cloudflare Workers as static assets (`assets.directory: "."`, no build step, no worker script) under the Worker name `afronet-web` — deliberately matching the name of the Worker currently serving live traffic at afronet.bio, so the existing custom-domain binding has the best chance of carrying over without a manual DNS/domain change. `.assetsignore` excludes non-site content (`afronet-web-OLD/`, `.remember/`, docs, the deploy config files themselves) from being uploaded as public assets. Nothing in this repo runs `wrangler deploy` automatically — that's a deliberate, manual, production-affecting action for whoever holds the Cloudflare account to trigger.
+Run the development server:
 
-## Architecture
+```bash
+npm run dev
+```
 
-**No templating — every page is a fully self-contained HTML file.** There are 20 real pages: `index.html`, `6aoc.html` (event landing page), `about.html`, `team.html` (dedicated team page, nested under About in the nav as "Our Team"), `contact.html`, `programme.html` + 4 detail pages (`programme-app.html`, `programme-aoc.html`, `programme-eoa-i.html`, `programme-iiaba.html`), `impact.html` (Projects/Impact page — case studies + testimonials), `news.html` + 4 detail pages (`news-6th-aoc.html`, `news-uganda-pilot.html`, `news-iiaba-institutional-growth.html`, `news-eu-trade-equivalency.html`), `faq.html` (nested under News in the nav — index.html only, currently), `members.html` (partner/member directory, nested under About in the nav as "Our Members"), `support-us.html`, and `404.html`. (Earlier leftover demo pages — `login.html`, `services.html`, `blog*.html`, `project*.html`, `service-d-*.html`, `prices.html` — have been deleted; don't recreate them without reason. `team.html` and `faq.html` were also deleted early in the site's rebuild as fake-content leftovers, then later rebuilt from scratch with real content — they are current, real pages now, not leftovers.) The header/topbar, nav, mobile-nav, search popup, and footer markup is duplicated verbatim across all 20 pages. **When changing shared chrome (nav links, footer, social links, logo, contact info), you must edit every page individually** — grep for the section (e.g. `topbar-one__info__item`, `footer-widget__newsletter`, `main-menu__list`) to find all files that need the same change. One exception to keep in mind: `index.html`'s nav uniquely nests FAQ under a "News" dropdown — every other page keeps FAQ as its own standalone top-level nav item, per an explicit user decision to scope that nesting change to the homepage only.
+Open [http://localhost:3000](http://localhost:3000).
 
-Directory layout:
-- `assets/css/` — `grdeen.css` (compiled styles) plus RTL/dark/custom variants (`grdeen-rtl.css`, `grdeen-dark.css`, `grdeen-custom-rtl.css`). Only `grdeen.css` is linked from the pages currently.
-- `assets/js/grdeen.js` — the single custom JS file (page interactions on top of the vendor libs).
-- `assets/vendors/` — third-party libraries vendored in full (Bootstrap 5, jQuery, Owl Carousel, jQuery Validate, WOW.js, Isotope, Jarallax, Tiny Slider, FontAwesome, etc.). Don't "npm install" these — they're committed as static files and referenced via relative `<script>`/`<link>` tags.
-- `assets/images/` — all site imagery, including `favicons/`.
+Run lint:
 
-Each page's `<head>` loads vendor CSS then `assets/css/grdeen.css` last; each page's closing body loads vendor JS (jQuery first) then `assets/js/grdeen.js` last. Keep that order when adding new pages or includes.
+```bash
+npm run lint
+```
 
-## Known gotchas
+Build for Next.js:
 
-- The contact form (`contact.html`) and the partner-inquiry form (`index.html`, `#afronet-partner-form`) both submit via `fetch()` to WordPress's Contact Form 7 REST endpoint on `cms.afronet.bio` (CF7 form ID 403), with hidden `_wpcf7*` meta fields included since the REST API needs what CF7's own JS would normally inject on a native WP page render. The newsletter signup form (`.cf7-newsletter-form`, `data-cf7-id="413"`, handled in `assets/js/grdeen.js`) is wired the same way to CF7 form 413. Both were verified working via live curl test submissions (`"status":"mail_sent"`) — this is real, working mail delivery, not a placeholder.
-- Content has been rewritten to match the real AfrONet organic-agriculture identity (sourced from the live afronet.bio + its WordPress API). If you find copy that doesn't fit that identity, it's a leftover, not intentional.
-- Several pages use placeholder content pending real material from the user: `team.html` and the "Meet the team" section on `about.html` use the placeholder name "Mgate Daud" on every card with real, web-verified role titles but inline-SVG silhouette placeholder photos (real names/photos to come later); `members.html` lists only real, confirmed partner orgs but has no logos yet.
-- Fonts are loaded from Google Fonts via `<link>` in each page's `<head>` (DM Sans, Inter, Work Sans) — not self-hosted.
+```bash
+npm run build
+```
+
+Build for Cloudflare/OpenNext:
+
+```bash
+npm run cf-build
+```
+
+Preview the Cloudflare build:
+
+```bash
+npm run preview
+```
+
+Deploy:
+
+```bash
+npm run deploy
+```
+
+Upload a Workers Version from Cloudflare CI:
+
+```bash
+npm run cf-versions-upload
+```
+
+## Cloudflare Build Settings
+
+This project cannot deploy from a fresh clone with `npx wrangler versions upload` alone. Wrangler reads `wrangler.jsonc`, whose `main` entry points to `.open-next/worker.js`; that file is generated by the OpenNext build and is not committed.
+
+Use one of these Cloudflare Workers Builds configurations:
+
+- Build command: `npm run cf-build`
+- Deploy command: `npx wrangler versions upload`
+
+Or use a single deploy command:
+
+```bash
+npm run cf-versions-upload
+```
+
+For direct production deployment outside Workers Versions, use:
+
+```bash
+npm run deploy
+```
+
+## Environment
+
+The Cloudflare defaults are defined in `wrangler.jsonc`:
+
+- `NEXT_PUBLIC_SITE_URL=https://afronet.bio`
+- `NEXT_PUBLIC_WP_API_URL=https://cms.afronet.bio/wp-json/wp/v2`
+
+For local overrides, use `.env.local`.
+
+## Content Model
+
+WordPress fetch helpers live in `src/lib/wordpress.ts`.
+
+Key routes:
+
+- `/news` lists published WordPress posts.
+- `/news/[slug]` renders a single post.
+- `/programme` lists programme custom post type entries.
+- `/programme/[slug]` renders a single programme.
+
+The site expects embedded WordPress data through `_embed=true` for featured images, authors, and taxonomy terms. Image host allowlisting is configured in `next.config.ts`.
+
+## Styling Notes
+
+Global font variables are set in `src/app/layout.tsx`:
+
+- `--font-body`
+- `--font-display`
+- `--font-editorial`
+- `--font-heading`
+
+WordPress-rendered article HTML is styled through `.wp-content` in `src/app/globals.css`. Keep article body typography changes there unless a page needs layout-only adjustments.
+
+## Blog Detail Handover
+
+The individual blog page was updated to match the client preference for a clear title-first editorial layout with the featured image visible below the title.
+
+Changed files:
+
+- `src/app/news/[slug]/BlogPostClient.tsx`
+- `src/app/news/[slug]/page.tsx`
+
+Current behavior:
+
+- No full-screen image background or glass title banner.
+- Breadcrumb/category appears above the title.
+- Date, read time, and share controls sit in the right-side metadata area on desktop.
+- Author details are intentionally hidden from the blog detail header.
+- Featured image renders below the title in a large rounded frame.
+- Featured image and avatar optimization were bypassed where needed because the Next image optimizer returned zero-size images for some CMS assets during testing.
+- Article body still comes from WordPress HTML and uses existing `.wp-content` styling.
+- Tags remain beside the body on desktop and stack naturally on mobile.
+- Related articles use the blog page background color, not the footer background and not the previous blue section color.
+- Related article category names are decoded with `stripHtml` so terms like `Policy & Trade` do not show as `Policy &amp; Trade`.
+
+Validation completed for the blog detail update:
+
+```bash
+./node_modules/.bin/eslint 'src/app/news/[slug]/BlogPostClient.tsx' 'src/app/news/[slug]/page.tsx'
+```
+
+Note: if `.wrangler/tmp` generated deployment output exists locally, broad `npm run lint` may lint bundled worker output and report errors outside application source. Clear generated deployment output or add an ignore rule before relying on a full-project lint pass.
+
+Manual browser check was done on:
+
+```text
+http://localhost:3000/news/6th-african-organic-conference-6th-aoc
+```
+
+Confirmed:
+
+- No `Written by` label appears.
+- Date and read time are visible.
+- Hero image loads from the CMS and is visible.
+- Related section background matches the blog page background.
+- No horizontal overflow on mobile.
+
+## Developer Notes
+
+- The repository may contain unrelated local changes. Stage files intentionally rather than using broad `git add -A`.
+- This project uses a newer Next.js version. Before making framework-level changes, read the relevant guide in `node_modules/next/dist/docs/`.
+- Footer scroll/reveal behavior lives in `src/components/layout/Footer.tsx`; do not change it when working only on the blog page.
