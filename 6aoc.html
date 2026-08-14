@@ -37,6 +37,107 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/grdeen.css" />
 
+    <!-- 6AOC registration modal styles -->
+    <style>
+        .event-register-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+        .event-register-modal.is-open {
+            visibility: visible;
+            opacity: 1;
+        }
+        .event-register-modal__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(7, 55, 10, .72);
+        }
+        .event-register-modal__content {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+            transform: translateY(16px);
+            transition: transform .3s ease;
+        }
+        .event-register-modal.is-open .event-register-modal__content {
+            transform: translateY(0);
+        }
+        .event-register-modal__close {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            border: 0;
+            background: transparent;
+            font-size: 32px;
+            line-height: 1;
+            color: var(--grdeen-text, #626f62);
+            cursor: pointer;
+            padding: 0;
+        }
+        .event-register-modal__title {
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 8px;
+        }
+        .event-register-modal__subtitle {
+            color: var(--grdeen-text, #626f62);
+            margin-bottom: 24px;
+        }
+        .event-register-modal__row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .event-register-modal__group {
+            flex: 1 1 200px;
+            margin-bottom: 16px;
+        }
+        .event-register-modal__group label {
+            display: block;
+            font-weight: 600;
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 6px;
+        }
+        .event-register-modal__group input,
+        .event-register-modal__group select,
+        .event-register-modal__group textarea {
+            width: 100%;
+            border: 1px solid #d8e0d8;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 15px;
+            color: var(--grdeen-text-dark, #07370a);
+            background: #fff;
+        }
+        .event-register-modal__group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        .event-register-modal__group input:focus,
+        .event-register-modal__group select:focus,
+        .event-register-modal__group textarea:focus {
+            outline: none;
+            border-color: var(--grdeen-base, #1a9120);
+        }
+        .event-register-modal__submit {
+            width: 100%;
+            justify-content: center;
+        }
+    </style>
+
 </head>
 
 <body class="custom-cursor">
@@ -191,8 +292,8 @@
                 </div>
                 <p class="event-hero__text">The African Organic Network (AfrONet), in partnership with the Organic Producers' &amp; Processors' Association of Zambia (OPPAZ), invites organic agriculture stakeholders from across Africa and beyond to the 6th African Organic Conference (6AOC) in Lusaka, Zambia. Held every three years, 6AOC brings together farmers, researchers, businesses, policymakers, development partners, civil society, students and other actors shaping the future of organic agriculture and agroecology in Africa.</p>
                 <div class="event-hero__ctas">
-                    <a href="https://wa.me/255712344069?text=Hello%20AfrONet!%20%F0%9F%91%8B%0A%0AI%20would%20like%20to%20register%20for%20the%20*6th%20African%20Organic%20Conference%20(6AOC)*.%0A%0A%F0%9F%93%85%20Dates%3A%201%E2%80%934%20December%202026%0A%F0%9F%93%8D%20Venue%3A%20Lusaka%2C%20Zambia%0A%0A*My%20details%3A*%0A-%20Name%3A%0A-%20Organisation%3A%0A-%20Country%3A%0A-%20Participation%3A%20Physical%20%2F%20Virtual%0A-%20Category%3A%20Individual%20%2F%20Student%20%2F%20Exhibition%20%2F%20Side%20Event%0A%0APlease%20send%20me%20the%20registration%20details.%20Thank%20you!" target="_blank" rel="noopener noreferrer" class="grdeen-btn">
-                        <span><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Register Now</span>
+                    <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal">
+                        <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Register Now</span>
                     </a>
                     <a href="#tracks" class="grdeen-btn grdeen-btn--outline-light">
                         <span>View Conference Program</span>
@@ -538,8 +639,8 @@
                                 </table>
                             </div>
 
-                            <a href="https://wa.me/255712344069?text=Hello%20AfrONet!%20%F0%9F%91%8B%0A%0AI%20would%20like%20to%20register%20for%20the%20*6th%20African%20Organic%20Conference%20(6AOC)*.%0A%0A%F0%9F%93%85%20Dates%3A%201%E2%80%934%20December%202026%0A%F0%9F%93%8D%20Venue%3A%20Lusaka%2C%20Zambia%0A*Registration%20Tier%3A*%20Early%20Bird%20(by%2030%20September%202026)%0A%0A*My%20details%3A*%0A-%20Name%3A%0A-%20Organisation%3A%0A-%20Country%3A%0A-%20Participation%3A%20Physical%20%2F%20Virtual%0A-%20Category%3A%20Individual%20%2F%20Student%20%2F%20Exhibition%20%2F%20Side%20Event%0A%0APlease%20send%20me%20the%20registration%20details.%20Thank%20you!" target="_blank" rel="noopener noreferrer" class="grdeen-btn" style="width:100%; text-align:center; justify-content:center;">
-                                <span><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Register — Early Bird</span>
+                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal" data-tier="Early Bird" style="width:100%; text-align:center; justify-content:center;">
+                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Register — Early Bird</span>
                             </a>
                         </div>
                     </div>
@@ -618,8 +719,8 @@
                                 </table>
                             </div>
 
-                            <a href="https://wa.me/255712344069?text=Hello%20AfrONet!%20%F0%9F%91%8B%0A%0AI%20would%20like%20to%20register%20for%20the%20*6th%20African%20Organic%20Conference%20(6AOC)*.%0A%0A%F0%9F%93%85%20Dates%3A%201%E2%80%934%20December%202026%0A%F0%9F%93%8D%20Venue%3A%20Lusaka%2C%20Zambia%0A*Registration%20Tier%3A*%20Regular%20(by%2030%20October%202026)%0A%0A*My%20details%3A*%0A-%20Name%3A%0A-%20Organisation%3A%0A-%20Country%3A%0A-%20Participation%3A%20Physical%20%2F%20Virtual%0A-%20Category%3A%20Individual%20%2F%20Student%20%2F%20Exhibition%20%2F%20Side%20Event%0A%0APlease%20send%20me%20the%20registration%20details.%20Thank%20you!" target="_blank" rel="noopener noreferrer" class="grdeen-btn" style="width:100%; text-align:center; justify-content:center;">
-                                <span><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Register — Regular</span>
+                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal" data-tier="Regular" style="width:100%; text-align:center; justify-content:center;">
+                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Register — Regular</span>
                             </a>
                         </div>
                     </div>
@@ -649,9 +750,9 @@
                     <div class="col-lg-5">
                         <div class="fee-card" style="text-align:center;">
                             <h3 class="fee-card__title" style="margin-bottom:16px;">Reserve Your Space</h3>
-                            <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Reserve your exhibition space directly with our team via WhatsApp.</p>
-                            <a href="https://wa.me/255712344069?text=Hello%20AfrONet!%20%F0%9F%91%8B%0A%0AI%20would%20like%20to%20*reserve%20an%20exhibition%20space*%20at%20the%206th%20African%20Organic%20Conference%20(6AOC)%2C%201%E2%80%934%20December%202026%20in%20Lusaka%2C%20Zambia.%0A%0A*My%20details%3A*%0A-%20Organisation%3A%0A-%20Country%3A%0A-%20Products%2FServices%20to%20showcase%3A%0A%0APlease%20send%20me%20exhibition%20details%20and%20pricing.%20Thank%20you!" target="_blank" rel="noopener noreferrer" class="grdeen-btn" style="width:100%; text-align:center; justify-content:center;">
-                                <span><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Reserve Your Exhibition Space</span>
+                            <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Reserve your exhibition space by submitting your details below.</p>
+                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-exhibit-modal" style="width:100%; text-align:center; justify-content:center;">
+                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Reserve Your Exhibition Space</span>
                             </a>
                         </div>
                     </div>
@@ -672,9 +773,9 @@
                     <div class="col-lg-5">
                         <div class="fee-card" style="text-align:center;">
                             <h3 class="fee-card__title" style="margin-bottom:16px;">Apply to Host</h3>
-                            <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Tell us about your proposed side event via WhatsApp and we'll follow up with requirements.</p>
-                            <a href="https://wa.me/255712344069?text=Hello%20AfrONet!%20%F0%9F%91%8B%0A%0AI%20would%20like%20to%20*host%20a%20side%20event*%20at%20the%206th%20African%20Organic%20Conference%20(6AOC)%2C%201%E2%80%934%20December%202026%20in%20Lusaka%2C%20Zambia.%0A%0A*My%20details%3A*%0A-%20Organisation%3A%0A-%20Country%3A%0A-%20Proposed%20topic%2Ffocus%3A%0A-%20Preferred%20day%3A%0A%0APlease%20send%20me%20side%20event%20details%20and%20requirements.%20Thank%20you!" target="_blank" rel="noopener noreferrer" class="grdeen-btn" style="width:100%; text-align:center; justify-content:center;">
-                                <span><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Apply to Host a Side Event</span>
+                            <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Tell us about your proposed side event and we'll follow up with requirements via email.</p>
+                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-sideevent-modal" style="width:100%; text-align:center; justify-content:center;">
+                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Apply to Host a Side Event</span>
                             </a>
                         </div>
                     </div>
@@ -727,9 +828,11 @@
                     <h2 class="event-cta-band__title">Join Us in Lusaka</h2>
                     <p class="event-cta-band__meta" style="max-width:720px; margin-left:auto; margin-right:auto;">Africa's food systems are facing changing climatic, economic and social conditions. The solutions will require collaboration between farmers, researchers, governments, businesses, development partners and communities. 6AOC creates a space to turn knowledge into partnerships, partnerships into action and action into stronger and more resilient African food systems.</p>
                     <p class="event-cta-band__meta" style="font-weight:700; font-size:18px;">1–4 December 2026 · Lusaka, Zambia · Physical &amp; Virtual Participation</p>
-                    <a href="https://wa.me/255712344069?text=Hello%20AfrONet!%20%F0%9F%91%8B%0A%0AI%20would%20like%20to%20register%20for%20the%20*6th%20African%20Organic%20Conference%20(6AOC)*.%0A%0A%F0%9F%93%85%20Dates%3A%201%E2%80%934%20December%202026%0A%F0%9F%93%8D%20Venue%3A%20Lusaka%2C%20Zambia%0A%0A*My%20details%3A*%0A-%20Name%3A%0A-%20Organisation%3A%0A-%20Country%3A%0A-%20Participation%3A%20Physical%20%2F%20Virtual%0A-%20Category%3A%20Individual%20%2F%20Student%20%2F%20Exhibition%20%2F%20Side%20Event%0A%0APlease%20send%20me%20the%20registration%20details.%20Thank%20you!" target="_blank" rel="noopener noreferrer" class="grdeen-btn">
-                        <span><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Register for the 6th African Organic Conference</span>
-                    </a>
+                    <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+                        <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal">
+                            <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Register for the 6th African Organic Conference</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -919,6 +1022,153 @@
     </div>
     <!-- /.search-popup -->
 
+    <div class="event-register-modal" id="event-register-modal">
+        <div class="event-register-modal__overlay"></div>
+        <div class="event-register-modal__content">
+            <button type="button" class="event-register-modal__close" aria-label="Close">&times;</button>
+            <h3 class="event-register-modal__title">Register for 6AOC</h3>
+            <p class="event-register-modal__subtitle">Fill in your details below — submitting opens a prefilled email to our team, ready for you to send.</p>
+            <form id="event-register-form">
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" name="name" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" name="email" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="reg-organisation">Organisation</label>
+                        <input type="text" id="reg-organisation" name="organisation" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="reg-country">Country</label>
+                        <input type="text" id="reg-country" name="country" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="reg-participation">Participation</label>
+                        <select id="reg-participation" name="participation" required>
+                            <option value="">Select...</option>
+                            <option value="Physical">Physical</option>
+                            <option value="Virtual">Virtual</option>
+                        </select>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="reg-category">Category</label>
+                        <select id="reg-category" name="category" required>
+                            <option value="">Select...</option>
+                            <option value="Individual">Individual</option>
+                            <option value="Student">Student</option>
+                            <option value="Exhibition">Exhibition</option>
+                            <option value="Side Event">Side Event</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="event-register-modal__group">
+                    <label for="reg-tier">Registration Tier</label>
+                    <select id="reg-tier" name="tier" required>
+                        <option value="">Select...</option>
+                        <option value="Early Bird">Early Bird (by 30 September 2026)</option>
+                        <option value="Regular">Regular (by 30 October 2026)</option>
+                    </select>
+                </div>
+                <button type="submit" class="grdeen-btn event-register-modal__submit">
+                    <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continue to Email</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- /.event-register-modal -->
+
+    <div class="event-register-modal" id="event-exhibit-modal">
+        <div class="event-register-modal__overlay"></div>
+        <div class="event-register-modal__content">
+            <button type="button" class="event-register-modal__close" aria-label="Close">&times;</button>
+            <h3 class="event-register-modal__title">Reserve an Exhibition Space</h3>
+            <p class="event-register-modal__subtitle">Fill in your details below — submitting opens a prefilled email to our team, ready for you to send.</p>
+            <form id="event-exhibit-form">
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="exh-name">Full Name</label>
+                        <input type="text" id="exh-name" name="name" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="exh-email">Email</label>
+                        <input type="email" id="exh-email" name="email" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="exh-organisation">Organisation</label>
+                        <input type="text" id="exh-organisation" name="organisation" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="exh-country">Country</label>
+                        <input type="text" id="exh-country" name="country" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__group">
+                    <label for="exh-showcase">Products/Services to showcase</label>
+                    <textarea id="exh-showcase" name="showcase" required></textarea>
+                </div>
+                <button type="submit" class="grdeen-btn event-register-modal__submit">
+                    <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continue to Email</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- /.event-register-modal -->
+
+    <div class="event-register-modal" id="event-sideevent-modal">
+        <div class="event-register-modal__overlay"></div>
+        <div class="event-register-modal__content">
+            <button type="button" class="event-register-modal__close" aria-label="Close">&times;</button>
+            <h3 class="event-register-modal__title">Apply to Host a Side Event</h3>
+            <p class="event-register-modal__subtitle">Fill in your details below — submitting opens a prefilled email to our team, ready for you to send.</p>
+            <form id="event-sideevent-form">
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="side-name">Full Name</label>
+                        <input type="text" id="side-name" name="name" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="side-email">Email</label>
+                        <input type="email" id="side-email" name="email" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="side-organisation">Organisation</label>
+                        <input type="text" id="side-organisation" name="organisation" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="side-country">Country</label>
+                        <input type="text" id="side-country" name="country" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="side-topic">Proposed topic/focus</label>
+                        <input type="text" id="side-topic" name="topic" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="side-day">Preferred day</label>
+                        <input type="text" id="side-day" name="day" placeholder="e.g. Day 1, 2 December 2026">
+                    </div>
+                </div>
+                <button type="submit" class="grdeen-btn event-register-modal__submit">
+                    <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continue to Email</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- /.event-register-modal -->
+
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__text">back top</span>
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
@@ -946,6 +1196,78 @@
     <script src="assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
     <!-- template js -->
     <script src="assets/js/grdeen.js"></script>
+    <script>
+        (function ($) {
+            "use strict";
+            var $modals = $(".event-register-modal");
+
+            function openModal(target) {
+                var $m = $(target);
+                if (!$m.length) return;
+                $m.addClass("is-open");
+                $("body").css("overflow", "hidden");
+            }
+
+            function closeModals() {
+                $modals.removeClass("is-open");
+                $("body").css("overflow", "");
+            }
+
+            $(document).on("click", ".event-register-toggler", function (e) {
+                e.preventDefault();
+                var $btn = $(this);
+                var target = $btn.data("modal-target");
+                if (!target) return;
+                var tier = $btn.data("tier");
+                if (tier) {
+                    $(target).find("#reg-tier").val(tier);
+                }
+                openModal(target);
+            });
+
+            $modals.on("click", ".event-register-modal__close", closeModals);
+            $modals.on("click", ".event-register-modal__overlay", closeModals);
+            $(document).on("keydown", function (e) {
+                if (e.key === "Escape" || e.keyCode === 27) closeModals();
+            });
+
+            var mailtoForms = {
+                "#event-register-form": {
+                    subject: "6AOC Registration",
+                    labels: { name: "Name", email: "Email", organisation: "Organisation", country: "Country", participation: "Participation", category: "Category", tier: "Registration tier" }
+                },
+                "#event-exhibit-form": {
+                    subject: "6AOC Exhibition Space Request",
+                    labels: { name: "Name", email: "Email", organisation: "Organisation", country: "Country", showcase: "Products/Services to showcase" }
+                },
+                "#event-sideevent-form": {
+                    subject: "6AOC Side Event Application",
+                    labels: { name: "Name", email: "Email", organisation: "Organisation", country: "Country", topic: "Proposed topic/focus", day: "Preferred day" }
+                }
+            };
+
+            Object.keys(mailtoForms).forEach(function (selector) {
+                var config = mailtoForms[selector];
+                $(selector).on("submit", function (e) {
+                    e.preventDefault();
+                    var $form = $(this);
+                    var lines = [];
+                    $form.find("input, select, textarea").each(function () {
+                        var name = this.name;
+                        if (!name || !config.labels[name]) return;
+                        var val = $.trim($(this).val());
+                        if (!val) return;
+                        lines.push(config.labels[name] + ": " + val);
+                    });
+                    var name = $.trim($form.find('[name="name"]').val()) || "";
+                    var subject = config.subject + (name ? " — " + name : "");
+                    var mailto = "mailto:info@afronet.bio?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+                    window.location.href = mailto;
+                    closeModals();
+                });
+            });
+        })(jQuery);
+    </script>
 </body>
 
 </html>
