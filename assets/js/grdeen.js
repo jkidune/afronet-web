@@ -337,6 +337,90 @@
       $("body").toggleClass("locked");
     });
   }
+  if ($(".event-register-toggler").length) {
+    $(".event-register-toggler").on("click", function (e) {
+      e.preventDefault();
+      const modal = $($(this).data("modal-target"));
+      if (!modal.length) return;
+      const tier = $(this).data("tier");
+      if (tier) {
+        modal.find('select[name="tier"]').val(tier);
+      }
+      modal.addClass("active");
+      $("body").addClass("locked");
+    });
+  }
+  $(document).on(
+    "click",
+    ".event-register-modal__close, .event-register-modal__overlay",
+    function () {
+      $(this).closest(".event-register-modal").removeClass("active");
+      $("body").removeClass("locked");
+    }
+  );
+
+  const submitEventFormAsMailto = function (form, subject, fields) {
+    const lines = fields.map(function (item) {
+      return item.label + ": " + (form.find('[name="' + item.name + '"]').val() || "");
+    });
+    const body =
+      "Hello AfrONet,\n\nI would like to submit the following for the 6th African Organic Conference (6AOC), 1-4 December 2026, Lusaka, Zambia:\n\n" +
+      lines.join("\n") +
+      "\n\nThank you!";
+    const mailto =
+      "mailto:mgeta.daud@afronet.bio?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body);
+    window.location.href = mailto;
+    form.closest(".event-register-modal").removeClass("active");
+    $("body").removeClass("locked");
+  };
+
+  if ($("#event-register-form").length) {
+    $("#event-register-form").on("submit", function (e) {
+      e.preventDefault();
+      const form = $(this);
+      const tier = form.find('[name="tier"]').val() || "General";
+      submitEventFormAsMailto(form, "6AOC Registration — " + tier, [
+        { name: "name", label: "Name" },
+        { name: "email", label: "Email" },
+        { name: "organisation", label: "Organisation" },
+        { name: "country", label: "Country" },
+        { name: "participation", label: "Participation" },
+        { name: "category", label: "Category" },
+        { name: "tier", label: "Registration Tier" },
+      ]);
+    });
+  }
+
+  if ($("#event-exhibit-form").length) {
+    $("#event-exhibit-form").on("submit", function (e) {
+      e.preventDefault();
+      submitEventFormAsMailto($(this), "6AOC Exhibition Space Reservation", [
+        { name: "name", label: "Name" },
+        { name: "email", label: "Email" },
+        { name: "organisation", label: "Organisation" },
+        { name: "country", label: "Country" },
+        { name: "showcase", label: "Products/Services to showcase" },
+      ]);
+    });
+  }
+
+  if ($("#event-sideevent-form").length) {
+    $("#event-sideevent-form").on("submit", function (e) {
+      e.preventDefault();
+      submitEventFormAsMailto($(this), "6AOC Side Event Proposal", [
+        { name: "name", label: "Name" },
+        { name: "email", label: "Email" },
+        { name: "organisation", label: "Organisation" },
+        { name: "country", label: "Country" },
+        { name: "topic", label: "Proposed topic/focus" },
+        { name: "day", label: "Preferred day" },
+      ]);
+    });
+  }
+
   if ($(".mini-cart__toggler").length) {
     $(".mini-cart__toggler").on("click", function (e) {
       e.preventDefault();
