@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call for Presentations — 6th African Organic Conference (6AOC)</title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Call for presentations for the 6th African Organic Conference (6AOC) — submission guidelines, deadlines and manuscript formatting rules. Abstracts due 30 September 2026." />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900;1000&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-select/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.css" />
+    <link rel="stylesheet" href="assets/vendors/grdeen-icons/style.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/vendors/grdeen-two-icons/style.css">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/grdeen.css" />
+
+    <style>
+        .main-header__inner {
+            background: linear-gradient(90deg, #8a6100 0%, #d9a404 40%, #f4c430 65%, #d9a404 100%);
+        }
+
+        .main-header__logo--secondary {
+            margin-left: 16px;
+            margin-right: 0;
+            border-radius: 0 0 4px 0;
+        }
+        .main-header__logo--secondary::after {
+            right: auto;
+            left: -10px;
+            border-right: none;
+            border-left: 10px solid transparent;
+        }
+
+        @media (max-width: 1500px) {
+            .main-header__logo--secondary {
+                width: 170px;
+                padding: 8px 18px;
+            }
+        }
+
+        @media (max-width: 1199px) {
+            .main-header__inner {
+                flex-wrap: wrap;
+                justify-content: space-between;
+                row-gap: 6px;
+            }
+            .main-header__nav {
+                display: none;
+            }
+            .main-header__logo {
+                order: 1;
+                width: auto;
+                height: auto;
+                padding: 10px 12px;
+                margin: 0;
+            }
+            .main-header__logo img {
+                max-width: 130px;
+            }
+            .main-header__logo--secondary {
+                order: 2;
+                width: auto;
+                height: auto;
+                padding: 8px 12px;
+                margin: 0;
+                border-radius: 4px;
+            }
+            .main-header__logo--secondary::after {
+                display: none;
+            }
+            .main-header__logo--secondary img {
+                max-width: 90px;
+            }
+            .main-header__right {
+                order: 3;
+                flex: 0 0 100%;
+                justify-content: flex-end;
+                gap: 14px;
+            }
+            .main-header__right .mobile-nav__btn {
+                width: 24px;
+                margin: 0;
+            }
+            .main-header__right .mobile-nav__btn span {
+                background-color: var(--grdeen-base, #1a9120);
+                height: 2px;
+            }
+            .main-header__search {
+                padding: 6px 0;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .main-header__logo img {
+                max-width: 110px;
+            }
+            .main-header__logo--secondary img {
+                max-width: 76px;
+            }
+        }
+
+        .cfp-deadline-band {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            background: var(--grdeen-gray, #f6f7f2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .cfp-deadline-band__item {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .cfp-deadline-band__item strong {
+            display: block;
+            color: var(--grdeen-text-dark, #07370a);
+            font-size: 18px;
+        }
+    </style>
+
+    <!-- 6AOC registration modal styles -->
+    <style>
+        .event-register-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+        .event-register-modal.is-open {
+            visibility: visible;
+            opacity: 1;
+        }
+        .event-register-modal__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(7, 55, 10, .72);
+        }
+        .event-register-modal__content {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+            transform: translateY(16px);
+            transition: transform .3s ease;
+        }
+        .event-register-modal.is-open .event-register-modal__content {
+            transform: translateY(0);
+        }
+        .event-register-modal__close {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            border: 0;
+            background: transparent;
+            font-size: 32px;
+            line-height: 1;
+            color: var(--grdeen-text, #626f62);
+            cursor: pointer;
+            padding: 0;
+        }
+        .event-register-modal__title {
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 8px;
+        }
+        .event-register-modal__subtitle {
+            color: var(--grdeen-text, #626f62);
+            margin-bottom: 24px;
+        }
+        .event-register-modal__row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .event-register-modal__group {
+            flex: 1 1 200px;
+            margin-bottom: 16px;
+        }
+        .event-register-modal__group label {
+            display: block;
+            font-weight: 600;
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 6px;
+        }
+        .event-register-modal__group input,
+        .event-register-modal__group select,
+        .event-register-modal__group textarea {
+            width: 100%;
+            border: 1px solid #d8e0d8;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 15px;
+            color: var(--grdeen-text-dark, #07370a);
+            background: #fff;
+        }
+        .event-register-modal__group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        .event-register-modal__group input:focus,
+        .event-register-modal__group select:focus,
+        .event-register-modal__group textarea:focus {
+            outline: none;
+            border-color: var(--grdeen-base, #1a9120);
+        }
+        .event-register-modal__submit {
+            width: 100%;
+            justify-content: center;
+        }
+        .event-register-modal__result-title {
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 8px;
+        }
+        .event-register-modal__result-meta {
+            background: var(--grdeen-gray, #f6f7f2);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--grdeen-text, #626f62);
+        }
+        .event-register-modal__result-meta span {
+            display: block;
+        }
+        .event-register-modal__result-body {
+            background: #fbfdfb;
+            border: 1px solid #d8e0d8;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: var(--grdeen-text-dark, #07370a);
+            max-height: 220px;
+            overflow-y: auto;
+        }
+    </style>
+
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div class="topbar-one">
+            <div class="container-fluid">
+                <div class="topbar-one__inner">
+                    <ul class="list-unstyled topbar-one__info">
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-pin"></i>
+                            </div>
+                            <a href="6aoc-contact.html">African Organic Network, P. O. Box 31168, Dar es Salaam, Tanzania</a>
+                        </li>
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-email"></i>
+                            </div>
+                            <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                        </li>
+                    </ul><!-- /.list-unstyled topbar-one__info -->
+                    <div class="topbar-one__right">
+                        <div class="topbar-one__right__openitme d-flex align-items-center">
+                            <div class="topbar-one__right__iconwrap">
+                                <i class="fas fa-phone-square-alt"></i>
+                            </div>
+                            <p class="topbar-one__text">Open: Mon-Fri: 08.30AM - 04.00PM</p><!-- /.topbar-one__text -->
+                        </div>
+                        <ul class="list-unstyled topbar-one__right__list">
+                            <li><a href="6aoc-contact.html">Support</a></li>
+                            <li><a href="6aoc-contact.html">Career</a></li>
+                            <li><a href="6aoc-contact.html">Office</a></li>
+                        </ul>
+                        <div class="topbar-one__social">
+                            <a href="https://facebook.com/">
+                                <i class="fab fa-facebook-f"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                            <a href="https://twitter.com/">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                <span class="sr-only">Twitter</span>
+                            </a>
+                            <a href="https://linkedin.com/">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span class="sr-only">Linkedin</span>
+                            </a>
+                            <a href="https://www.instagram.com/">
+                                <i class="fab fa-instagram"></i>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+                        </div><!-- /.topbar-one__social -->
+                    </div><!-- /.topbar-one__right -->
+                </div><!-- /.topbar-one__inner -->
+            </div><!-- /.container-fluid -->
+        </div><!-- /.topbar-one -->
+
+
+        <header class="main-header sticky-header sticky-header--normal">
+            <div class="container-fluid">
+                <div class="main-header__inner">
+                    <div class="main-header__logo">
+                        <a href="index.html">
+                            <img src="assets/images/6th_AOC_Logo_Lusaka_2026_transparent.png" width="198" alt="6th African Organic Conference — Lusaka 2026">
+                        </a>
+                    </div><!-- /.main-header__logo -->
+
+                    <nav class="main-header__nav main-menu">
+                        <ul class="main-menu__list">
+                            <li>
+                                <a href="6aoc.html">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="6aoc-background-theme.html">About 6AOC</a>
+                                <ul>
+                                    <li><a href="6aoc-background-theme.html">Background & Theme</a></li>
+                                    <li><a href="6aoc-objectives.html">Objectives</a></li>
+                                    <li><a href="6aoc-tracks.html">Conference Tracks</a></li>
+                                    <li><a href="6aoc-committees.html">Committees</a></li>
+                                    <li><a href="6aoc-previous-conferences.html">Previous Conferences</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="6aoc-programme.html">Programme</a>
+                            </li>
+                            <li>
+                                <a href="6aoc-registration.html">Registration</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="6aoc-resources.html">More</a>
+                                <ul>
+                                    <li><a href="6aoc-call-for-presentations.html">Call for Presentations</a></li>
+                                    <li><a href="6aoc-side-events.html">Side Events & Field Visits</a></li>
+                                    <li><a href="6aoc-sponsors.html">Sponsors & Partners</a></li>
+                                    <li><a href="6aoc-resources.html">Resources</a></li>
+                                    <li><a href="6aoc-news.html">News</a></li>
+                                    <li><a href="6aoc-venue.html">Venue & Accommodation</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="6aoc-contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </nav><!-- /.main-header__nav -->
+                    <div class="main-header__right">
+                        <div class="mobile-nav__btn mobile-nav__toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><!-- /.mobile-nav__toggler -->
+                        <a href="6aoc-call-for-presentations.html" class="grdeen-btn main-header__btn">
+                            <span>Call for Presentations</span>
+                        </a><!-- /.thm-btn main-header__btn -->
+                        <a href="#" class="search-toggler main-header__search">
+                            <div class="main-header__search__icon">
+                                <i class="icon-search" aria-hidden="true"></i>
+                            </div>
+                            <span class="sr-only">Search</span>
+                        </a><!-- /.search-toggler -->
+                    </div><!-- /.main-header__right -->
+                    <div class="main-header__logo main-header__logo--secondary">
+                        <a href="index.html">
+                            <img src="assets/images/logo-dark.png" width="198" alt="AfrONet — African Organic Network">
+                        </a>
+                    </div><!-- /.main-header__logo--secondary -->
+                </div><!-- /.main-header__inner -->
+            </div><!-- /.container-fluid -->
+        </header><!-- /.main-header -->
+        <section class="page-header">
+            <div class="page-header__bg"></div>
+            <div class="page-header__shape wow fadeInUp" data-wow-delay="200ms"></div>
+            <div class="page-header__overlay"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <h2 class="page-header__title">Call for Presentations</h2>
+                <ul class="grdeen-breadcrumb list-unstyled">
+                    <li><a href="6aoc.html">Home</a></li>
+                    <li><span>Call for Presentations</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <section class="section-space">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+
+                        <div class="cfp-deadline-band">
+                            <div class="cfp-deadline-band__item">
+                                <strong>30 September 2026</strong>
+                                Abstract submission deadline
+                            </div>
+                            <div class="cfp-deadline-band__item">
+                                <strong>31 October 2026</strong>
+                                Full paper deadline (if abstract accepted)
+                            </div>
+                        </div>
+
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">AfrONet invites multi-stakeholder actors across organic agriculture value chains — in Africa and abroad — to submit presentations of their research, innovations, and success stories in Organic Agriculture and Agroecological practice.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Presentations should address sustainable production, food security and nutrition, resilient food systems, and the involvement of women, youth and other disadvantaged social groups in the face of a changing climate. Successful submissions will show clear knowledge, practices, attitudes, skills, and innovations — and concrete actions — for adoption, adaptation, or scaling up/out toward resilient agri-food systems and a solid agribusiness base spanning national, continental and international trade. <strong>Presentations on experiences from Africa that meet these criteria will be given priority.</strong></p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Eligible participants — researchers, farmers, value-chain actors and others — should submit presentations of their research, innovations, or success stories in line with the guidelines below.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Please note: only participants duly registered for the conference are authorized to present papers or posters. All accepted manuscripts will be published in the Conference Proceedings; scientific papers judged suitable for journal publication may also be published in the <em>African Journal of Organic Agriculture and Ecology (AJOAE)</em>.</p>
+
+                        <h3 class="project-details__heading">Scope and Language</h3>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Contributions are welcome across Agricultural Economics, Agricultural Engineering, Agricultural Extension, Agroforestry, Agroecology, Animal Science, Crop/Environmental Protection, Crop Science/Horticulture, Environmental Sciences, Fishery/Aquaculture, Nutrition, Pharmacy, Soil Science, Veterinary Medicine, Wildlife Management, and other relevant fields.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Manuscripts may be submitted in <strong>English, French, or Portuguese</strong>.</p>
+
+                        <h3 class="project-details__heading">How to Submit</h3>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-bottom:8px;"><strong>Scientific papers</strong></p>
+                        <ul class="event-checklist" style="margin-bottom:20px;">
+                            <li><i class="icon-check-solid"></i><strong>Abstract</strong> &ndash; up to 250 words &ndash; by <strong>30 September 2026</strong></li>
+                            <li><i class="icon-check-solid"></i><strong>Full paper</strong> (if abstract accepted) &ndash; by <strong>31 October 2026</strong></li>
+                        </ul>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Submit to: <strong>africanorganicconference@gmail.com</strong></p>
+
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-top:20px;"><strong>Poster presentations</strong><br>A one-page poster with name, location, and a description of the success story in no more than 30 words.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;"><strong>Farmer success stories</strong><br>Five to ten slides of posters/pictures, or a 2-minute video clip, showcasing a specific organic agriculture success story, with a description of no more than 15 words.</p>
+
+                        <h3 class="project-details__heading">Manuscript Guidelines (for authors of scientific papers)</h3>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-bottom:8px;"><strong>Format</strong></p>
+                        <ul class="event-checklist" style="margin-bottom:20px;">
+                            <li><i class="icon-check-solid"></i>Times New Roman, 12pt, double-spaced for abstracts; 1.5-spaced for full manuscripts, A4 (210 &times; 297mm)</li>
+                            <li><i class="icon-check-solid"></i>Maximum length: 10 pages, including tables, figures and illustrations</li>
+                            <li><i class="icon-check-solid"></i>Margins: 2.54cm on all sides</li>
+                            <li><i class="icon-check-solid"></i>Cover page: manuscript title; author name(s) and affiliation(s) with correspondence email and phone; abstract of &le;250 words with up to 5 keywords</li>
+                        </ul>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;"><strong>Structure</strong><br>Title &rarr; Abstract &rarr; Introduction &rarr; Aims/Objectives &rarr; Materials and Methods &rarr; Results &rarr; Discussion &rarr; Conclusion and Recommendations &rarr; References. Main headings centered, Sentence case; sub-headings left-aligned. Use SI units. Number tables/figures in Arabic numerals with a caption below each.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;"><strong>References (APA style)</strong><br>Cited in-text by author name and year. Full reference list in alphabetical order by first author's surname. Example (journal): <em>Lawale A. A. (1991). "A Descriptive Analysis of Agriculture Cooperative Model in Rural Development." Journal of Rural Development and Administration. 23(3):1-8.</em></p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; font-size:14px; font-style:italic;">Full formatting rules, including book and book-chapter citation formats, are in the downloadable Call for Presentations document below.</p>
+
+                        <div style="margin-top:30px; display:flex; gap:14px; flex-wrap:wrap;">
+                            <a href="https://cms.afronet.bio/wp-content/uploads/2026/08/6AOC-Call-for-Presentations.pdf" target="_blank" rel="noopener" class="grdeen-btn">
+                                <span><i class="fas fa-file-pdf" style="margin-right:8px;"></i>Download Guidelines (PDF)</span>
+                            </a>
+                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-abstract-modal">
+                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Submit Your Abstract</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer main-footer--two">
+            <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg1-1.jpg);"></div>
+            <div class="main-footer__overlay"></div>
+            <!-- /.main-footer__bg -->
+            <div class="main-footer__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-widget__col footer-widget__col__col1">
+                            <div class="footer-widget footer-widget--about">
+                                <a href="index.html" class="footer-widget__logo">
+                                    <img src="assets/images/logo-light.png" width="155" alt="Afronet">
+                                </a>
+                                <p class="footer-widget__experience-text">The 6th African Organic Conference — 1&ndash;4 December 2026, Lusaka, Zambia.</p>
+                                <div class="footer-widget__newsletterwrap">
+                                    <h6 class="footer-widget__title footer-widget__title--newsletter">Newsletter</h6>
+                                    <form action="#" class="footer-widget__newsletter cf7-newsletter-form" data-cf7-id="413">
+                                        <div class="footer-widget__mail-address">
+                                            <input type="email" name="your-email" placeholder="Email Address" required>
+                                        </div>
+                                        <button type="submit" class="form-submit-btn">Submit</button>
+                                    </form><!-- /.footer-widget__newsletter mc-form -->
+                                    <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+
+                        <div class="footer-widget__col  footer-widget__col__col2">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Links</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><a href="6aoc.html">Home</a></li>
+                                    <li><a href="6aoc-background-theme.html">About 6AOC</a></li>
+                                    <li><a href="6aoc-programme.html">Programme</a></li>
+                                    <li><a href="6aoc-registration.html">Registration & Fees</a></li>
+                                    <li><a href="6aoc-contact.html">Contact</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col3">
+                            <div class="footer-widget footer-widget--gallery">
+                                <h6 class="footer-widget__title">Conference Highlights</h6><!-- /.footer-widget__title -->
+                                <!-- TODO: replace with real 6AOC event photos once available -->
+                                <div class="footer-widget__gallerywrap d-flex flex-wrap">
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="assets/images/resources/footer-gallery1-1.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="assets/images/resources/footer-gallery1-2.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="assets/images/resources/footer-gallery1-3.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="assets/images/resources/footer-gallery1-4.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="assets/images/resources/footer-gallery1-5.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="assets/images/resources/footer-gallery1-6.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col4">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Key Dates</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><strong>Early Bird Deadline</strong><br>30 September 2026</li>
+                                    <li><strong>Regular Deadline</strong><br>30 October 2026</li>
+                                    <li><strong>Conference Dates</strong><br>1&ndash;4 December 2026</li>
+                                    <li><strong>Location</strong><br>Lusaka, Zambia</li>
+                                </ul>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__top -->
+
+            <div class="main-footer__bottom">
+                <div class="container">
+                    <div class="main-footer__bottom__inner">
+                        <p class="main-footer__copyright">© 2026 AfrONet. All Rights Reserved</p>
+                        <div class="main-footer__social-row">
+                            <p class="main-footer__social-row-text">Social</p>
+                            <ul class="main-footer__social-list">
+                                <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.main-footer__inner -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__bottom -->
+        </footer><!-- /.main-footer -->
+
+    </div><!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:+255712344989">+255 712 344 989</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__social">
+                <a href="https://facebook.com/">
+                    <i class="fab fa-facebook-f"></i>
+                    <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://twitter.com/">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span class="sr-only">Twitter</span>
+                </a>
+                <a href="https://linkedin.com/">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="sr-only">Linkedin</span>
+                </a>
+                <a href="https://www.instagram.com/">
+                    <i class="fab fa-instagram"></i>
+                    <span class="sr-only">Instagram</span>
+                </a>
+            </div><!-- /.mobile-nav__social -->
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="#">
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="grdeen-btn">
+                    <span><i class="icon-search"></i></span>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+    <div class="event-register-modal" id="event-abstract-modal">
+        <div class="event-register-modal__overlay"></div>
+        <div class="event-register-modal__content">
+            <button type="button" class="event-register-modal__close" aria-label="Close">&times;</button>
+            <h3 class="event-register-modal__title">Submit Your Abstract</h3>
+            <p class="event-register-modal__subtitle">Fill in your details below — submitting opens Gmail with your details pre-filled, ready to send.</p>
+            <form id="event-abstract-form">
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="abs-name">Full Name</label>
+                        <input type="text" id="abs-name" name="name" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="abs-email">Email</label>
+                        <input type="email" id="abs-email" name="email" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="abs-organisation">Organisation</label>
+                        <input type="text" id="abs-organisation" name="organisation" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="abs-country">Country</label>
+                        <input type="text" id="abs-country" name="country" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__group">
+                    <label for="abs-type">Submission Type</label>
+                    <select id="abs-type" name="type" required>
+                        <option value="">Select...</option>
+                        <option value="Scientific Paper">Scientific Paper</option>
+                        <option value="Poster">Poster</option>
+                        <option value="Farmer Success Story">Farmer Success Story</option>
+                    </select>
+                </div>
+                <div class="event-register-modal__group">
+                    <label for="abs-topic">Proposed Title / Topic</label>
+                    <input type="text" id="abs-topic" name="topic" required>
+                </div>
+                <button type="submit" class="grdeen-btn event-register-modal__submit">
+                    <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continue to Email</span>
+                </button>
+            </form>
+            <div class="event-register-modal__result" style="display:none;">
+                <h4 class="event-register-modal__result-title">Your email is ready</h4>
+                <p class="event-register-modal__subtitle">Addressed to <strong>africanorganicconference@gmail.com</strong>. Your email will open with your details pre-filled — just press send, or copy the message below.</p>
+                <div class="event-register-modal__result-meta">
+                    <span><strong>To:</strong> africanorganicconference@gmail.com</span>
+                    <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
+                </div>
+                <div class="event-register-modal__result-body js-result-body"></div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <a href="#" class="grdeen-btn js-open-mailto" rel="noopener" style="justify-content:center;">
+                        <span><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Open in Gmail</span>
+                    </a>
+                    <button type="button" class="grdeen-btn grdeen-btn--outline js-copy-message" style="justify-content:center;">
+                        <span><i class="fas fa-copy" style="margin-right:8px;"></i>Copy Message</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.event-register-modal -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <script src="assets/vendors/jquery/jquery-3.7.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/imagesloaded/imagesloaded.min.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/countdown/countdown.min.js"></script>
+    <script src="assets/vendors/jquery-circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
+    <!-- template js -->
+    <script src="assets/js/grdeen.js"></script>
+
+    <script>
+        (function ($) {
+            "use strict";
+            var $modals = $(".event-register-modal");
+
+            function openModal(target) {
+                var $m = $(target);
+                if (!$m.length) return;
+                $m.addClass("is-open");
+                $("body").css("overflow", "hidden");
+            }
+
+            function closeModals() {
+                $modals.removeClass("is-open");
+                $("body").css("overflow", "");
+                $modals.each(function () {
+                    var $modal = $(this);
+                    $modal.find(".event-register-modal__result").hide();
+                    $modal.find("form").show();
+                });
+            }
+
+            $(document).on("click", ".event-register-toggler", function (e) {
+                e.preventDefault();
+                var $btn = $(this);
+                var target = $btn.data("modal-target");
+                if (!target) return;
+                openModal(target);
+            });
+
+            $modals.on("click", ".event-register-modal__close", closeModals);
+            $modals.on("click", ".event-register-modal__overlay", closeModals);
+            $(document).on("keydown", function (e) {
+                if (e.key === "Escape" || e.keyCode === 27) closeModals();
+            });
+
+            var mailtoForms = {
+                "#event-abstract-form": {
+                    subject: "6AOC Abstract Submission",
+                    email: "africanorganicconference@gmail.com",
+                    labels: { name: "Name", email: "Email", organisation: "Organisation", country: "Country", type: "Submission Type", topic: "Proposed Title/Topic" }
+                }
+            };
+
+            function copyText(text, $btn) {
+                function copied() {
+                    var $span = $btn.find("span");
+                    var original = $span.html();
+                    $span.html('<i class="fas fa-check" style="margin-right:8px;"></i>Copied!');
+                    setTimeout(function () { $span.html(original); }, 2000);
+                }
+                function legacyCopy() {
+                    var $ta = $("<textarea>").val(text).appendTo("body").css({ position: "fixed", opacity: 0 });
+                    $ta.select();
+                    try { document.execCommand("copy"); } catch (err) {}
+                    $ta.remove();
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(copied, function () {
+                        legacyCopy();
+                        copied();
+                    });
+                } else {
+                    legacyCopy();
+                    copied();
+                }
+            }
+
+            function isMobileDevice() {
+                return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.mobile === true);
+            }
+
+            function showResult($modal, config, lines) {
+                var $form = $modal.find("form");
+                var $result = $modal.find(".event-register-modal__result");
+                var name = $.trim($form.find('[name="name"]').val()) || "";
+                var subject = config.subject + (name ? " — " + name : "");
+                var bodyText = lines.join("\n");
+                var params = "subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyText);
+                var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + config.email + "&" + params;
+                var mailtoUrl = "mailto:" + config.email + "?" + params;
+                var composeUrl = isMobileDevice() ? mailtoUrl : gmailUrl;
+                $result.find(".js-result-subject").text(subject);
+                $result.find(".js-result-body").text(bodyText);
+                $result.find(".js-open-mailto")
+                    .attr("href", composeUrl)
+                    .find("span")
+                    .html(isMobileDevice()
+                        ? '<i class="fas fa-envelope" style="margin-right:8px;"></i>Open Email App'
+                        : '<i class="fas fa-paper-plane" style="margin-right:8px;"></i>Open in Gmail');
+                $form.hide();
+                $result.show();
+                return composeUrl;
+            }
+
+            Object.keys(mailtoForms).forEach(function (selector) {
+                var config = mailtoForms[selector];
+                var $modal = $(selector).closest(".event-register-modal");
+                $(selector).on("submit", function (e) {
+                    e.preventDefault();
+                    var $form = $(this);
+                    var lines = [];
+                    $form.find("input, select, textarea").each(function () {
+                        var name = this.name;
+                        if (!name || !config.labels[name]) return;
+                        var val = $.trim($(this).val());
+                        if (!val) return;
+                        lines.push(config.labels[name] + ": " + val);
+                    });
+                    var composeUrl = showResult($modal, config, lines);
+                    if (isMobileDevice()) {
+                        window.location.href = composeUrl;
+                    } else {
+                        window.open(composeUrl, "_blank");
+                    }
+                });
+                $modal.on("click", ".js-open-mailto", function (e) {
+                    e.preventDefault();
+                    if (isMobileDevice()) {
+                        window.location.href = this.href;
+                    } else {
+                        window.open(this.href, "_blank");
+                    }
+                });
+                $modal.on("click", ".js-copy-message", function (e) {
+                    e.preventDefault();
+                    var text = $modal.find(".event-register-modal__result-body").text();
+                    copyText(text, $(this));
+                });
+            });
+        })(jQuery);
+    </script>
+</body>
+
+</html>
