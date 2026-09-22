@@ -881,4 +881,25 @@
   $(window).on("resize", function () {
     grdeen_stretch();
   });
+
+  /*-- 6AOC nav cloud tooltip: remember dismissal, allow hover to peek again --*/
+  (function () {
+    var STORAGE_KEY = "afronetNavCloudDismissed";
+    var dismissed = false;
+    try {
+      dismissed = localStorage.getItem(STORAGE_KEY) === "1";
+    } catch (e) {}
+    if (dismissed) {
+      $(".nav-cloud-tip").addClass("is-dismissed");
+    }
+    $(document).on("click", ".nav-cloud-tip__close", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).closest(".nav-cloud-tip").addClass("is-dismissed");
+      this.blur();
+      try {
+        localStorage.setItem(STORAGE_KEY, "1");
+      } catch (e) {}
+    });
+  })();
 })(jQuery);
