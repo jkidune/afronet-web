@@ -902,4 +902,99 @@
       } catch (e) {}
     });
   })();
+
+  /*-- News listing: client-side category filter + pagination --*/
+  (function () {
+    var $grid = $("#newsGrid");
+    if (!$grid.length) return;
+
+    var PER_PAGE = 6;
+    var $cards = $grid.children("[data-cats]");
+    var $filters = $("#newsFilters");
+    var $pagination = $("#newsPagination");
+    var $empty = $("#newsEmpty");
+
+    var activeFilter = "all";
+    var currentPage = 1;
+
+    function getUrlPage() {
+      var match = /[?&]page=(\d+)/.exec(window.location.search);
+      return match ? parseInt(match[1], 10) : 1;
+    }
+
+    function matches($card) {
+      if (activeFilter === "all") return true;
+      var cats = ($card.attr("data-cats") || "").split(/\s+/);
+      return cats.indexOf(activeFilter) !== -1;
+    }
+
+    function updateUrl() {
+      var url = window.location.pathname;
+      if (currentPage > 1) url += "?page=" + currentPage;
+      window.history.replaceState(null, "", url);
+    }
+
+    function renderPagination(totalPages) {
+      $pagination.empty();
+      if (totalPages <= 1) return;
+
+      if (currentPage > 1) {
+        $('<button type="button" class="prev" aria-label="Previous page"><i class="fas fa-angle-up"></i></button>')
+          .data("page", currentPage - 1)
+          .appendTo($pagination);
+      }
+      for (var i = 1; i <= totalPages; i++) {
+        $("<button></button>")
+          .attr("type", "button")
+          .toggleClass("current", i === currentPage)
+          .text(i)
+          .data("page", i)
+          .appendTo($pagination);
+      }
+      if (currentPage < totalPages) {
+        $('<button type="button" class="next" aria-label="Next page"><i class="fas fa-angle-up"></i></button>')
+          .data("page", currentPage + 1)
+          .appendTo($pagination);
+      }
+    }
+
+    function applyState(scroll) {
+      var matched = $cards.filter(function () {
+        return matches($(this));
+      });
+      var totalPages = Math.max(1, Math.ceil(matched.length / PER_PAGE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      $cards.addClass("is-hidden");
+      matched.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE).removeClass("is-hidden");
+
+      $empty.toggle(matched.length === 0);
+      renderPagination(totalPages);
+      updateUrl();
+
+      if (scroll) {
+        var top = $grid.offset().top - 120;
+        $("html, body").animate({ scrollTop: top }, 400);
+      }
+    }
+
+    $filters.on("click", ".news-filter__btn", function () {
+      var $btn = $(this);
+      if ($btn.hasClass("is-active")) return;
+      $filters.find(".news-filter__btn").removeClass("is-active").attr("aria-pressed", "false");
+      $btn.addClass("is-active").attr("aria-pressed", "true");
+      activeFilter = $btn.data("filter");
+      currentPage = 1;
+      applyState(false);
+    });
+
+    $pagination.on("click", "button", function () {
+      currentPage = $(this).data("page");
+      applyState(true);
+    });
+
+    currentPage = getUrlPage();
+    applyState(false);
+  })();
 })(jQuery);

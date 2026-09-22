@@ -222,21 +222,20 @@
                 </div><!-- /.row -->
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <div class="sidebar__tags justify-content-center mb-5">
-                            <a href="news.html">All</a>
-                            <a href="news.html">Policy &amp; Trade</a>
-                            <a href="news.html">Innovation</a>
-                            <a href="news.html">Community &amp; Growth</a>
-                            <a href="news.html">Conference</a>
-                            <a href="news.html">Editorial</a>
+                        <div class="news-filter justify-content-center mb-5" id="newsFilters" role="group" aria-label="Filter news by category">
+                            <button type="button" class="news-filter__btn is-active" data-filter="all" aria-pressed="true">All</button>
+                            <button type="button" class="news-filter__btn" data-filter="policy-trade" aria-pressed="false">Policy &amp; Trade</button>
+                            <button type="button" class="news-filter__btn" data-filter="innovation" aria-pressed="false">Innovation</button>
+                            <button type="button" class="news-filter__btn" data-filter="community-growth" aria-pressed="false">Community &amp; Growth</button>
+                            <button type="button" class="news-filter__btn" data-filter="conference" aria-pressed="false">Conference</button>
+                            <button type="button" class="news-filter__btn" data-filter="editorial" aria-pressed="false">Editorial</button>
                         </div>
                     </div>
                 </div><!-- /.row -->
-                
-                <div class="row gutter-y-30">
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='00ms'>
+                <div class="row gutter-y-30" id="newsGrid">
+                    <div class="col-md-6 col-lg-4" data-cats="conference policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='0ms'>
                             <div class="blog-card__image">
                                 <div class="blog-card__image__inner">
                                     <img src="assets/images/blog/blog-post2-1.jpg" alt="6th African Organic Conference (6th AOC)">
@@ -261,7 +260,7 @@
                             </div><!-- /.blog-card-two__content -->
                         </div><!-- /.blog-card -->
                     </div><!-- /.col-md-6 col-lg-4 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
                         <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
                             <div class="blog-card__image">
                                 <div class="blog-card__image__inner">
@@ -287,7 +286,7 @@
                             </div><!-- /.blog-card-two__content -->
                         </div><!-- /.blog-card -->
                     </div><!-- /.col-md-6 col-lg-4 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-cats="innovation">
                         <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
                             <div class="blog-card__image">
                                 <div class="blog-card__image__inner">
@@ -313,7 +312,7 @@
                             </div><!-- /.blog-card-two__content -->
                         </div><!-- /.blog-card -->
                     </div><!-- /.col-md-6 col-lg-4 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
                         <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
                             <div class="blog-card__image">
                                 <div class="blog-card__image__inner">
@@ -339,8 +338,8 @@
                             </div><!-- /.blog-card-two__content -->
                         </div><!-- /.blog-card -->
                     </div><!-- /.col-md-6 col-lg-4 -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='0ms'>
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
                             <div class="blog-card__image">
                                 <div class="blog-card__image__inner">
                                     <img src="assets/images/blog/blog-caadp-kampala-harvest-card.jpg" alt="Africa's New Food Plan: Small Farmers Wary as Leaders Shift Strategy">
@@ -365,8 +364,8 @@
                             </div><!-- /.blog-card-two__content -->
                         </div><!-- /.blog-card -->
                     </div><!-- /.col-md-6 col-lg-4 -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='500ms'>
                             <div class="blog-card__image">
                                 <div class="blog-card__image__inner">
                                     <img src="assets/images/blog/blog-mama-anna-maize-field-card.jpg" alt="How Africa Rewrote Its Food Story, and Why It Matters for the Woman Who Farms the Land">
@@ -391,16 +390,711 @@
                             </div><!-- /.blog-card-two__content -->
                         </div><!-- /.blog-card -->
                     </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="innovation">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='0ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-ghana-cocoa-farm-card.jpg" alt="Ghana Sets Ambitious Targets as Agroecology Gains Momentum">
+                                    <a href="news-ghana-agroecology-targets.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">20 March 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Innovation
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-ghana-agroecology-targets.html">Ghana Sets Ambitious Targets as Agroecology Gains Momentum</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Ghana is speeding up its shift toward sustainable agriculture, and if the wave of policy announcements, research partnerships and private sector investments in early 2026 is any in
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="editorial">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-editorial-organic-farm-card.jpg" alt="Editorial: How Does Our Organic Vision Fit Into Africa's New Food Plan?">
+                                    <a href="news-afronet-editorial-kampala-declaration.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">25 March 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Editorial
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-afronet-editorial-kampala-declaration.html">Editorial: How Does Our Organic Vision Fit Into Africa's New Food Plan?</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    As we look ahead to the 6th African Organic Conference in Lusaka this December, we are really gathering to answer one question: what happened to our promise?
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-benin-cotton-field-card.jpg" alt="How West Africa's Organic Powerhouse Is Writing Its Own Rules">
+                                    <a href="news-benin-organic-cotton.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">5 February 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-benin-organic-cotton.html">How West Africa's Organic Powerhouse Is Writing Its Own Rules</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Benin, long synonymous with conventional cotton production, has quietly ignited an agricultural transformation that is turning heads across the region.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="innovation">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-egypt-farmer-training-card.jpg" alt="Egypt Is Quietly Becoming an Organic Farming Powerhouse">
+                                    <a href="news-egypt-organic-farming.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">8 February 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Innovation
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-egypt-organic-farming.html">Egypt Is Quietly Becoming an Organic Farming Powerhouse</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    For decades, when people thought of farming in Egypt, they pictured sun-scorched fields along the Nile — heavy with cotton, wheat and citrus. That image isn't wrong.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-mzizi-fortunate-portrait-card.jpg" alt="From ISAN to Mzizi: Rooting Agroecology Storytelling in African Soil">
+                                    <a href="news-isan-to-mzizi-magazine.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">12 February 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-isan-to-mzizi-magazine.html">From ISAN to Mzizi: Rooting Agroecology Storytelling in African Soil</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    When ISAN Magazine became Mzizi Magazine in 2026, the change raised more than a few eyebrows across Southern Africa's agroecology community. Why fix something that wasn't broken?
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='500ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-ethiopia-harvest-group-card.jpg" alt="Ethiopia's Smallholder Farmers Lead the Way as Country Embraces Sustainable Agriculture">
+                                    <a href="news-ethiopia-agroecology-strategy.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">14 March 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Policy &amp; Trade
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-ethiopia-agroecology-strategy.html">Ethiopia's Smallholder Farmers Lead the Way as Country Embraces Sustainable Agriculture</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    For decades, Ethiopia's smallholder farmers have watched their land grow tired. Degraded soils, unpredictable rains and shrinking harvests have made life harder than it needs to be.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="innovation">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='0ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-virunga-wheat-field-card.jpg" alt="What a Wheat Field in War-Torn Congo Teaches Africa About Building Organic Markets">
+                                    <a href="news-virunga-congo-wheat.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">22 January 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Innovation
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-virunga-congo-wheat.html">What a Wheat Field in War-Torn Congo Teaches Africa About Building Organic Markets</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Could organic agriculture truly flourish where the front line lies barely 20 kilometres from the fields?
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="conference">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-6aoc-conference-flyer-card.jpg" alt="Lusaka to Host 6th AOC as Africa's Organic Farming Movement Picks Up Steam">
+                                    <a href="news-lusaka-6aoc-oppaz-interview.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">28 January 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Conference
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-lusaka-6aoc-oppaz-interview.html">Lusaka to Host 6th AOC as Africa's Organic Farming Movement Picks Up Steam</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Come December 2026, all roads in Africa's organic farming world will lead to Lusaka. Zambia's capital will host the 6th African Organic Conference (6th AOC) from the 1st to the 4th of December.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="conference">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-kampala-organic-market-card.jpg" alt="The Kampala Gathering That Put Organic Farming on Africa's New Menu">
+                                    <a href="news-kampala-national-organic-week.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">15 January 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Conference
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-kampala-national-organic-week.html">The Kampala Gathering That Put Organic Farming on Africa's New Menu</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    The little girl stood at the podium and said something that stopped the room cold. “Food does not come from the fridge.” She was eight years old.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="editorial">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-soil-health-leaf-card.jpg" alt="Letter to the Editor: The Missing Topic of the Conference — Soil">
+                                    <a href="news-soil-health-letter.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">30 March 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Editorial
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-soil-health-letter.html">Letter to the Editor: The Missing Topic of the Conference — Soil</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    I am a practitioner in regenerative agriculture and soil health, and at the Fourth National Ecological Organic Agriculture Conference in Dodoma, I was invited to present the closing synthesis.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-burundi-sibomana-ricefield-card.jpg" alt="Organic Farming Gains Ground in Burundi as Farmers Double Their Yields">
+                                    <a href="news-burundi-biofertilizer.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">10 January 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-burundi-biofertilizer.html">Organic Farming Gains Ground in Burundi as Farmers Double Their Yields</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Smallholder farmers who tried bio-fertilisers made from human urine are now harvesting more than double what they used to get from conventional chemicals.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='500ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-zanzibar-veggie-baskets-card.jpg" alt="Zanzibar's Organic Revolution Takes Root as Farmers Embrace Agroecology">
+                                    <a href="news-zanzibar-organic-revolution.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">18 February 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-zanzibar-organic-revolution.html">Zanzibar's Organic Revolution Takes Root as Farmers Embrace Agroecology</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    For a long time, Zanzibar's farmers have battled declining soil fertility, rising input costs, and the creeping impacts of climate change.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='0ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-watercrisis-kenya-cabbage-card.jpg" alt="Africa's Looming Water Crisis: Why Organic Farming May Be the Continent's Last Best Hope">
+                                    <a href="news-water-crisis-organic-farming.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">15 April 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Policy &amp; Trade
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-water-crisis-organic-farming.html">Africa's Looming Water Crisis: Why Organic Farming May Be the Continent's Last Best Hope</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    By 2050, three out of every four people on earth will face debilitating drought conditions, and Sub-Saharan Africa is squarely in the crosshairs.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-morocco-biomouja-farm-card.jpg" alt="Why Is Morocco Winning the Organic Race While the Rest of Africa Lags Behind?">
+                                    <a href="news-morocco-organic-race.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">17 April 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Policy &amp; Trade
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-morocco-organic-race.html">Why Is Morocco Winning the Organic Race While the Rest of Africa Lags Behind?</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Imagine a country that offers farmers up to 90 percent off their certification costs, pours nearly $150 million into organic agriculture, and has a roadmap to convert 100,000 hecta
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-foodfuture-maize-field-card.jpg" alt="Africa's Food Future: Can the Continent Feed 2.5 Billion People by 2050?">
+                                    <a href="news-africa-food-future-2050.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">20 April 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Policy &amp; Trade
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-africa-food-future-2050.html">Africa's Food Future: Can the Continent Feed 2.5 Billion People by 2050?</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    The continent's population, now past 1.5 billion, is projected to reach nearly 2.5 billion — a 63 per cent increase in just twenty-five years.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="editorial">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-editorial-april-cover-farm-card.jpg" alt="Editorial: Africa's Youth Hold the Keys to a Food-Secure Future">
+                                    <a href="news-editorial-youth-food-security.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">28 June 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Editorial
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-editorial-youth-food-security.html">Editorial: Africa's Youth Hold the Keys to a Food-Secure Future</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    In this edition of AfrONews, we have celebrated two remarkable success stories.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-noara-award-ceremony-card.jpg" alt="NOARA Elects New Governing Council to Steer Africa's Organic Agriculture Research">
+                                    <a href="news-noara-governing-council.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">17 March 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-noara-governing-council.html">NOARA Elects New Governing Council to Steer Africa's Organic Agriculture Research</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    The Network of Organic Agriculture Researchers in Africa (NOARA) has elected a new Governing Council to lead the continent's organic agriculture research agenda for the 2025-2028 t
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='500ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-cameroon-yaounde-meeting-card.jpg" alt="Cameroon's New Organic Law Sets the Stage, but Will Small Farmers Be Left Behind?">
+                                    <a href="news-cameroon-organic-law.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">10 March 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Policy &amp; Trade
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-cameroon-organic-law.html">Cameroon's New Organic Law Sets the Stage, but Will Small Farmers Be Left Behind?</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    For years, organic farming in Cameroon lived in the shadows, stripped of rules, denied recognition, sustained only by farmers who did the right thing simply because they believed.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="innovation">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='0ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-southafrica-citrus-card.jpg" alt="South Africa's Organic Pioneers Cultivate a New Future">
+                                    <a href="news-southafrica-organic-pioneers.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">5 May 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Innovation
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-southafrica-organic-pioneers.html">South Africa's Organic Pioneers Cultivate a New Future</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    South Africa's farmers are tearing up the rulebook.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-manongi-portrait-card.jpg" alt="A Seed Law for Farmers, Not Just for Corporations">
+                                    <a href="news-tanzania-seed-law-interview.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">8 May 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Policy &amp; Trade
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-tanzania-seed-law-interview.html">A Seed Law for Farmers, Not Just for Corporations</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    AfrONews held an interview with Daud Ngosengwa Manongi, a Programs Lead for Biodiversity Conservation at the Tanzania Alliance for Biodiversity (TABIO).
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-southsudan-adwok-jud-card.jpg" alt="How South Sudan's Organic Farmers Are Defying the Odds">
+                                    <a href="news-southsudan-organic-farmers.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">12 May 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-southsudan-organic-farmers.html">How South Sudan's Organic Farmers Are Defying the Odds</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    In a country where conflict has displaced millions and hunger stalks every village, a quiet agricultural revolution is taking root.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-mozambique-farmers-field-card.jpg" alt="The Farmer Who Had Refused to Give Up">
+                                    <a href="news-mozambique-farmer-refused-give-up.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">15 May 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-mozambique-farmer-refused-give-up.html">The Farmer Who Had Refused to Give Up</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    The sun is brutal over Manica province. It beats down on red earth and tired backs, but John Moteriua doesn't mind.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="innovation">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-kenya-nyeri-shop-card.jpg" alt="Organic Farming Gets Market Boost as Value Addition Takes Root">
+                                    <a href="news-kenya-organic-value-addition.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">20 May 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Innovation
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-kenya-organic-value-addition.html">Organic Farming Gets Market Boost as Value Addition Takes Root</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    From dedicated farm shops to high-value exports, Kenya's organic sector is finally getting the market infrastructure it needs as farmers move beyond production to processing and branding.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='500ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-tunisia-sulla-field-card.jpg" alt="A Life-Giving Seed: How One Man's Chance with a Modest Plant Transformed a Tunisian Community">
+                                    <a href="news-tunisia-sulla-seed.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">25 May 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-tunisia-sulla-seed.html">A Life-Giving Seed: How One Man's Chance with a Modest Plant Transformed a Tunisian Community</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Haitham Ben Ali's story begins not with success, but with despair.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="community-growth">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='0ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-sierraleone-cassava-group-card.jpg" alt="From Job Loss to Job Creator: How One Young Man Is Transforming Agriculture in Sierra Leone">
+                                    <a href="news-sierraleone-helzee-farms.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">1 June 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Community &amp; Growth
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-sierraleone-helzee-farms.html">From Job Loss to Job Creator: How One Young Man Is Transforming Agriculture in Sierra Leone</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Mohamed Kawa had never imagined himself a farmer, but when the pandemic stripped away his job and his plans, he found himself standing on a patch of dusty land in Sierra Leone's Ka
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="innovation">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-poultry-chicken-portrait-card.jpg" alt="Why Organic Poultry Deserves a Comeback">
+                                    <a href="news-organic-poultry-comeback.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">10 June 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Innovation
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-organic-poultry-comeback.html">Why Organic Poultry Deserves a Comeback</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    Imagine a steaming plate of rice, golden and fragrant, topped with a piece of chicken that has been simmered slowly in spices.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
+                    <div class="col-md-6 col-lg-4" data-cats="policy-trade">
+                        <div class="blog-card blog-card--two  wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
+                            <div class="blog-card__image">
+                                <div class="blog-card__image__inner">
+                                    <img src="assets/images/blog/blog-ivorycoast-cocoa-farm-card.jpg" alt="The Cocoa Comeback: Inside Ivory Coast's Bold Plan to Restore Its Soils, and Its Future">
+                                    <a href="news-ivorycoast-cocoa-comeback.html" class="blog-card__image__link"></a>
+                                </div><!-- /.blog-card__image -->
+                                <div class="blog-card__date">20 June 2026</div><!-- /.blog-card__date -->
+                            </div><!-- /.blog-card__image -->
+                            <div class="blog-card__content">
+                                <div class="blog-card--two__shape" style="background-image: url(assets/images/shapes/blog-post2-shape.png);"></div>
+                                <ul class="list-unstyled blog-card__meta">
+                                    <li>
+                                        <a href="news.html">
+                                            <span><i class="fas fa-tag"></i></span>
+                                            Policy &amp; Trade
+                                        </a>
+                                    </li>
+                                </ul><!-- /.list-unstyled blog-card__meta -->
+                                <h3 class="blog-card__title"><a href="news-ivorycoast-cocoa-comeback.html">The Cocoa Comeback: Inside Ivory Coast's Bold Plan to Restore Its Soils, and Its Future</a></h3><!-- /.blog-card__title -->
+                                <p class="blog-card-two__text">
+                                    As climate change and degrading soils push the world's largest cocoa producer to a breaking point, an ambitious plan to turn waste into gold offers a radical new blueprint for African agriculture.
+                                </p><!-- /.blog-card-two__text -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.col-md-6 col-lg-4 -->
                 </div><!-- /.row -->
-                <div class="blog-pagination">
-                    <a href="news.html" class="current">1</a>
-                    <a href="news-page-2.html">2</a>
-                    <a href="news-page-3.html">3</a>
-                    <a href="news-page-4.html">4</a>
-                    <a href="news-page-5.html">5</a>
-                    <a href="news-page-6.html">6</a>
-                    <a href="news-page-2.html" class="next" aria-label="Next page"><i class="fas fa-angle-up"></i></a>
-                </div><!-- /.blog-pagination -->
+                <p class="news-empty" id="newsEmpty" style="display:none;">No posts found in this category yet.</p>
+                <div class="blog-pagination" id="newsPagination"></div><!-- /.blog-pagination -->
                 
             </div><!-- /.container -->
         </section><!-- /.blog-page -->
