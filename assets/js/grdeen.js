@@ -997,4 +997,39 @@
     currentPage = getUrlPage();
     applyState(false);
   })();
+
+  /*-- Homepage promo popup: show once per visitor, remember dismissal --*/
+  (function () {
+    var $popup = $(".promo-popup");
+    if (!$popup.length) return;
+
+    var STORAGE_KEY = "afronetGrantsPopupDismissed";
+    var dismissed = false;
+    try {
+      dismissed = localStorage.getItem(STORAGE_KEY) === "1";
+    } catch (e) {}
+    if (dismissed) return;
+
+    function closePopup() {
+      $popup.removeClass("is-open");
+      try {
+        localStorage.setItem(STORAGE_KEY, "1");
+      } catch (e) {}
+    }
+
+    setTimeout(function () {
+      $popup.addClass("is-open");
+    }, 2500);
+
+    $popup.on("click", ".promo-popup__close, .promo-popup__dismiss, .promo-popup__overlay", function (e) {
+      e.preventDefault();
+      closePopup();
+    });
+
+    $(document).on("keydown", function (e) {
+      if ((e.key === "Escape" || e.keyCode === 27) && $popup.hasClass("is-open")) {
+        closePopup();
+      }
+    });
+  })();
 })(jQuery);
