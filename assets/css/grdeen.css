@@ -2637,9 +2637,13 @@ h6 {
   }
 }
 .blog-pagination a,
-.blog-pagination span {
+.blog-pagination span,
+.blog-pagination button {
   width: 50px;
   height: 50px;
+  border: none;
+  outline: none;
+  padding: 0;
   -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.000000 150.000000"><g transform="translate(0.000000,150.000000) scale(0.100000,-0.100000)" stroke="none"><path d="M740 1486 c0 -22 -23 -35 -78 -46 -43 -8 -57 -6 -82 8 -31 17 -31 17 -53 -10 -31 -38 -95 -69 -137 -66 -44 2 -60 -7 -61 -35 -1 -31 -82 -97 -119 -97 -30 0 -46 -24 -35 -52 8 -21 -50 -105 -86 -123 -29 -16 -40 -50 -17 -57 19 -7 -22 -127 -49 -145 -26 -17 -30 -48 -8 -57 23 -8 21 -133 -2 -159 -17 -18 -17 -20 7 -40 36 -31 63 -108 55 -156 -6 -35 -4 -39 24 -53 39 -18 82 -82 83 -122 1 -35 12 -45 48 -46 28 -1 110 -69 110 -93 0 -24 28 -40 60 -34 17 4 41 1 57 -8 15 -8 36 -16 46 -19 9 -3 22 -17 27 -31 11 -29 39 -33 73 -10 17 11 31 12 67 4 25 -6 67 -8 93 -4 36 4 55 1 77 -12 28 -16 30 -16 52 4 42 38 91 57 148 58 51 0 55 2 58 25 4 29 88 90 124 90 33 0 46 12 46 42 -1 32 67 118 92 118 28 0 43 25 30 50 -15 28 11 108 45 140 25 24 34 70 14 70 -8 0 -10 18 -6 58 8 76 15 92 38 92 13 0 19 7 19 24 0 19 -7 26 -30 31 -37 8 -43 28 -43 128 0 73 -1 78 -23 83 -30 8 -86 101 -74 123 12 22 -7 51 -33 51 -32 0 -116 76 -110 98 2 10 -5 26 -16 36 -17 15 -23 16 -36 6 -21 -17 -114 30 -137 70 -17 30 -41 39 -53 20 -8 -13 -86 -13 -119 0 -14 5 -28 20 -32 35 -4 18 -13 25 -30 25 -14 0 -24 -6 -24 -14z"/></g></svg>');
   mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.000000 150.000000"><g transform="translate(0.000000,150.000000) scale(0.100000,-0.100000)" stroke="none"><path d="M740 1486 c0 -22 -23 -35 -78 -46 -43 -8 -57 -6 -82 8 -31 17 -31 17 -53 -10 -31 -38 -95 -69 -137 -66 -44 2 -60 -7 -61 -35 -1 -31 -82 -97 -119 -97 -30 0 -46 -24 -35 -52 8 -21 -50 -105 -86 -123 -29 -16 -40 -50 -17 -57 19 -7 -22 -127 -49 -145 -26 -17 -30 -48 -8 -57 23 -8 21 -133 -2 -159 -17 -18 -17 -20 7 -40 36 -31 63 -108 55 -156 -6 -35 -4 -39 24 -53 39 -18 82 -82 83 -122 1 -35 12 -45 48 -46 28 -1 110 -69 110 -93 0 -24 28 -40 60 -34 17 4 41 1 57 -8 15 -8 36 -16 46 -19 9 -3 22 -17 27 -31 11 -29 39 -33 73 -10 17 11 31 12 67 4 25 -6 67 -8 93 -4 36 4 55 1 77 -12 28 -16 30 -16 52 4 42 38 91 57 148 58 51 0 55 2 58 25 4 29 88 90 124 90 33 0 46 12 46 42 -1 32 67 118 92 118 28 0 43 25 30 50 -15 28 11 108 45 140 25 24 34 70 14 70 -8 0 -10 18 -6 58 8 76 15 92 38 92 13 0 19 7 19 24 0 19 -7 26 -30 31 -37 8 -43 28 -43 128 0 73 -1 78 -23 83 -30 8 -86 101 -74 123 12 22 -7 51 -33 51 -32 0 -116 76 -110 98 2 10 -5 26 -16 36 -17 15 -23 16 -36 6 -21 -17 -114 30 -137 70 -17 30 -41 39 -53 20 -8 -13 -86 -13 -119 0 -14 5 -28 20 -32 35 -4 18 -13 25 -30 25 -14 0 -24 -6 -24 -14z"/></g></svg>');
   -webkit-mask-repeat: no-repeat;
@@ -2658,25 +2662,32 @@ h6 {
 }
 .blog-pagination a.current, .blog-pagination a:hover,
 .blog-pagination span.current,
-.blog-pagination span:hover {
+.blog-pagination span:hover,
+.blog-pagination button.current,
+.blog-pagination button:hover {
   color: var(--grdeen-white, #fff);
   background-color: var(--grdeen-base, #1a9120);
 }
 .blog-pagination a.next,
-.blog-pagination span.next {
+.blog-pagination span.next,
+.blog-pagination button.next {
   width: auto;
   background-color: transparent;
   height: auto;
   mask: none;
+  -webkit-mask: none;
   font-size: 18px;
   font-weight: 500;
 }
 .blog-pagination a.next:hover,
-.blog-pagination span.next:hover {
+.blog-pagination span.next:hover,
+.blog-pagination button.next:hover {
   color: var(--grdeen-base, #1a9120);
+  background-color: transparent;
 }
 .blog-pagination a.next i,
-.blog-pagination span.next i {
+.blog-pagination span.next i,
+.blog-pagination button.next i {
   transform: rotate(90deg);
   margin-left: 2px;
   font-size: 26px;
@@ -2684,20 +2695,25 @@ h6 {
   top: 1px;
 }
 .blog-pagination a.prev,
-.blog-pagination span.prev {
+.blog-pagination span.prev,
+.blog-pagination button.prev {
   width: auto;
   background-color: transparent;
   height: auto;
   mask: none;
+  -webkit-mask: none;
   font-size: 18px;
   font-weight: 500;
 }
 .blog-pagination a.prev:hover,
-.blog-pagination span.prev:hover {
+.blog-pagination span.prev:hover,
+.blog-pagination button.prev:hover {
   color: var(--grdeen-base, #1a9120);
+  background-color: transparent;
 }
 .blog-pagination a.prev i,
-.blog-pagination span.prev i {
+.blog-pagination span.prev i,
+.blog-pagination button.prev i {
   transform: rotate(-90deg);
   margin-right: 2px;
   font-size: 26px;
@@ -7209,6 +7225,7 @@ body.megamenu-popup-active .mobile-nav__content {
 .blog-pagination button {
   font-family: inherit;
   cursor: pointer;
+  background-color: #e7ebe7;
 }
 .sidebar__comments {
   margin: 0;
