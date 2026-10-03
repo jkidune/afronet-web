@@ -213,7 +213,14 @@
       removalDelay: 160,
       preloader: true,
 
-      fixedContentPos: false
+      fixedContentPos: false,
+      iframe: {
+        patterns: {
+          youtube: {
+            src: "//www.youtube.com/embed/%id%?autoplay=1&start=89"
+          }
+        }
+      }
     });
   }
 
