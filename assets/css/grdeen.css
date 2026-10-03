@@ -3713,6 +3713,12 @@ h6 {
   font-size: 13px;
   line-height: 1;
 }
+@media (max-width: 1500px) {
+  .topbar-one__info__item:nth-child(2),
+  .topbar-one__right__openitme {
+    display: none;
+  }
+}
 .topbar-one__social {
   display: flex;
   align-items: center;
