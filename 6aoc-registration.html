@@ -873,10 +873,10 @@
             </form>
             <div class="event-register-modal__result" style="display:none;">
                 <h4 class="event-register-modal__result-title">Your email is ready</h4>
-                <p class="event-register-modal__subtitle">Addressed to <strong>mgeta.daud@afronet.bio</strong>, cc <strong>kombeladaud@gmail.com, zubedadia@gmail.com, franknjama12@gmail.com</strong>. Your email will open with your details pre-filled — just press send, or copy the message below.</p>
+                <p class="event-register-modal__subtitle">Addressed to <strong>kombeladaud@gmail.com</strong>, cc <strong>info@afronet.bio, franknjama12@gmail.com, zubedadia32@gmail.com</strong>. Your email will open with your details pre-filled — just press send, or copy the message below.</p>
                 <div class="event-register-modal__result-meta">
-                    <span><strong>To:</strong> mgeta.daud@afronet.bio</span>
-                    <span><strong>Cc:</strong> kombeladaud@gmail.com, zubedadia@gmail.com, franknjama12@gmail.com</span>
+                    <span><strong>To:</strong> kombeladaud@gmail.com</span>
+                    <span><strong>Cc:</strong> info@afronet.bio, franknjama12@gmail.com, zubedadia32@gmail.com</span>
                     <span><strong>Subject:</strong> <span class="js-result-subject"></span></span>
                 </div>
                 <div class="event-register-modal__result-body js-result-body"></div>
@@ -964,7 +964,8 @@
             var mailtoForms = {
                 "#event-register-form": {
                     subject: "6AOC Registration",
-                    cc: "kombeladaud@gmail.com,zubedadia@gmail.com,franknjama12@gmail.com",
+                    email: "kombeladaud@gmail.com",
+                    cc: "info@afronet.bio,franknjama12@gmail.com,zubedadia32@gmail.com",
                     labels: { name: "Name", email: "Email", organisation: "Organisation", country: "Country", participation: "Participation", category: "Category", tier: "Registration tier" }
                 }
             };
@@ -1007,8 +1008,8 @@
                 if (config.cc) {
                     params += "&cc=" + encodeURIComponent(config.cc);
                 }
-                var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=mgeta.daud@afronet.bio&" + params;
-                var mailtoUrl = "mailto:mgeta.daud@afronet.bio?" + params;
+                var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + config.email + "&" + params;
+                var mailtoUrl = "mailto:" + config.email + "?" + params;
                 var composeUrl = isMobileDevice() ? mailtoUrl : gmailUrl;
                 $result.find(".js-result-subject").text(subject);
                 $result.find(".js-result-body").text(bodyText);
