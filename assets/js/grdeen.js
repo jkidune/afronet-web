@@ -1005,12 +1005,12 @@
     applyState(false);
   })();
 
-  /*-- Homepage promo popup: show once per visitor, remember dismissal --*/
+  /*-- Promo popup: show once per visitor, remember dismissal --*/
   (function () {
     var $popup = $(".promo-popup");
     if (!$popup.length) return;
 
-    var STORAGE_KEY = "afronetGrantsPopupDismissed";
+    var STORAGE_KEY = $popup.data("storage-key") || "afronet6aocPosterPopupDismissed";
     var dismissed = false;
     try {
       dismissed = localStorage.getItem(STORAGE_KEY) === "1";
@@ -1028,9 +1028,14 @@
       $popup.addClass("is-open");
     }, 2500);
 
-    $popup.on("click", ".promo-popup__close, .promo-popup__dismiss, .promo-popup__overlay", function (e) {
+    $popup.on("click", ".promo-popup__close, .promo-popup__overlay", function (e) {
       e.preventDefault();
       closePopup();
+    });
+
+    $popup.on("click", ".promo-popup__content", function (e) {
+      var hasLink = $(this).find(".promo-popup__poster-link").length > 0;
+      if (!hasLink || e.target === this) closePopup();
     });
 
     $(document).on("keydown", function (e) {
