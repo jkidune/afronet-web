@@ -1375,6 +1375,59 @@
               }
             </style>
 
+            <style>
+              /* Register modal only: thin, minimal scrollbar */
+              #event-register-modal .event-register-modal__content {
+                scrollbar-width: thin; scrollbar-color: rgba(31,143,35,.35) transparent; scrollbar-gutter: stable; }
+              #event-register-modal .event-register-modal__content::-webkit-scrollbar { width: 6px; }
+              #event-register-modal .event-register-modal__content::-webkit-scrollbar-track { background: transparent; }
+              #event-register-modal .event-register-modal__content::-webkit-scrollbar-thumb { background: rgba(31,143,35,.35); border-radius: 6px; }
+
+              @media (min-width: 992px) {
+                #event-register-modal .event-register-modal__content { max-height: 92vh; padding: 28px; }
+                #event-register-modal .event-register-modal__title { margin-bottom: 14px; }
+                #event-register-modal .aoc-reg-switch { margin-bottom: 18px; }
+                #event-register-modal .aoc-reg-switch__btn { padding: 10px 12px; }
+
+                /* Just me: wider, 3-column fields, fee details side by side, so it fits without scrolling */
+                #event-register-modal .event-register-modal__content:has([data-reg-panel="individual"]:not([hidden])) { max-width: 760px; }
+                #event-register-modal .aoc-sub { margin-bottom: 16px; }
+                #event-register-modal .aoc-grid { grid-template-columns: repeat(3, 1fr); gap: 14px 16px; }
+                #event-register-modal .aoc-fee:not(.is-closed) { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 4px 24px; }
+                #event-register-modal .aoc-fee:not(.is-closed) .aoc-fee-row { flex-direction: column; gap: 0; align-items: flex-start !important; }
+                #event-register-modal .aoc-btn { margin-top: 16px; }
+                #event-register-modal .aoc-error { margin-top: 8px; }
+                #event-register-modal .aoc-error:empty { min-height: 0; margin: 0; }
+
+                /* A group: wider, one-row member cards, total and button pinned to the bottom */
+                #event-register-modal .event-register-modal__content:has([data-reg-panel="group"]:not([hidden])) { max-width: 960px; padding-bottom: 0; }
+                #event-register-modal .aocg-h { margin: 16px 0 8px; }
+                #event-register-modal #aocg-form > .aocg-h:first-child { margin-top: 0; }
+                #event-register-modal #aocg-form > .aocg-grid { grid-template-columns: repeat(4, 1fr); }
+                #event-register-modal .aocg-mode { padding: 10px 12px; }
+                #event-register-modal .aocg-hint { margin-bottom: 10px; }
+                #event-register-modal .aocg-member {
+                  display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 1fr 1.1fr; gap: 8px 12px; padding: 10px 12px 12px; margin-bottom: 10px; }
+                #event-register-modal .aocg-member .aocg-grid,
+                #event-register-modal .aocg-member .aocg-grid3 { display: contents; }
+                #event-register-modal .aocg-member-top { grid-column: 1 / -1; margin-bottom: 0; }
+                #event-register-modal .aocg-member .aocg-field label small { display: none; }
+                #event-register-modal .aocg-footer {
+                  position: sticky; bottom: 0; z-index: 2; margin: 16px -28px 0; padding: 14px 28px 16px;
+                  background: #fff; box-shadow: 0 -10px 16px -14px rgba(0,0,0,.25);
+                  display: grid; grid-template-columns: 1fr 210px; align-items: center; column-gap: 18px; }
+                #event-register-modal .aocg-footer .aocg-error { grid-column: 1 / -1; }
+                #event-register-modal .aocg-sum { margin-top: 0; padding: 10px 15px; }
+                #event-register-modal .aocg-sum:not(.is-closed) { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 4px 24px; }
+                #event-register-modal .aocg-sum:not(.is-closed) .aocg-sum-row { flex-direction: column; gap: 0; align-items: flex-start !important; }
+                #event-register-modal .aocg-sum > div:not(.aocg-sum-row) { grid-column: 1 / -1; }
+                #event-register-modal .aocg-total { text-align: left; }
+                #event-register-modal .aocg-btn { margin-top: 0; }
+                #event-register-modal .aocg-error { margin-top: 6px; }
+                #event-register-modal .aocg-error:empty { min-height: 0; margin: 0; }
+              }
+            </style>
+
             <div class="aoc-reg-switch" role="group" aria-label="Choose how you are registering">
               <button type="button" class="aoc-reg-switch__btn is-active" data-reg-tab="individual" aria-pressed="true">
                 <strong>Just me</strong>
@@ -1717,13 +1770,15 @@
                   </div>
                 </div>
 
-                <div class="aocg-sum" id="aocg-sum" aria-live="polite"></div>
+                <div class="aocg-footer">
+                  <div class="aocg-sum" id="aocg-sum" aria-live="polite"></div>
 
                 <div class="aocg-hp" aria-hidden="true"><label for="aocg-website">Leave this empty</label>
                   <input id="aocg-website" type="text" tabindex="-1" autocomplete="off"></div>
 
                 <button type="submit" class="aocg-btn" id="aocg-submit">Register group</button>
-                <p class="aocg-error" id="aocg-error" role="alert"></p>
+                  <p class="aocg-error" id="aocg-error" role="alert"></p>
+                </div>
               </form>
             </div>
 
