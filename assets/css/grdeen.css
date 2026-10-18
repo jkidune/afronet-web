@@ -11175,6 +11175,18 @@ body.megamenu-popup-active .mobile-nav__content {
   height: auto;
   max-width: 100%;
   max-height: 90vh;
+  max-height: 90dvh;
+}
+@media (min-width: 1200px) and (min-height: 900px) {
+  .promo-popup__content--poster {
+    max-width: 540px;
+  }
+}
+@media (hover: none) {
+  .promo-popup__close {
+    width: 40px;
+    height: 40px;
+  }
 }
 .promo-popup__body {
   flex: 1 1 auto;

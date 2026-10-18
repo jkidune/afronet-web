@@ -1005,42 +1005,67 @@
     applyState(false);
   })();
 
-  /*-- Promo popup: show once per visitor, remember dismissal --*/
+  /*-- Promo popups: shown one after another, each once per visitor (dismissal remembered per poster) --*/
   (function () {
-    var $popup = $(".promo-popup");
-    if (!$popup.length) return;
-
-    var STORAGE_KEY = $popup.data("storage-key") || "afronet6aocPosterPopupDismissed";
-    var dismissed = false;
-    try {
-      dismissed = localStorage.getItem(STORAGE_KEY) === "1";
-    } catch (e) {}
-    if (dismissed) return;
-
-    function closePopup() {
-      $popup.removeClass("is-open");
+    function keyOf(el) {
+      return $(el).data("storage-key") || "afronet6aocPosterPopupDismissed";
+    }
+    function isDismissed(el) {
       try {
-        localStorage.setItem(STORAGE_KEY, "1");
+        return localStorage.getItem(keyOf(el)) === "1";
+      } catch (e) {
+        return false;
+      }
+    }
+    function markDismissed(el) {
+      try {
+        localStorage.setItem(keyOf(el), "1");
       } catch (e) {}
     }
 
-    setTimeout(function () {
-      $popup.addClass("is-open");
-    }, 2500);
+    var queue = $(".promo-popup").filter(function () {
+      return !isDismissed(this);
+    }).toArray();
+    if (!queue.length) return;
 
-    $popup.on("click", ".promo-popup__close, .promo-popup__overlay", function (e) {
+    var $current = null;
+
+    function openNext() {
+      var next = queue.shift();
+      if (!next) return;
+      $current = $(next).addClass("is-open");
+    }
+
+    // Close the open popup and, after a short pause, show the next one (if any)
+    function closeCurrent() {
+      if (!$current) return;
+      markDismissed($current[0]);
+      $current.removeClass("is-open");
+      $current = null;
+      setTimeout(openNext, 400);
+    }
+
+    setTimeout(openNext, 2500);
+
+    $(queue).on("click", ".promo-popup__close, .promo-popup__overlay", function (e) {
       e.preventDefault();
-      closePopup();
+      closeCurrent();
     });
 
-    $popup.on("click", ".promo-popup__content", function (e) {
+    $(queue).on("click", ".promo-popup__content", function (e) {
       var hasLink = $(this).find(".promo-popup__poster-link").length > 0;
-      if (!hasLink || e.target === this) closePopup();
+      if (!hasLink || e.target === this) closeCurrent();
+    });
+
+    // Following a poster link: remember it and stop the sequence, the browser navigates away
+    $(queue).on("click", ".promo-popup__poster-link", function () {
+      markDismissed($(this).closest(".promo-popup")[0]);
+      queue.length = 0;
     });
 
     $(document).on("keydown", function (e) {
-      if ((e.key === "Escape" || e.keyCode === 27) && $popup.hasClass("is-open")) {
-        closePopup();
+      if ((e.key === "Escape" || e.keyCode === 27) && $current) {
+        closeCurrent();
       }
     });
   })();
