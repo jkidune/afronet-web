@@ -497,6 +497,9 @@
                         <span>Submit a Presentation</span>
                     </a>
                 </div>
+                <div style="margin-top:12px;">
+                    <a href="#" class="event-register-toggler" data-modal-target="#event-register-modal" data-reg-tab="group" style="color:#fff; text-decoration:underline; font-size:14px;">Registering a group? Register several people at once →</a>
+                </div>
                 <div class="event-hero__urgency">Early Bird pricing ends 15 October 2026</div>
                 <div class="event-hero__concept-note" style="margin-top:14px;">
                     <a href="https://cms.afronet.bio/wp-content/uploads/2026/08/6AOC-Concept-Note.pdf" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline;">
@@ -1225,6 +1228,24 @@
             <h3 class="event-register-modal__title">Register for 6AOC</h3>
 
             <style>
+              .aoc-reg-switch { display:flex; width:100%; border-radius:4px; overflow:hidden; margin-bottom:14px; }
+              .aoc-reg-switch__btn { flex:1 1 50%; padding:12px; font:inherit; font-size:14px; font-weight:700;
+                text-transform:uppercase; letter-spacing:.03em; cursor:pointer; border:1px solid #1f8f23;
+                background:#fff; color:#1f8f23; }
+              .aoc-reg-switch__btn + .aoc-reg-switch__btn { border-left:0; }
+              .aoc-reg-switch__btn.is-active { background:#1f8f23; color:#fff; }
+              .aoc-reg-helper { color:#6b7280; font-size:14px; line-height:1.55; margin:0 0 20px; }
+              .aoc-reg-panel[hidden] { display:none; }
+            </style>
+
+            <div class="aoc-reg-switch" role="tablist">
+              <button type="button" class="aoc-reg-switch__btn is-active" data-reg-tab="individual" role="tab" aria-selected="true">Individual</button>
+              <button type="button" class="aoc-reg-switch__btn" data-reg-tab="group" role="tab" aria-selected="false">Group</button>
+            </div>
+            <p class="aoc-reg-helper" id="aoc-reg-helper">Registering yourself only.</p>
+
+            <div class="aoc-reg-panel" data-reg-panel="individual">
+            <style>
               .aoc-form { --aoc-green:#1f8f23; --aoc-green-dark:#17701b; --aoc-ink:#1a2e1c;
                           --aoc-muted:#6b7280; --aoc-line:#d1d5db; font-family:inherit; }
               .aoc-sub { color:var(--aoc-muted); font-size:15px; line-height:1.55; margin:0 0 22px; }
@@ -1428,6 +1449,393 @@
               });
 
               update();
+            })();
+            </script>
+            </div>
+            <!-- /.aoc-reg-panel[individual] -->
+
+            <div class="aoc-reg-panel" data-reg-panel="group" hidden>
+            <style>
+              .aocg { --g:#1f8f23; --g-dark:#17701b; --ink:#1a2e1c; --muted:#6b7280; --line:#d1d5db;
+                      --soft:#eef7ee; font-family:inherit; color:var(--ink); }
+              .aocg * { box-sizing:border-box; }
+              .aocg-sub { color:var(--muted); font-size:15px; line-height:1.55; margin:0 0 20px; }
+              .aocg-h { font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+                        color:var(--g-dark); margin:24px 0 10px; }
+              .aocg-hint { color:var(--muted); font-size:13px; line-height:1.5; margin:-4px 0 12px; }
+              .aocg-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 14px; }
+              .aocg-grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+              .aocg-field label { display:block; font-weight:600; font-size:13.5px; margin-bottom:6px; }
+              .aocg-field label small { font-weight:400; color:var(--muted); }
+              .aocg-field input, .aocg-field select, .aocg-paste textarea {
+                width:100%; padding:10px 12px; font:inherit; font-size:15px; color:#111827; background:#fff;
+                border:1px solid var(--line); border-radius:6px; }
+              .aocg-field input:focus, .aocg-field select:focus, .aocg-paste textarea:focus {
+                outline:none; border-color:var(--g); box-shadow:0 0 0 3px rgba(31,143,35,.16); }
+              .aocg-field .is-bad { border-color:#dc2626; }
+
+              .aocg-modes { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+              .aocg-mode { display:flex; gap:10px; align-items:flex-start; padding:12px 14px; cursor:pointer;
+                           border:1px solid var(--line); border-radius:8px; font-size:14px; line-height:1.45; }
+              .aocg-mode input { margin-top:3px; accent-color:var(--g); }
+              .aocg-mode b { display:block; margin-bottom:2px; }
+              .aocg-mode span { color:var(--muted); }
+              .aocg-mode:has(input:checked) { border-color:var(--g); background:var(--soft); }
+
+              .aocg-member { border:1px solid var(--line); border-radius:8px; padding:12px 14px 14px; margin-bottom:12px; }
+              .aocg-member-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+              .aocg-member-top strong { font-size:14px; }
+              .aocg-member-fee { margin-left:auto; font-size:14px; font-weight:700; color:var(--g-dark); }
+              .aocg-member-fee.is-warn { color:#b45309; font-weight:600; font-size:13px; }
+              .aocg-remove { border:0; background:none; color:#b91c1c; font:inherit; font-size:13px; cursor:pointer; padding:4px; }
+              .aocg-remove:hover { text-decoration:underline; }
+
+              .aocg-actions { display:flex; flex-wrap:wrap; gap:10px; }
+              .aocg-ghost { border:1px solid var(--g); background:#fff; color:var(--g-dark); border-radius:4px;
+                            padding:9px 14px; font:inherit; font-size:14px; font-weight:600; cursor:pointer; }
+              .aocg-ghost:hover { background:var(--soft); }
+              .aocg-paste { margin-top:12px; padding:12px 14px; border:1px dashed var(--line); border-radius:8px; }
+              .aocg-paste textarea { min-height:110px; font-size:14px; resize:vertical; }
+              .aocg-paste p { margin:0 0 8px; font-size:13px; color:var(--muted); line-height:1.5; }
+
+              .aocg-sum { margin-top:20px; background:var(--soft); border:1px solid #cde5cd; border-radius:8px;
+                          padding:13px 15px; font-size:14px; line-height:1.7; }
+              .aocg-sum-row { display:flex; justify-content:space-between; gap:12px; }
+              .aocg-sum-row span:first-child { color:var(--muted); }
+              .aocg-total { font-size:19px; font-weight:700; color:var(--g-dark); text-align:right; }
+              .aocg-sum.is-closed { background:#fef2f2; border-color:#fecaca; }
+
+              .aocg-btn { display:flex; align-items:center; justify-content:center; width:100%; margin-top:18px;
+                          padding:16px; border:0; border-radius:4px; cursor:pointer; background:var(--g); color:#fff;
+                          font:inherit; font-weight:700; font-size:14px; letter-spacing:.03em; text-transform:uppercase; }
+              .aocg-btn:hover:not(:disabled) { background:var(--g-dark); }
+              .aocg-btn:disabled { opacity:.55; cursor:not-allowed; }
+              .aocg-error { color:#b91c1c; font-size:14px; margin-top:12px; min-height:1em; }
+              .aocg-done { text-align:center; padding:6px 0; line-height:1.6; }
+              .aocg-done .aocg-ref { display:inline-block; margin:10px 0; padding:8px 16px; border-radius:6px;
+                                     background:var(--soft); color:var(--g-dark); font-size:22px; font-weight:700; }
+              .aocg-hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+              @media (max-width:620px) {
+                .aocg-grid, .aocg-grid3, .aocg-modes { grid-template-columns:1fr; }
+              }
+            </style>
+
+            <div class="aocg" id="aocg-wrap">
+              <form id="aocg-form" novalidate>
+                <div class="aocg-h">Group coordinator</div>
+                <div class="aocg-grid">
+                  <div class="aocg-field"><label for="aocg-cname">Full Name</label>
+                    <input id="aocg-cname" type="text" autocomplete="name" required></div>
+                  <div class="aocg-field"><label for="aocg-cemail">Email</label>
+                    <input id="aocg-cemail" type="email" autocomplete="email" required></div>
+                  <div class="aocg-field"><label for="aocg-cphone">Phone <small>(optional)</small></label>
+                    <input id="aocg-cphone" type="tel" autocomplete="tel"></div>
+                  <div class="aocg-field"><label for="aocg-org">Organisation</label>
+                    <input id="aocg-org" type="text" autocomplete="organization"></div>
+                </div>
+
+                <div class="aocg-h">Payment</div>
+                <div class="aocg-modes">
+                  <label class="aocg-mode"><input type="radio" name="aocg-mode" value="combined" checked>
+                    <div><b>One payment for the whole group</b><span>The coordinator pays the total. The group gets one reference.</span></div></label>
+                  <label class="aocg-mode"><input type="radio" name="aocg-mode" value="individual">
+                    <div><b>Each member pays their own share</b><span>Every member gets their own reference and payment instructions.</span></div></label>
+                </div>
+
+                <div class="aocg-h">Same for every member</div>
+                <p class="aocg-hint">Fill these once; they are copied to each member. Change any member below if theirs is different.</p>
+                <div class="aocg-grid3">
+                  <div class="aocg-field"><label for="aocg-dcountry">Country</label>
+                    <input id="aocg-dcountry" type="text" autocomplete="country-name"></div>
+                  <div class="aocg-field"><label for="aocg-dpart">Participation</label>
+                    <select id="aocg-dpart"><option value="">Select...</option>
+                      <option value="physical">Physical</option><option value="virtual">Virtual</option></select></div>
+                  <div class="aocg-field"><label for="aocg-dcat">Category</label>
+                    <select id="aocg-dcat"><option value="">Select...</option>
+                      <option value="individual">Individual</option>
+                      <option value="student">Student (up to MSc)</option>
+                      <option value="exhibition">Exhibition</option>
+                      <option value="side">Side Event (per day)</option></select></div>
+                </div>
+
+                <div class="aocg-h" id="aocg-mhead">Members</div>
+                <p class="aocg-hint">Names and countries are printed on conference badges, so check the spelling.
+                   Add each member's email so they get their own confirmation.</p>
+                <div id="aocg-members"></div>
+                <div class="aocg-actions">
+                  <button type="button" class="aocg-ghost" id="aocg-add">+ Add member</button>
+                  <button type="button" class="aocg-ghost" id="aocg-paste-toggle">Paste a list</button>
+                </div>
+                <div class="aocg-paste" id="aocg-paste" hidden>
+                  <p>Paste one member per line: <b>name</b>, then optionally <b>email</b>, separated by a comma or tab.
+                     You can copy two columns straight from Excel or Google Sheets.</p>
+                  <textarea id="aocg-paste-text" placeholder="Jane Banda, jane@example.org&#10;Peter Mwale, peter@example.org"></textarea>
+                  <div class="aocg-actions" style="margin-top:10px">
+                    <button type="button" class="aocg-ghost" id="aocg-paste-add">Add these members</button>
+                  </div>
+                </div>
+
+                <div class="aocg-sum" id="aocg-sum" aria-live="polite"></div>
+
+                <div class="aocg-hp" aria-hidden="true"><label for="aocg-website">Leave this empty</label>
+                  <input id="aocg-website" type="text" tabindex="-1" autocomplete="off"></div>
+
+                <button type="submit" class="aocg-btn" id="aocg-submit">Register group</button>
+                <p class="aocg-error" id="aocg-error" role="alert"></p>
+              </form>
+            </div>
+
+            <template id="aocg-member-tpl">
+              <div class="aocg-member">
+                <div class="aocg-member-top">
+                  <strong class="aocg-num">Member 1</strong>
+                  <span class="aocg-member-fee"></span>
+                  <button type="button" class="aocg-remove">Remove</button>
+                </div>
+                <div class="aocg-grid">
+                  <div class="aocg-field"><label>Full Name</label><input data-f="fullName" type="text"></div>
+                  <div class="aocg-field"><label>Email <small>(for their own confirmation)</small></label><input data-f="email" type="email"></div>
+                </div>
+                <div class="aocg-grid3" style="margin-top:12px">
+                  <div class="aocg-field"><label>Country</label><input data-f="country" data-d="aocg-dcountry" type="text"></div>
+                  <div class="aocg-field"><label>Participation</label>
+                    <select data-f="participation" data-d="aocg-dpart"><option value="">Select...</option>
+                      <option value="physical">Physical</option><option value="virtual">Virtual</option></select></div>
+                  <div class="aocg-field"><label>Category</label>
+                    <select data-f="category" data-d="aocg-dcat"><option value="">Select...</option>
+                      <option value="individual">Individual</option>
+                      <option value="student">Student (up to MSc)</option>
+                      <option value="exhibition">Exhibition</option>
+                      <option value="side">Side Event (per day)</option></select></div>
+                </div>
+              </div>
+            </template>
+
+            <script>
+            (function () {
+              const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwZpaR5o1NTcjnV1tBbW2N9AvR7193jkcf_kBPXKl36kJTY-2lBsl0QWvVatyqFGWCJ/exec';
+              const MAX_MEMBERS = 100;
+
+              // Must match the Apps Script. Deadlines are end of day, Lusaka time.
+              const EARLY_END   = new Date('2026-10-15T23:59:59+02:00');
+              const REGULAR_END = new Date('2026-11-25T23:59:59+02:00');
+              const FEES = {
+                early: {
+                  international: { individual:{virtual:100,physical:225}, student:{virtual:20,physical:90},
+                                   exhibition:{virtual:180,physical:270}, side:{virtual:450,physical:900} },
+                  national:      { individual:{virtual:500,physical:1000}, student:{virtual:100,physical:200},
+                                   exhibition:{virtual:650,physical:1300}, side:null }
+                },
+                regular: {
+                  international: { individual:{virtual:125,physical:250}, student:{virtual:25,physical:100},
+                                   exhibition:{virtual:200,physical:300}, side:{virtual:500,physical:1000} },
+                  national:      { individual:{virtual:1350,physical:3050}, student:{virtual:300,physical:1215},
+                                   exhibition:{virtual:2400,physical:3645}, side:{virtual:6100,physical:12150} }
+                }
+              };
+
+              const $ = id => document.getElementById(id);
+              const form = $('aocg-form'), list = $('aocg-members'), sum = $('aocg-sum'),
+                    btn = $('aocg-submit'), err = $('aocg-error'), tpl = $('aocg-member-tpl');
+              const DEFAULTS = ['aocg-dcountry', 'aocg-dpart', 'aocg-dcat'];
+
+              const tierNow = () => { const n = new Date(); return n <= EARLY_END ? 'early' : n <= REGULAR_END ? 'regular' : null; };
+              const isNational = c => c.toLowerCase().replace(/[^a-z]/g, '') === 'zambia';
+              const money = (cur, n) => cur + ' ' + n.toLocaleString('en-US');
+              const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+              const rows = () => Array.from(list.querySelectorAll('.aocg-member'));
+              const field = (row, f) => row.querySelector('[data-f="' + f + '"]');
+
+              function feeFor(tier, country, part, cat) {
+                if (!tier || !country || !part || !cat) return null;
+                const type = isNational(country) ? 'national' : 'international';
+                const row = FEES[tier][type][cat];
+                return { currency: type === 'national' ? 'ZMK' : 'USD', amount: row ? row[part] : null };
+              }
+
+              function addMember(prefill) {
+                if (rows().length >= MAX_MEMBERS) {
+                  err.textContent = 'A group can have up to ' + MAX_MEMBERS + ' members. Register the rest as a second group.';
+                  return null;
+                }
+                const node = tpl.content.firstElementChild.cloneNode(true);
+                node.querySelectorAll('[data-d]').forEach(el => { el.value = $(el.dataset.d).value; });
+                if (prefill) Object.keys(prefill).forEach(k => { if (prefill[k]) field(node, k).value = prefill[k]; });
+                node.querySelectorAll('[data-f]').forEach(el => {
+                  el.addEventListener('input', () => { el.dataset.touched = '1'; el.classList.remove('is-bad'); update(); });
+                  el.addEventListener('change', () => { el.dataset.touched = '1'; update(); });
+                });
+                node.querySelector('.aocg-remove').addEventListener('click', () => {
+                  if (rows().length > 1) node.remove(); else node.querySelectorAll('[data-f]').forEach(el => {
+                    el.value = el.dataset.d ? $(el.dataset.d).value : ''; delete el.dataset.touched; });
+                  update();
+                });
+                list.appendChild(node);
+                update();
+                return node;
+              }
+
+              // A member's country/participation/category follow the defaults until changed by hand.
+              DEFAULTS.forEach(id => {
+                const src = $(id);
+                const sync = () => {
+                  list.querySelectorAll('[data-d="' + id + '"]').forEach(el => { if (!el.dataset.touched) el.value = src.value; });
+                  update();
+                };
+                src.addEventListener('input', sync);
+                src.addEventListener('change', sync);
+              });
+
+              function update() {
+                const tier = tierNow();
+                const all = rows();
+                $('aocg-mhead').textContent = 'Members (' + all.length + ')';
+                all.forEach((row, k) => {
+                  row.querySelector('.aocg-num').textContent = 'Member ' + (k + 1);
+                  const fee = feeFor(tier, field(row, 'country').value.trim(), field(row, 'participation').value, field(row, 'category').value);
+                  const out = row.querySelector('.aocg-member-fee');
+                  out.className = 'aocg-member-fee';
+                  if (!fee) out.textContent = '';
+                  else if (fee.amount == null) { out.classList.add('is-warn'); out.textContent = 'Side Event not available at the national Early Bird rate'; }
+                  else out.textContent = money(fee.currency, fee.amount) + (field(row, 'category').value === 'side' ? ' / day' : '');
+                });
+
+                sum.className = 'aocg-sum';
+                if (!tier) {
+                  sum.classList.add('is-closed');
+                  sum.innerHTML = '<strong>Registration has closed.</strong> The final deadline was 25 November 2026.';
+                  btn.disabled = true;
+                  return;
+                }
+                const totals = { USD: 0, ZMK: 0 };
+                let priced = 0, blocked = false;
+                all.forEach(row => {
+                  const fee = feeFor(tier, field(row, 'country').value.trim(), field(row, 'participation').value, field(row, 'category').value);
+                  if (!fee) return;
+                  if (fee.amount == null) { blocked = true; return; }
+                  totals[fee.currency] += fee.amount; priced++;
+                });
+                const parts = [];
+                if (totals.USD) parts.push(money('USD', totals.USD));
+                if (totals.ZMK) parts.push(money('ZMK', totals.ZMK));
+                const individual = form.querySelector('input[name="aocg-mode"]:checked').value === 'individual';
+                sum.innerHTML =
+                  '<div class="aocg-sum-row"><span>Registration tier</span><strong>' +
+                    (tier === 'early' ? 'Early Bird (until 15 October 2026)' : 'Regular (until 25 November 2026)') + '</strong></div>' +
+                  '<div class="aocg-sum-row"><span>Members</span><span>' + all.length +
+                    (priced < all.length ? ' (' + (all.length - priced) + ' still need country, participation and category)' : '') + '</span></div>' +
+                  '<div class="aocg-sum-row" style="align-items:baseline"><span>' +
+                    (individual ? 'Group total (each member pays their own share)' : 'Total due for the group') + '</span>' +
+                    '<span class="aocg-total">' + (parts.join(' + ') || '—') + '</span></div>' +
+                  (totals.USD && totals.ZMK ? '<div style="font-size:13px;color:#6b7280">Zambian members pay in ZMK, international members in USD.</div>' : '');
+                btn.disabled = blocked;
+              }
+
+              form.querySelectorAll('input[name="aocg-mode"]').forEach(r => r.addEventListener('change', update));
+              $('aocg-add').addEventListener('click', () => { const n = addMember(); if (n) field(n, 'fullName').focus(); });
+              $('aocg-paste-toggle').addEventListener('click', () => { const p = $('aocg-paste'); p.hidden = !p.hidden; if (!p.hidden) $('aocg-paste-text').focus(); });
+              $('aocg-paste-add').addEventListener('click', () => {
+                const lines = $('aocg-paste-text').value.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+                lines.forEach(line => {
+                  const cells = line.split(/\t|,|;/).map(c => c.trim()).filter(Boolean);
+                  const email = cells.find(c => c.includes('@')) || '';
+                  const name = cells.filter(c => c !== email).join(' ');
+                  if (!name) return;
+                  // Fill the first empty member card before adding new ones.
+                  const empty = rows().find(r => !field(r, 'fullName').value.trim() && !field(r, 'email').value.trim());
+                  if (empty) { field(empty, 'fullName').value = name; field(empty, 'email').value = email; }
+                  else addMember({ fullName: name, email: email });
+                });
+                $('aocg-paste-text').value = '';
+                $('aocg-paste').hidden = true;
+                update();
+              });
+
+              form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                err.textContent = '';
+                const coordinatorName = $('aocg-cname').value.trim(), coordinatorEmail = $('aocg-cemail').value.trim();
+                if (!coordinatorName || !coordinatorEmail) { err.textContent = "Enter the coordinator's full name and email."; return; }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(coordinatorEmail)) { err.textContent = "Enter a valid email address for the coordinator."; return; }
+
+                const members = [];
+                for (const [k, row] of rows().entries()) {
+                  const m = {};
+                  ['fullName', 'email', 'country', 'participation', 'category'].forEach(f => { m[f] = field(row, f).value.trim(); });
+                  const missing = ['fullName', 'country', 'participation', 'category'].filter(f => !m[f]);
+                  if (m.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.email)) missing.push('email');
+                  if (missing.length) {
+                    missing.forEach(f => field(row, f).classList.add('is-bad'));
+                    err.textContent = 'Member ' + (k + 1) + ': ' + (missing.includes('email') ? 'check the email address' : 'fill in name, country, participation and category') + '.';
+                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                  }
+                  members.push(m);
+                }
+
+                const data = {
+                  mode: 'group', website: $('aocg-website').value,
+                  coordinatorName, coordinatorEmail,
+                  coordinatorPhone: $('aocg-cphone').value.trim(), organisation: $('aocg-org').value.trim(),
+                  paymentMode: form.querySelector('input[name="aocg-mode"]:checked').value,
+                  members
+                };
+                btn.disabled = true;
+                btn.textContent = 'Registering ' + members.length + ' member' + (members.length === 1 ? '' : 's') + '...';
+                try {
+                  // No Content-Type header on purpose: keeps it a "simple" request Apps Script accepts.
+                  const res = await fetch(ENDPOINT, { method: 'POST', body: JSON.stringify(data) });
+                  const out = await res.json();
+                  if (!out.ok) throw new Error(out.error || 'Registration could not be saved.');
+                  const each = out.mode === 'individual';
+                  $('aocg-wrap').innerHTML =
+                    '<div class="aocg-done">' +
+                      '<p><strong>Your group of ' + out.members + ' is registered for 6AOC.</strong></p>' +
+                      '<p>Group reference</p><div class="aocg-ref">' + esc(out.reference) + '</div>' +
+                      '<p>' + (each ? 'Group total' : 'Total due') + ': <strong>' + esc(out.totals) + '</strong> (' + esc(out.tier) + ')</p>' +
+                      '<p>' + (each
+                        ? 'Each member with an email address has been sent their own reference and payment instructions. A summary has been sent to <strong>' + esc(out.email) + '</strong>.'
+                        : 'Payment instructions for the whole group have been sent to <strong>' + esc(out.email) + '</strong>.') +
+                      ' Check the spam folder if nothing arrives within a few minutes.</p>' +
+                    '</div>';
+                } catch (ex) {
+                  err.textContent = ex.message || 'Registration could not be saved. Try again in a moment.';
+                  btn.disabled = false;
+                  btn.textContent = 'Register group';
+                }
+              });
+
+              addMember();
+              addMember();
+            })();
+            </script>
+            </div>
+            <!-- /.aoc-reg-panel[group] -->
+
+            <script>
+            (function () {
+              var tabs = document.querySelectorAll('.aoc-reg-switch__btn');
+              var panels = document.querySelectorAll('.aoc-reg-panel');
+              var helper = document.getElementById('aoc-reg-helper');
+              var helperText = { individual: 'Registering yourself only.',
+                group: 'Registering several people (colleagues, a delegation or sponsored participants)? One person fills this in for everyone.' };
+              var lastTab = 'individual';
+
+              function setTab(tab) {
+                lastTab = tab;
+                tabs.forEach(function (b) { b.classList.toggle('is-active', b.dataset.regTab === tab); b.setAttribute('aria-selected', b.dataset.regTab === tab ? 'true' : 'false'); });
+                panels.forEach(function (p) { p.hidden = p.dataset.regPanel !== tab; });
+                helper.textContent = helperText[tab] || '';
+              }
+
+              tabs.forEach(function (b) { b.addEventListener('click', function () { setTab(b.dataset.regTab); }); });
+
+              document.querySelectorAll('.event-register-toggler').forEach(function (b) {
+                if (b.dataset.modalTarget !== '#event-register-modal') return;
+                b.addEventListener('click', function () {
+                  setTab(b.dataset.regTab || lastTab);
+                });
+              });
             })();
             </script>
         </div>
