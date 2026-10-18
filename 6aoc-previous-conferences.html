@@ -40,26 +40,72 @@
     <style>
         .main-header__inner {
             background: linear-gradient(90deg, #8a6100 0%, #d9a404 40%, #f4c430 65%, #d9a404 100%);
+            align-items: center;
+            min-height: 100px;
+            padding: 0 20px;
+            column-gap: 24px;
         }
 
+        /* Logos sit directly on the gold ribbon: drop the theme's white panel, notch, fixed box and overhang.
+           The wrapper spans the full ribbon height and clips, so the glow can never spill past the ribbon. */
+        .main-header__logo {
+            width: auto;
+            height: auto;
+            padding: 0 18px;
+            margin: 0;
+            background: none;
+            border-radius: 0;
+            flex-shrink: 0;
+            align-self: stretch;
+            overflow-x: visible;
+            overflow-y: clip;
+        }
+        .main-header__logo::after {
+            display: none;
+        }
         .main-header__logo--secondary {
-            margin-left: 16px;
-            margin-right: 0;
-            border-radius: 0 0 4px 0;
+            padding: 0 12px;
         }
-        .main-header__logo--secondary::after {
-            right: auto;
-            left: -10px;
-            border-right: none;
-            border-left: 10px solid transparent;
+        .main-header__logo > a {
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+        }
+        /* Soft light behind each logo: fades to fully transparent before its own box edge, so no visible edge */
+        .main-header__logo > a::before {
+            content: "";
+            position: absolute;
+            inset: -18% -22%;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(ellipse closest-side at center,
+                rgba(255, 255, 255, 0.92) 0%,
+                rgba(255, 255, 255, 0.82) 45%,
+                rgba(255, 255, 255, 0.5) 68%,
+                rgba(255, 255, 255, 0) 92%);
+            filter: blur(6px);
+        }
+        .main-header__logo--secondary > a::before {
+            inset: -30% -10%;
+        }
+        .main-header__logo img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-height: 82px;
+            object-fit: contain;
+        }
+        .main-header__logo--secondary img {
+            max-height: 48px;
         }
 
+        /* Active page in the main menu: green instead of the theme's black */
+        .main-header .main-menu .main-menu__list > li.current > a {
+            color: #0a6b10;
+            text-shadow: 0 0 0.5px #0a6b10;
+        }
         @media (max-width: 1500px) {
-            .main-header__logo--secondary {
-                width: 170px;
-                padding: 8px 18px;
-            }
-
             .main-header__btn {
                 width: 44px;
                 height: 44px;
@@ -134,64 +180,151 @@
             }
         }
 
-        @media (max-width: 1199px) {
+        @media (max-width: 1300px) {
+            .main-header__logo--secondary img {
+                max-height: 44px;
+            }
+        }
+
+        /* 992px and up: menu fills the space between the event logo and the CTA, items centred with even gaps,
+           leftover space shared by both ends. Items fill the ribbon height so dropdowns open at its bottom edge. */
+        @media (min-width: 992px) {
+            .main-header .main-menu .main-menu__list,
+            .main-header .main-menu .main-menu__list ul {
+                display: flex;
+            }
+            .main-header .mobile-nav__btn {
+                display: none;
+            }
+            .main-header__nav {
+                flex: 1 1 auto;
+                min-width: 0;
+                align-self: stretch;
+                padding: 0 4px;
+            }
+            .main-header .main-menu .main-menu__list {
+                height: 100%;
+                justify-content: center;
+                align-items: stretch;
+                column-gap: clamp(28px, 3.4vw, 48px);
+            }
+            .main-header .main-menu .main-menu__list > li {
+                display: flex;
+                align-items: center;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .main-header .main-menu .main-menu__list > li + li {
+                margin-left: 0;
+            }
+            .main-header__right {
+                margin-left: 0;
+            }
+        }
+
+        /* 992–1199: tight range, so gaps shrink first, then the logos slightly */
+        @media (min-width: 992px) and (max-width: 1199px) {
             .main-header__inner {
-                flex-wrap: wrap;
-                justify-content: space-between;
-                row-gap: 6px;
+                column-gap: 12px;
+                padding: 0 12px;
+            }
+            .main-header .main-menu .main-menu__list {
+                justify-content: space-evenly;
+                column-gap: 0;
+            }
+            .main-header__right {
+                padding-right: 0;
+            }
+            .main-header__logo {
+                padding: 0 14px;
+            }
+            .main-header__logo img {
+                max-height: 74px;
+            }
+            .main-header__logo--secondary {
+                padding: 0 8px;
+            }
+            .main-header__logo--secondary img {
+                max-height: 40px;
+            }
+        }
+
+        /* Below 992: one bar — [event logo] ... [AfrONet] [phone] [search] [menu] */
+        @media (max-width: 991px) {
+            .main-header__inner {
+                min-height: 68px;
+                padding: 0 8px;
+                column-gap: 4px;
+            }
+            .main-header .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
             }
             .main-header__nav {
                 display: none;
             }
             .main-header__logo {
-                order: 1;
-                width: auto;
-                height: auto;
-                padding: 10px 12px;
-                margin: 0;
+                padding: 0 6px;
+            }
+            .main-header__logo > a::before {
+                inset: -12% -16%;
+                filter: blur(4px);
+            }
+            .main-header__logo--secondary > a::before {
+                inset: -24% -8%;
             }
             .main-header__logo img {
-                max-width: 130px;
+                max-height: 54px;
             }
             .main-header__logo--secondary {
                 order: 2;
-                width: auto;
-                height: auto;
-                padding: 8px 12px;
-                margin: 0;
-                border-radius: 4px;
-            }
-            .main-header__logo--secondary::after {
-                display: none;
+                margin-left: auto;
+                padding: 0 4px;
             }
             .main-header__logo--secondary img {
-                max-width: 90px;
+                max-height: 30px;
             }
             .main-header__right {
                 order: 3;
-                flex: 0 0 100%;
-                justify-content: flex-end;
-                gap: 14px;
+                margin-left: 0;
+                padding-right: 0;
+                gap: 0;
+            }
+            .main-header__btn {
+                order: 1;
+                margin: 0;
+            }
+            .main-header__search {
+                order: 2;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
             }
             .main-header__right .mobile-nav__btn {
-                width: 24px;
+                order: 3;
+                width: 44px;
+                height: 44px;
+                padding: 0 10px;
                 margin: 0;
+                justify-content: center;
+                box-sizing: border-box;
             }
             .main-header__right .mobile-nav__btn span {
                 background-color: var(--grdeen-base, #1a9120);
                 height: 2px;
             }
-            .main-header__search {
-                padding: 6px 0;
-            }
         }
 
-        @media (max-width: 575px) {
-            .main-header__logo img {
-                max-width: 110px;
+        /* Very small phones: AfrONet logo stays in the slide-out menu only */
+        @media (max-width: 360px) {
+            .main-header__logo--secondary {
+                display: none;
             }
-            .main-header__logo--secondary img {
-                max-width: 76px;
+            .main-header__right {
+                margin-left: auto;
             }
         }
 
