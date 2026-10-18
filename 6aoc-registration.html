@@ -331,12 +331,12 @@
     <meta property="og:title" content="Registration & Fees — 6th African Organic Conference (6AOC)" />
     <meta property="og:description" content="Registration fees for the 6th African Organic Conference (6AOC) — Early Bird and Regular rates for international and national participants. 1–4 December 2026, Lusaka, Zambia." />
     <meta property="og:url" content="https://afronet.bio/6aoc-registration.html" />
-    <meta property="og:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/AOC-2.png" />
+    <meta property="og:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
     <meta property="og:site_name" content="AfrONet — African Organic Network" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Registration & Fees — 6th African Organic Conference (6AOC)" />
     <meta name="twitter:description" content="Registration fees for the 6th African Organic Conference (6AOC) — Early Bird and Regular rates for international and national participants. 1–4 December 2026, Lusaka, Zambia." />
-    <meta name="twitter:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/AOC-2.png" />
+    <meta name="twitter:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
 </head>
 
 <body class="custom-cursor">
@@ -473,7 +473,7 @@
             </div><!-- /.container-fluid -->
         </header><!-- /.main-header -->
         <section class="page-header">
-            <div class="page-header__bg" style="background-image: url('https://cms.afronet.bio/wp-content/uploads/2026/10/AOC-2.png');"></div>
+            <div class="page-header__bg" style="background-image: url('https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png');"></div>
             <div class="page-header__shape wow fadeInUp" data-wow-delay="200ms"></div>
             <div class="page-header__overlay"></div>
             <!-- /.page-header__bg -->
@@ -498,7 +498,7 @@
                         <div class="fee-card fee-card--featured">
                             <span class="fee-card__badge">Best Value</span>
                             <h3 class="fee-card__title">Early Bird Registration</h3>
-                            <p class="fee-card__deadline">Deadline: <strong>15 October 2026</strong></p>
+                            <p class="fee-card__deadline">Deadline: <strong>25 October 2026</strong></p>
 
                             <div class="fee-table-wrap">
                                 <table class="fee-table">
@@ -733,7 +733,7 @@
                             <div class="footer-widget footer-widget--links">
                                 <h6 class="footer-widget__title">Key Dates</h6>
                                 <ul class="list-unstyled footer-widget__links">
-                                    <li><strong>Early Bird Deadline</strong><br>15 October 2026</li>
+                                    <li><strong>Early Bird Deadline</strong><br>25 October 2026</li>
                                     <li><strong>Regular Deadline</strong><br>25 November 2026</li>
                                     <li><strong>Conference Dates</strong><br>1&ndash;4 December 2026</li>
                                     <li><strong>Location</strong><br>Lusaka, Zambia</li>
@@ -831,21 +831,30 @@
             <h3 class="event-register-modal__title">Register for 6AOC</h3>
 
             <style>
-              .aoc-reg-switch { display:flex; width:100%; border-radius:4px; overflow:hidden; margin-bottom:14px; }
-              .aoc-reg-switch__btn { flex:1 1 50%; padding:12px; font:inherit; font-size:14px; font-weight:700;
-                text-transform:uppercase; letter-spacing:.03em; cursor:pointer; border:1px solid #1f8f23;
-                background:#fff; color:#1f8f23; }
+              .aoc-reg-switch { display:flex; width:100%; border-radius:4px; overflow:hidden; margin-bottom:20px; }
+              .aoc-reg-switch__btn { flex:1 1 50%; padding:14px 12px; font:inherit; cursor:pointer; border:1px solid #1f8f23;
+                background:#fff; color:#1f8f23; display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center; }
               .aoc-reg-switch__btn + .aoc-reg-switch__btn { border-left:0; }
               .aoc-reg-switch__btn.is-active { background:#1f8f23; color:#fff; }
-              .aoc-reg-helper { color:#6b7280; font-size:14px; line-height:1.55; margin:0 0 20px; }
+              .aoc-reg-switch__btn strong { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; }
+              .aoc-reg-switch__btn span { font-size:12px; font-weight:400; line-height:1.4; }
               .aoc-reg-panel[hidden] { display:none; }
+              @media (max-width:480px) {
+                .aoc-reg-switch { flex-direction:column; }
+                .aoc-reg-switch__btn + .aoc-reg-switch__btn { border-left:1px solid #1f8f23; border-top:0; }
+              }
             </style>
 
-            <div class="aoc-reg-switch" role="tablist">
-              <button type="button" class="aoc-reg-switch__btn is-active" data-reg-tab="individual" role="tab" aria-selected="true">Individual</button>
-              <button type="button" class="aoc-reg-switch__btn" data-reg-tab="group" role="tab" aria-selected="false">Group</button>
+            <div class="aoc-reg-switch" role="group" aria-label="Choose how you are registering">
+              <button type="button" class="aoc-reg-switch__btn is-active" data-reg-tab="individual" aria-pressed="true">
+                <strong>Just me</strong>
+                <span>Register yourself only</span>
+              </button>
+              <button type="button" class="aoc-reg-switch__btn" data-reg-tab="group" aria-pressed="false">
+                <strong>A group</strong>
+                <span>Register several people at once (colleagues, a delegation or sponsored participants)</span>
+              </button>
             </div>
-            <p class="aoc-reg-helper" id="aoc-reg-helper">Registering yourself only.</p>
 
             <div class="aoc-reg-panel" data-reg-panel="individual">
             <style>
@@ -950,7 +959,7 @@
               const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzQcvXxrUYl57f-g-HJD4BENBltD85oHXkHDFc5eJfWpV9FmHAsXiKxz_GSkVXlzMb3/exec';
 
               // Must match the Apps Script. Deadlines are end of day, Lusaka time.
-              const EARLY_END   = new Date('2026-10-15T23:59:59+02:00');
+              const EARLY_END   = new Date('2026-10-25T23:59:59+02:00');
               const REGULAR_END = new Date('2026-11-25T23:59:59+02:00');
               const FEES = {
                 early: {
@@ -984,7 +993,7 @@
                   return;
                 }
                 const tierText = tier === 'early'
-                  ? 'Early Bird (until 15 October 2026)'
+                  ? 'Early Bird (until 25 October 2026)'
                   : 'Regular (until 25 November 2026)';
                 const country = $('aoc-country').value.trim();
                 const part = $('aoc-participation').value, cat = $('aoc-category').value;
@@ -1220,7 +1229,7 @@
               const MAX_MEMBERS = 100;
 
               // Must match the Apps Script. Deadlines are end of day, Lusaka time.
-              const EARLY_END   = new Date('2026-10-15T23:59:59+02:00');
+              const EARLY_END   = new Date('2026-10-25T23:59:59+02:00');
               const REGULAR_END = new Date('2026-11-25T23:59:59+02:00');
               const FEES = {
                 early: {
@@ -1324,7 +1333,7 @@
                 const individual = form.querySelector('input[name="aocg-mode"]:checked').value === 'individual';
                 sum.innerHTML =
                   '<div class="aocg-sum-row"><span>Registration tier</span><strong>' +
-                    (tier === 'early' ? 'Early Bird (until 15 October 2026)' : 'Regular (until 25 November 2026)') + '</strong></div>' +
+                    (tier === 'early' ? 'Early Bird (until 25 October 2026)' : 'Regular (until 25 November 2026)') + '</strong></div>' +
                   '<div class="aocg-sum-row"><span>Members</span><span>' + all.length +
                     (priced < all.length ? ' (' + (all.length - priced) + ' still need country, participation and category)' : '') + '</span></div>' +
                   '<div class="aocg-sum-row" style="align-items:baseline"><span>' +
@@ -1419,16 +1428,16 @@
             (function () {
               var tabs = document.querySelectorAll('.aoc-reg-switch__btn');
               var panels = document.querySelectorAll('.aoc-reg-panel');
-              var helper = document.getElementById('aoc-reg-helper');
-              var helperText = { individual: 'Registering yourself only.',
-                group: 'Registering several people (colleagues, a delegation or sponsored participants)? One person fills this in for everyone.' };
               var lastTab = 'individual';
 
               function setTab(tab) {
                 lastTab = tab;
-                tabs.forEach(function (b) { b.classList.toggle('is-active', b.dataset.regTab === tab); b.setAttribute('aria-selected', b.dataset.regTab === tab ? 'true' : 'false'); });
+                tabs.forEach(function (b) {
+                  var active = b.dataset.regTab === tab;
+                  b.classList.toggle('is-active', active);
+                  b.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
                 panels.forEach(function (p) { p.hidden = p.dataset.regPanel !== tab; });
-                helper.textContent = helperText[tab] || '';
               }
 
               tabs.forEach(function (b) { b.addEventListener('click', function () { setTab(b.dataset.regTab); }); });
@@ -1439,6 +1448,15 @@
                   setTab(b.dataset.regTab || lastTab);
                 });
               });
+
+              if (location.hash === '#register-group') {
+                setTab('group');
+                var modal = document.getElementById('event-register-modal');
+                if (modal) {
+                  modal.classList.add('is-open');
+                  document.body.style.overflow = 'hidden';
+                }
+              }
             })();
             </script>
         </div>
