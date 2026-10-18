@@ -1005,6 +1005,38 @@
     applyState(false);
   })();
 
+  /*-- Event sub-menu: swipe progress bar, filled to the share of links seen so far --*/
+  (function () {
+    var list = document.querySelector(".event-subnav__list");
+    var nav = list && list.closest(".event-subnav");
+    if (!nav || !nav.querySelector(".event-subnav__progress")) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var max = list.scrollWidth - list.clientWidth;
+      if (max <= 1) {
+        nav.classList.remove("is-scrollable");
+        return;
+      }
+      nav.classList.add("is-scrollable");
+      var seen = (list.scrollLeft + list.clientWidth) / list.scrollWidth;
+      nav.style.setProperty("--subnav-progress", Math.min(1, seen).toFixed(4));
+    }
+    function requestUpdate() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    }
+
+    list.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    window.addEventListener("load", requestUpdate);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(requestUpdate);
+    update();
+  })();
+
   /*-- Promo popups: shown one after another, each once per visitor (dismissal remembered per poster) --*/
   (function () {
     function keyOf(el) {

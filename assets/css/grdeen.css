@@ -18997,6 +18997,34 @@ body.boxed-wrapper .main-header__wellcome__tagline {
   color: var(--grdeen-base, #1a9120);
   border-bottom-color: var(--grdeen-base, #1a9120);
 }
+/* Swipe progress: only shown when the links overflow (set by grdeen.js) */
+.event-subnav__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background-color: rgba(var(--grdeen-base-rgb, 26, 145, 32), 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.event-subnav.is-scrollable .event-subnav__progress {
+  opacity: 1;
+}
+.event-subnav__progress-bar {
+  display: block;
+  height: 100%;
+  background-color: var(--grdeen-base, #1a9120);
+  transform-origin: left center;
+  transform: scaleX(var(--subnav-progress, 0));
+  transition: transform 0.12s linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-subnav__progress-bar {
+    transition: none;
+  }
+}
 
 .event-checklist {
   list-style: none;
