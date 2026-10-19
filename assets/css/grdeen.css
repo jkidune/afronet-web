@@ -19395,3 +19395,305 @@ body.boxed-wrapper .main-header__wellcome__tagline {
 }
 
 /*# sourceMappingURL=grdeen.css.map */
+
+/*--------------------------------------------------------------
+# 6AOC countdown: announcement bar + hero/home countdown boxes (driven by grdeen.js)
+--------------------------------------------------------------*/
+.aoc-countdown-bar {
+  display: block;
+  position: relative;
+  z-index: 100;
+  padding: 8px 16px;
+  text-align: center;
+  font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.aoc-countdown-bar[hidden] {
+  display: none;
+}
+.aoc-countdown-bar:not([href]) {
+  cursor: default;
+}
+/* One colour per phase */
+.aoc-countdown-bar--early {
+  background-color: #f4c430;
+  color: #1a2e1c;
+}
+.aoc-countdown-bar--regular {
+  background-color: #f08c1a;
+  color: #2a1600;
+}
+.aoc-countdown-bar--event,
+.aoc-countdown-bar--live {
+  background-color: #17701b;
+  color: #fff;
+}
+a.aoc-countdown-bar[href]:hover,
+a.aoc-countdown-bar[href]:focus {
+  color: inherit;
+  filter: brightness(1.06);
+}
+.aoc-countdown-bar__time {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+/* "Register now" as a small gradient capsule */
+.aoc-countdown-bar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1a9120, #07370a);
+  color: #fff;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  vertical-align: middle;
+}
+.aoc-countdown-bar__arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+a.aoc-countdown-bar[href]:hover .aoc-countdown-bar__arrow,
+a.aoc-countdown-bar[href]:focus .aoc-countdown-bar__arrow {
+  transform: translateX(2px);
+}
+@media (max-width: 575px) {
+  .aoc-countdown-bar__cta {
+    margin-left: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+  }
+}
+/* Gentle pulse on a deadline's last day */
+.aoc-countdown-bar.is-today {
+  animation: aoc-bar-pulse 2.4s ease-in-out infinite;
+}
+@keyframes aoc-bar-pulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.14); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aoc-countdown-bar.is-today {
+      animation: none;
+  }
+}
+@media (max-width: 575px) {
+  .aoc-countdown-bar {
+      padding: 7px 12px;
+      font-size: 13px;
+  }
+}
+
+.aoc-hero-countdown {
+  max-width: 460px;
+  margin: 26px auto 30px;
+  text-align: center;
+}
+.aoc-hero-countdown__boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(6px, 2vw, 14px);
+}
+.aoc-hero-countdown__box {
+  padding: clamp(8px, 2.2vw, 14px) 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+}
+.aoc-hero-countdown__num {
+  display: block;
+  color: #fff;
+  font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+  font-size: clamp(24px, 7vw, 40px);
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.aoc-hero-countdown__label {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(10px, 2.6vw, 12px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.aoc-hero-countdown__message {
+  margin: 0;
+  color: #fff;
+  font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 700;
+}
+.aoc-hero-countdown__boxes[hidden],
+.aoc-hero-countdown__message[hidden] {
+  display: none;
+}
+/* Very narrow phones: drop the seconds box (hero only) */
+@media (max-width: 339.98px) {
+  .aoc-hero-countdown__boxes {
+      grid-template-columns: repeat(3, 1fr);
+  }
+  .aoc-hero-countdown__box--seconds {
+      display: none;
+  }
+}
+/* Home page: slim 6AOC countdown band under the hero (one row on desktop) */
+.aoc-countdown-section {
+  position: relative;
+  padding: 20px 0;
+  background:
+    linear-gradient(100deg, rgba(7, 55, 10, 0.92) 0%, rgba(23, 112, 27, 0.82) 55%, rgba(26, 145, 32, 0.72) 100%),
+    url("https://images.unsplash.com/photo-1630574514367-4035d6e6e6df?q=80&w=1600&auto=format&fit=crop") center / cover no-repeat;
+  overflow: hidden;
+}
+.aoc-countdown-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8a6100, #f4c430, #8a6100);
+}
+/* Same band used as a card inside the 6AOC page hero */
+.aoc-countdown-section.aoc-countdown-section--card {
+  margin: 26px 0 30px;
+  padding: 20px 24px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+@media (max-width: 767px) {
+  .aoc-countdown-section.aoc-countdown-section--card {
+    padding: 20px 16px;
+  }
+}
+.aoc-countdown-section__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 32px;
+  row-gap: 16px;
+}
+.aoc-countdown-section__eyebrow {
+  display: block;
+  margin-bottom: 2px;
+  color: #f4c430;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.aoc-countdown-section__title {
+  margin: 0;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.25;
+}
+.aoc-countdown-section__meta {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+}
+.aoc-hero-countdown--compact {
+  width: 100%;
+  max-width: 380px;
+}
+.aoc-countdown-section .aoc-hero-countdown--compact {
+  margin: 0 auto;
+}
+.aoc-hero-countdown--compact .aoc-hero-countdown__boxes {
+  gap: 8px;
+}
+.aoc-hero-countdown--compact .aoc-hero-countdown__box {
+  padding: 8px 6px;
+  border-radius: 10px;
+}
+.aoc-hero-countdown--compact .aoc-hero-countdown__num {
+  font-size: clamp(22px, 2.4vw, 30px);
+}
+.aoc-hero-countdown--compact .aoc-hero-countdown__label {
+  margin-top: 2px;
+  font-size: 10px;
+}
+.aoc-hero-countdown--compact .aoc-hero-countdown__message {
+  font-size: 18px;
+}
+.aoc-countdown-section__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.aoc-countdown-section__ctas [hidden] {
+  display: none;
+}
+/* Buttons stand out on the green: gold primary, white-outline secondary */
+.aoc-countdown-section__ctas .grdeen-btn {
+  padding: 12px 22px;
+  font-size: 13px;
+  background-color: #f4c430;
+  color: #1a2e1c;
+}
+.aoc-countdown-section__ctas .grdeen-btn--outline-light {
+  background-color: transparent;
+  color: #fff;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.85);
+}
+.aoc-countdown-section__ctas .grdeen-btn:hover,
+.aoc-countdown-section__ctas .grdeen-btn:focus {
+  color: #fff;
+}
+/* Small desktop: keep the single row by tightening sizes */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .aoc-countdown-section__inner {
+    column-gap: 20px;
+  }
+  .aoc-countdown-section__title {
+    font-size: 19px;
+  }
+  .aoc-hero-countdown--compact {
+    max-width: 300px;
+  }
+  .aoc-countdown-section__ctas .grdeen-btn {
+    padding: 11px 16px;
+    font-size: 12px;
+  }
+}
+/* Tablet: intro + countdown on one row, buttons centred underneath */
+@media (max-width: 991px) {
+  .aoc-countdown-section__inner {
+    grid-template-columns: auto 1fr;
+  }
+  .aoc-countdown-section__ctas {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}
+/* Phone: centred stack */
+@media (max-width: 767px) {
+  .aoc-countdown-section {
+    padding: 22px 0;
+    text-align: center;
+  }
+  .aoc-countdown-section__inner {
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+  .aoc-countdown-section__title {
+    font-size: 18px;
+  }
+  .aoc-hero-countdown--compact {
+    max-width: 340px;
+  }
+  .aoc-countdown-section__ctas .grdeen-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}

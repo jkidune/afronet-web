@@ -64,6 +64,9 @@
     </div>
     <!-- /.preloader -->
     <div class="page-wrapper">
+        <!-- 6AOC countdown bar: text, colour and link are set by the countdown in grdeen.js -->
+        <a class="aoc-countdown-bar" id="aoc-countdown-bar" href="6aoc.html#fees" data-register-href="6aoc.html#fees" hidden></a>
+
         <div class="topbar-one topbar-one--four">
             <div class="container-fluid">
                 <div class="topbar-one__inner">
@@ -404,6 +407,34 @@
             <!--/.main-slider-four__carousel -->
         </section>
         <!--/.main-slider-four -->
+
+        <!-- 6AOC countdown (numbers and messages are filled by the countdown in grdeen.js) -->
+        <section class="aoc-countdown-section">
+            <div class="container">
+                <div class="aoc-countdown-section__inner">
+                <div class="aoc-countdown-section__intro">
+                    <span class="aoc-countdown-section__eyebrow">Countdown to 6AOC</span>
+                    <h2 class="aoc-countdown-section__title">6th African Organic Conference</h2>
+                    <p class="aoc-countdown-section__meta">1–4 Dec 2026 · Lusaka, Zambia</p>
+                </div>
+                <div class="aoc-hero-countdown aoc-hero-countdown--compact">
+                    <div class="aoc-hero-countdown__boxes" role="timer" aria-label="Time until 6AOC opens">
+                        <div class="aoc-hero-countdown__box"><span class="aoc-hero-countdown__num" data-unit="d">0</span><span class="aoc-hero-countdown__label">Days</span></div>
+                        <div class="aoc-hero-countdown__box"><span class="aoc-hero-countdown__num" data-unit="h">00</span><span class="aoc-hero-countdown__label">Hours</span></div>
+                        <div class="aoc-hero-countdown__box"><span class="aoc-hero-countdown__num" data-unit="m">00</span><span class="aoc-hero-countdown__label">Minutes</span></div>
+                        <div class="aoc-hero-countdown__box aoc-hero-countdown__box--seconds"><span class="aoc-hero-countdown__num" data-unit="s">00</span><span class="aoc-hero-countdown__label">Seconds</span></div>
+                    </div>
+                    <p class="aoc-hero-countdown__message" hidden></p>
+                </div>
+                <div class="aoc-countdown-section__ctas">
+                    <a href="6aoc.html#fees" class="grdeen-btn" data-aoc-registration-only><span>Register Now</span></a>
+                    <a href="6aoc.html" class="grdeen-btn grdeen-btn--outline-light"><span>Explore 6AOC</span></a>
+                </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.aoc-countdown-section -->
+
         <section class="partners-marquee section-space">
             <div class="container">
                 <div class="sec-title sec-title--two text-center wow fadeInUp" data-wow-duration="1500ms">

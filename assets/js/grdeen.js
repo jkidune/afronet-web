@@ -1005,6 +1005,122 @@
     applyState(false);
   })();
 
+  /*-- 6AOC countdown: top bar phases (Early Bird -> Regular -> event -> live -> hidden) and countdown boxes --*/
+  (function () {
+    // Key dates, all in Lusaka time (UTC+02:00) so every visitor sees the same countdown
+    var EARLY_BIRD_END = Date.parse("2026-10-25T23:59:59+02:00");
+    var REGULAR_END = Date.parse("2026-11-25T23:59:59+02:00");
+    var EVENT_START = Date.parse("2026-12-01T08:00:00+02:00");
+    var EVENT_END = Date.parse("2026-12-04T18:00:00+02:00");
+    var LUSAKA_OFFSET_MS = 2 * 60 * 60 * 1000;
+
+    var bar = document.getElementById("aoc-countdown-bar");
+    var counters = document.querySelectorAll(".aoc-hero-countdown");
+    var registrationOnly = document.querySelectorAll("[data-aoc-registration-only]");
+    if (!bar && !counters.length) return;
+    // Where the bar sends people while registration is open (set per page)
+    var registerHref = (bar && bar.getAttribute("data-register-href")) || "#fees";
+
+    // Testing only: ?aocnow=2026-10-25T10:00:00%2B02:00 pretends the page opened at that moment
+    var clockShift = 0;
+    var simulated = /[?&]aocnow=([^&]+)/.exec(window.location.search);
+    if (simulated) {
+      var simulatedTime = Date.parse(decodeURIComponent(simulated[1]));
+      if (!isNaN(simulatedTime)) clockShift = simulatedTime - Date.now();
+    }
+    function now() {
+      return Date.now() + clockShift;
+    }
+
+    function pad(n) {
+      return (n < 10 ? "0" : "") + n;
+    }
+    // Whole seconds left, rounded up, so a phase switches exactly when it reaches zero
+    function timeLeft(ms) {
+      var total = Math.max(0, Math.ceil(ms / 1000));
+      return {
+        d: Math.floor(total / 86400),
+        h: Math.floor((total % 86400) / 3600),
+        m: Math.floor((total % 3600) / 60),
+        s: total % 60
+      };
+    }
+    // Calendar day in Lusaka, e.g. "2026-10-25"
+    function lusakaDay(t) {
+      return new Date(t + LUSAKA_OFFSET_MS).toISOString().slice(0, 10);
+    }
+
+    var BAR_LABELS = {
+      early: "Early Bird ends",
+      regular: "Regular registration ends",
+      event: "6AOC starts"
+    };
+
+    function renderBar(phase, t, target) {
+      if (phase === "done") {
+        bar.hidden = true;
+        return;
+      }
+      bar.hidden = false;
+      bar.className = "aoc-countdown-bar aoc-countdown-bar--" + phase;
+      var canRegister = phase === "early" || phase === "regular";
+      if (canRegister) bar.setAttribute("href", registerHref);
+      else bar.removeAttribute("href");
+
+      if (phase === "live") {
+        bar.textContent = "Happening now in Lusaka, Zambia";
+        return;
+      }
+      var left = timeLeft(target - t);
+      var today = lusakaDay(t) === lusakaDay(target);
+      var time = (today ? "" : left.d + "d ") + pad(left.h + (today ? left.d * 24 : 0)) + "h " + pad(left.m) + "m " + pad(left.s) + "s";
+      bar.classList.toggle("is-today", today);
+      bar.innerHTML = BAR_LABELS[phase] + (today ? " TODAY · " : " in ") +
+        '<span class="aoc-countdown-bar__time">' + time + "</span>" +
+        (canRegister ? ' <span class="aoc-countdown-bar__cta">Register now <span class="aoc-countdown-bar__arrow" aria-hidden="true">→</span></span>' : "");
+    }
+
+    function renderCounter(counter, phase, t) {
+      var boxes = counter.querySelector(".aoc-hero-countdown__boxes");
+      var message = counter.querySelector(".aoc-hero-countdown__message");
+      var counting = phase === "early" || phase === "regular" || phase === "event";
+      boxes.hidden = !counting;
+      message.hidden = counting;
+      if (counting) {
+        var left = timeLeft(EVENT_START - t);
+        boxes.querySelector('[data-unit="d"]').textContent = left.d;
+        boxes.querySelector('[data-unit="h"]').textContent = pad(left.h);
+        boxes.querySelector('[data-unit="m"]').textContent = pad(left.m);
+        boxes.querySelector('[data-unit="s"]').textContent = pad(left.s);
+      } else {
+        message.textContent = phase === "live"
+          ? "Happening now in Lusaka, Zambia"
+          : "Thank you for joining the 6th African Organic Conference";
+      }
+    }
+
+    function tick() {
+      var t = now();
+      var phase, target;
+      if (t < EARLY_BIRD_END) { phase = "early"; target = EARLY_BIRD_END; }
+      else if (t < REGULAR_END) { phase = "regular"; target = REGULAR_END; }
+      else if (t < EVENT_START) { phase = "event"; target = EVENT_START; }
+      else if (t < EVENT_END) { phase = "live"; target = EVENT_END; }
+      else { phase = "done"; target = null; }
+
+      if (bar) renderBar(phase, t, target);
+      for (var i = 0; i < counters.length; i++) renderCounter(counters[i], phase, t);
+      // Register buttons and similar disappear once registration has closed
+      var open = phase === "early" || phase === "regular";
+      for (var j = 0; j < registrationOnly.length; j++) registrationOnly[j].hidden = !open;
+
+      // Next update just after the next whole second, so the display never drifts
+      window.setTimeout(tick, 1000 - (now() % 1000) + 20);
+    }
+
+    tick();
+  })();
+
   /*-- Event sub-menu: swipe progress bar, filled to the share of links seen so far --*/
   (function () {
     var list = document.querySelector(".event-subnav__list");
