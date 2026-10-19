@@ -1037,21 +1037,25 @@
     update();
   })();
 
-  /*-- Promo popups: shown one after another, each once per visitor (dismissal remembered per poster) --*/
+  /*-- Promo popups: shown one after another; each poster comes back once a day after it was closed --*/
   (function () {
+    var RESHOW_AFTER_MS = 24 * 60 * 60 * 1000;
+
     function keyOf(el) {
       return $(el).data("storage-key") || "afronet6aocPosterPopupDismissed";
     }
+    // Stores the time the poster was closed; older "1" flags read as long expired, so those visitors see it again
     function isDismissed(el) {
       try {
-        return localStorage.getItem(keyOf(el)) === "1";
+        var closedAt = parseInt(localStorage.getItem(keyOf(el)), 10);
+        return closedAt > 0 && Date.now() - closedAt < RESHOW_AFTER_MS;
       } catch (e) {
         return false;
       }
     }
     function markDismissed(el) {
       try {
-        localStorage.setItem(keyOf(el), "1");
+        localStorage.setItem(keyOf(el), String(Date.now()));
       } catch (e) {}
     }
 
