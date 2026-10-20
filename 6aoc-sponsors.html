@@ -36,6 +36,7 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/grdeen.css" />
+    <link rel="stylesheet" href="assets/css/6aoc-sponsors.css" />
 
     <style>
         .main-header__inner {
@@ -620,6 +621,9 @@
             </div><!-- /.container -->
         </section><!-- /.page-header -->
 
+        <!-- 6AOC sponsor logo strip (built by assets/js/6aoc-sponsors.js) -->
+        <section class="aoc-sponsor-strip" data-aoc-sponsor-strip></section>
+
         <section class="section-space">
             <div class="container">
                 <div class="row align-items-center gutter-y-40">
@@ -629,7 +633,7 @@
                             <div>
                                 <h2 style="font-family:var(--grdeen-heading-font, 'DM Sans', sans-serif); font-size:34px; font-weight:800; line-height:1.2; color:var(--grdeen-text-dark, #07370a); margin-bottom:20px;">Sponsors & Partners</h2>
                                 <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-bottom:16px;">The African Organic Conference is a collaborative effort, bringing together AfrONet, the African Union Commission, national and regional organic movements, and technical and financial partners from across Africa and beyond.</p>
-                                <p style="color:var(--grdeen-text, #626f62); line-height:1.85; font-style:italic;">6AOC-specific sponsors and partners are to be confirmed and will be listed here with logos.</p>
+                                <!-- Internal note: 6AOC-specific sponsors and partners are to be confirmed and will be listed here with logos. -->
                             </div>
                         </div>
                     </div>
@@ -641,6 +645,18 @@
                     </div>
                 </div>
 
+                <!-- Confirmed 6AOC sponsors (cards built from assets/js/6aoc-sponsors.js) -->
+                <div class="row justify-content-center" style="margin-top:60px;">
+                    <div class="col-lg-11">
+                        <div class="sec-title sec-title--two text-center">
+                            <span class="sec-title__tagline">Confirmed</span>
+                            <h2 class="sec-title__title">6AOC Sponsors &amp; Partners</h2>
+                        </div>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; text-align:center; max-width:760px; margin:0 auto;">We gratefully acknowledge the following organisations for supporting the 6th African Organic Conference, Lusaka, 1–4 December 2026.</p>
+                        <div data-aoc-sponsor-grid role="group" aria-label="6AOC Sponsors &amp; Partners"></div>
+                    </div>
+                </div>
+
                 <div class="row justify-content-center" style="margin-top:40px;">
                     <div class="col-lg-9">
                         <div class="sec-title sec-title--two text-center" style="margin-top:50px;">
@@ -648,13 +664,14 @@
                             <h2 class="sec-title__title">Partners of the 5th AOC (Kigali, 2023)</h2>
                         </div>
                         <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">The previous conference was supported by: African Organic Network (AfrONet) &middot; Government of the Republic of Rwanda &middot; Rwanda Organic Agriculture Movement (ROAM) &middot; Inter-continental Network of Organic Farmers Organization (INOFO) &middot; Network of Organic Agriculture Researchers in Africa (NOARA) &middot; Kenya Organic Agriculture Network (KOAN) &middot; African Union Commission / EOA Continental Secretariat &middot; Agence Fran&ccedil;aise de D&eacute;veloppement (AFD) &middot; Research Institute of Organic Agriculture (FiBL) &middot; Naturland Association for Organic Agriculture &middot; SWISSAID &middot; GIZ &middot; IFOAM Organics International Asia &middot; International Society for Organic Agriculture Research (ISOFAR) &middot; and National Organic Agriculture Movements (NOAMs) across the continent.</p>
-                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; font-size:14px; font-style:italic;">These are listed as 5th AOC partners — not confirmed 6AOC sponsors — pending confirmation of which are returning for 6AOC.</p>
+                        <!-- Internal note: these are listed as 5th AOC partners — not confirmed 6AOC sponsors — pending confirmation of which are returning for 6AOC. -->
 
                         <div class="sec-title sec-title--two text-center" style="margin-top:50px;">
                             <span class="sec-title__tagline">Get Involved</span>
                             <h2 class="sec-title__title">Become a Sponsor</h2>
                         </div>
-                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; text-align:center;"><em>Sponsorship tiers and packages are still being finalized.</em> Interested in sponsoring 6AOC? Get in touch and we'll follow up with details.</p>
+                        <!-- Internal note: sponsorship tiers and packages are still being finalized. -->
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; text-align:center;">Interested in sponsoring 6AOC? Get in touch and we'll follow up with details.</p>
                         <div style="text-align:center; margin-top:20px;">
                             <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-sponsor-modal">
                                 <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Become a Sponsor</span>
@@ -664,6 +681,9 @@
                 </div>
             </div>
         </section>
+
+        <!-- 6AOC sponsor logo strip (built by assets/js/6aoc-sponsors.js) -->
+        <section class="aoc-sponsor-strip" data-aoc-sponsor-strip></section>
 
         <footer class="main-footer main-footer--two">
             <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg1-1.jpg);"></div>
@@ -907,6 +927,7 @@
     <script src="assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
     <!-- template js -->
     <script src="assets/js/grdeen.js"></script>
+    <script src="assets/js/6aoc-sponsors.js"></script>
 
     <script>
         (function ($) {
