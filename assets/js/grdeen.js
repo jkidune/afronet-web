@@ -371,7 +371,7 @@
       return item.label + ": " + (form.find('[name="' + item.name + '"]').val() || "");
     });
     const body =
-      "Hello AfrONet,\n\nI would like to submit the following for the 6th African Organic Conference (6AOC), 1-4 December 2026, Lusaka, Zambia:\n\n" +
+      "Hello AfrONet,\n\nI would like to submit the following for the 6th African Organic Conference (6AOC), 1-4 December 2026, Chongwe, Lusaka, Zambia:\n\n" +
       lines.join("\n") +
       "\n\nThank you!";
     const mailto =
@@ -1068,7 +1068,7 @@
       else bar.removeAttribute("href");
 
       if (phase === "live") {
-        bar.textContent = "Happening now in Lusaka, Zambia";
+        bar.textContent = "Happening now in Chongwe, Lusaka, Zambia";
         return;
       }
       var left = timeLeft(target - t);
@@ -1094,7 +1094,7 @@
         boxes.querySelector('[data-unit="s"]').textContent = pad(left.s);
       } else {
         message.textContent = phase === "live"
-          ? "Happening now in Lusaka, Zambia"
+          ? "Happening now in Chongwe, Lusaka, Zambia"
           : "Thank you for joining the 6th African Organic Conference";
       }
     }

@@ -1,0 +1,355 @@
+/*--------------------------------------------------------------
+# 6AOC photo gallery + full-screen viewer (built by assets/js/6aoc-gallery.js)
+--------------------------------------------------------------*/
+
+.aoc-gallery__intro {
+  max-width: 680px;
+  margin: 0 auto 22px;
+  color: var(--grdeen-text, #626f62);
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* ---- Filter chips ---- */
+.aoc-gallery__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.aoc-gallery__filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #d9e3d6;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--grdeen-text-dark, #07370a);
+  font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.aoc-gallery__filter:hover {
+  border-color: var(--grdeen-base, #1a9120);
+}
+.aoc-gallery__filter[aria-pressed="true"] {
+  border-color: var(--grdeen-base, #1a9120);
+  background: var(--grdeen-base, #1a9120);
+  color: #fff;
+}
+.aoc-gallery__filter:focus-visible {
+  outline: 2px solid var(--grdeen-base, #1a9120);
+  outline-offset: 2px;
+}
+.aoc-gallery__count {
+  min-width: 22px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(26, 145, 32, 0.1);
+  font-size: 12px;
+  text-align: center;
+}
+.aoc-gallery__filter[aria-pressed="true"] .aoc-gallery__count {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---- Grid: uniform tiles, the first photo of each view gets a large tile ---- */
+.aoc-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: clamp(130px, 16vw, 190px);
+  grid-auto-flow: dense;
+  gap: 12px;
+}
+.aoc-gallery__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #eef2ec;
+}
+.aoc-gallery__item[hidden] {
+  display: none;
+}
+.aoc-gallery__item.is-featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.aoc-gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+/* Posters and logos are shown whole, not cropped */
+.aoc-gallery__item[data-cat="promo"] {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #e3e8df;
+}
+.aoc-gallery__item[data-cat="promo"] img {
+  object-fit: contain;
+  padding: 8px;
+}
+/* Hover/focus: soft zoom, dark fade with the caption and an expand icon */
+.aoc-gallery__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(7, 55, 10, 0) 45%, rgba(7, 55, 10, 0.82) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.aoc-gallery__item::after {
+  content: "\f065";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--grdeen-text-dark, #07370a);
+  font-family: "Font Awesome 5 Free";
+  font-size: 14px;
+  font-weight: 900;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.aoc-gallery__caption {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  z-index: 2;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.aoc-gallery__item:hover img,
+.aoc-gallery__item:focus-visible img {
+  transform: scale(1.06);
+}
+.aoc-gallery__item:hover::before,
+.aoc-gallery__item:focus-visible::before,
+.aoc-gallery__item:hover::after,
+.aoc-gallery__item:focus-visible::after,
+.aoc-gallery__item:hover .aoc-gallery__caption,
+.aoc-gallery__item:focus-visible .aoc-gallery__caption {
+  opacity: 1;
+  transform: none;
+}
+.aoc-gallery__item:focus-visible {
+  outline: 3px solid var(--grdeen-base, #1a9120);
+  outline-offset: 2px;
+}
+.aoc-gallery__item[data-cat="promo"]::before,
+.aoc-gallery__item[data-cat="promo"] .aoc-gallery__caption {
+  display: none;
+}
+
+/* ---- Load more ---- */
+.aoc-gallery__more {
+  margin-top: 26px;
+  text-align: center;
+}
+.aoc-gallery__more[hidden] {
+  display: none;
+}
+.aoc-gallery__more-btn {
+  padding: 12px 26px;
+  border: 2px solid var(--grdeen-base, #1a9120);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--grdeen-text-dark, #07370a);
+  font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.aoc-gallery__more-btn:hover,
+.aoc-gallery__more-btn:focus-visible {
+  background: var(--grdeen-base, #1a9120);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .aoc-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: clamp(110px, 30vw, 170px);
+    gap: 8px;
+  }
+  .aoc-gallery__item {
+    border-radius: 10px;
+  }
+  .aoc-gallery__filter {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+  /* Touch screens have no hover: keep the expand icon visible */
+  .aoc-gallery__item::after {
+    opacity: 0.9;
+    transform: none;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+/* ---- Full-screen viewer ---- */
+.aoc-lightbox-open,
+.aoc-lightbox-open body {
+  overflow: hidden;
+}
+.aoc-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 72px;
+  background: rgba(6, 20, 8, 0.94);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  touch-action: pan-y;
+}
+.aoc-lightbox[hidden] {
+  display: none;
+}
+.aoc-lightbox.is-open {
+  opacity: 1;
+}
+.aoc-lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.aoc-lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100% - 56px);
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  transition: opacity 0.25s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.aoc-lightbox.is-loading .aoc-lightbox__img {
+  opacity: 0.85;
+}
+.aoc-lightbox__caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 6px 16px;
+  margin-top: 14px;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+}
+.aoc-lightbox__counter {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.aoc-lightbox__close,
+.aoc-lightbox__nav {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.aoc-lightbox__close:hover,
+.aoc-lightbox__nav:hover,
+.aoc-lightbox__close:focus-visible,
+.aoc-lightbox__nav:focus-visible {
+  background: var(--grdeen-base, #1a9120);
+  outline: none;
+}
+.aoc-lightbox__close {
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  font-size: 30px;
+}
+.aoc-lightbox__nav {
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  font-size: 38px;
+}
+.aoc-lightbox__nav[hidden] {
+  display: none;
+}
+.aoc-lightbox__nav--prev {
+  left: 12px;
+}
+.aoc-lightbox__nav--next {
+  right: 12px;
+}
+@media (max-width: 767px) {
+  .aoc-lightbox {
+    padding: 60px 10px 24px;
+  }
+  .aoc-lightbox__nav {
+    top: auto;
+    bottom: 14px;
+    margin-top: 0;
+    width: 46px;
+    height: 46px;
+  }
+  .aoc-lightbox__img {
+    max-height: calc(100% - 96px);
+  }
+  .aoc-lightbox__caption {
+    margin-bottom: 56px;
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aoc-gallery__item img,
+  .aoc-gallery__item::before,
+  .aoc-gallery__item::after,
+  .aoc-gallery__caption,
+  .aoc-lightbox,
+  .aoc-lightbox__img {
+    transition: none;
+  }
+  .aoc-gallery__item:hover img,
+  .aoc-gallery__item:focus-visible img {
+    transform: none;
+  }
+}
