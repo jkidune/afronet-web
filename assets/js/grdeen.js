@@ -248,12 +248,21 @@
     });
   }
 
+  // Page name from a URL or link: "/about", "about.html" and "https://afronet.bio/about" all give "about"; the homepage gives ""
+  function pageKey(url) {
+    let path = String(url || "").split("#")[0].split("?")[0];
+    path = path.split("/").pop().replace(/\.html$/, "");
+    return path === "index" ? "" : path;
+  }
+
   function dynamicCurrentMenuClass(selector) {
-    let FileName = window.location.href.split("/").reverse()[0];
+    let FileName = pageKey(window.location.pathname);
 
     selector.find("li").each(function () {
-      let anchor = $(this).find("a");
-      if ($(anchor).attr("href") == FileName) {
+      let href = $(this).find("a").attr("href") || "";
+      // In-page anchors and external links never mark a menu item as current
+      if (!href || href.indexOf("#") !== -1 || /^[a-z]+:/i.test(href)) return;
+      if (pageKey(href) === FileName) {
         $(this).addClass("current");
       }
     });
