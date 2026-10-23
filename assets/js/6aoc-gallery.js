@@ -1,5 +1,5 @@
 /*
- * 6AOC photo gallery (6aoc-previous-conferences.html)
+ * Photo gallery (6aoc-previous-conferences.html and gallery.html)
  * Markup: <div data-aoc-gallery data-initial="12"> with <a class="aoc-gallery__item" href="full.jpg" data-cat="…" data-caption="…"><img …></a>
  * Adds category filters, "Load more", and a full-screen viewer (arrows, keyboard, swipe, counter).
  * Without JavaScript every tile is still a plain link to the full-size photo.
@@ -12,7 +12,8 @@
     exhibition: "Exhibition",
     people: "People & Networking",
     celebrations: "Celebrations",
-    promo: "Promotional"
+    promo: "Promotional",
+    posters: "Event Posters"
   };
 
   var galleries = document.querySelectorAll("[data-aoc-gallery]");

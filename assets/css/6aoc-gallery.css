@@ -88,11 +88,13 @@
   transition: transform 0.5s ease;
 }
 /* Posters and logos are shown whole, not cropped */
-.aoc-gallery__item[data-cat="promo"] {
+.aoc-gallery__item[data-cat="promo"],
+.aoc-gallery__item[data-cat="posters"] {
   background: #fff;
   box-shadow: inset 0 0 0 1px #e3e8df;
 }
-.aoc-gallery__item[data-cat="promo"] img {
+.aoc-gallery__item[data-cat="promo"] img,
+.aoc-gallery__item[data-cat="posters"] img {
   object-fit: contain;
   padding: 8px;
 }
@@ -159,7 +161,9 @@
   outline-offset: 2px;
 }
 .aoc-gallery__item[data-cat="promo"]::before,
-.aoc-gallery__item[data-cat="promo"] .aoc-gallery__caption {
+.aoc-gallery__item[data-cat="promo"] .aoc-gallery__caption,
+.aoc-gallery__item[data-cat="posters"]::before,
+.aoc-gallery__item[data-cat="posters"] .aoc-gallery__caption {
   display: none;
 }
 
