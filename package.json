@@ -5,6 +5,7 @@
   "description": "AfrONet (African Organic Network) public website — static HTML/CSS/JS, deployed to Cloudflare Workers as static assets. No build step.",
   "scripts": {
     "dev": "wrangler dev",
+    "i18n": "node tools/i18n-build.mjs",
     "deploy": "wrangler deploy"
   },
   "devDependencies": {

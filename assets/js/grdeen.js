@@ -1,6 +1,12 @@
 (function ($) {
   "use strict";
 
+  // Translated pages (/fr/, /pt/, /sw/) carry a string table built by tools/i18n-build.mjs; English pages fall back to the text as written
+  function t(text) {
+    var table = window.AFRONET_I18N;
+    return (table && table[text]) || text;
+  }
+
   /*-- Checkout Accoradin --*/
   if ($(".checkout-page__payment__title").length) {
     $(".checkout-page__payment__item")
@@ -183,7 +189,7 @@
           .then(function (res) { return res.json(); })
           .then(function (data) {
             submitBtn.prop("disabled", false);
-            var message = data.message || "Something went wrong. Please try again.";
+            var message = data.message || t("Something went wrong. Please try again.");
             mcResp.append('<p class="mc-message">' + message + "</p>");
             if (data.status === "mail_sent") {
               Self.removeClass("errored").addClass("successed");
@@ -259,6 +265,8 @@
     let FileName = pageKey(window.location.pathname);
 
     selector.find("li").each(function () {
+      // The language switcher links to this same page in other languages, which is not "current"
+      if ($(this).closest(".main-menu__lang").length) return;
       let href = $(this).find("a").attr("href") || "";
       // In-page anchors and external links never mark a menu item as current
       if (!href || href.indexOf("#") !== -1 || /^[a-z]+:/i.test(href)) return;
@@ -294,6 +302,8 @@
     let navContent = document.querySelector(".main-menu").innerHTML;
     let mobileNavContainer = document.querySelector(".mobile-nav__container");
     mobileNavContainer.innerHTML = navContent;
+    // On phones the language choice sits first, where people look for it
+    $(".mobile-nav__container .main-menu__lang").prependTo(".mobile-nav__container .main-menu__list");
   }
 
   if ($(".sticky-header").length) {
@@ -1060,12 +1070,12 @@
     }
 
     var BAR_LABELS = {
-      early: "Early Bird ends",
-      regular: "Regular registration ends",
-      event: "6AOC starts"
+      early: t("Early Bird ends"),
+      regular: t("Regular registration ends"),
+      event: t("6AOC starts")
     };
 
-    function renderBar(phase, t, target) {
+    function renderBar(phase, at, target) {
       if (phase === "done") {
         bar.hidden = true;
         return;
@@ -1077,48 +1087,48 @@
       else bar.removeAttribute("href");
 
       if (phase === "live") {
-        bar.textContent = "Happening now in Chongwe, Lusaka, Zambia";
+        bar.textContent = t("Happening now in Chongwe, Lusaka, Zambia");
         return;
       }
-      var left = timeLeft(target - t);
-      var today = lusakaDay(t) === lusakaDay(target);
-      var time = (today ? "" : left.d + "d ") + pad(left.h + (today ? left.d * 24 : 0)) + "h " + pad(left.m) + "m " + pad(left.s) + "s";
+      var left = timeLeft(target - at);
+      var today = lusakaDay(at) === lusakaDay(target);
+      var time = (today ? "" : left.d + t("d") + " ") + pad(left.h + (today ? left.d * 24 : 0)) + t("h") + " " + pad(left.m) + t("m") + " " + pad(left.s) + t("s");
       bar.classList.toggle("is-today", today);
-      bar.innerHTML = BAR_LABELS[phase] + (today ? " TODAY · " : " in ") +
+      bar.innerHTML = BAR_LABELS[phase] + (today ? t(" TODAY · ") : t(" in ")) +
         '<span class="aoc-countdown-bar__time">' + time + "</span>" +
-        (canRegister ? ' <span class="aoc-countdown-bar__cta">Register now <span class="aoc-countdown-bar__arrow" aria-hidden="true">→</span></span>' : "");
+        (canRegister ? ' <span class="aoc-countdown-bar__cta">' + t("Register now") + ' <span class="aoc-countdown-bar__arrow" aria-hidden="true">→</span></span>' : "");
     }
 
-    function renderCounter(counter, phase, t) {
+    function renderCounter(counter, phase, at) {
       var boxes = counter.querySelector(".aoc-hero-countdown__boxes");
       var message = counter.querySelector(".aoc-hero-countdown__message");
       var counting = phase === "early" || phase === "regular" || phase === "event";
       boxes.hidden = !counting;
       message.hidden = counting;
       if (counting) {
-        var left = timeLeft(EVENT_START - t);
+        var left = timeLeft(EVENT_START - at);
         boxes.querySelector('[data-unit="d"]').textContent = left.d;
         boxes.querySelector('[data-unit="h"]').textContent = pad(left.h);
         boxes.querySelector('[data-unit="m"]').textContent = pad(left.m);
         boxes.querySelector('[data-unit="s"]').textContent = pad(left.s);
       } else {
         message.textContent = phase === "live"
-          ? "Happening now in Chongwe, Lusaka, Zambia"
-          : "Thank you for joining the 6th African Organic Conference";
+          ? t("Happening now in Chongwe, Lusaka, Zambia")
+          : t("Thank you for joining the 6th African Organic Conference");
       }
     }
 
     function tick() {
-      var t = now();
+      var at = now();
       var phase, target;
-      if (t < EARLY_BIRD_END) { phase = "early"; target = EARLY_BIRD_END; }
-      else if (t < REGULAR_END) { phase = "regular"; target = REGULAR_END; }
-      else if (t < EVENT_START) { phase = "event"; target = EVENT_START; }
-      else if (t < EVENT_END) { phase = "live"; target = EVENT_END; }
+      if (at < EARLY_BIRD_END) { phase = "early"; target = EARLY_BIRD_END; }
+      else if (at < REGULAR_END) { phase = "regular"; target = REGULAR_END; }
+      else if (at < EVENT_START) { phase = "event"; target = EVENT_START; }
+      else if (at < EVENT_END) { phase = "live"; target = EVENT_END; }
       else { phase = "done"; target = null; }
 
-      if (bar) renderBar(phase, t, target);
-      for (var i = 0; i < counters.length; i++) renderCounter(counters[i], phase, t);
+      if (bar) renderBar(phase, at, target);
+      for (var i = 0; i < counters.length; i++) renderCounter(counters[i], phase, at);
       // Register buttons and similar disappear once registration has closed
       var open = phase === "early" || phase === "regular";
       for (var j = 0; j < registrationOnly.length; j++) registrationOnly[j].hidden = !open;
@@ -1229,5 +1239,66 @@
         closeCurrent();
       }
     });
+  })();
+
+  /*-- Language switcher + a one-time suggestion when the browser prefers a language this page is available in --*/
+  (function () {
+    var CHOICE_KEY = "afronetLanguage";
+    var SUGGEST = {
+      fr: { text: "Cette page est disponible en français.", link: "Voir en français", close: "Fermer" },
+      pt: { text: "Esta página está disponível em português.", link: "Ver em português", close: "Fechar" },
+      sw: { text: "Ukurasa huu unapatikana kwa Kiswahili.", link: "Soma kwa Kiswahili", close: "Funga" }
+    };
+
+    function store(value) {
+      try { localStorage.setItem(CHOICE_KEY, value); } catch (e) {}
+    }
+    function stored() {
+      try { return localStorage.getItem(CHOICE_KEY); } catch (e) { return null; }
+    }
+
+    // The globe button only opens the list (the mobile menu adds its own toggle button)
+    $(document).on("click", ".main-menu__lang > a", function (e) {
+      e.preventDefault();
+    });
+    // Picking a language from the list remembers it, so we never suggest another one
+    $(document).on("click", ".main-menu__lang ul a", function () {
+      store($(this).attr("hreflang") || "");
+    });
+
+    var pageLang = (document.documentElement.lang || "en").slice(0, 2);
+    if (pageLang !== "en" || stored()) return;
+    var wanted = [];
+    (navigator.languages || [navigator.language || ""]).forEach(function (l) {
+      wanted.push(String(l).slice(0, 2).toLowerCase());
+    });
+    var target = null;
+    for (var i = 0; i < wanted.length && !target; i++) {
+      if (wanted[i] === "en") return;
+      if (SUGGEST[wanted[i]]) {
+        var alt = document.querySelector('link[rel="alternate"][hreflang="' + wanted[i] + '"]');
+        if (alt) target = { lang: wanted[i], href: alt.getAttribute("href") };
+      }
+    }
+    if (!target) return;
+
+    var s = SUGGEST[target.lang];
+    var bar = document.createElement("div");
+    bar.className = "lang-suggest";
+    bar.setAttribute("lang", target.lang);
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", s.text);
+    bar.innerHTML = '<span class="lang-suggest__text">' + s.text + "</span>" +
+      '<a class="lang-suggest__link" hreflang="' + target.lang + '"></a>' +
+      '<button type="button" class="lang-suggest__close" aria-label="' + s.close + '"><span aria-hidden="true">&times;</span></button>';
+    var link = bar.querySelector(".lang-suggest__link");
+    link.href = target.href.replace(/^https?:\/\/[^/]+/, "");
+    link.textContent = s.link + " →";
+    link.addEventListener("click", function () { store(target.lang); });
+    bar.querySelector(".lang-suggest__close").addEventListener("click", function () {
+      store("en");
+      bar.remove();
+    });
+    document.body.appendChild(bar);
   })();
 })(jQuery);

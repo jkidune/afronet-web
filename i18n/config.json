@@ -1,0 +1,21 @@
+{
+  "site": "https://afronet.bio",
+  "languages": {
+    "en": { "label": "English", "short": "EN", "locale": "en_GB", "switcherLabel": "Language" },
+    "fr": {
+      "label": "Français", "short": "FR", "locale": "fr_FR", "switcherLabel": "Langue",
+      "published": true,
+      "pages": ["index", "about", "6aoc"]
+    },
+    "pt": {
+      "label": "Português", "short": "PT", "locale": "pt_PT", "switcherLabel": "Idioma",
+      "published": true,
+      "pages": ["index", "about", "6aoc"]
+    },
+    "sw": {
+      "label": "Kiswahili", "short": "SW", "locale": "sw_TZ", "switcherLabel": "Lugha",
+      "published": false,
+      "pages": []
+    }
+  }
+}

@@ -39,7 +39,13 @@
 
   // Roughly how long each logo stays on screen while sliding
   var SECONDS_ON_SCREEN = 7;
-  var STRIP_LABEL = "6AOC Sponsors & Partners";
+  // Translated pages carry a string table (window.AFRONET_I18N); English falls back to the text as written
+  function t(text) {
+    var table = window.AFRONET_I18N;
+    return (table && table[text]) || text;
+  }
+
+  var STRIP_LABEL = t("6AOC Sponsors & Partners");
 
   var stripHosts = document.querySelectorAll("[data-aoc-sponsor-strip]");
   var gridHosts = document.querySelectorAll("[data-aoc-sponsor-grid]");
@@ -75,7 +81,7 @@
       '<div class="aoc-sponsor-pop__card">' +
       '<div class="aoc-sponsor-pop__logo"><img alt=""></div>' +
       '<p class="aoc-sponsor-pop__name"></p>' +
-      '<a class="aoc-sponsor-pop__link" target="_blank" rel="noopener">Visit website</a>' +
+      '<a class="aoc-sponsor-pop__link" target="_blank" rel="noopener">' + t("Visit website") + "</a>" +
       "</div>";
     popImg = pop.querySelector("img");
     popName = pop.querySelector(".aoc-sponsor-pop__name");
@@ -132,7 +138,7 @@
     popImg.alt = fullName(sponsor);
     popName.textContent = fullName(sponsor);
     popLink.href = sponsor.url;
-    popLink.setAttribute("aria-label", "Visit the " + sponsor.name + " website (opens in a new tab)");
+    popLink.setAttribute("aria-label", t("Visit the {name} website (opens in a new tab)").replace("{name}", sponsor.name));
     positionPopup(trigger);
     pop.classList.add("is-open");
     pop.setAttribute("aria-hidden", "false");

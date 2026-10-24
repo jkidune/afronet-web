@@ -7,13 +7,19 @@
 (function () {
   "use strict";
 
+  // Translated pages carry a string table (window.AFRONET_I18N); English falls back to the text as written
+  function t(text) {
+    var table = window.AFRONET_I18N;
+    return (table && table[text]) || text;
+  }
+
   var CATEGORY_LABELS = {
-    sessions: "Sessions",
-    exhibition: "Exhibition",
-    people: "People & Networking",
-    celebrations: "Celebrations",
-    promo: "Promotional",
-    posters: "Event Posters"
+    sessions: t("Sessions"),
+    exhibition: t("Exhibition"),
+    people: t("People & Networking"),
+    celebrations: t("Celebrations"),
+    promo: t("Promotional"),
+    posters: t("Event Posters")
   };
 
   var galleries = document.querySelectorAll("[data-aoc-gallery]");
@@ -34,16 +40,16 @@
     box.className = "aoc-lightbox";
     box.setAttribute("role", "dialog");
     box.setAttribute("aria-modal", "true");
-    box.setAttribute("aria-label", "Photo viewer");
+    box.setAttribute("aria-label", t("Photo viewer"));
     box.hidden = true;
     box.innerHTML =
-      '<button type="button" class="aoc-lightbox__close" aria-label="Close photo viewer"><span aria-hidden="true">&times;</span></button>' +
-      '<button type="button" class="aoc-lightbox__nav aoc-lightbox__nav--prev" aria-label="Previous photo"><span aria-hidden="true">&#8249;</span></button>' +
+      '<button type="button" class="aoc-lightbox__close" aria-label="' + t("Close photo viewer") + '"><span aria-hidden="true">&times;</span></button>' +
+      '<button type="button" class="aoc-lightbox__nav aoc-lightbox__nav--prev" aria-label="' + t("Previous photo") + '"><span aria-hidden="true">&#8249;</span></button>' +
       '<figure class="aoc-lightbox__figure">' +
       '<img class="aoc-lightbox__img" alt="">' +
       '<figcaption class="aoc-lightbox__caption"><span class="aoc-lightbox__text"></span><span class="aoc-lightbox__counter"></span></figcaption>' +
       "</figure>" +
-      '<button type="button" class="aoc-lightbox__nav aoc-lightbox__nav--next" aria-label="Next photo"><span aria-hidden="true">&#8250;</span></button>';
+      '<button type="button" class="aoc-lightbox__nav aoc-lightbox__nav--next" aria-label="' + t("Next photo") + '"><span aria-hidden="true">&#8250;</span></button>';
     document.body.appendChild(box);
     boxImg = box.querySelector(".aoc-lightbox__img");
     boxCaption = box.querySelector(".aoc-lightbox__text");
@@ -165,7 +171,7 @@
     var filters = document.createElement("div");
     filters.className = "aoc-gallery__filters";
     filters.setAttribute("role", "group");
-    filters.setAttribute("aria-label", "Filter photos");
+    filters.setAttribute("aria-label", t("Filter photos"));
     var keys = ["all"].concat(Object.keys(CATEGORY_LABELS).filter(function (k) { return counts[k]; }));
     keys.forEach(function (k) {
       var b = document.createElement("button");
@@ -173,7 +179,7 @@
       b.className = "aoc-gallery__filter";
       b.setAttribute("data-filter", k);
       b.setAttribute("aria-pressed", k === "all" ? "true" : "false");
-      b.innerHTML = (k === "all" ? "All" : CATEGORY_LABELS[k]) + ' <span class="aoc-gallery__count">' + counts[k] + "</span>";
+      b.innerHTML = (k === "all" ? t("All") : CATEGORY_LABELS[k]) + ' <span class="aoc-gallery__count">' + counts[k] + "</span>";
       b.addEventListener("click", function () {
         active = k;
         shown = step;
@@ -210,7 +216,7 @@
       if (visible[0]) visible[0].classList.add("is-featured"); // first photo gets the large tile
       var left = visible.length - Math.min(shown, visible.length);
       more.hidden = left <= 0;
-      moreBtn.textContent = "Load more photos (" + left + ")";
+      moreBtn.textContent = t("Load more photos") + " (" + left + ")";
     }
 
     // Open the viewer on click; arrows move through the whole filtered set, not just the loaded tiles

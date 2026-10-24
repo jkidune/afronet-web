@@ -2,3 +2,4 @@ node_modules/
 afronet-web-OLD/
 .claude/
 CLAUDE.md
+i18n/*.missing.json
