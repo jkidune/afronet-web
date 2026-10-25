@@ -5,12 +5,12 @@
     "fr": {
       "label": "Français", "short": "FR", "locale": "fr_FR", "switcherLabel": "Langue",
       "published": true,
-      "pages": ["index", "about", "6aoc"]
+      "pages": ["index", "about", "6aoc", "team", "members", "gallery", "programme", "programme-app", "programme-aoc", "programme-eoa-i", "programme-iiaba", "impact", "contact", "support-us", "faq", "small-grants-call-2026", "6aoc-background-theme", "6aoc-objectives", "6aoc-tracks", "6aoc-committees", "6aoc-previous-conferences", "6aoc-programme", "6aoc-registration", "6aoc-call-for-presentations", "6aoc-side-events", "6aoc-sponsors", "6aoc-resources", "6aoc-news", "6aoc-venue", "6aoc-contact"]
     },
     "pt": {
       "label": "Português", "short": "PT", "locale": "pt_PT", "switcherLabel": "Idioma",
       "published": true,
-      "pages": ["index", "about", "6aoc"]
+      "pages": ["index", "about", "6aoc", "team", "members", "gallery", "programme", "programme-app", "programme-aoc", "programme-eoa-i", "programme-iiaba", "impact", "contact", "support-us", "faq", "small-grants-call-2026", "6aoc-background-theme", "6aoc-objectives", "6aoc-tracks", "6aoc-committees", "6aoc-previous-conferences", "6aoc-programme", "6aoc-registration", "6aoc-call-for-presentations", "6aoc-side-events", "6aoc-sponsors", "6aoc-resources", "6aoc-news", "6aoc-venue", "6aoc-contact"]
     },
     "sw": {
       "label": "Kiswahili", "short": "SW", "locale": "sw_TZ", "switcherLabel": "Lugha",

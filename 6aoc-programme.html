@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="Conference programme for the 6th African Organic Conference (6AOC) — the four-day structure in Chongwe, Lusaka, Zambia, 1–4 December 2026." />
+    <meta name="description" content="Programme of events for the 6th African Organic Conference (6AOC), 1–4 December 2026 in Lusaka, Zambia: plenaries, track sessions, side events, the Lusaka Declaration, field visits and the AfrONet General Assembly." />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -346,19 +346,245 @@
             background: var(--grdeen-gray, #f6f7f2);
             color: var(--grdeen-text-dark, #07370a);
         }
+
+        /* Programme: key facts, day-by-day schedule (one open/close panel per day) and download */
+        .aoc-prog-facts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+            margin: 0 0 14px;
+            padding: 0;
+            list-style: none;
+            color: var(--grdeen-text-dark, #07370a);
+            font-size: 15px;
+        }
+        .aoc-prog-facts i {
+            margin-right: 6px;
+            color: var(--grdeen-base, #1a9120);
+        }
+        .aoc-prog-theme {
+            max-width: 720px;
+            margin: 0 auto 30px;
+            color: var(--grdeen-text, #626f62);
+            font-style: italic;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .aoc-prog-day {
+            margin-bottom: 12px;
+            border: 1px solid #e2e6e0;
+            border-radius: 10px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .aoc-prog-day > summary {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            cursor: pointer;
+            list-style: none;
+        }
+        .aoc-prog-day > summary::-webkit-details-marker {
+            display: none;
+        }
+        .aoc-prog-day > summary::after {
+            content: "\f107";
+            margin-left: auto;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--grdeen-base, #1a9120);
+            transition: transform 0.25s ease;
+        }
+        .aoc-prog-day[open] > summary::after {
+            transform: rotate(180deg);
+        }
+        .aoc-prog-day > summary:focus-visible {
+            outline: 2px solid var(--grdeen-base, #1a9120);
+            outline-offset: -2px;
+        }
+        .aoc-prog-day__num {
+            flex: 0 0 auto;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--grdeen-base, #1a9120);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .aoc-prog-day__title {
+            display: block;
+            color: var(--grdeen-text-dark, #07370a);
+            font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .aoc-prog-day__date {
+            display: block;
+            color: var(--grdeen-text, #626f62);
+            font-size: 14px;
+        }
+        .aoc-prog-list {
+            margin: 0;
+            padding: 0 20px 14px;
+            list-style: none;
+            border-top: 1px solid #eef1ec;
+        }
+        .aoc-prog-list > li {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e8ece6;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.6;
+        }
+        .aoc-prog-list > li:last-child {
+            border-bottom: 0;
+        }
+        .aoc-prog-list time {
+            color: var(--grdeen-text-dark, #07370a);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .aoc-prog-list strong {
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        .aoc-prog-list ul {
+            margin: 6px 0 0;
+            padding-left: 18px;
+        }
+        /* "Detailed programme" panel inside each day */
+        .aoc-prog-detail {
+            margin: 0 20px 16px;
+            border-radius: 8px;
+            background: var(--grdeen-gray, #f6f7f2);
+        }
+        .aoc-prog-detail > summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            color: var(--grdeen-base, #1a9120);
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+        }
+        .aoc-prog-detail > summary::-webkit-details-marker {
+            display: none;
+        }
+        .aoc-prog-detail > summary::before {
+            content: "\f067";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 12px;
+        }
+        .aoc-prog-detail[open] > summary::before {
+            content: "\f068";
+        }
+        .aoc-prog-detail > summary:focus-visible {
+            outline: 2px solid var(--grdeen-base, #1a9120);
+            outline-offset: -2px;
+        }
+        .aoc-prog-detail__body {
+            padding: 0 16px 8px;
+        }
+        .aoc-prog-session {
+            padding: 12px 0;
+            border-top: 1px solid #e2e6e0;
+        }
+        .aoc-prog-session__head {
+            margin: 0 0 6px;
+            color: var(--grdeen-text-dark, #07370a);
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .aoc-prog-session__head time {
+            margin-right: 8px;
+            color: var(--grdeen-base, #1a9120);
+            white-space: nowrap;
+        }
+        .aoc-prog-session ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--grdeen-text, #626f62);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .aoc-prog-session li + li {
+            margin-top: 5px;
+        }
+        .aoc-prog-session li time,
+        .aoc-prog-session li em {
+            color: var(--grdeen-text-dark, #07370a);
+            font-style: italic;
+        }
+        .aoc-prog-tbc {
+            color: #8a948a;
+            font-style: italic;
+        }
+        @media (max-width: 575px) {
+            .aoc-prog-detail {
+                margin: 0 12px 12px;
+            }
+            .aoc-prog-detail__body {
+                padding: 0 12px 6px;
+            }
+        }
+        .aoc-prog-note {
+            margin-top: 22px;
+            color: var(--grdeen-text, #626f62);
+            font-size: 14px;
+            font-style: italic;
+            text-align: center;
+        }
+        .aoc-prog-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        @media (max-width: 575px) {
+            .aoc-prog-day > summary {
+                padding: 14px 16px;
+            }
+            .aoc-prog-list {
+                padding: 0 16px 12px;
+            }
+            .aoc-prog-list > li {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .aoc-history-table th,
+            .aoc-history-table td {
+                padding: 10px;
+            }
+            .aoc-history-table td:nth-child(2) {
+                white-space: normal !important;
+            }
+        }
     </style>
 
     <link rel="canonical" href="https://afronet.bio/6aoc-programme" />
-    <!-- i18n:alternates --><!-- /i18n:alternates -->
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="https://afronet.bio/6aoc-programme" />
+    <link rel="alternate" hreflang="fr" href="https://afronet.bio/fr/6aoc-programme" />
+    <link rel="alternate" hreflang="pt" href="https://afronet.bio/pt/6aoc-programme" />
+    <link rel="alternate" hreflang="x-default" href="https://afronet.bio/6aoc-programme" />
+    <!-- /i18n:alternates -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Programme — 6th African Organic Conference (6AOC)" />
-    <meta property="og:description" content="Conference programme for the 6th African Organic Conference (6AOC) — the four-day structure in Chongwe, Lusaka, Zambia, 1–4 December 2026." />
+    <meta property="og:description" content="Programme of events for the 6th African Organic Conference (6AOC), 1–4 December 2026 in Lusaka, Zambia: plenaries, track sessions, side events, the Lusaka Declaration, field visits and the AfrONet General Assembly." />
     <meta property="og:url" content="https://afronet.bio/6aoc-programme" />
     <meta property="og:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
     <meta property="og:site_name" content="AfrONet — African Organic Network" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Programme — 6th African Organic Conference (6AOC)" />
-    <meta name="twitter:description" content="Conference programme for the 6th African Organic Conference (6AOC) — the four-day structure in Chongwe, Lusaka, Zambia, 1–4 December 2026." />
+    <meta name="twitter:description" content="Programme of events for the 6th African Organic Conference (6AOC), 1–4 December 2026 in Lusaka, Zambia: plenaries, track sessions, side events, the Lusaka Declaration, field visits and the AfrONet General Assembly." />
     <meta name="twitter:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://afronet.bio/"},{"@type":"ListItem","position":2,"name":"6AOC","item":"https://afronet.bio/6aoc"},{"@type":"ListItem","position":3,"name":"Programme","item":"https://afronet.bio/6aoc-programme"}]}</script>
 </head>
@@ -470,7 +696,7 @@
                             <li>
                                 <a href="/6aoc-contact">Contact</a>
                             </li>
-                            <li class="dropdown main-menu__lang" translate="no"><a href="#" role="button" aria-label="Language"><i class="fas fa-globe" aria-hidden="true"></i> EN</a><ul><li class="is-active"><a href="/6aoc-programme" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="/fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="/pt/" hreflang="pt" lang="pt">Português</a></li></ul></li><!-- /.main-menu__lang -->
+                            <li class="dropdown main-menu__lang" translate="no"><a href="#" role="button" aria-label="Language"><i class="fas fa-globe" aria-hidden="true"></i> EN</a><ul><li class="is-active"><a href="/6aoc-programme" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="/fr/6aoc-programme" hreflang="fr" lang="fr">Français</a></li><li><a href="/pt/6aoc-programme" hreflang="pt" lang="pt">Português</a></li></ul></li><!-- /.main-menu__lang -->
                         </ul>
                     </nav><!-- /.main-header__nav -->
                     <div class="main-header__right">
@@ -515,34 +741,308 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
-                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; text-align:center; margin-bottom:30px;">The 6AOC runs across four days in Chongwe, Lusaka, Zambia:</p>
+                        <div class="sec-title sec-title--two text-center">
+                            <span class="sec-title__tagline">1&ndash;4 December 2026</span>
+                            <h2 class="sec-title__title">Summary of the 6AOC Programme</h2>
+                        </div>
+                        <ul class="aoc-prog-facts">
+                            <li><i class="fas fa-calendar-alt" aria-hidden="true"></i>1&ndash;4 December 2026</li>
+                            <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Mika Convention Centre, Lusaka, Zambia</li>
+                        </ul>
+                        <p class="aoc-prog-theme"><strong style="font-style:normal;">Theme:</strong> Building resilient agri-food systems and ensuring the right to food in Africa through organic agriculture</p>
+
                         <div class="table-responsive" style="overflow-x:auto;">
                             <table class="aoc-history-table">
                                 <thead>
                                     <tr>
                                         <th>Day</th>
-                                        <th>Focus</th>
+                                        <th>Date</th>
+                                        <th>Key programme items</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="white-space:nowrap;">Day 1&ndash;2</td>
-                                        <td>Presentations and information exchange across four tracks: Policy, Farmers', Value Chain &amp; Marketing, and Research</td>
+                                        <td style="white-space:nowrap;">Day 1</td>
+                                        <td style="white-space:nowrap;">1 December 2026</td>
+                                        <td>Inaugural session, Plenary I and Track Sessions Block 1</td>
                                     </tr>
                                     <tr>
-                                        <td>Day 3</td>
-                                        <td>Side events, business discourse meetings, and field visits to organic farms, value-addition, and marketing facilities</td>
+                                        <td style="white-space:nowrap;">Day 2</td>
+                                        <td style="white-space:nowrap;">2 December 2026</td>
+                                        <td>Plenary II and Track Sessions Blocks 2 &amp; 3</td>
                                     </tr>
                                     <tr>
-                                        <td>Day 4</td>
-                                        <td>AfrONet General Assembly (triennial meeting of AfrONet members)</td>
+                                        <td style="white-space:nowrap;">Day 3</td>
+                                        <td style="white-space:nowrap;">3 December 2026</td>
+                                        <td>Plenary III, Track Sessions Block 4, Side Events, Call to Action (Lusaka Declaration) and official closure of the 6th AOC</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space:nowrap;">Day 4</td>
+                                        <td style="white-space:nowrap;">4 December 2026</td>
+                                        <td>Field Excursion and AfrONet General Assembly (GA)</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; text-align:center; font-style:italic; margin-top:20px;">A detailed, session-by-session schedule will be published here closer to the conference.</p>
-                        <div style="text-align:center; margin-top:20px;">
-                            <a href="/6aoc-tracks" class="grdeen-btn">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="margin-top:40px;">
+                    <div class="col-lg-9">
+                        <div class="sec-title sec-title--two text-center">
+                            <span class="sec-title__tagline">Day by Day</span>
+                            <h2 class="sec-title__title">Programme of Events</h2>
+                        </div>
+
+                        <details class="aoc-prog-day" open>
+                            <summary><span class="aoc-prog-day__num">Day 1</span><span><span class="aoc-prog-day__title">Inauguration and Strategic Framing</span><span class="aoc-prog-day__date">Tuesday, 1 December 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>07:30 &ndash; 08:50</time><span>Delegate Arrival and Registration</span></li>
+                                <li><time>08:50 &ndash; 10:30</time><span><strong>Inauguration Ceremony and VIP Opening</strong></span></li>
+                                <li><time>10:30 &ndash; 11:00</time><span>Refreshment Break, Group Photo and Press Briefing</span></li>
+                                <li><time>11:00 &ndash; 13:00</time><span><strong>Plenary I:</strong> Building Resilient Agri-Food Systems</span></li>
+                                <li><time>13:00 &ndash; 14:00</time><span>Lunch Break</span></li>
+                                <li><time>14:00 &ndash; 16:00</time><span><strong>Track Sessions Block 1:</strong> Parallel Sessions (Tracks A, B, C, D)</span></li>
+                                <li><time>16:00 &ndash; 17:00</time><span>Daily Track Synthesis Roundtable (Main Hall)</span></li>
+                                <li><time>17:00 onwards</time><span>Welcome Reception and Cultural Evening</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Detailed programme &mdash; Day 1</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>07:30 &ndash; 08:50</time>Delegate Arrival and Registration</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>08:50 &ndash; 10:30</time>Inauguration Ceremony (Main Hall)</p>
+                                        <ul>
+                                            <li><time>08:50 &ndash; 09:15</time> Welcome Remarks (AfrONet President and OPPAZ Chair)</li>
+                                            <li><time>09:15 &ndash; 09:35</time> Welcome Address (Minister of Agriculture, Zambia)</li>
+                                            <li><time>09:35 &ndash; 10:00</time> Keynote Address and Official Opening (The Republican Vice President of Zambia)</li>
+                                            <li><time>10:00 &ndash; 10:30</time> VIP Tour of Exhibition Booths and Poster Area</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>10:30 &ndash; 11:00</time>Refreshment Break, Official Group Photo and Press Briefing</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:00 &ndash; 13:00</time>Plenary I: Building Resilient Agri-Food Systems (Main Hall)</p>
+                                        <ul>
+                                            <li><em>Moderator:</em> Conference Planning Committee nominee <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>11:00 &ndash; 11:10</time> Moderator&rsquo;s Framing and Objectives</li>
+                                            <li><time>11:10 &ndash; 11:30</time> <strong>Keynote 1 (Continental Framework):</strong> Implementing the Kampala CAADP Strategy and Action Plan (2026&ndash;2035): Implications for Organic Agriculture and Resilient African Agrifood Systems &mdash; African Union Commission representative <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>11:30 &ndash; 11:50</time> <strong>Keynote 2 (Scientific Evidence):</strong> Applied Research and Agroecological Innovations &mdash; ASARECA / ISOFAR / FARA representative <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>11:50 &ndash; 12:10</time> <strong>Keynote 3 (Grassroots Action):</strong> Farmer-Led Seed Systems and Production Resilience &mdash; INOFO representative <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>12:10 &ndash; 12:50</time> Moderated Panel Discussion and Audience Q&amp;A</li>
+                                            <li><time>12:50 &ndash; 13:00</time> Synthesis of Key Recommendations for the Declaration Drafting Team</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Lunch Break and Poster Viewing</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 &ndash; 16:00</time>Track Sessions Block 1 (Concurrent Thematic Rooms &ndash; 120-minute block)</p>
+                                        <ul>
+                                            <li><em>Format:</em> 1 lead presentation (20 min) + 4 selected papers (10 min each) + moderated Q&amp;A (40 min) + transition and written synthesis (20 min)</li>
+                                            <li><strong>Track A (Farmers &ndash; INOFO):</strong> Subtheme 1.1: Scaling climate-resilient organic production systems integrating indigenous farming knowledge</li>
+                                            <li><strong>Track B (Research &ndash; NOARA):</strong> Subtheme 2.1: Empirical evidence on organic agriculture and agroecology for soil health and yield resilience</li>
+                                            <li><strong>Track C (Value Chain &ndash; KOAN):</strong> Subtheme 3.1: Market Access and Intra-African Trade under AfCFTA</li>
+                                            <li><strong>Track D (Policy &ndash; AU Commission EOA-I Initiative):</strong> Subtheme 4.1: Continental Policy Frameworks and Kampala CAADP Alignment</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>16:00 &ndash; 17:00</time>Daily Track Synthesis Roundtable (Main Hall)</p>
+                                        <ul>
+                                            <li><em>Moderator:</em> Chair, Lusaka Declaration Task Force</li>
+                                            <li><em>Format:</em> Rapid 5-minute briefings from the rapporteurs of Tracks A, B, C and D, followed by a moderated cross-track consensus debate to feed the overnight declaration draft</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>17:00 onwards</time>Welcome Reception and Cultural Evening</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <details class="aoc-prog-day">
+                            <summary><span class="aoc-prog-day__num">Day 2</span><span><span class="aoc-prog-day__title">Deep Dive into Evidence and Economics</span><span class="aoc-prog-day__date">Wednesday, 2 December 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>08:30 &ndash; 09:00</time><span>Welcome Coffee and Delegate Networking</span></li>
+                                <li><time>09:00 &ndash; 11:00</time><span><strong>Plenary II:</strong> Policy Experiences and Continental Standards</span></li>
+                                <li><time>11:00 &ndash; 11:30</time><span>Refreshment Break and Structured B2B Exhibition</span></li>
+                                <li><time>11:30 &ndash; 13:00</time><span><strong>Track Sessions Block 2:</strong> Parallel Sessions (Tracks A, B, C, D)</span></li>
+                                <li><time>13:00 &ndash; 14:00</time><span>Lunch Break</span></li>
+                                <li><time>14:00 &ndash; 16:00</time><span><strong>Track Sessions Block 3:</strong> Parallel Sessions (Tracks A, B, C, D)</span></li>
+                                <li><time>16:00 &ndash; 17:00</time><span>Daily Track Synthesis Roundtable (Main Hall)</span></li>
+                                <li><time>17:00 onwards</time><span>Free Evening and Structured B2B Matchmaking</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Detailed programme &mdash; Day 2</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>08:30 &ndash; 09:00</time>Welcome Coffee and Delegate Networking</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>09:00 &ndash; 11:00</time>Plenary II: Policy Experiences and Continental Standards (Main Hall)</p>
+                                        <ul>
+                                            <li><em>Moderator:</em> AfrONet Executive <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>09:00 &ndash; 09:10</time> Moderator&rsquo;s Framing and Introductions</li>
+                                            <li><time>09:10 &ndash; 09:30</time> <strong>Keynote 1:</strong> Regional Harmonization of Organic Standards and Verification &mdash; ARSO / REC representative <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>09:30 &ndash; 09:50</time> <strong>Keynote 2:</strong> Mobilizing Public Procurement and Innovative Agribusiness Finance &mdash; IFAD / AfDB representative <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>09:50 &ndash; 10:10</time> <strong>Keynote 3:</strong> Mainstreaming EOA into National Agricultural Investment Plans &mdash; Host Government / Policy Lab <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>10:10 &ndash; 10:50</time> Moderated Panel Debate and Audience Q&amp;A</li>
+                                            <li><time>10:50 &ndash; 11:00</time> Synthesis and Declaration Action Points</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:00 &ndash; 11:30</time>Refreshment Break and Structured B2B Exhibition Matchmaking</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:30 &ndash; 13:00</time>Track Sessions Block 2 (Concurrent Thematic Rooms &ndash; 90-minute block)</p>
+                                        <ul>
+                                            <li><em>Format:</em> 1 lead presentation (15 min) + 3 selected papers (10 min each) + moderated Q&amp;A (30 min) + transition and synthesis (15 min)</li>
+                                            <li><strong>Track A (Farmers):</strong> Subtheme 1.2: Empowering women and youth: grassroots innovations and rural agribusiness</li>
+                                            <li><strong>Track B (Research):</strong> Subtheme 2.2: Bridging the gap: translating research into farmer-centred innovations</li>
+                                            <li><strong>Track C (Value Chain):</strong> Subtheme 3.2: Value Addition, Processing, and Post-Harvest Technologies</li>
+                                            <li><strong>Track D (Policy):</strong> Subtheme 4.2: Regional Regulatory Harmonization and Input Validation Protocols</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Lunch Break and Exhibition Walkthrough</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 &ndash; 16:00</time>Track Sessions Block 3 (Concurrent Thematic Rooms &ndash; 120-minute block)</p>
+                                        <ul>
+                                            <li><em>Format:</em> 1 lead presentation (20 min) + 4 selected papers (10 min each) + moderated Q&amp;A (40 min) + transition and synthesis (20 min)</li>
+                                            <li><strong>Track A (Farmers):</strong> Subtheme 1.3: Farmer-led adaptation strategies for climate change and biodiversity loss</li>
+                                            <li><strong>Track B (Research):</strong> Subthemes 2.3 and 2.4: Socio-economic impacts, True Cost Accounting, and planetary health</li>
+                                            <li><strong>Track C (Value Chain):</strong> Subtheme 3.3: Conformity Assessment, Participatory Guarantee Systems (PGS), and Traceability</li>
+                                            <li><strong>Track D (Policy):</strong> Subthemes 4.3 and 4.4: Institutional capacity development and organic mechanization incentives</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>16:00 &ndash; 17:00</time>Daily Track Synthesis Roundtable (Main Hall)</p>
+                                        <ul>
+                                            <li><em>Focus:</em> Consolidating Day 2 technical recommendations for integration into the 2nd Working Draft of the Lusaka Declaration</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>17:00 onwards</time>Free Evening and Dedicated B2B Deal-Rooms</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <details class="aoc-prog-day">
+                            <summary><span class="aoc-prog-day__num">Day 3</span><span><span class="aoc-prog-day__title">Market Integration and Continental Resolutions</span><span class="aoc-prog-day__date">Thursday, 3 December 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>08:30 &ndash; 09:00</time><span>Welcome Coffee and Delegate Networking</span></li>
+                                <li><time>09:00 &ndash; 11:00</time><span><strong>Plenary III:</strong> Marketing, Trade, and Value Addition</span></li>
+                                <li><time>11:00 &ndash; 11:30</time><span>Refreshment Break and Structured B2B Exhibition</span></li>
+                                <li><time>11:30 &ndash; 13:00</time><span><strong>Track Sessions Block 4:</strong> Parallel Sessions (Tracks A, B, C, D)</span></li>
+                                <li><time>13:00 &ndash; 14:00</time><span>Lunch Break</span></li>
+                                <li><time>14:00 &ndash; 15:30</time><span>Side Events and Regional Network Meetings</span></li>
+                                <li><time>15:30 &ndash; 17:00</time><span><strong>Official Closing Ceremony and Valedictory Session</strong>
+                                    <ul>
+                                        <li>Presentation and Adoption of the &ldquo;Lusaka Declaration&rdquo;</li>
+                                        <li>Closing Address by the Minister of Agriculture, Zambia</li>
+                                        <li>Official Voting Procedure and Announcement of the 7th AOC Host Country</li>
+                                    </ul></span></li>
+                                <li><time>17:00 onwards</time><span>Public Conference Programme Concludes</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Detailed programme &mdash; Day 3</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>08:30 &ndash; 09:00</time>Welcome Coffee and Delegate Networking</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>09:00 &ndash; 11:00</time>Plenary III: Marketing, Trade, and Value Addition (Main Hall)</p>
+                                        <ul>
+                                            <li><em>Moderator:</em> KOAN / Trade Lead representative <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>09:00 &ndash; 09:10</time> Moderator&rsquo;s Framing and Introductions</li>
+                                            <li><time>09:10 &ndash; 09:30</time> <strong>Keynote 1:</strong> De-risking Private Sector Investment in Commercial Organic Value Chains &mdash; Private agribusiness CEO <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>09:30 &ndash; 09:50</time> <strong>Keynote 2:</strong> Digital Marketplaces, Regional Trade Corridors, and Non-Tariff Barriers &mdash; ITC / UNCTAD trade specialist <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>09:50 &ndash; 10:10</time> <strong>Keynote 3:</strong> Youth and Women Leadership in Agri-Enterprise &mdash; Youth / women agripreneur representative <span class="aoc-prog-tbc">(to be confirmed)</span></li>
+                                            <li><time>10:10 &ndash; 10:50</time> Moderated Panel Debate and Audience Q&amp;A</li>
+                                            <li><time>10:50 &ndash; 11:00</time> Final Plenary Synthesis and Wrap-Up</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:00 &ndash; 11:30</time>Refreshment Break and Final B2B Engagements</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:30 &ndash; 13:00</time>Track Sessions Block 4 (Concurrent Thematic Rooms &ndash; 90-minute concluding block)</p>
+                                        <ul>
+                                            <li><em>Focus:</em> Concluding presentations, pedometrics/data systems (Research Track 2.5), inclusive business models (Value Chain Track 3.4/3.5), and final track resolutions sign-off</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Lunch Break</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 &ndash; 15:30</time>Side Events and Regional Network Working Sessions</p>
+                                        <ul>
+                                            <li>AfrONet Regional Clusters (East, West, Central, North and Southern Africa), NOARA Council, INOFO General Assembly preparation, and partner roundtables</li>
+                                            <li><em>Note:</em> The Lusaka Declaration Task Force finalizes the official declaration text during this window.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>15:30 &ndash; 17:00</time>Official Closing Ceremony and Valedictory Session (Main Hall)</p>
+                                        <ul>
+                                            <li><time>15:30 &ndash; 16:00</time> Formal Presentation and Adoption of the &ldquo;Lusaka Declaration&rdquo; (Task Force Lead / AfrONet Secretariat)</li>
+                                            <li><time>16:00 &ndash; 16:30</time> Valedictory Address by the Guest of Honour (Hon. Minister of Agriculture, Zambia)</li>
+                                            <li><time>16:30 &ndash; 16:50</time> Formal Bidding, Member Voting, and Official Announcement of the 7th AOC Host Country</li>
+                                            <li><time>16:50 &ndash; 17:00</time> Vote of Thanks by the Local Organizing Committee (LOC Chair)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>17:00 onwards</time>Public Conference Programme Concludes and Departures for Non-Voting Delegates</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <details class="aoc-prog-day">
+                            <summary><span class="aoc-prog-day__num">Day 4</span><span><span class="aoc-prog-day__title">Field Context and Continental Governance</span><span class="aoc-prog-day__date">Friday, 4 December 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>07:30 &ndash; 13:00</time><span><strong>Continental Field Visits</strong> (Excursions to PGS initiatives, organic farms and processing hubs)</span></li>
+                                <li><time>13:00 &ndash; 14:00</time><span>Return to Venue and Lunch Break</span></li>
+                                <li><time>14:00 &ndash; 18:30</time><span><strong>AfrONet General Assembly</strong> (Closed Statutory Governance Session)</span></li>
+                                <li><time>18:30 onwards</time><span>General Assembly Adjournment and Farewell Dinner</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Detailed programme &mdash; Day 4</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>07:30 &ndash; 13:00</time>Continental Field Learning Excursions</p>
+                                        <ul>
+                                            <li><em>Operational routes:</em> Pre-assigned shuttle departures to designated Lusaka-region certified organic estates, PGS smallholder cluster hubs, and value-addition/processing plants. Return transit is coordinated to arrive by 13:00.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Return to Venue and Lunch Break</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 &ndash; 18:30</time>AfrONet General Assembly (Closed Statutory Governance Session)</p>
+                                        <ul>
+                                            <li><em>Location:</em> Dedicated Executive Boardroom</li>
+                                            <li><em>Access:</em> Restricted to registered AfrONet Board, National Organic Agriculture Movements (NOAMs), Regional Movements (ROAMs), and verified institutional voting delegates</li>
+                                            <li><em>Statutory agenda:</em> Secretariat Activities Report, Audited Financial Statements, Approval of Motions, Election of the Continental Board, and Consideration of the 2027&ndash;2030 Strategic Framework</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>18:30 onwards</time>General Assembly Adjournment</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <p class="aoc-prog-note">Open &ldquo;Detailed programme&rdquo; under each day for keynotes, track subthemes and session formats. Speakers and moderators will be confirmed closer to the conference.</p>
+                        <div class="aoc-prog-actions">
+                            <a href="https://cms.afronet.bio/wp-content/uploads/2026/10/Programme-of-Events-6AOC-2026.pdf" target="_blank" rel="noopener" class="grdeen-btn">
+                                <span><i class="fas fa-file-pdf" aria-hidden="true" style="margin-right:8px;"></i>Download the Full Programme (PDF)</span>
+                            </a>
+                            <a href="/6aoc-tracks" class="grdeen-btn grdeen-btn--outline">
                                 <span>View Conference Tracks</span>
                             </a>
                         </div>

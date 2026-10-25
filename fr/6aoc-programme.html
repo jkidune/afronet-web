@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programme — 6e Conférence africaine sur l'agriculture biologique (6AOC)</title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Programme de la 6e Conférence africaine sur l'agriculture biologique (6AOC), du 1er au 4 décembre 2026 à Lusaka (Zambie) : plénières, sessions thématiques, événements parallèles, Déclaration de Lusaka, visites de terrain et Assemblée générale d'AfrONet." />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900;1000&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-select/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="/assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="/assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="/assets/vendors/tiny-slider/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/vendors/grdeen-icons/style.css" />
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/grdeen-two-icons/style.css">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="/assets/css/grdeen.css" />
+    <link rel="stylesheet" href="/assets/css/6aoc-sponsors.css" />
+
+    <style>
+        .main-header__inner {
+            background: linear-gradient(90deg, #8a6100 0%, #d9a404 40%, #f4c430 65%, #d9a404 100%);
+            align-items: center;
+            min-height: 100px;
+            padding: 0 20px;
+            column-gap: 24px;
+        }
+
+        /* Logos sit directly on the gold ribbon: drop the theme's white panel, notch, fixed box and overhang.
+           The wrapper spans the full ribbon height and clips, so the glow can never spill past the ribbon. */
+        .main-header__logo {
+            width: auto;
+            height: auto;
+            padding: 0 18px;
+            margin: 0;
+            background: none;
+            border-radius: 0;
+            flex-shrink: 0;
+            align-self: stretch;
+            overflow-x: visible;
+            overflow-y: clip;
+        }
+        .main-header__logo::after {
+            display: none;
+        }
+        .main-header__logo--secondary {
+            padding: 0 12px;
+        }
+        .main-header__logo > a {
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+        }
+        /* Soft light behind each logo: fades to fully transparent before its own box edge, so no visible edge */
+        .main-header__logo > a::before {
+            content: "";
+            position: absolute;
+            inset: -18% -22%;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(ellipse closest-side at center,
+                rgba(255, 255, 255, 0.92) 0%,
+                rgba(255, 255, 255, 0.82) 45%,
+                rgba(255, 255, 255, 0.5) 68%,
+                rgba(255, 255, 255, 0) 92%);
+            filter: blur(6px);
+        }
+        .main-header__logo--secondary > a::before {
+            inset: -30% -10%;
+        }
+        .main-header__logo img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-height: 82px;
+            object-fit: contain;
+        }
+        .main-header__logo--secondary img {
+            max-height: 48px;
+        }
+
+        /* Active page in the main menu: green instead of the theme's black */
+        .main-header .main-menu .main-menu__list > li.current > a {
+            color: #0a6b10;
+            text-shadow: 0 0 0.5px #0a6b10;
+        }
+        @media (max-width: 1500px) {
+            .main-header__btn {
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                margin-right: 10px;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                overflow: visible;
+                transition: background-color 0.3s ease;
+            }
+
+            .main-header__btn::before {
+                display: none;
+            }
+
+            .main-header__btn:hover,
+            .main-header__btn:focus {
+                background-color: var(--grdeen-black, #172000);
+            }
+
+            .main-header__btn:hover::after,
+            .main-header__btn:focus::after {
+                color: #fff;
+            }
+
+            .main-header__btn span {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            .main-header__btn::after {
+                content: "\f095";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                font-size: 18px;
+                line-height: 1;
+                color: #d9a404;
+                position: relative;
+                z-index: 2;
+                transition: color 0.3s ease;
+            }
+
+            .main-header__btn:hover span,
+            .main-header__btn:focus span {
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 50%;
+                width: auto;
+                height: auto;
+                margin: 0;
+                padding: 6px 14px;
+                clip: auto;
+                overflow: visible;
+                white-space: nowrap;
+                transform: translateX(-50%);
+                background-color: var(--grdeen-black, #172000);
+                color: #fff;
+                font-size: 12px;
+                font-weight: 600;
+                border-radius: 4px;
+                z-index: 20;
+                pointer-events: none;
+            }
+        }
+
+        @media (max-width: 1300px) {
+            .main-header__logo--secondary img {
+                max-height: 44px;
+            }
+        }
+
+        /* 992px and up: menu fills the space between the event logo and the CTA, items centred with even gaps,
+           leftover space shared by both ends. Items fill the ribbon height so dropdowns open at its bottom edge. */
+        @media (min-width: 992px) {
+            .main-header .main-menu .main-menu__list,
+            .main-header .main-menu .main-menu__list ul {
+                display: flex;
+            }
+            .main-header .mobile-nav__btn {
+                display: none;
+            }
+            .main-header__nav {
+                flex: 1 1 auto;
+                min-width: 0;
+                align-self: stretch;
+                padding: 0 4px;
+            }
+            .main-header .main-menu .main-menu__list {
+                height: 100%;
+                justify-content: center;
+                align-items: stretch;
+                column-gap: clamp(28px, 3.4vw, 48px);
+            }
+            .main-header .main-menu .main-menu__list > li {
+                display: flex;
+                align-items: center;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .main-header .main-menu .main-menu__list > li + li {
+                margin-left: 0;
+            }
+            .main-header__right {
+                margin-left: 0;
+            }
+        }
+
+        /* 992–1199: tight range, so gaps shrink first, then the logos slightly */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .main-header__inner {
+                column-gap: 12px;
+                padding: 0 12px;
+            }
+            .main-header .main-menu .main-menu__list {
+                justify-content: space-evenly;
+                column-gap: 0;
+            }
+            .main-header__right {
+                padding-right: 0;
+            }
+            .main-header__logo {
+                padding: 0 14px;
+            }
+            .main-header__logo img {
+                max-height: 74px;
+            }
+            .main-header__logo--secondary {
+                padding: 0 8px;
+            }
+            .main-header__logo--secondary img {
+                max-height: 40px;
+            }
+        }
+
+        /* Below 992: one bar — [event logo] ... [AfrONet] [phone] [search] [menu] */
+        @media (max-width: 991px) {
+            .main-header__inner {
+                min-height: 68px;
+                padding: 0 8px;
+                column-gap: 4px;
+            }
+            .main-header .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .main-header__nav {
+                display: none;
+            }
+            .main-header__logo {
+                padding: 0 6px;
+            }
+            .main-header__logo > a::before {
+                inset: -12% -16%;
+                filter: blur(4px);
+            }
+            .main-header__logo--secondary > a::before {
+                inset: -24% -8%;
+            }
+            .main-header__logo img {
+                max-height: 54px;
+            }
+            .main-header__logo--secondary {
+                order: 2;
+                margin-left: auto;
+                padding: 0 4px;
+            }
+            .main-header__logo--secondary img {
+                max-height: 30px;
+            }
+            .main-header__right {
+                order: 3;
+                margin-left: 0;
+                padding-right: 0;
+                gap: 0;
+            }
+            .main-header__btn {
+                order: 1;
+                margin: 0;
+            }
+            .main-header__search {
+                order: 2;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-header__right .mobile-nav__btn {
+                order: 3;
+                width: 44px;
+                height: 44px;
+                padding: 0 10px;
+                margin: 0;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+            .main-header__right .mobile-nav__btn span {
+                background-color: var(--grdeen-base, #1a9120);
+                height: 2px;
+            }
+        }
+
+        /* Very small phones: AfrONet logo stays in the slide-out menu only */
+        @media (max-width: 360px) {
+            .main-header__logo--secondary {
+                display: none;
+            }
+            .main-header__right {
+                margin-left: auto;
+            }
+        }
+
+        .aoc-history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .aoc-history-table th,
+        .aoc-history-table td {
+            padding: 14px 16px;
+            border: 1px solid #e2e6e0;
+            text-align: left;
+        }
+
+        .aoc-history-table th {
+            background: var(--grdeen-gray, #f6f7f2);
+            color: var(--grdeen-text-dark, #07370a);
+        }
+
+        /* Programme: key facts, day-by-day schedule (one open/close panel per day) and download */
+        .aoc-prog-facts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+            margin: 0 0 14px;
+            padding: 0;
+            list-style: none;
+            color: var(--grdeen-text-dark, #07370a);
+            font-size: 15px;
+        }
+        .aoc-prog-facts i {
+            margin-right: 6px;
+            color: var(--grdeen-base, #1a9120);
+        }
+        .aoc-prog-theme {
+            max-width: 720px;
+            margin: 0 auto 30px;
+            color: var(--grdeen-text, #626f62);
+            font-style: italic;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .aoc-prog-day {
+            margin-bottom: 12px;
+            border: 1px solid #e2e6e0;
+            border-radius: 10px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .aoc-prog-day > summary {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            cursor: pointer;
+            list-style: none;
+        }
+        .aoc-prog-day > summary::-webkit-details-marker {
+            display: none;
+        }
+        .aoc-prog-day > summary::after {
+            content: "\f107";
+            margin-left: auto;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--grdeen-base, #1a9120);
+            transition: transform 0.25s ease;
+        }
+        .aoc-prog-day[open] > summary::after {
+            transform: rotate(180deg);
+        }
+        .aoc-prog-day > summary:focus-visible {
+            outline: 2px solid var(--grdeen-base, #1a9120);
+            outline-offset: -2px;
+        }
+        .aoc-prog-day__num {
+            flex: 0 0 auto;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--grdeen-base, #1a9120);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .aoc-prog-day__title {
+            display: block;
+            color: var(--grdeen-text-dark, #07370a);
+            font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .aoc-prog-day__date {
+            display: block;
+            color: var(--grdeen-text, #626f62);
+            font-size: 14px;
+        }
+        .aoc-prog-list {
+            margin: 0;
+            padding: 0 20px 14px;
+            list-style: none;
+            border-top: 1px solid #eef1ec;
+        }
+        .aoc-prog-list > li {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e8ece6;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.6;
+        }
+        .aoc-prog-list > li:last-child {
+            border-bottom: 0;
+        }
+        .aoc-prog-list time {
+            color: var(--grdeen-text-dark, #07370a);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .aoc-prog-list strong {
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        .aoc-prog-list ul {
+            margin: 6px 0 0;
+            padding-left: 18px;
+        }
+        /* "Detailed programme" panel inside each day */
+        .aoc-prog-detail {
+            margin: 0 20px 16px;
+            border-radius: 8px;
+            background: var(--grdeen-gray, #f6f7f2);
+        }
+        .aoc-prog-detail > summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            color: var(--grdeen-base, #1a9120);
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+        }
+        .aoc-prog-detail > summary::-webkit-details-marker {
+            display: none;
+        }
+        .aoc-prog-detail > summary::before {
+            content: "\f067";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 12px;
+        }
+        .aoc-prog-detail[open] > summary::before {
+            content: "\f068";
+        }
+        .aoc-prog-detail > summary:focus-visible {
+            outline: 2px solid var(--grdeen-base, #1a9120);
+            outline-offset: -2px;
+        }
+        .aoc-prog-detail__body {
+            padding: 0 16px 8px;
+        }
+        .aoc-prog-session {
+            padding: 12px 0;
+            border-top: 1px solid #e2e6e0;
+        }
+        .aoc-prog-session__head {
+            margin: 0 0 6px;
+            color: var(--grdeen-text-dark, #07370a);
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .aoc-prog-session__head time {
+            margin-right: 8px;
+            color: var(--grdeen-base, #1a9120);
+            white-space: nowrap;
+        }
+        .aoc-prog-session ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--grdeen-text, #626f62);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .aoc-prog-session li + li {
+            margin-top: 5px;
+        }
+        .aoc-prog-session li time,
+        .aoc-prog-session li em {
+            color: var(--grdeen-text-dark, #07370a);
+            font-style: italic;
+        }
+        .aoc-prog-tbc {
+            color: #8a948a;
+            font-style: italic;
+        }
+        @media (max-width: 575px) {
+            .aoc-prog-detail {
+                margin: 0 12px 12px;
+            }
+            .aoc-prog-detail__body {
+                padding: 0 12px 6px;
+            }
+        }
+        .aoc-prog-note {
+            margin-top: 22px;
+            color: var(--grdeen-text, #626f62);
+            font-size: 14px;
+            font-style: italic;
+            text-align: center;
+        }
+        .aoc-prog-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        @media (max-width: 575px) {
+            .aoc-prog-day > summary {
+                padding: 14px 16px;
+            }
+            .aoc-prog-list {
+                padding: 0 16px 12px;
+            }
+            .aoc-prog-list > li {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .aoc-history-table th,
+            .aoc-history-table td {
+                padding: 10px;
+            }
+            .aoc-history-table td:nth-child(2) {
+                white-space: normal !important;
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://afronet.bio/fr/6aoc-programme" />
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="https://afronet.bio/6aoc-programme" />
+    <link rel="alternate" hreflang="fr" href="https://afronet.bio/fr/6aoc-programme" />
+    <link rel="alternate" hreflang="pt" href="https://afronet.bio/pt/6aoc-programme" />
+    <link rel="alternate" hreflang="x-default" href="https://afronet.bio/6aoc-programme" />
+    <!-- /i18n:alternates -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Programme — 6e Conférence africaine sur l'agriculture biologique (6AOC)" />
+    <meta property="og:description" content="Programme de la 6e Conférence africaine sur l'agriculture biologique (6AOC), du 1er au 4 décembre 2026 à Lusaka (Zambie) : plénières, sessions thématiques, événements parallèles, Déclaration de Lusaka, visites de terrain et Assemblée générale d'AfrONet." />
+    <meta property="og:url" content="https://afronet.bio/fr/6aoc-programme" />
+    <meta property="og:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
+    <meta property="og:site_name" content="AfrONet — African Organic Network" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Programme — 6e Conférence africaine sur l'agriculture biologique (6AOC)" />
+    <meta name="twitter:description" content="Programme de la 6e Conférence africaine sur l'agriculture biologique (6AOC), du 1er au 4 décembre 2026 à Lusaka (Zambie) : plénières, sessions thématiques, événements parallèles, Déclaration de Lusaka, visites de terrain et Assemblée générale d'AfrONet." />
+    <meta name="twitter:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://afronet.bio/fr/"},{"@type":"ListItem","position":2,"name":"6AOC","item":"https://afronet.bio/fr/6aoc"},{"@type":"ListItem","position":3,"name":"Programmes","item":"https://afronet.bio/fr/6aoc-programme"}]}</script>
+    <script>window.AFRONET_I18N={"Early Bird ends":"Fin du tarif préférentiel","Regular registration ends":"Fin des inscriptions standard","6AOC starts":"Ouverture de la 6AOC"," TODAY · ":" AUJOURD'HUI · "," in ":" dans ","Register now":"S'inscrire","d":"j","h":"h","m":"min","s":"s","Happening now in Chongwe, Lusaka, Zambia":"En cours à Chongwe, Lusaka, Zambie","Thank you for joining the 6th African Organic Conference":"Merci d'avoir participé à la 6e Conférence africaine sur l'agriculture biologique","Something went wrong. Please try again.":"Une erreur s'est produite. Veuillez réessayer.","All":"Tout","Sessions":"Sessions","Exhibition":"Exposition","People & Networking":"Rencontres et réseautage","Celebrations":"Célébrations","Promotional":"Promotion","Event Posters":"Affiches","Filter photos":"Filtrer les photos","Load more photos":"Afficher plus de photos","Photo viewer":"Visionneuse de photos","Close photo viewer":"Fermer la visionneuse","Previous photo":"Photo précédente","Next photo":"Photo suivante","Visit website":"Visiter le site","6AOC Sponsors & Partners":"Sponsors et partenaires de la 6AOC","Visit the {name} website (opens in a new tab)":"Visiter le site de {name} (nouvel onglet)","Previous page":"Page précédente","Next page":"Page suivante"};</script>
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(/assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div class="topbar-one">
+            <div class="container-fluid">
+                <div class="topbar-one__inner">
+                    <ul class="list-unstyled topbar-one__info">
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-pin"></i>
+                            </div>
+                            <a href="/fr/6aoc-contact">African Organic Network, B.P. 31168, Dar es Salaam, Tanzanie</a>
+                        </li>
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-email"></i>
+                            </div>
+                            <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                        </li>
+                    </ul><!-- /.list-unstyled topbar-one__info -->
+                    <div class="topbar-one__right">
+                        <div class="topbar-one__right__openitme d-flex align-items-center">
+                            <div class="topbar-one__right__iconwrap">
+                                <i class="fas fa-phone-square-alt"></i>
+                            </div>
+                            <p class="topbar-one__text">Ouvert : lun.–ven., 8 h – 16 h (EAT)</p><!-- /.topbar-one__text -->
+                        </div>
+                        <ul class="list-unstyled topbar-one__right__list">
+                            <li><a href="/fr/6aoc-contact">Assistance</a></li>
+                            <li><a href="/fr/6aoc-contact">Carrières</a></li>
+                            <li><a href="/fr/6aoc-contact">Bureau</a></li>
+                        </ul>
+                        <div class="topbar-one__social">
+                            <a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener">
+                                <i class="fab fa-facebook-f"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                            <a href="https://x.com/AfrONet_" target="_blank" rel="noopener">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                <span class="sr-only">X (Twitter)</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span class="sr-only">LinkedIn</span>
+                            </a>
+                            <a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener">
+                                <i class="fab fa-instagram"></i>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+                        </div><!-- /.topbar-one__social -->
+                    </div><!-- /.topbar-one__right -->
+                </div><!-- /.topbar-one__inner -->
+            </div><!-- /.container-fluid -->
+        </div><!-- /.topbar-one -->
+
+
+        <header class="main-header sticky-header sticky-header--normal">
+            <div class="container-fluid">
+                <div class="main-header__inner">
+                    <div class="main-header__logo">
+                        <a href="/fr/">
+                            <img src="/assets/images/6thAOCLogo.png" width="198" alt="6e Conférence africaine sur l'agriculture biologique — Lusaka 2026">
+                        </a>
+                    </div><!-- /.main-header__logo -->
+
+                    <nav class="main-header__nav main-menu">
+                        <ul class="main-menu__list">
+                            <li>
+                                <a href="/fr/6aoc">Accueil</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/fr/6aoc-background-theme">À propos de la 6AOC</a>
+                                <ul>
+                                    <li><a href="/fr/6aoc-background-theme">Contexte et thème</a></li>
+                                    <li><a href="/fr/6aoc-objectives">Objectifs</a></li>
+                                    <li><a href="/fr/6aoc-tracks">Volets de la conférence</a></li>
+                                    <li><a href="/fr/6aoc-committees">Comités</a></li>
+                                    <li><a href="/fr/6aoc-previous-conferences">Conférences précédentes</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/fr/6aoc-programme">Programmes</a>
+                            </li>
+                            <li>
+                                <a href="/fr/6aoc-registration">Inscription</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/fr/6aoc-resources">Plus</a>
+                                <ul>
+                                    <li><a href="/fr/6aoc-call-for-presentations">Appel à communications</a></li>
+                                    <li><a href="/fr/6aoc-side-events">Événements parallèles et visites de terrain</a></li>
+                                    <li><a href="/fr/6aoc-sponsors">Sponsors et partenaires</a></li>
+                                    <li><a href="/fr/6aoc-resources">Ressources</a></li>
+                                    <li><a href="/fr/6aoc-news">Actualités</a></li>
+                                    <li><a href="/fr/6aoc-venue">Lieu et hébergement</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/fr/6aoc-contact">Contact</a>
+                            </li>
+                            <li class="dropdown main-menu__lang" translate="no"><a href="#" role="button" aria-label="Langue"><i class="fas fa-globe" aria-hidden="true"></i> FR</a><ul><li><a href="/6aoc-programme" hreflang="en" lang="en">English</a></li><li class="is-active"><a href="/fr/6aoc-programme" hreflang="fr" lang="fr" aria-current="true">Français</a></li><li><a href="/pt/6aoc-programme" hreflang="pt" lang="pt">Português</a></li></ul></li><!-- /.main-menu__lang -->
+                        </ul>
+                    </nav><!-- /.main-header__nav -->
+                    <div class="main-header__right">
+                        <div class="mobile-nav__btn mobile-nav__toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><!-- /.mobile-nav__toggler -->
+                        <a href="/fr/6aoc-call-for-presentations" class="grdeen-btn main-header__btn">
+                            <span>Appel à communications</span>
+                        </a><!-- /.thm-btn main-header__btn -->
+                        <a href="#" class="search-toggler main-header__search">
+                            <div class="main-header__search__icon">
+                                <i class="icon-search" aria-hidden="true"></i>
+                            </div>
+                            <span class="sr-only">Rechercher</span>
+                        </a><!-- /.search-toggler -->
+                    </div><!-- /.main-header__right -->
+                    <div class="main-header__logo main-header__logo--secondary">
+                        <a href="/fr/">
+                            <img src="/assets/images/logo-dark.png" width="198" alt="AfrONet — African Organic Network">
+                        </a>
+                    </div><!-- /.main-header__logo--secondary -->
+                </div><!-- /.main-header__inner -->
+            </div><!-- /.container-fluid -->
+        </header><!-- /.main-header -->
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url('https://cms.afronet.bio/wp-content/uploads/2026/10/hero.png');"></div>
+            <div class="page-header__shape wow fadeInUp" data-wow-delay="200ms"></div>
+            <div class="page-header__overlay"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <h2 class="page-header__title">Programmes</h2>
+                <ul class="grdeen-breadcrumb list-unstyled">
+                    <li><a href="/fr/6aoc">Accueil</a></li>
+                    <li><span>Programmes</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <section class="section-space">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="sec-title sec-title--two text-center">
+                            <span class="sec-title__tagline">1–4 décembre 2026</span>
+                            <h2 class="sec-title__title">Programme de la 6AOC en résumé</h2>
+                        </div>
+                        <ul class="aoc-prog-facts">
+                            <li><i class="fas fa-calendar-alt" aria-hidden="true"></i>1–4 décembre 2026</li>
+                            <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Mika Convention Centre, Lusaka, Zambie</li>
+                        </ul>
+                        <p class="aoc-prog-theme"><strong style="font-style:normal;">Thème :</strong> Bâtir des systèmes agroalimentaires résilients et garantir le droit à l'alimentation en Afrique grâce à l'agriculture biologique</p>
+
+                        <div class="table-responsive" style="overflow-x:auto;">
+                            <table class="aoc-history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Jour</th>
+                                        <th>Date</th>
+                                        <th>Temps forts du programme</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="white-space:nowrap;">Jour 1</td>
+                                        <td style="white-space:nowrap;">1er décembre 2026</td>
+                                        <td>Séance inaugurale, plénière I et sessions thématiques – bloc 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space:nowrap;">Jour 2</td>
+                                        <td style="white-space:nowrap;">2 décembre 2026</td>
+                                        <td>Plénière II et sessions thématiques – blocs 2 et 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space:nowrap;">Jour 3</td>
+                                        <td style="white-space:nowrap;">3 décembre 2026</td>
+                                        <td>Plénière III, sessions thématiques – bloc 4, événements parallèles, appel à l'action (Déclaration de Lusaka) et clôture officielle de la 6e AOC</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space:nowrap;">Jour 4</td>
+                                        <td style="white-space:nowrap;">4 décembre 2026</td>
+                                        <td>Visite de terrain et Assemblée générale d'AfrONet (AG)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center" style="margin-top:40px;">
+                    <div class="col-lg-9">
+                        <div class="sec-title sec-title--two text-center">
+                            <span class="sec-title__tagline">Jour par jour</span>
+                            <h2 class="sec-title__title">Programme des événements</h2>
+                        </div>
+
+                        <details class="aoc-prog-day" open>
+                            <summary><span class="aoc-prog-day__num">Jour 1</span><span><span class="aoc-prog-day__title">Inauguration et cadrage stratégique</span><span class="aoc-prog-day__date">Mardi 1er décembre 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>07:30 – 08:50</time><span>Accueil et enregistrement des délégués</span></li>
+                                <li><time>08:50 – 10:30</time><span><strong>Cérémonie d'inauguration et ouverture officielle</strong></span></li>
+                                <li><time>10:30 – 11:00</time><span>Pause, photo de groupe et point presse</span></li>
+                                <li><time>11:00 – 13:00</time><span><strong>Plénière I :</strong> Bâtir des systèmes agroalimentaires résilients</span></li>
+                                <li><time>13:00 – 14:00</time><span>Déjeuner</span></li>
+                                <li><time>14:00 – 16:00</time><span><strong>Sessions thématiques – bloc 1 :</strong> sessions parallèles (volets A, B, C, D)</span></li>
+                                <li><time>16:00 – 17:00</time><span>Table ronde de synthèse quotidienne des volets (grande salle)</span></li>
+                                <li><time>À partir de 17:00</time><span>Réception de bienvenue et soirée culturelle</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Programme détaillé — Jour 1</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>07:30 – 08:50</time>Accueil et enregistrement des délégués</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>08:50 – 10:30</time>Cérémonie d'inauguration (grande salle)</p>
+                                        <ul>
+                                            <li><time>08:50 – 09:15</time> Mot de bienvenue (président d'AfrONet et président de l'OPPAZ)</li>
+                                            <li><time>09:15 – 09:35</time> Discours de bienvenue (ministre de l'Agriculture de Zambie)</li>
+                                            <li><time>09:35 – 10:00</time> Discours d'ouverture et ouverture officielle (vice-président de la République de Zambie)</li>
+                                            <li><time>10:00 – 10:30</time> Visite officielle des stands d'exposition et de l'espace posters</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>10:30 – 11:00</time>Pause, photo de groupe officielle et point presse</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:00 – 13:00</time>Plénière I : Bâtir des systèmes agroalimentaires résilients (grande salle)</p>
+                                        <ul>
+                                            <li><em>Modérateur :</em> désigné par le Comité continental de planification <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>11:00 – 11:10</time> Cadrage et objectifs par le modérateur</li>
+                                            <li><time>11:10 – 11:30</time> <strong>Intervention principale 1 (cadre continental) :</strong> Mettre en œuvre la stratégie et le plan d'action du PDDAA de Kampala (2026–2035) : implications pour l'agriculture biologique et des systèmes agroalimentaires africains résilients — représentant de la Commission de l'Union africaine <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>11:30 – 11:50</time> <strong>Intervention principale 2 (données scientifiques) :</strong> Recherche appliquée et innovations agroécologiques — représentant de l'ASARECA / ISOFAR / FARA <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>11:50 – 12:10</time> <strong>Intervention principale 3 (action de terrain) :</strong> Systèmes semenciers paysans et résilience de la production — représentant de l'INOFO <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>12:10 – 12:50</time> Table ronde modérée et questions du public</li>
+                                            <li><time>12:50 – 13:00</time> Synthèse des principales recommandations pour l'équipe de rédaction de la Déclaration</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Déjeuner et visite des posters</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 – 16:00</time>Sessions thématiques – bloc 1 (salles thématiques en parallèle – 120 minutes)</p>
+                                        <ul>
+                                            <li><em>Format :</em> 1 présentation principale (20 min) + 4 communications retenues (10 min chacune) + questions-réponses modérées (40 min) + transition et synthèse écrite (20 min)</li>
+                                            <li><strong>Volet A (agriculteurs – INOFO) :</strong> Sous-thème 1.1 : Développer des systèmes de production biologique résilients au climat intégrant les savoirs agricoles autochtones</li>
+                                            <li><strong>Volet B (recherche – NOARA) :</strong> Sous-thème 2.1 : Données empiriques sur l'agriculture biologique et l'agroécologie pour la santé des sols et la résilience des rendements</li>
+                                            <li><strong>Volet C (chaînes de valeur – KOAN) :</strong> Sous-thème 3.1 : Accès aux marchés et commerce intra-africain dans le cadre de la ZLECAf</li>
+                                            <li><strong>Volet D (politiques – Initiative EOA-I de la Commission de l'UA) :</strong> Sous-thème 4.1 : Cadres politiques continentaux et alignement sur le PDDAA de Kampala</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>16:00 – 17:00</time>Table ronde de synthèse quotidienne des volets (grande salle)</p>
+                                        <ul>
+                                            <li><em>Modérateur :</em> président du groupe de travail sur la Déclaration de Lusaka</li>
+                                            <li><em>Format :</em> comptes rendus éclair de 5 minutes par les rapporteurs des volets A, B, C et D, suivis d'un débat modéré de recherche de consensus entre volets pour alimenter le projet de déclaration rédigé dans la nuit</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>À partir de 17:00</time>Réception de bienvenue et soirée culturelle</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <details class="aoc-prog-day">
+                            <summary><span class="aoc-prog-day__num">Jour 2</span><span><span class="aoc-prog-day__title">Approfondissement : données et économie</span><span class="aoc-prog-day__date">Mercredi 2 décembre 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>08:30 – 09:00</time><span>Café d'accueil et réseautage</span></li>
+                                <li><time>09:00 – 11:00</time><span><strong>Plénière II :</strong> Expériences politiques et normes continentales</span></li>
+                                <li><time>11:00 – 11:30</time><span>Pause et rencontres B2B organisées à l'exposition</span></li>
+                                <li><time>11:30 – 13:00</time><span><strong>Sessions thématiques – bloc 2 :</strong> sessions parallèles (volets A, B, C, D)</span></li>
+                                <li><time>13:00 – 14:00</time><span>Déjeuner</span></li>
+                                <li><time>14:00 – 16:00</time><span><strong>Sessions thématiques – bloc 3 :</strong> sessions parallèles (volets A, B, C, D)</span></li>
+                                <li><time>16:00 – 17:00</time><span>Table ronde de synthèse quotidienne des volets (grande salle)</span></li>
+                                <li><time>À partir de 17:00</time><span>Soirée libre et rendez-vous B2B organisés</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Programme détaillé — Jour 2</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>08:30 – 09:00</time>Café d'accueil et réseautage</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>09:00 – 11:00</time>Plénière II : Expériences politiques et normes continentales (grande salle)</p>
+                                        <ul>
+                                            <li><em>Modérateur :</em> dirigeant d'AfrONet <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>09:00 – 09:10</time> Cadrage et présentations par le modérateur</li>
+                                            <li><time>09:10 – 09:30</time> <strong>Intervention principale 1 :</strong> Harmonisation régionale des normes biologiques et de leur vérification — représentant de l'ORAN / d'une CER <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>09:30 – 09:50</time> <strong>Intervention principale 2 :</strong> Mobiliser la commande publique et des financements innovants pour l'agro-industrie — représentant du FIDA / de la BAD <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>09:50 – 10:10</time> <strong>Intervention principale 3 :</strong> Intégrer l'EOA dans les plans nationaux d'investissement agricole — gouvernement hôte / laboratoire politique <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>10:10 – 10:50</time> Débat modéré et questions du public</li>
+                                            <li><time>10:50 – 11:00</time> Synthèse et points d'action pour la Déclaration</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:00 – 11:30</time>Pause et rendez-vous B2B organisés à l'exposition</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:30 – 13:00</time>Sessions thématiques – bloc 2 (salles thématiques en parallèle – 90 minutes)</p>
+                                        <ul>
+                                            <li><em>Format :</em> 1 présentation principale (15 min) + 3 communications retenues (10 min chacune) + questions-réponses modérées (30 min) + transition et synthèse (15 min)</li>
+                                            <li><strong>Volet A (agriculteurs) :</strong> Sous-thème 1.2 : Autonomiser les femmes et les jeunes : innovations de terrain et agro-entreprises rurales</li>
+                                            <li><strong>Volet B (recherche) :</strong> Sous-thème 2.2 : Combler le fossé : traduire la recherche en innovations centrées sur les agriculteurs</li>
+                                            <li><strong>Volet C (chaînes de valeur) :</strong> Sous-thème 3.2 : Valorisation, transformation et technologies post-récolte</li>
+                                            <li><strong>Volet D (politiques) :</strong> Sous-thème 4.2 : Harmonisation réglementaire régionale et protocoles de validation des intrants</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Déjeuner et visite de l'exposition</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 – 16:00</time>Sessions thématiques – bloc 3 (salles thématiques en parallèle – 120 minutes)</p>
+                                        <ul>
+                                            <li><em>Format :</em> 1 présentation principale (20 min) + 4 communications retenues (10 min chacune) + questions-réponses modérées (40 min) + transition et synthèse (20 min)</li>
+                                            <li><strong>Volet A (agriculteurs) :</strong> Sous-thème 1.3 : Stratégies d'adaptation portées par les agriculteurs face au changement climatique et à la perte de biodiversité</li>
+                                            <li><strong>Volet B (recherche) :</strong> Sous-thèmes 2.3 et 2.4 : Impacts socio-économiques, comptabilité du coût réel et santé planétaire</li>
+                                            <li><strong>Volet C (chaînes de valeur) :</strong> Sous-thème 3.3 : Évaluation de la conformité, systèmes participatifs de garantie (SPG) et traçabilité</li>
+                                            <li><strong>Volet D (politiques) :</strong> Sous-thèmes 4.3 et 4.4 : Renforcement des capacités institutionnelles et incitations à la mécanisation en agriculture biologique</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>16:00 – 17:00</time>Table ronde de synthèse quotidienne des volets (grande salle)</p>
+                                        <ul>
+                                            <li><em>Objectif :</em> consolider les recommandations techniques du jour 2 pour les intégrer à la 2e version de travail de la Déclaration de Lusaka</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>À partir de 17:00</time>Soirée libre et salons d'affaires B2B dédiés</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <details class="aoc-prog-day">
+                            <summary><span class="aoc-prog-day__num">Jour 3</span><span><span class="aoc-prog-day__title">Intégration des marchés et résolutions continentales</span><span class="aoc-prog-day__date">Jeudi 3 décembre 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>08:30 – 09:00</time><span>Café d'accueil et réseautage</span></li>
+                                <li><time>09:00 – 11:00</time><span><strong>Plénière III :</strong> Commercialisation, échanges et valorisation</span></li>
+                                <li><time>11:00 – 11:30</time><span>Pause et rencontres B2B organisées à l'exposition</span></li>
+                                <li><time>11:30 – 13:00</time><span><strong>Sessions thématiques – bloc 4 :</strong> sessions parallèles (volets A, B, C, D)</span></li>
+                                <li><time>13:00 – 14:00</time><span>Déjeuner</span></li>
+                                <li><time>14:00 – 15:30</time><span>Événements parallèles et réunions des réseaux régionaux</span></li>
+                                <li><time>15:30 &ndash; 17:00</time><span><strong>Cérémonie officielle de clôture et séance d'adieu</strong>
+                                    <ul>
+                                        <li>Présentation et adoption de la « Déclaration de Lusaka »</li>
+                                        <li>Discours de clôture du ministre de l'Agriculture de Zambie</li>
+                                        <li>Vote officiel et annonce du pays hôte de la 7e AOC</li>
+                                    </ul></span></li>
+                                <li><time>À partir de 17:00</time><span>Fin du programme public de la conférence</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Programme détaillé — Jour 3</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>08:30 – 09:00</time>Café d'accueil et réseautage</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>09:00 – 11:00</time>Plénière III : Commercialisation, échanges et valorisation (grande salle)</p>
+                                        <ul>
+                                            <li><em>Modérateur :</em> représentant du KOAN / responsable commerce <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>09:00 – 09:10</time> Cadrage et présentations par le modérateur</li>
+                                            <li><time>09:10 – 09:30</time> <strong>Intervention principale 1 :</strong> Réduire les risques de l'investissement privé dans les chaînes de valeur biologiques commerciales — PDG d'une agro-entreprise privée <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>09:30 – 09:50</time> <strong>Intervention principale 2 :</strong> Places de marché numériques, corridors commerciaux régionaux et barrières non tarifaires — spécialiste du commerce de l'ITC / de la CNUCED <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>09:50 – 10:10</time> <strong>Intervention principale 3 :</strong> Le leadership des jeunes et des femmes dans l'agro-entreprise — représentant(e) des jeunes / femmes agri-entrepreneurs <span class="aoc-prog-tbc">(à confirmer)</span></li>
+                                            <li><time>10:10 – 10:50</time> Débat modéré et questions du public</li>
+                                            <li><time>10:50 – 11:00</time> Synthèse finale de la plénière et conclusion</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:00 – 11:30</time>Pause et derniers rendez-vous B2B</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>11:30 – 13:00</time>Sessions thématiques – bloc 4 (salles thématiques en parallèle – bloc final de 90 minutes)</p>
+                                        <ul>
+                                            <li><em>Objectif :</em> présentations de clôture, pédométrie et systèmes de données (volet recherche 2.5), modèles économiques inclusifs (volet chaînes de valeur 3.4/3.5) et validation des résolutions finales des volets</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Déjeuner</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 – 15:30</time>Événements parallèles et séances de travail des réseaux régionaux</p>
+                                        <ul>
+                                            <li>Pôles régionaux d'AfrONet (Afrique de l'Est, de l'Ouest, centrale, du Nord et australe), Conseil de NOARA, préparation de l'Assemblée générale de l'INOFO et tables rondes des partenaires</li>
+                                            <li><em>Remarque :</em> le groupe de travail sur la Déclaration de Lusaka finalise le texte officiel pendant ce créneau.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>15:30 – 17:00</time>Cérémonie officielle de clôture et séance d'adieu (grande salle)</p>
+                                        <ul>
+                                            <li><time>15:30 – 16:00</time> Présentation officielle et adoption de la « Déclaration de Lusaka » (responsable du groupe de travail / Secrétariat d'AfrONet)</li>
+                                            <li><time>16:00 – 16:30</time> Discours d'adieu de l'invité d'honneur (l'honorable ministre de l'Agriculture de Zambie)</li>
+                                            <li><time>16:30 – 16:50</time> Présentation des candidatures, vote des membres et annonce officielle du pays hôte de la 7e AOC</li>
+                                            <li><time>16:50 – 17:00</time> Remerciements du Comité d'organisation local (président du COL)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>À partir de 17:00</time>Fin du programme public et départ des délégués non votants</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <details class="aoc-prog-day">
+                            <summary><span class="aoc-prog-day__num">Jour 4</span><span><span class="aoc-prog-day__title">Terrain et gouvernance continentale</span><span class="aoc-prog-day__date">Vendredi 4 décembre 2026</span></span></summary>
+                            <ul class="aoc-prog-list">
+                                <li><time>07:30 – 13:00</time><span><strong>Visites de terrain</strong> (initiatives SPG, fermes biologiques et centres de transformation)</span></li>
+                                <li><time>13:00 – 14:00</time><span>Retour sur le site et déjeuner</span></li>
+                                <li><time>14:00 – 18:30</time><span><strong>Assemblée générale d'AfrONet</strong> (séance statutaire à huis clos)</span></li>
+                                <li><time>À partir de 18:30</time><span>Clôture de l'Assemblée générale et dîner d'adieu</span></li>
+                            </ul>
+                            <details class="aoc-prog-detail">
+                                <summary>Programme détaillé — Jour 4</summary>
+                                <div class="aoc-prog-detail__body">
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>07:30 – 13:00</time>Visites de terrain et d'apprentissage</p>
+                                        <ul>
+                                            <li><em>Itinéraires :</em> départs en navette pré-attribués vers des exploitations biologiques certifiées de la région de Lusaka, des pôles de petits exploitants SPG et des unités de transformation. Le retour est organisé pour une arrivée avant 13:00.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Retour sur le site et déjeuner</p>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>14:00 – 18:30</time>Assemblée générale d'AfrONet (séance statutaire à huis clos)</p>
+                                        <ul>
+                                            <li><em>Lieu :</em> salle de conseil dédiée</li>
+                                            <li><em>Accès :</em> réservé au Conseil d'AfrONet, aux mouvements nationaux d'agriculture biologique (NOAM), aux mouvements régionaux (ROAM) et aux délégués institutionnels votants vérifiés, préalablement inscrits</li>
+                                            <li><em>Ordre du jour statutaire :</em> rapport d'activité du Secrétariat, états financiers audités, approbation des motions, élection du Conseil continental et examen du Cadre stratégique 2027–2030</li>
+                                        </ul>
+                                    </div>
+                                    <div class="aoc-prog-session">
+                                        <p class="aoc-prog-session__head"><time>À partir de 18:30</time>Clôture de l'Assemblée générale</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </details>
+
+                        <p class="aoc-prog-note">Ouvrez « Programme détaillé » sous chaque journée pour voir les interventions principales, les sous-thèmes des volets et le format des sessions. Les intervenants et modérateurs seront confirmés à l'approche de la conférence.</p>
+                        <div class="aoc-prog-actions">
+                            <a href="https://cms.afronet.bio/wp-content/uploads/2026/10/Programme-of-Events-6AOC-2026.pdf" target="_blank" rel="noopener" class="grdeen-btn"> <span><i class="fas fa-file-pdf" aria-hidden="true" style="margin-right:8px;"></i>Télécharger le programme complet (PDF, en anglais)</span> </a> <a href="/fr/6aoc-tracks" class="grdeen-btn grdeen-btn--outline"> <span>Voir les volets de la conférence</span> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6AOC sponsor logo strip (built by assets/js/6aoc-sponsors.js) -->
+        <section class="aoc-sponsor-strip" data-aoc-sponsor-strip></section>
+
+        <footer class="main-footer main-footer--two">
+            <div class="main-footer__bg" style="background-image: url(/assets/images/backgrounds/footer-bg1-1.jpg);"></div>
+            <div class="main-footer__overlay"></div>
+            <!-- /.main-footer__bg -->
+            <div class="main-footer__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-widget__col footer-widget__col__col1">
+                            <div class="footer-widget footer-widget--about">
+                                <a href="/fr/" class="footer-widget__logo">
+                                    <img src="/assets/images/logo-light.png" width="155" alt="AfrONet">
+                                </a>
+                                <p class="footer-widget__experience-text">La 6e Conférence africaine sur l'agriculture biologique — 1–4 décembre 2026, Chongwe, Lusaka (Zambie).</p>
+                                <div class="footer-widget__newsletterwrap">
+                                    <h6 class="footer-widget__title footer-widget__title--newsletter">Lettre d'information</h6>
+                                    <form action="#" class="footer-widget__newsletter cf7-newsletter-form" data-cf7-id="413">
+                                        <div class="footer-widget__mail-address">
+                                            <input type="email" name="your-email" placeholder="Adresse e-mail" required>
+                                        </div>
+                                        <button type="submit" class="form-submit-btn">S'abonner</button>
+                                    </form><!-- /.footer-widget__newsletter mc-form -->
+                                    <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+
+                        <div class="footer-widget__col  footer-widget__col__col2">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Liens</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><a href="/fr/6aoc">Accueil</a></li>
+                                    <li><a href="/fr/6aoc-background-theme">À propos de la 6AOC</a></li>
+                                    <li><a href="/fr/6aoc-programme">Programmes</a></li>
+                                    <li><a href="/fr/6aoc-registration">Inscription et tarifs</a></li>
+                                    <li><a href="/fr/6aoc-contact">Contact</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col3">
+                            <div class="footer-widget footer-widget--gallery">
+                                <h6 class="footer-widget__title">Temps forts</h6><!-- /.footer-widget__title -->
+                                <!-- TODO: replace with real 6AOC event photos once available -->
+                                <div class="footer-widget__gallerywrap d-flex flex-wrap">
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-1.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-2.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-3.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-4.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img alt="" src="https://cms.afronet.bio/wp-content/uploads/2026/10/DSC5455.jpg-150x150.jpeg" width="78" height="92" style="height:auto; aspect-ratio:78/92; object-fit:cover;" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img alt="" src="https://cms.afronet.bio/wp-content/uploads/2026/10/DSC5791.jpg-150x150.jpeg" width="78" height="92" style="height:auto; aspect-ratio:78/92; object-fit:cover;" loading="lazy" decoding="async">
+                                    </div>
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col4">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Dates clés</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><strong>Fin du tarif préférentiel</strong><br>25 octobre 2026</li>
+                                    <li><strong>Date limite standard</strong><br>25 novembre 2026</li>
+                                    <li><strong>Dates de la conférence</strong><br>1–4 décembre 2026</li>
+                                    <li><strong>Lieu</strong><br>Chongwe, Lusaka, Zambie</li>
+                                </ul>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__top -->
+
+            <div class="main-footer__bottom">
+                <div class="container">
+                    <div class="main-footer__bottom__inner">
+                        <p class="main-footer__copyright">© 2026 AfrONet. Tous droits réservés</p>
+                        <div class="main-footer__social-row">
+                            <p class="main-footer__social-row-text">Réseaux sociaux</p>
+                            <ul class="main-footer__social-list">
+                                <li><a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://x.com/AfrONet_" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i><span class="sr-only">LinkedIn</span></a></li>
+                                <li><a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.main-footer__inner -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__bottom -->
+        </footer><!-- /.main-footer -->
+
+    </div><!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="/fr/" aria-label="logo"><img src="/assets/images/logo-light.png" width="155" alt="" /></a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:+255712344989">+255 712 344 989</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__social">
+                <a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener">
+                    <i class="fab fa-facebook-f"></i>
+                    <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://x.com/AfrONet_" target="_blank" rel="noopener">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span class="sr-only">X (Twitter)</span>
+                </a>
+                <a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                    <span class="sr-only">Instagram</span>
+                </a>
+            </div><!-- /.mobile-nav__social -->
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="#">
+                <input type="text" id="search" placeholder="Rechercher…" />
+                <button type="submit" aria-label="lancer la recherche" class="grdeen-btn">
+                    <span><i class="icon-search"></i></span>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">haut de page</span> <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <script src="/assets/vendors/jquery/jquery-3.7.0.min.js"></script>
+    <script src="/assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="/assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="/assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="/assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="/assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="/assets/vendors/tiny-slider/tiny-slider.js"></script>
+    <script src="/assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="/assets/vendors/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="/assets/vendors/wow/wow.js"></script>
+    <script src="/assets/vendors/imagesloaded/imagesloaded.min.js"></script>
+    <script src="/assets/vendors/isotope/isotope.js"></script>
+    <script src="/assets/vendors/countdown/countdown.min.js"></script>
+    <script src="/assets/vendors/jquery-circleType/jquery.circleType.js"></script>
+    <script src="/assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
+    <!-- template js -->
+    <script src="/assets/js/grdeen.js"></script>
+    <script src="/assets/js/6aoc-sponsors.js"></script>
+</body>
+
+</html>

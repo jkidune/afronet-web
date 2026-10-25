@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos paralelos e visitas de campo — 6.ª Conferência Africana de Agricultura Biológica (6AOC)</title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Eventos paralelos e visitas de campo da 6.ª Conferência Africana de Agricultura Biológica (6AOC) — atividades do dia 3 em Chongwe, Lusaka (Zâmbia), 1–4 de dezembro de 2026." />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900;1000&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-select/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="/assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="/assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="/assets/vendors/tiny-slider/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/vendors/grdeen-icons/style.css" />
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/grdeen-two-icons/style.css">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="/assets/css/grdeen.css" />
+    <link rel="stylesheet" href="/assets/css/6aoc-sponsors.css" />
+
+    <style>
+        .main-header__inner {
+            background: linear-gradient(90deg, #8a6100 0%, #d9a404 40%, #f4c430 65%, #d9a404 100%);
+            align-items: center;
+            min-height: 100px;
+            padding: 0 20px;
+            column-gap: 24px;
+        }
+
+        /* Logos sit directly on the gold ribbon: drop the theme's white panel, notch, fixed box and overhang.
+           The wrapper spans the full ribbon height and clips, so the glow can never spill past the ribbon. */
+        .main-header__logo {
+            width: auto;
+            height: auto;
+            padding: 0 18px;
+            margin: 0;
+            background: none;
+            border-radius: 0;
+            flex-shrink: 0;
+            align-self: stretch;
+            overflow-x: visible;
+            overflow-y: clip;
+        }
+        .main-header__logo::after {
+            display: none;
+        }
+        .main-header__logo--secondary {
+            padding: 0 12px;
+        }
+        .main-header__logo > a {
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+        }
+        /* Soft light behind each logo: fades to fully transparent before its own box edge, so no visible edge */
+        .main-header__logo > a::before {
+            content: "";
+            position: absolute;
+            inset: -18% -22%;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(ellipse closest-side at center,
+                rgba(255, 255, 255, 0.92) 0%,
+                rgba(255, 255, 255, 0.82) 45%,
+                rgba(255, 255, 255, 0.5) 68%,
+                rgba(255, 255, 255, 0) 92%);
+            filter: blur(6px);
+        }
+        .main-header__logo--secondary > a::before {
+            inset: -30% -10%;
+        }
+        .main-header__logo img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-height: 82px;
+            object-fit: contain;
+        }
+        .main-header__logo--secondary img {
+            max-height: 48px;
+        }
+
+        /* Active page in the main menu: green instead of the theme's black */
+        .main-header .main-menu .main-menu__list > li.current > a {
+            color: #0a6b10;
+            text-shadow: 0 0 0.5px #0a6b10;
+        }
+        @media (max-width: 1500px) {
+            .main-header__btn {
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                margin-right: 10px;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                overflow: visible;
+                transition: background-color 0.3s ease;
+            }
+
+            .main-header__btn::before {
+                display: none;
+            }
+
+            .main-header__btn:hover,
+            .main-header__btn:focus {
+                background-color: var(--grdeen-black, #172000);
+            }
+
+            .main-header__btn:hover::after,
+            .main-header__btn:focus::after {
+                color: #fff;
+            }
+
+            .main-header__btn span {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            .main-header__btn::after {
+                content: "\f095";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                font-size: 18px;
+                line-height: 1;
+                color: #d9a404;
+                position: relative;
+                z-index: 2;
+                transition: color 0.3s ease;
+            }
+
+            .main-header__btn:hover span,
+            .main-header__btn:focus span {
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 50%;
+                width: auto;
+                height: auto;
+                margin: 0;
+                padding: 6px 14px;
+                clip: auto;
+                overflow: visible;
+                white-space: nowrap;
+                transform: translateX(-50%);
+                background-color: var(--grdeen-black, #172000);
+                color: #fff;
+                font-size: 12px;
+                font-weight: 600;
+                border-radius: 4px;
+                z-index: 20;
+                pointer-events: none;
+            }
+        }
+
+        @media (max-width: 1300px) {
+            .main-header__logo--secondary img {
+                max-height: 44px;
+            }
+        }
+
+        /* 992px and up: menu fills the space between the event logo and the CTA, items centred with even gaps,
+           leftover space shared by both ends. Items fill the ribbon height so dropdowns open at its bottom edge. */
+        @media (min-width: 992px) {
+            .main-header .main-menu .main-menu__list,
+            .main-header .main-menu .main-menu__list ul {
+                display: flex;
+            }
+            .main-header .mobile-nav__btn {
+                display: none;
+            }
+            .main-header__nav {
+                flex: 1 1 auto;
+                min-width: 0;
+                align-self: stretch;
+                padding: 0 4px;
+            }
+            .main-header .main-menu .main-menu__list {
+                height: 100%;
+                justify-content: center;
+                align-items: stretch;
+                column-gap: clamp(28px, 3.4vw, 48px);
+            }
+            .main-header .main-menu .main-menu__list > li {
+                display: flex;
+                align-items: center;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .main-header .main-menu .main-menu__list > li + li {
+                margin-left: 0;
+            }
+            .main-header__right {
+                margin-left: 0;
+            }
+        }
+
+        /* 992–1199: tight range, so gaps shrink first, then the logos slightly */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .main-header__inner {
+                column-gap: 12px;
+                padding: 0 12px;
+            }
+            .main-header .main-menu .main-menu__list {
+                justify-content: space-evenly;
+                column-gap: 0;
+            }
+            .main-header__right {
+                padding-right: 0;
+            }
+            .main-header__logo {
+                padding: 0 14px;
+            }
+            .main-header__logo img {
+                max-height: 74px;
+            }
+            .main-header__logo--secondary {
+                padding: 0 8px;
+            }
+            .main-header__logo--secondary img {
+                max-height: 40px;
+            }
+        }
+
+        /* Below 992: one bar — [event logo] ... [AfrONet] [phone] [search] [menu] */
+        @media (max-width: 991px) {
+            .main-header__inner {
+                min-height: 68px;
+                padding: 0 8px;
+                column-gap: 4px;
+            }
+            .main-header .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .main-header__nav {
+                display: none;
+            }
+            .main-header__logo {
+                padding: 0 6px;
+            }
+            .main-header__logo > a::before {
+                inset: -12% -16%;
+                filter: blur(4px);
+            }
+            .main-header__logo--secondary > a::before {
+                inset: -24% -8%;
+            }
+            .main-header__logo img {
+                max-height: 54px;
+            }
+            .main-header__logo--secondary {
+                order: 2;
+                margin-left: auto;
+                padding: 0 4px;
+            }
+            .main-header__logo--secondary img {
+                max-height: 30px;
+            }
+            .main-header__right {
+                order: 3;
+                margin-left: 0;
+                padding-right: 0;
+                gap: 0;
+            }
+            .main-header__btn {
+                order: 1;
+                margin: 0;
+            }
+            .main-header__search {
+                order: 2;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-header__right .mobile-nav__btn {
+                order: 3;
+                width: 44px;
+                height: 44px;
+                padding: 0 10px;
+                margin: 0;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+            .main-header__right .mobile-nav__btn span {
+                background-color: var(--grdeen-base, #1a9120);
+                height: 2px;
+            }
+        }
+
+        /* Very small phones: AfrONet logo stays in the slide-out menu only */
+        @media (max-width: 360px) {
+            .main-header__logo--secondary {
+                display: none;
+            }
+            .main-header__right {
+                margin-left: auto;
+            }
+        }
+    </style>
+
+    <!-- 6AOC registration modal styles -->
+    <style>
+        .event-register-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+        .event-register-modal.is-open {
+            visibility: visible;
+            opacity: 1;
+        }
+        .event-register-modal__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(7, 55, 10, .72);
+        }
+        .event-register-modal__content {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+            transform: translateY(16px);
+            transition: transform .3s ease;
+        }
+        .event-register-modal.is-open .event-register-modal__content {
+            transform: translateY(0);
+        }
+        .event-register-modal__close {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            border: 0;
+            background: transparent;
+            font-size: 32px;
+            line-height: 1;
+            color: var(--grdeen-text, #626f62);
+            cursor: pointer;
+            padding: 0;
+        }
+        .event-register-modal__title {
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 8px;
+        }
+        .event-register-modal__subtitle {
+            color: var(--grdeen-text, #626f62);
+            margin-bottom: 24px;
+        }
+        .event-register-modal__row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .event-register-modal__group {
+            flex: 1 1 200px;
+            margin-bottom: 16px;
+        }
+        .event-register-modal__group label {
+            display: block;
+            font-weight: 600;
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 6px;
+        }
+        .event-register-modal__group input,
+        .event-register-modal__group select,
+        .event-register-modal__group textarea {
+            width: 100%;
+            border: 1px solid #d8e0d8;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 15px;
+            color: var(--grdeen-text-dark, #07370a);
+            background: #fff;
+        }
+        .event-register-modal__group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        .event-register-modal__group input:focus,
+        .event-register-modal__group select:focus,
+        .event-register-modal__group textarea:focus {
+            outline: none;
+            border-color: var(--grdeen-base, #1a9120);
+        }
+        .event-register-modal__submit {
+            width: 100%;
+            justify-content: center;
+        }
+        .event-register-modal__result-title {
+            color: var(--grdeen-text-dark, #07370a);
+            margin-bottom: 8px;
+        }
+        .event-register-modal__result-meta {
+            background: var(--grdeen-gray, #f6f7f2);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--grdeen-text, #626f62);
+        }
+        .event-register-modal__result-meta span {
+            display: block;
+        }
+        .event-register-modal__result-body {
+            background: #fbfdfb;
+            border: 1px solid #d8e0d8;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: var(--grdeen-text-dark, #07370a);
+            max-height: 220px;
+            overflow-y: auto;
+        }
+    </style>
+
+    <link rel="canonical" href="https://afronet.bio/pt/6aoc-side-events" />
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="https://afronet.bio/6aoc-side-events" />
+    <link rel="alternate" hreflang="fr" href="https://afronet.bio/fr/6aoc-side-events" />
+    <link rel="alternate" hreflang="pt" href="https://afronet.bio/pt/6aoc-side-events" />
+    <link rel="alternate" hreflang="x-default" href="https://afronet.bio/6aoc-side-events" />
+    <!-- /i18n:alternates -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:title" content="Eventos paralelos e visitas de campo — 6.ª Conferência Africana de Agricultura Biológica (6AOC)" />
+    <meta property="og:description" content="Eventos paralelos e visitas de campo da 6.ª Conferência Africana de Agricultura Biológica (6AOC) — atividades do dia 3 em Chongwe, Lusaka (Zâmbia), 1–4 de dezembro de 2026." />
+    <meta property="og:url" content="https://afronet.bio/pt/6aoc-side-events" />
+    <meta property="og:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
+    <meta property="og:site_name" content="AfrONet — African Organic Network" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eventos paralelos e visitas de campo — 6.ª Conferência Africana de Agricultura Biológica (6AOC)" />
+    <meta name="twitter:description" content="Eventos paralelos e visitas de campo da 6.ª Conferência Africana de Agricultura Biológica (6AOC) — atividades do dia 3 em Chongwe, Lusaka (Zâmbia), 1–4 de dezembro de 2026." />
+    <meta name="twitter:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://afronet.bio/pt/"},{"@type":"ListItem","position":2,"name":"6AOC","item":"https://afronet.bio/pt/6aoc"},{"@type":"ListItem","position":3,"name":"Eventos paralelos e visitas de campo","item":"https://afronet.bio/pt/6aoc-side-events"}]}</script>
+    <script>window.AFRONET_I18N={"Early Bird ends":"A inscrição antecipada termina","Regular registration ends":"A inscrição normal termina","6AOC starts":"A 6AOC começa"," TODAY · ":" HOJE · "," in ":" dentro de ","Register now":"Inscreva-se","d":"d","h":"h","m":"min","s":"s","Happening now in Chongwe, Lusaka, Zambia":"A decorrer agora em Chongwe, Lusaka, Zâmbia","Thank you for joining the 6th African Organic Conference":"Obrigado por participar na 6.ª Conferência Africana de Agricultura Biológica","Something went wrong. Please try again.":"Ocorreu um erro. Tente novamente.","All":"Todas","Sessions":"Sessões","Exhibition":"Exposição","People & Networking":"Pessoas e networking","Celebrations":"Celebrações","Promotional":"Promocional","Event Posters":"Cartazes","Filter photos":"Filtrar fotografias","Load more photos":"Ver mais fotografias","Photo viewer":"Visualizador de fotografias","Close photo viewer":"Fechar visualizador","Previous photo":"Fotografia anterior","Next photo":"Fotografia seguinte","Visit website":"Visitar o site","6AOC Sponsors & Partners":"Patrocinadores e parceiros da 6AOC","Visit the {name} website (opens in a new tab)":"Visitar o site de {name} (abre num novo separador)","Previous page":"Página anterior","Next page":"Página seguinte"};</script>
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(/assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div class="topbar-one">
+            <div class="container-fluid">
+                <div class="topbar-one__inner">
+                    <ul class="list-unstyled topbar-one__info">
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-pin"></i>
+                            </div>
+                            <a href="/pt/6aoc-contact">African Organic Network, C.P. 31168, Dar es Salaam, Tanzânia</a>
+                        </li>
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-email"></i>
+                            </div>
+                            <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                        </li>
+                    </ul><!-- /.list-unstyled topbar-one__info -->
+                    <div class="topbar-one__right">
+                        <div class="topbar-one__right__openitme d-flex align-items-center">
+                            <div class="topbar-one__right__iconwrap">
+                                <i class="fas fa-phone-square-alt"></i>
+                            </div>
+                            <p class="topbar-one__text">Aberto: seg.–sex., 08h00 – 16h00 (EAT)</p><!-- /.topbar-one__text -->
+                        </div>
+                        <ul class="list-unstyled topbar-one__right__list">
+                            <li><a href="/pt/6aoc-contact">Apoio</a></li>
+                            <li><a href="/pt/6aoc-contact">Carreiras</a></li>
+                            <li><a href="/pt/6aoc-contact">Escritório</a></li>
+                        </ul>
+                        <div class="topbar-one__social">
+                            <a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener">
+                                <i class="fab fa-facebook-f"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                            <a href="https://x.com/AfrONet_" target="_blank" rel="noopener">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                <span class="sr-only">X (Twitter)</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span class="sr-only">LinkedIn</span>
+                            </a>
+                            <a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener">
+                                <i class="fab fa-instagram"></i>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+                        </div><!-- /.topbar-one__social -->
+                    </div><!-- /.topbar-one__right -->
+                </div><!-- /.topbar-one__inner -->
+            </div><!-- /.container-fluid -->
+        </div><!-- /.topbar-one -->
+
+
+        <header class="main-header sticky-header sticky-header--normal">
+            <div class="container-fluid">
+                <div class="main-header__inner">
+                    <div class="main-header__logo">
+                        <a href="/pt/">
+                            <img src="/assets/images/6thAOCLogo.png" width="198" alt="6.ª Conferência Africana de Agricultura Biológica — Lusaka 2026">
+                        </a>
+                    </div><!-- /.main-header__logo -->
+
+                    <nav class="main-header__nav main-menu">
+                        <ul class="main-menu__list">
+                            <li>
+                                <a href="/pt/6aoc">Início</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/pt/6aoc-background-theme">Sobre a 6AOC</a>
+                                <ul>
+                                    <li><a href="/pt/6aoc-background-theme">Contexto e tema</a></li>
+                                    <li><a href="/pt/6aoc-objectives">Objetivos</a></li>
+                                    <li><a href="/pt/6aoc-tracks">Eixos da conferência</a></li>
+                                    <li><a href="/pt/6aoc-committees">Comités</a></li>
+                                    <li><a href="/pt/6aoc-previous-conferences">Conferências anteriores</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/pt/6aoc-programme">Programas</a>
+                            </li>
+                            <li>
+                                <a href="/pt/6aoc-registration">Inscrição</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/pt/6aoc-resources">Mais</a>
+                                <ul>
+                                    <li><a href="/pt/6aoc-call-for-presentations">Convite à apresentação de comunicações</a></li>
+                                    <li><a href="/pt/6aoc-side-events">Eventos paralelos e visitas de campo</a></li>
+                                    <li><a href="/pt/6aoc-sponsors">Patrocinadores e parceiros</a></li>
+                                    <li><a href="/pt/6aoc-resources">Recursos</a></li>
+                                    <li><a href="/pt/6aoc-news">Notícias</a></li>
+                                    <li><a href="/pt/6aoc-venue">Local e alojamento</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/pt/6aoc-contact">Contacto</a>
+                            </li>
+                            <li class="dropdown main-menu__lang" translate="no"><a href="#" role="button" aria-label="Idioma"><i class="fas fa-globe" aria-hidden="true"></i> PT</a><ul><li><a href="/6aoc-side-events" hreflang="en" lang="en">English</a></li><li><a href="/fr/6aoc-side-events" hreflang="fr" lang="fr">Français</a></li><li class="is-active"><a href="/pt/6aoc-side-events" hreflang="pt" lang="pt" aria-current="true">Português</a></li></ul></li><!-- /.main-menu__lang -->
+                        </ul>
+                    </nav><!-- /.main-header__nav -->
+                    <div class="main-header__right">
+                        <div class="mobile-nav__btn mobile-nav__toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><!-- /.mobile-nav__toggler -->
+                        <a href="/pt/6aoc-call-for-presentations" class="grdeen-btn main-header__btn">
+                            <span>Convite à apresentação de comunicações</span>
+                        </a><!-- /.thm-btn main-header__btn -->
+                        <a href="#" class="search-toggler main-header__search">
+                            <div class="main-header__search__icon">
+                                <i class="icon-search" aria-hidden="true"></i>
+                            </div>
+                            <span class="sr-only">Pesquisar</span>
+                        </a><!-- /.search-toggler -->
+                    </div><!-- /.main-header__right -->
+                    <div class="main-header__logo main-header__logo--secondary">
+                        <a href="/pt/">
+                            <img src="/assets/images/logo-dark.png" width="198" alt="AfrONet — African Organic Network">
+                        </a>
+                    </div><!-- /.main-header__logo--secondary -->
+                </div><!-- /.main-header__inner -->
+            </div><!-- /.container-fluid -->
+        </header><!-- /.main-header -->
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url('https://cms.afronet.bio/wp-content/uploads/2026/10/hero.png');"></div>
+            <div class="page-header__shape wow fadeInUp" data-wow-delay="200ms"></div>
+            <div class="page-header__overlay"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <h2 class="page-header__title">Eventos paralelos e visitas de campo</h2>
+                <ul class="grdeen-breadcrumb list-unstyled">
+                    <li><a href="/pt/6aoc">Início</a></li>
+                    <li><span>Eventos paralelos e visitas de campo</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <section class="section-space">
+            <div class="container">
+                <div class="row gutter-y-40 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="sec-title sec-title--two">
+                            <span class="sec-title__tagline">Organizar</span>
+                            <h2 class="sec-title__title">Organizar um evento paralelo</h2>
+                        </div>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">O 3.º dia da 6AOC é dedicado a eventos paralelos, encontros de negócios e visitas de campo — uma oportunidade para ir além dos eixos de apresentações e ver a agricultura biológica em ação. Organizações, redes, parceiros de desenvolvimento e outros grupos podem candidatar-se a organizar eventos paralelos à margem do programa principal. Os eventos paralelos permitem promover debates específicos, lançar iniciativas, partilhar investigação, realizar reuniões com partes interessadas ou aprofundar temas concretos da agricultura biológica e da agroecologia.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">As organizações interessadas em organizar um evento paralelo podem inscrever-se ao preço de «evento paralelo» indicado na página <a href="/pt/6aoc-registration">Inscrição e preços</a>.</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="fee-card" style="text-align:center;">
+                            <h3 class="fee-card__title" style="margin-bottom:16px;">Candidatar-se</h3>
+                            <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Apresente-nos a sua proposta de evento paralelo e enviaremos os requisitos por e-mail.</p>
+                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-sideevent-modal" style="width:100%; text-align:center; justify-content:center;">
+                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Propor um evento paralelo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space" style="background-color:var(--grdeen-gray, #f6f7f2);">
+            <div class="container">
+                <div class="sec-title sec-title--two text-center">
+                    <span class="sec-title__tagline">Dia 3</span>
+                    <h2 class="sec-title__title">Visitas de campo</h2>
+                </div><!-- /.sec-title -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; text-align:center; margin-bottom:24px;">No 3.º dia, os participantes visitarão locais em Lusaka e arredores que mostram a agricultura biológica na prática:</p>
+                        <ul class="event-checklist event-checklist--three">
+                            <li><i class="icon-check-solid"></i>Explorações biológicas de renome</li>
+                            <li><i class="icon-check-solid"></i>Empresas de transformação</li>
+                            <li><i class="icon-check-solid"></i>Estruturas de comercialização biológica</li>
+                            <li><i class="icon-check-solid"></i>Outras iniciativas de agricultura biológica na Zâmbia</li>
+                        </ul>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; text-align:center; margin-top:20px;"><em>A lista de eventos paralelos e de locais de visita será publicada aqui à medida que forem confirmados.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6AOC sponsor logo strip (built by assets/js/6aoc-sponsors.js) -->
+        <section class="aoc-sponsor-strip" data-aoc-sponsor-strip></section>
+
+        <footer class="main-footer main-footer--two">
+            <div class="main-footer__bg" style="background-image: url(/assets/images/backgrounds/footer-bg1-1.jpg);"></div>
+            <div class="main-footer__overlay"></div>
+            <!-- /.main-footer__bg -->
+            <div class="main-footer__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-widget__col footer-widget__col__col1">
+                            <div class="footer-widget footer-widget--about">
+                                <a href="/pt/" class="footer-widget__logo">
+                                    <img src="/assets/images/logo-light.png" width="155" alt="AfrONet">
+                                </a>
+                                <p class="footer-widget__experience-text">A 6.ª Conferência Africana de Agricultura Biológica — 1–4 de dezembro de 2026, Chongwe, Lusaka (Zâmbia).</p>
+                                <div class="footer-widget__newsletterwrap">
+                                    <h6 class="footer-widget__title footer-widget__title--newsletter">Boletim informativo</h6>
+                                    <form action="#" class="footer-widget__newsletter cf7-newsletter-form" data-cf7-id="413">
+                                        <div class="footer-widget__mail-address">
+                                            <input type="email" name="your-email" placeholder="Endereço de e-mail" required>
+                                        </div>
+                                        <button type="submit" class="form-submit-btn">Subscrever</button>
+                                    </form><!-- /.footer-widget__newsletter mc-form -->
+                                    <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+
+                        <div class="footer-widget__col  footer-widget__col__col2">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Ligações</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><a href="/pt/6aoc">Início</a></li>
+                                    <li><a href="/pt/6aoc-background-theme">Sobre a 6AOC</a></li>
+                                    <li><a href="/pt/6aoc-programme">Programas</a></li>
+                                    <li><a href="/pt/6aoc-registration">Inscrição e preços</a></li>
+                                    <li><a href="/pt/6aoc-contact">Contacto</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col3">
+                            <div class="footer-widget footer-widget--gallery">
+                                <h6 class="footer-widget__title">Destaques</h6><!-- /.footer-widget__title -->
+                                <!-- TODO: replace with real 6AOC event photos once available -->
+                                <div class="footer-widget__gallerywrap d-flex flex-wrap">
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-1.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-2.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-3.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-4.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img alt="" src="https://cms.afronet.bio/wp-content/uploads/2026/10/DSC5455.jpg-150x150.jpeg" width="78" height="92" style="height:auto; aspect-ratio:78/92; object-fit:cover;" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img alt="" src="https://cms.afronet.bio/wp-content/uploads/2026/10/DSC5791.jpg-150x150.jpeg" width="78" height="92" style="height:auto; aspect-ratio:78/92; object-fit:cover;" loading="lazy" decoding="async">
+                                    </div>
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col4">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Datas importantes</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><strong>Fim da inscrição antecipada</strong><br>25 de outubro de 2026</li>
+                                    <li><strong>Prazo normal</strong><br>25 de novembro de 2026</li>
+                                    <li><strong>Datas da conferência</strong><br>1–4 de dezembro de 2026</li>
+                                    <li><strong>Local</strong><br>Chongwe, Lusaka, Zâmbia</li>
+                                </ul>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__top -->
+
+            <div class="main-footer__bottom">
+                <div class="container">
+                    <div class="main-footer__bottom__inner">
+                        <p class="main-footer__copyright">© 2026 AfrONet. Todos os direitos reservados</p>
+                        <div class="main-footer__social-row">
+                            <p class="main-footer__social-row-text">Redes sociais</p>
+                            <ul class="main-footer__social-list">
+                                <li><a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://x.com/AfrONet_" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i><span class="sr-only">LinkedIn</span></a></li>
+                                <li><a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.main-footer__inner -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__bottom -->
+        </footer><!-- /.main-footer -->
+
+    </div><!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="/pt/" aria-label="logótipo"><img src="/assets/images/logo-light.png" width="155" alt="" /></a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:+255712344989">+255 712 344 989</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__social">
+                <a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener">
+                    <i class="fab fa-facebook-f"></i>
+                    <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://x.com/AfrONet_" target="_blank" rel="noopener">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span class="sr-only">X (Twitter)</span>
+                </a>
+                <a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                    <span class="sr-only">Instagram</span>
+                </a>
+            </div><!-- /.mobile-nav__social -->
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="#">
+                <input type="text" id="search" placeholder="Pesquisar…" />
+                <button type="submit" aria-label="pesquisar" class="grdeen-btn">
+                    <span><i class="icon-search"></i></span>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+    <div class="event-register-modal" id="event-sideevent-modal">
+        <div class="event-register-modal__overlay"></div>
+        <div class="event-register-modal__content">
+            <button type="button" class="event-register-modal__close" aria-label="Fechar">&times;</button>
+            <h3 class="event-register-modal__title">Propor um evento paralelo</h3>
+            <p class="event-register-modal__subtitle">Preencha os seus dados abaixo — ao submeter, o Gmail abre com os dados já preenchidos, pronto a enviar.</p>
+            <form id="event-sideevent-form">
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="side-name">Nome completo</label>
+                        <input type="text" id="side-name" name="name" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="side-email">E-mail</label>
+                        <input type="email" id="side-email" name="email" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="side-organisation">Organização</label>
+                        <input type="text" id="side-organisation" name="organisation" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="side-country">País</label>
+                        <input type="text" id="side-country" name="country" required>
+                    </div>
+                </div>
+                <div class="event-register-modal__row">
+                    <div class="event-register-modal__group">
+                        <label for="side-topic">Tema proposto</label>
+                        <input type="text" id="side-topic" name="topic" required>
+                    </div>
+                    <div class="event-register-modal__group">
+                        <label for="side-day">Dia preferido</label>
+                        <input type="text" id="side-day" name="day" placeholder="ex.: dia 1, 2 de dezembro de 2026">
+                    </div>
+                </div>
+                <button type="submit" class="grdeen-btn event-register-modal__submit">
+                    <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Continuar para o e-mail</span>
+                </button>
+            </form>
+            <div class="event-register-modal__result" style="display:none;">
+                <h4 class="event-register-modal__result-title">O seu e-mail está pronto</h4>
+                <p class="event-register-modal__subtitle">Destinatário: <strong>mgeta.daud@afronet.bio</strong>. O seu e-mail abrirá com os dados já preenchidos — basta enviar, ou copiar a mensagem abaixo.</p>
+                <div class="event-register-modal__result-meta">
+                    <span><strong>Para:</strong> mgeta.daud@afronet.bio</span> <span><strong>Assunto:</strong> <span class="js-result-subject"></span></span>
+                </div>
+                <div class="event-register-modal__result-body js-result-body"></div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <a href="#" class="grdeen-btn js-open-mailto" rel="noopener" style="justify-content:center;">
+                        <span><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Abrir no Gmail</span>
+                    </a>
+                    <button type="button" class="grdeen-btn grdeen-btn--outline js-copy-message" style="justify-content:center;">
+                        <span><i class="fas fa-copy" style="margin-right:8px;"></i>Copiar mensagem</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.event-register-modal -->
+
+    <div class="promo-popup" role="dialog" aria-modal="true" aria-label="6AOC — Exponha ou organize um evento paralelo" data-storage-key="afronet6aocExhibitSidePoster">
+        <div class="promo-popup__overlay"></div>
+        <!-- /.promo-popup__overlay -->
+        <div class="promo-popup__content promo-popup__content--poster">
+            <button type="button" class="promo-popup__close" aria-label="Fechar">&times;</button>
+            <img src="https://cms.afronet.bio/wp-content/uploads/2026/10/exibitsideevent.png" alt="6AOC — Exponha ou organize um evento paralelo, 1–4 de dezembro de 2026, Chongwe, Lusaka, Zâmbia" class="promo-popup__poster-img">
+        </div>
+        <!-- /.promo-popup__content -->
+    </div>
+    <!-- /.promo-popup -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">voltar ao topo</span> <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <script src="/assets/vendors/jquery/jquery-3.7.0.min.js"></script>
+    <script src="/assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="/assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="/assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="/assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="/assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="/assets/vendors/tiny-slider/tiny-slider.js"></script>
+    <script src="/assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="/assets/vendors/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="/assets/vendors/wow/wow.js"></script>
+    <script src="/assets/vendors/imagesloaded/imagesloaded.min.js"></script>
+    <script src="/assets/vendors/isotope/isotope.js"></script>
+    <script src="/assets/vendors/countdown/countdown.min.js"></script>
+    <script src="/assets/vendors/jquery-circleType/jquery.circleType.js"></script>
+    <script src="/assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
+    <!-- template js -->
+    <script src="/assets/js/grdeen.js"></script>
+    <script src="/assets/js/6aoc-sponsors.js"></script>
+
+    <script>
+        (function ($) {
+            "use strict";
+            var $modals = $(".event-register-modal");
+
+            function openModal(target) {
+                var $m = $(target);
+                if (!$m.length) return;
+                $m.addClass("is-open");
+                $("body").css("overflow", "hidden");
+            }
+
+            function closeModals() {
+                $modals.removeClass("is-open");
+                $("body").css("overflow", "");
+                $modals.each(function () {
+                    var $modal = $(this);
+                    $modal.find(".event-register-modal__result").hide();
+                    $modal.find("form").show();
+                });
+            }
+
+            $(document).on("click", ".event-register-toggler", function (e) {
+                e.preventDefault();
+                var $btn = $(this);
+                var target = $btn.data("modal-target");
+                if (!target) return;
+                openModal(target);
+            });
+
+            $modals.on("click", ".event-register-modal__close", closeModals);
+            $modals.on("click", ".event-register-modal__overlay", closeModals);
+            $(document).on("keydown", function (e) {
+                if (e.key === "Escape" || e.keyCode === 27) closeModals();
+            });
+
+            var mailtoForms = {
+                "#event-sideevent-form": {
+                    subject: "6AOC Side Event Application",
+                    labels: { name: "Name", email: "Email", organisation: "Organisation", country: "Country", topic: "Proposed topic/focus", day: "Preferred day" }
+                }
+            };
+
+            function copyText(text, $btn) {
+                function copied() {
+                    var $span = $btn.find("span");
+                    var original = $span.html();
+                    $span.html('<i class="fas fa-check" style="margin-right:8px;"></i>Copiado!');
+                    setTimeout(function () { $span.html(original); }, 2000);
+                }
+                function legacyCopy() {
+                    var $ta = $("<textarea>").val(text).appendTo("body").css({ position: "fixed", opacity: 0 });
+                    $ta.select();
+                    try { document.execCommand("copy"); } catch (err) {}
+                    $ta.remove();
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(copied, function () {
+                        legacyCopy();
+                        copied();
+                    });
+                } else {
+                    legacyCopy();
+                    copied();
+                }
+            }
+
+            function isMobileDevice() {
+                return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.mobile === true);
+            }
+
+            function showResult($modal, config, lines) {
+                var $form = $modal.find("form");
+                var $result = $modal.find(".event-register-modal__result");
+                var name = $.trim($form.find('[name="name"]').val()) || "";
+                var subject = config.subject + (name ? " — " + name : "");
+                var bodyText = lines.join("\n");
+                var params = "subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyText);
+                var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=mgeta.daud@afronet.bio&" + params;
+                var mailtoUrl = "mailto:mgeta.daud@afronet.bio?" + params;
+                var composeUrl = isMobileDevice() ? mailtoUrl : gmailUrl;
+                $result.find(".js-result-subject").text(subject);
+                $result.find(".js-result-body").text(bodyText);
+                $result.find(".js-open-mailto")
+                    .attr("href", composeUrl)
+                    .find("span")
+                    .html(isMobileDevice()
+                        ? '<i class="fas fa-envelope" style="margin-right:8px;"></i>Abrir aplicação de e-mail'
+                        : '<i class="fas fa-paper-plane" style="margin-right:8px;"></i>Abrir no Gmail');
+                $form.hide();
+                $result.show();
+                return composeUrl;
+            }
+
+            Object.keys(mailtoForms).forEach(function (selector) {
+                var config = mailtoForms[selector];
+                var $modal = $(selector).closest(".event-register-modal");
+                $(selector).on("submit", function (e) {
+                    e.preventDefault();
+                    var $form = $(this);
+                    var lines = [];
+                    $form.find("input, select, textarea").each(function () {
+                        var name = this.name;
+                        if (!name || !config.labels[name]) return;
+                        var val = $.trim($(this).val());
+                        if (!val) return;
+                        lines.push(config.labels[name] + ": " + val);
+                    });
+                    var composeUrl = showResult($modal, config, lines);
+                    if (isMobileDevice()) {
+                        window.location.href = composeUrl;
+                    } else {
+                        window.open(composeUrl, "_blank");
+                    }
+                });
+                $modal.on("click", ".js-open-mailto", function (e) {
+                    e.preventDefault();
+                    if (isMobileDevice()) {
+                        window.location.href = this.href;
+                    } else {
+                        window.open(this.href, "_blank");
+                    }
+                });
+                $modal.on("click", ".js-copy-message", function (e) {
+                    e.preventDefault();
+                    var text = $modal.find(".event-register-modal__result-body").text();
+                    copyText(text, $(this));
+                });
+            });
+        })(jQuery);
+    </script>
+</body>
+
+</html>

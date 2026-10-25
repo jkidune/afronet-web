@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contexto e tema — 6.ª Conferência Africana de Agricultura Biológica (6AOC)</title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Contexto e tema da 6.ª Conferência Africana de Agricultura Biológica (6AOC) — construir sistemas agroalimentares resilientes e garantir o direito à alimentação em África através da agricultura biológica. 1–4 de dezembro de 2026, Chongwe, Lusaka (Zâmbia)." />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900;1000&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-select/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="/assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="/assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="/assets/vendors/tiny-slider/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/vendors/grdeen-icons/style.css" />
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/grdeen-two-icons/style.css">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="/assets/css/grdeen.css" />
+    <link rel="stylesheet" href="/assets/css/6aoc-sponsors.css" />
+
+    <style>
+        .main-header__inner {
+            background: linear-gradient(90deg, #8a6100 0%, #d9a404 40%, #f4c430 65%, #d9a404 100%);
+            align-items: center;
+            min-height: 100px;
+            padding: 0 20px;
+            column-gap: 24px;
+        }
+
+        /* Logos sit directly on the gold ribbon: drop the theme's white panel, notch, fixed box and overhang.
+           The wrapper spans the full ribbon height and clips, so the glow can never spill past the ribbon. */
+        .main-header__logo {
+            width: auto;
+            height: auto;
+            padding: 0 18px;
+            margin: 0;
+            background: none;
+            border-radius: 0;
+            flex-shrink: 0;
+            align-self: stretch;
+            overflow-x: visible;
+            overflow-y: clip;
+        }
+        .main-header__logo::after {
+            display: none;
+        }
+        .main-header__logo--secondary {
+            padding: 0 12px;
+        }
+        .main-header__logo > a {
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+        }
+        /* Soft light behind each logo: fades to fully transparent before its own box edge, so no visible edge */
+        .main-header__logo > a::before {
+            content: "";
+            position: absolute;
+            inset: -18% -22%;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(ellipse closest-side at center,
+                rgba(255, 255, 255, 0.92) 0%,
+                rgba(255, 255, 255, 0.82) 45%,
+                rgba(255, 255, 255, 0.5) 68%,
+                rgba(255, 255, 255, 0) 92%);
+            filter: blur(6px);
+        }
+        .main-header__logo--secondary > a::before {
+            inset: -30% -10%;
+        }
+        .main-header__logo img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-height: 82px;
+            object-fit: contain;
+        }
+        .main-header__logo--secondary img {
+            max-height: 48px;
+        }
+
+        /* Active page in the main menu: green instead of the theme's black */
+        .main-header .main-menu .main-menu__list > li.current > a {
+            color: #0a6b10;
+            text-shadow: 0 0 0.5px #0a6b10;
+        }
+        @media (max-width: 1500px) {
+            .main-header__btn {
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                margin-right: 10px;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                overflow: visible;
+                transition: background-color 0.3s ease;
+            }
+
+            .main-header__btn::before {
+                display: none;
+            }
+
+            .main-header__btn:hover,
+            .main-header__btn:focus {
+                background-color: var(--grdeen-black, #172000);
+            }
+
+            .main-header__btn:hover::after,
+            .main-header__btn:focus::after {
+                color: #fff;
+            }
+
+            .main-header__btn span {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            .main-header__btn::after {
+                content: "\f095";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                font-size: 18px;
+                line-height: 1;
+                color: #d9a404;
+                position: relative;
+                z-index: 2;
+                transition: color 0.3s ease;
+            }
+
+            .main-header__btn:hover span,
+            .main-header__btn:focus span {
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 50%;
+                width: auto;
+                height: auto;
+                margin: 0;
+                padding: 6px 14px;
+                clip: auto;
+                overflow: visible;
+                white-space: nowrap;
+                transform: translateX(-50%);
+                background-color: var(--grdeen-black, #172000);
+                color: #fff;
+                font-size: 12px;
+                font-weight: 600;
+                border-radius: 4px;
+                z-index: 20;
+                pointer-events: none;
+            }
+        }
+
+        @media (max-width: 1300px) {
+            .main-header__logo--secondary img {
+                max-height: 44px;
+            }
+        }
+
+        /* 992px and up: menu fills the space between the event logo and the CTA, items centred with even gaps,
+           leftover space shared by both ends. Items fill the ribbon height so dropdowns open at its bottom edge. */
+        @media (min-width: 992px) {
+            .main-header .main-menu .main-menu__list,
+            .main-header .main-menu .main-menu__list ul {
+                display: flex;
+            }
+            .main-header .mobile-nav__btn {
+                display: none;
+            }
+            .main-header__nav {
+                flex: 1 1 auto;
+                min-width: 0;
+                align-self: stretch;
+                padding: 0 4px;
+            }
+            .main-header .main-menu .main-menu__list {
+                height: 100%;
+                justify-content: center;
+                align-items: stretch;
+                column-gap: clamp(28px, 3.4vw, 48px);
+            }
+            .main-header .main-menu .main-menu__list > li {
+                display: flex;
+                align-items: center;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .main-header .main-menu .main-menu__list > li + li {
+                margin-left: 0;
+            }
+            .main-header__right {
+                margin-left: 0;
+            }
+        }
+
+        /* 992–1199: tight range, so gaps shrink first, then the logos slightly */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .main-header__inner {
+                column-gap: 12px;
+                padding: 0 12px;
+            }
+            .main-header .main-menu .main-menu__list {
+                justify-content: space-evenly;
+                column-gap: 0;
+            }
+            .main-header__right {
+                padding-right: 0;
+            }
+            .main-header__logo {
+                padding: 0 14px;
+            }
+            .main-header__logo img {
+                max-height: 74px;
+            }
+            .main-header__logo--secondary {
+                padding: 0 8px;
+            }
+            .main-header__logo--secondary img {
+                max-height: 40px;
+            }
+        }
+
+        /* Below 992: one bar — [event logo] ... [AfrONet] [phone] [search] [menu] */
+        @media (max-width: 991px) {
+            .main-header__inner {
+                min-height: 68px;
+                padding: 0 8px;
+                column-gap: 4px;
+            }
+            .main-header .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .main-header__nav {
+                display: none;
+            }
+            .main-header__logo {
+                padding: 0 6px;
+            }
+            .main-header__logo > a::before {
+                inset: -12% -16%;
+                filter: blur(4px);
+            }
+            .main-header__logo--secondary > a::before {
+                inset: -24% -8%;
+            }
+            .main-header__logo img {
+                max-height: 54px;
+            }
+            .main-header__logo--secondary {
+                order: 2;
+                margin-left: auto;
+                padding: 0 4px;
+            }
+            .main-header__logo--secondary img {
+                max-height: 30px;
+            }
+            .main-header__right {
+                order: 3;
+                margin-left: 0;
+                padding-right: 0;
+                gap: 0;
+            }
+            .main-header__btn {
+                order: 1;
+                margin: 0;
+            }
+            .main-header__search {
+                order: 2;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .main-header__right .mobile-nav__btn {
+                order: 3;
+                width: 44px;
+                height: 44px;
+                padding: 0 10px;
+                margin: 0;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+            .main-header__right .mobile-nav__btn span {
+                background-color: var(--grdeen-base, #1a9120);
+                height: 2px;
+            }
+        }
+
+        /* Very small phones: AfrONet logo stays in the slide-out menu only */
+        @media (max-width: 360px) {
+            .main-header__logo--secondary {
+                display: none;
+            }
+            .main-header__right {
+                margin-left: auto;
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://afronet.bio/pt/6aoc-background-theme" />
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="https://afronet.bio/6aoc-background-theme" />
+    <link rel="alternate" hreflang="fr" href="https://afronet.bio/fr/6aoc-background-theme" />
+    <link rel="alternate" hreflang="pt" href="https://afronet.bio/pt/6aoc-background-theme" />
+    <link rel="alternate" hreflang="x-default" href="https://afronet.bio/6aoc-background-theme" />
+    <!-- /i18n:alternates -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:title" content="Contexto e tema — 6.ª Conferência Africana de Agricultura Biológica (6AOC)" />
+    <meta property="og:description" content="Contexto e tema da 6.ª Conferência Africana de Agricultura Biológica (6AOC) — construir sistemas agroalimentares resilientes e garantir o direito à alimentação em África através da agricultura biológica. 1–4 de dezembro de 2026, Chongwe, Lusaka (Zâmbia)." />
+    <meta property="og:url" content="https://afronet.bio/pt/6aoc-background-theme" />
+    <meta property="og:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
+    <meta property="og:site_name" content="AfrONet — African Organic Network" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contexto e tema — 6.ª Conferência Africana de Agricultura Biológica (6AOC)" />
+    <meta name="twitter:description" content="Contexto e tema da 6.ª Conferência Africana de Agricultura Biológica (6AOC) — construir sistemas agroalimentares resilientes e garantir o direito à alimentação em África através da agricultura biológica. 1–4 de dezembro de 2026, Chongwe, Lusaka (Zâmbia)." />
+    <meta name="twitter:image" content="https://cms.afronet.bio/wp-content/uploads/2026/10/6AOC-BANNER.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://afronet.bio/pt/"},{"@type":"ListItem","position":2,"name":"6AOC","item":"https://afronet.bio/pt/6aoc"},{"@type":"ListItem","position":3,"name":"Contexto e tema","item":"https://afronet.bio/pt/6aoc-background-theme"}]}</script>
+    <script>window.AFRONET_I18N={"Early Bird ends":"A inscrição antecipada termina","Regular registration ends":"A inscrição normal termina","6AOC starts":"A 6AOC começa"," TODAY · ":" HOJE · "," in ":" dentro de ","Register now":"Inscreva-se","d":"d","h":"h","m":"min","s":"s","Happening now in Chongwe, Lusaka, Zambia":"A decorrer agora em Chongwe, Lusaka, Zâmbia","Thank you for joining the 6th African Organic Conference":"Obrigado por participar na 6.ª Conferência Africana de Agricultura Biológica","Something went wrong. Please try again.":"Ocorreu um erro. Tente novamente.","All":"Todas","Sessions":"Sessões","Exhibition":"Exposição","People & Networking":"Pessoas e networking","Celebrations":"Celebrações","Promotional":"Promocional","Event Posters":"Cartazes","Filter photos":"Filtrar fotografias","Load more photos":"Ver mais fotografias","Photo viewer":"Visualizador de fotografias","Close photo viewer":"Fechar visualizador","Previous photo":"Fotografia anterior","Next photo":"Fotografia seguinte","Visit website":"Visitar o site","6AOC Sponsors & Partners":"Patrocinadores e parceiros da 6AOC","Visit the {name} website (opens in a new tab)":"Visitar o site de {name} (abre num novo separador)","Previous page":"Página anterior","Next page":"Página seguinte"};</script>
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(/assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div class="topbar-one">
+            <div class="container-fluid">
+                <div class="topbar-one__inner">
+                    <ul class="list-unstyled topbar-one__info">
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-pin"></i>
+                            </div>
+                            <a href="/pt/6aoc-contact">African Organic Network, C.P. 31168, Dar es Salaam, Tanzânia</a>
+                        </li>
+                        <li class="topbar-one__info__item">
+                            <div class="topbar-one__info__iconwrap">
+                                <i class="icon-email"></i>
+                            </div>
+                            <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                        </li>
+                    </ul><!-- /.list-unstyled topbar-one__info -->
+                    <div class="topbar-one__right">
+                        <div class="topbar-one__right__openitme d-flex align-items-center">
+                            <div class="topbar-one__right__iconwrap">
+                                <i class="fas fa-phone-square-alt"></i>
+                            </div>
+                            <p class="topbar-one__text">Aberto: seg.–sex., 08h00 – 16h00 (EAT)</p><!-- /.topbar-one__text -->
+                        </div>
+                        <ul class="list-unstyled topbar-one__right__list">
+                            <li><a href="/pt/6aoc-contact">Apoio</a></li>
+                            <li><a href="/pt/6aoc-contact">Carreiras</a></li>
+                            <li><a href="/pt/6aoc-contact">Escritório</a></li>
+                        </ul>
+                        <div class="topbar-one__social">
+                            <a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener">
+                                <i class="fab fa-facebook-f"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                            <a href="https://x.com/AfrONet_" target="_blank" rel="noopener">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                <span class="sr-only">X (Twitter)</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span class="sr-only">LinkedIn</span>
+                            </a>
+                            <a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener">
+                                <i class="fab fa-instagram"></i>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+                        </div><!-- /.topbar-one__social -->
+                    </div><!-- /.topbar-one__right -->
+                </div><!-- /.topbar-one__inner -->
+            </div><!-- /.container-fluid -->
+        </div><!-- /.topbar-one -->
+
+
+        <header class="main-header sticky-header sticky-header--normal">
+            <div class="container-fluid">
+                <div class="main-header__inner">
+                    <div class="main-header__logo">
+                        <a href="/pt/">
+                            <img src="/assets/images/6thAOCLogo.png" width="198" alt="6.ª Conferência Africana de Agricultura Biológica — Lusaka 2026">
+                        </a>
+                    </div><!-- /.main-header__logo -->
+
+                    <nav class="main-header__nav main-menu">
+                        <ul class="main-menu__list">
+                            <li>
+                                <a href="/pt/6aoc">Início</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/pt/6aoc-background-theme">Sobre a 6AOC</a>
+                                <ul>
+                                    <li><a href="/pt/6aoc-background-theme">Contexto e tema</a></li>
+                                    <li><a href="/pt/6aoc-objectives">Objetivos</a></li>
+                                    <li><a href="/pt/6aoc-tracks">Eixos da conferência</a></li>
+                                    <li><a href="/pt/6aoc-committees">Comités</a></li>
+                                    <li><a href="/pt/6aoc-previous-conferences">Conferências anteriores</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/pt/6aoc-programme">Programas</a>
+                            </li>
+                            <li>
+                                <a href="/pt/6aoc-registration">Inscrição</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/pt/6aoc-resources">Mais</a>
+                                <ul>
+                                    <li><a href="/pt/6aoc-call-for-presentations">Convite à apresentação de comunicações</a></li>
+                                    <li><a href="/pt/6aoc-side-events">Eventos paralelos e visitas de campo</a></li>
+                                    <li><a href="/pt/6aoc-sponsors">Patrocinadores e parceiros</a></li>
+                                    <li><a href="/pt/6aoc-resources">Recursos</a></li>
+                                    <li><a href="/pt/6aoc-news">Notícias</a></li>
+                                    <li><a href="/pt/6aoc-venue">Local e alojamento</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/pt/6aoc-contact">Contacto</a>
+                            </li>
+                            <li class="dropdown main-menu__lang" translate="no"><a href="#" role="button" aria-label="Idioma"><i class="fas fa-globe" aria-hidden="true"></i> PT</a><ul><li><a href="/6aoc-background-theme" hreflang="en" lang="en">English</a></li><li><a href="/fr/6aoc-background-theme" hreflang="fr" lang="fr">Français</a></li><li class="is-active"><a href="/pt/6aoc-background-theme" hreflang="pt" lang="pt" aria-current="true">Português</a></li></ul></li><!-- /.main-menu__lang -->
+                        </ul>
+                    </nav><!-- /.main-header__nav -->
+                    <div class="main-header__right">
+                        <div class="mobile-nav__btn mobile-nav__toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><!-- /.mobile-nav__toggler -->
+                        <a href="/pt/6aoc-call-for-presentations" class="grdeen-btn main-header__btn">
+                            <span>Convite à apresentação de comunicações</span>
+                        </a><!-- /.thm-btn main-header__btn -->
+                        <a href="#" class="search-toggler main-header__search">
+                            <div class="main-header__search__icon">
+                                <i class="icon-search" aria-hidden="true"></i>
+                            </div>
+                            <span class="sr-only">Pesquisar</span>
+                        </a><!-- /.search-toggler -->
+                    </div><!-- /.main-header__right -->
+                    <div class="main-header__logo main-header__logo--secondary">
+                        <a href="/pt/">
+                            <img src="/assets/images/logo-dark.png" width="198" alt="AfrONet — African Organic Network">
+                        </a>
+                    </div><!-- /.main-header__logo--secondary -->
+                </div><!-- /.main-header__inner -->
+            </div><!-- /.container-fluid -->
+        </header><!-- /.main-header -->
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url('https://cms.afronet.bio/wp-content/uploads/2026/10/hero.png');"></div>
+            <div class="page-header__shape wow fadeInUp" data-wow-delay="200ms"></div>
+            <div class="page-header__overlay"></div>
+            <!-- /.page-header__bg -->
+            <div class="container">
+                <h2 class="page-header__title">Contexto e tema</h2>
+                <ul class="grdeen-breadcrumb list-unstyled">
+                    <li><a href="/pt/6aoc">Início</a></li>
+                    <li><a href="/pt/6aoc-background-theme">Sobre a 6AOC</a></li>
+                    <li><span>Contexto e tema</span></li>
+                </ul><!-- /.thm-breadcrumb list-unstyled -->
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <section class="section-space">
+            <div class="container">
+                <div class="row align-items-center gutter-y-40">
+                    <div class="col-lg-7">
+                        <div style="display:flex; gap:18px;">
+                            <div style="flex:0 0 auto; align-self:flex-start; writing-mode:vertical-rl; transform:rotate(180deg); border-left:3px solid var(--grdeen-base, #1a9120); padding-left:14px; font-weight:700; letter-spacing:4px; color:var(--grdeen-text-dark, #07370a); font-size:15px; text-transform:uppercase;">6AOC</div>
+                            <div>
+                                <h2 style="font-family:var(--grdeen-heading-font, 'DM Sans', sans-serif); font-size:34px; font-weight:800; line-height:1.2; color:var(--grdeen-text-dark, #07370a); margin-bottom:20px;">Contexto</h2>
+                                <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-bottom:16px;">A Rede Africana de Agricultura Biológica (AfrONet) — a organização de cúpula que representa os movimentos nacionais e regionais de agricultura biológica (NOAM/ROAM) em África — organiza a 6.ª Conferência Africana de Agricultura Biológica (6AOC) e a Assembleia Geral em Chongwe, Lusaka (Zâmbia), de <strong>1 a 4 de dezembro de 2026</strong>. A conferência resulta de uma colaboração entre os agentes da agricultura biológica em África, a Comissão da União Africana e parceiros estratégicos de fora do continente.</p>
+                                <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-bottom:16px;">A Conferência Africana de Agricultura Biológica realiza-se de três em três anos. É uma plataforma interativa e com múltiplas partes interessadas, onde a comunidade biológica partilha experiências, conhecimento e boas práticas — através de comunicações, exposições de produtos e visitas a explorações de produção, transformação e comercialização biológica de referência.</p>
+                                <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Na sequência da 5.ª AOC, realizada em Kigali (Ruanda) em dezembro de 2023, os delegados acordaram que a Associação de Produtores e Transformadores Biológicos da Zâmbia (OPPAZ) acolheria a 6.ª AOC. A OPPAZ acolherá a conferência na Zâmbia em nome da AfrONet, em formato presencial e virtual.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-center">
+                        <div style="position:relative; display:inline-block;">
+                            <span style="font-family:var(--grdeen-heading-font, 'DM Sans', sans-serif); font-size:clamp(140px, 20vw, 280px); font-weight:900; line-height:1; background-image:url('https://images.unsplash.com/photo-1630574514367-4035d6e6e6df?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center; -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;">6</span> <span style="font-family:'Work Sans', serif; font-style:italic; font-size:clamp(36px, 6vw, 60px); font-weight:600; color:var(--grdeen-base, #1a9120); position:absolute; top:6%; right:-3%;">.ª</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="sec-title sec-title--two text-center" style="margin-top:50px;">
+                            <span class="sec-title__tagline">Tema</span>
+                            <h2 class="sec-title__title">Construir sistemas agroalimentares resilientes e garantir o direito à alimentação em África através da agricultura biológica</h2>
+                        </div><!-- /.sec-title -->
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Este tema parte da premissa de que a agricultura biológica — um sistema agrícola acessível que combina o conhecimento tradicional com tecnologias cientificamente comprovadas — está bem posicionada para aumentar a produção de uma grande diversidade de produtos de qualidade e garantir a disponibilidade contínua de alimentos seguros, uma nutrição equilibrada e matérias-primas industriais.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">O tema será analisado na perspetiva da produção sustentável, da segurança alimentar e nutricional, dos sistemas alimentares resilientes e da participação de mulheres, jovens e outros grupos sociais desfavorecidos perante as alterações climáticas. O objetivo é clarificar os conhecimentos, práticas, atitudes, competências e inovações — e as ações concretas — necessários para adotar, adaptar e expandir a agricultura biológica, de forma a construir sistemas agroalimentares resilientes e uma base sólida de agronegócio, abrangendo o comércio nacional, continental e internacional.</p>
+
+                        <div class="sec-title sec-title--two text-center" style="margin-top:50px;">
+                            <span class="sec-title__tagline">Estrutura</span>
+                            <h2 class="sec-title__title">Local, duração e estrutura</h2>
+                        </div><!-- /.sec-title -->
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-bottom:24px;">A 6.ª AOC decorrerá durante quatro dias em Chongwe, Lusaka (Zâmbia), em três partes:</p>
+                        <ul class="event-checklist">
+                            <li><i class="icon-check-solid"></i><strong style="white-space:nowrap;">Dias 1–2:</strong> troca de informação através de apresentações em quatro eixos — políticas, agricultores, cadeias de valor e comercialização, e investigação.</li>
+                            <li><i class="icon-check-solid"></i><strong style="white-space:nowrap;">Dia 3:</strong> eventos paralelos, reuniões, encontros de negócios e visitas a explorações biológicas de renome, unidades de transformação, estruturas de comercialização e outros locais.</li>
+                            <li><i class="icon-check-solid"></i><strong style="white-space:nowrap;">Dia 4:</strong> a Assembleia Geral da AfrONet — a reunião trienal dos membros da AfrONet.</li>
+                        </ul>
+
+                        <div style="margin-top:40px; display:flex; gap:14px; flex-wrap:wrap;">
+                            <a href="https://cms.afronet.bio/wp-content/uploads/2026/10/ConceptNote_6AOC_Final1.pdf" target="_blank" rel="noopener" class="grdeen-btn">
+                                <span><i class="fas fa-file-pdf" style="margin-right:8px;"></i>Descarregar a nota conceptual (PDF, em inglês)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6AOC sponsor logo strip (built by assets/js/6aoc-sponsors.js) -->
+        <section class="aoc-sponsor-strip" data-aoc-sponsor-strip></section>
+
+        <footer class="main-footer main-footer--two">
+            <div class="main-footer__bg" style="background-image: url(/assets/images/backgrounds/footer-bg1-1.jpg);"></div>
+            <div class="main-footer__overlay"></div>
+            <!-- /.main-footer__bg -->
+            <div class="main-footer__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-widget__col footer-widget__col__col1">
+                            <div class="footer-widget footer-widget--about">
+                                <a href="/pt/" class="footer-widget__logo">
+                                    <img src="/assets/images/logo-light.png" width="155" alt="AfrONet">
+                                </a>
+                                <p class="footer-widget__experience-text">A 6.ª Conferência Africana de Agricultura Biológica — 1–4 de dezembro de 2026, Chongwe, Lusaka (Zâmbia).</p>
+                                <div class="footer-widget__newsletterwrap">
+                                    <h6 class="footer-widget__title footer-widget__title--newsletter">Boletim informativo</h6>
+                                    <form action="#" class="footer-widget__newsletter cf7-newsletter-form" data-cf7-id="413">
+                                        <div class="footer-widget__mail-address">
+                                            <input type="email" name="your-email" placeholder="Endereço de e-mail" required>
+                                        </div>
+                                        <button type="submit" class="form-submit-btn">Subscrever</button>
+                                    </form><!-- /.footer-widget__newsletter mc-form -->
+                                    <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+
+                        <div class="footer-widget__col  footer-widget__col__col2">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Ligações</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><a href="/pt/6aoc">Início</a></li>
+                                    <li><a href="/pt/6aoc-background-theme">Sobre a 6AOC</a></li>
+                                    <li><a href="/pt/6aoc-programme">Programas</a></li>
+                                    <li><a href="/pt/6aoc-registration">Inscrição e preços</a></li>
+                                    <li><a href="/pt/6aoc-contact">Contacto</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col3">
+                            <div class="footer-widget footer-widget--gallery">
+                                <h6 class="footer-widget__title">Destaques</h6><!-- /.footer-widget__title -->
+                                <!-- TODO: replace with real 6AOC event photos once available -->
+                                <div class="footer-widget__gallerywrap d-flex flex-wrap">
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-1.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-2.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-3.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img src="/assets/images/resources/footer-gallery1-4.jpg" alt="">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img alt="" src="https://cms.afronet.bio/wp-content/uploads/2026/10/DSC5455.jpg-150x150.jpeg" width="78" height="92" style="height:auto; aspect-ratio:78/92; object-fit:cover;" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="footer-widget__gallerywrap__img">
+                                        <img alt="" src="https://cms.afronet.bio/wp-content/uploads/2026/10/DSC5791.jpg-150x150.jpeg" width="78" height="92" style="height:auto; aspect-ratio:78/92; object-fit:cover;" loading="lazy" decoding="async">
+                                    </div>
+                                </div>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="footer-widget__col  footer-widget__col__col4">
+                            <div class="footer-widget footer-widget--links">
+                                <h6 class="footer-widget__title">Datas importantes</h6>
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><strong>Fim da inscrição antecipada</strong><br>25 de outubro de 2026</li>
+                                    <li><strong>Prazo normal</strong><br>25 de novembro de 2026</li>
+                                    <li><strong>Datas da conferência</strong><br>1–4 de dezembro de 2026</li>
+                                    <li><strong>Local</strong><br>Chongwe, Lusaka, Zâmbia</li>
+                                </ul>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__top -->
+
+            <div class="main-footer__bottom">
+                <div class="container">
+                    <div class="main-footer__bottom__inner">
+                        <p class="main-footer__copyright">© 2026 AfrONet. Todos os direitos reservados</p>
+                        <div class="main-footer__social-row">
+                            <p class="main-footer__social-row-text">Redes sociais</p>
+                            <ul class="main-footer__social-list">
+                                <li><a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://x.com/AfrONet_" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i><span class="sr-only">LinkedIn</span></a></li>
+                                <li><a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.main-footer__inner -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__bottom -->
+        </footer><!-- /.main-footer -->
+
+    </div><!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="/pt/" aria-label="logótipo"><img src="/assets/images/logo-light.png" width="155" alt="" /></a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:info@afronet.bio">info@afronet.bio</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:+255712344989">+255 712 344 989</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__social">
+                <a href="https://www.facebook.com/people/Afronet-IIABA/100069623110289/" target="_blank" rel="noopener">
+                    <i class="fab fa-facebook-f"></i>
+                    <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://x.com/AfrONet_" target="_blank" rel="noopener">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span class="sr-only">X (Twitter)</span>
+                </a>
+                <a href="https://www.linkedin.com/company/afronet-bio/" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/afronet_tanzania" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                    <span class="sr-only">Instagram</span>
+                </a>
+            </div><!-- /.mobile-nav__social -->
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form role="search" method="get" class="search-popup__form" action="#">
+                <input type="text" id="search" placeholder="Pesquisar…" />
+                <button type="submit" aria-label="pesquisar" class="grdeen-btn">
+                    <span><i class="icon-search"></i></span>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">voltar ao topo</span> <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <script src="/assets/vendors/jquery/jquery-3.7.0.min.js"></script>
+    <script src="/assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="/assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="/assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="/assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="/assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="/assets/vendors/tiny-slider/tiny-slider.js"></script>
+    <script src="/assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="/assets/vendors/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="/assets/vendors/wow/wow.js"></script>
+    <script src="/assets/vendors/imagesloaded/imagesloaded.min.js"></script>
+    <script src="/assets/vendors/isotope/isotope.js"></script>
+    <script src="/assets/vendors/countdown/countdown.min.js"></script>
+    <script src="/assets/vendors/jquery-circleType/jquery.circleType.js"></script>
+    <script src="/assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
+    <!-- template js -->
+    <script src="/assets/js/grdeen.js"></script>
+    <script src="/assets/js/6aoc-sponsors.js"></script>
+</body>
+
+</html>
