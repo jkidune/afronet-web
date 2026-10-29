@@ -2,9 +2,11 @@ afronet-web-OLD/
 .remember/
 .git/
 node_modules/
+.wrangler/
 *.docx
 *.pdf
 wrangler.jsonc
+worker.js
 package.json
 package-lock.json
 README.md
