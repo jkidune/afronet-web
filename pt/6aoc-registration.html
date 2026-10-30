@@ -106,34 +106,106 @@
             color: #0a6b10;
             text-shadow: 0 0 0.5px #0a6b10;
         }
+        /* "Call for Presentations" CTA: a one-line pill with a document icon, kept clear of the EN language pill */
+        .main-header__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            margin: 0 4px 0 16px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .main-header__btn::after {
+            content: "\f15c";
+            order: -1;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 1;
+            color: #b8860b;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        .main-header__btn:hover::after,
+        .main-header__btn:focus::after {
+            color: #fff;
+        }
+
+        /* Laptops: smaller menu text and language pill so everything fits on one line */
+        @media (max-width: 1500px) {
+            .main-header .main-menu .main-menu__list > li > a {
+                font-size: 15px;
+            }
+            .main-header .main-menu .main-menu__list > li.main-menu__lang > a {
+                padding: 4px 10px;
+                font-size: 13px;
+            }
+        }
+
+        /* Small laptops and below: the CTA becomes a round "call" icon; its label shows as a tooltip on hover/focus */
+        /* "Call for Presentations" CTA: a one-line pill with a document icon, kept clear of the EN language pill and the search icon */
+        .main-header__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            margin: 0 14px 0 16px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .main-header__btn::after {
+            content: "\f15c";
+            order: -1;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 1;
+            color: #b8860b;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        .main-header__btn:hover::after,
+        .main-header__btn:focus::after {
+            color: #fff;
+        }
+
+        /* Laptops: smaller menu text and language pill so everything fits on one line */
+        @media (max-width: 1500px) {
+            .main-header .main-menu .main-menu__list > li > a {
+                font-size: 15px;
+            }
+            .main-header .main-menu .main-menu__list > li.main-menu__lang > a {
+                padding: 4px 10px;
+                font-size: 13px;
+            }
+        }
+
+        /* Small laptops and below: the CTA becomes a round "call" icon; its label shows as a tooltip on hover/focus */
         @media (max-width: 1500px) {
             .main-header__btn {
                 width: 44px;
                 height: 44px;
                 padding: 0;
-                margin-right: 10px;
-                border-radius: 50%;
-                display: inline-flex;
-                align-items: center;
+                gap: 0;
                 justify-content: center;
                 overflow: visible;
                 transition: background-color 0.3s ease;
             }
-
             .main-header__btn::before {
                 display: none;
             }
-
             .main-header__btn:hover,
             .main-header__btn:focus {
                 background-color: var(--grdeen-black, #172000);
             }
-
-            .main-header__btn:hover::after,
-            .main-header__btn:focus::after {
-                color: #fff;
+            .main-header__btn::after {
+                content: "\f095";
+                font-size: 18px;
+                color: #d9a404;
             }
-
             .main-header__btn span {
                 position: absolute;
                 width: 1px;
@@ -145,22 +217,8 @@
                 white-space: nowrap;
                 border: 0;
             }
-
-            .main-header__btn::after {
-                content: "\f095";
-                font-family: "Font Awesome 5 Free";
-                font-weight: 900;
-                font-size: 18px;
-                line-height: 1;
-                color: #d9a404;
-                position: relative;
-                z-index: 2;
-                transition: color 0.3s ease;
-            }
-
             .main-header__btn:hover span,
             .main-header__btn:focus span {
-                position: absolute;
                 top: calc(100% + 10px);
                 left: 50%;
                 width: auto;
@@ -169,7 +227,6 @@
                 padding: 6px 14px;
                 clip: auto;
                 overflow: visible;
-                white-space: nowrap;
                 transform: translateX(-50%);
                 background-color: var(--grdeen-black, #172000);
                 color: #fff;
@@ -178,6 +235,74 @@
                 border-radius: 4px;
                 z-index: 20;
                 pointer-events: none;
+            }
+        }
+
+        /* FR/PT menu labels are longer, so their CTA stays an icon up to 1599px */
+        @media (min-width: 1501px) and (max-width: 1599px) {
+            html:not([lang="en"]) .main-header__btn {
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                gap: 0;
+                justify-content: center;
+                overflow: visible;
+                transition: background-color 0.3s ease;
+            }
+            html:not([lang="en"]) .main-header__btn::before {
+                display: none;
+            }
+            html:not([lang="en"]) .main-header__btn:hover,
+            html:not([lang="en"]) .main-header__btn:focus {
+                background-color: var(--grdeen-black, #172000);
+            }
+            html:not([lang="en"]) .main-header__btn::after {
+                content: "\f095";
+                font-size: 18px;
+                color: #d9a404;
+            }
+            html:not([lang="en"]) .main-header__btn span {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+            html:not([lang="en"]) .main-header__btn:hover span,
+            html:not([lang="en"]) .main-header__btn:focus span {
+                top: calc(100% + 10px);
+                left: 50%;
+                width: auto;
+                height: auto;
+                margin: 0;
+                padding: 6px 14px;
+                clip: auto;
+                overflow: visible;
+                transform: translateX(-50%);
+                background-color: var(--grdeen-black, #172000);
+                color: #fff;
+                font-size: 12px;
+                font-weight: 600;
+                border-radius: 4px;
+                z-index: 20;
+                pointer-events: none;
+            }
+        }
+
+        /* 992-1099: smallest desktop range, so menu text and both logos shrink a little more (FR labels are longest) */
+        @media (min-width: 992px) and (max-width: 1099px) {
+            .main-header .main-menu .main-menu__list > li > a {
+                font-size: 14px;
+            }
+            .main-header .main-header__logo img {
+                max-height: 64px;
+            }
+            .main-header .main-header__logo--secondary img {
+                max-height: 34px;
             }
         }
 
@@ -205,9 +330,9 @@
             }
             .main-header .main-menu .main-menu__list {
                 height: 100%;
-                justify-content: center;
+                justify-content: space-evenly;
                 align-items: stretch;
-                column-gap: clamp(28px, 3.4vw, 48px);
+                column-gap: clamp(16px, calc(4.4vw - 40px), 48px);
             }
             .main-header .main-menu .main-menu__list > li {
                 display: flex;
@@ -714,7 +839,7 @@
                                 </table>
                             </div>
 
-                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal" data-tier="Early Bird" style="width:100%; text-align:center; justify-content:center;">
+                            <a href="#" class="grdeen-btn eb-closed-toggler" style="width:100%; text-align:center; justify-content:center;">
                                 <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Inscrição antecipada</span>
                             </a>
                         </div>
@@ -970,6 +1095,54 @@
         <!-- /.search-popup__content -->
     </div>
     <!-- /.search-popup -->
+
+    <style>
+      .eb-closed-modal { position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; padding:20px; }
+      .eb-closed-modal[hidden] { display:none; }
+      .eb-closed-modal__backdrop { position:absolute; inset:0; background:rgba(15,25,15,.6); backdrop-filter:blur(3px); }
+      .eb-closed-modal__box { position:relative; width:100%; max-width:440px; background:#fff; border-radius:16px; border-top:6px solid #e08a00;
+        padding:36px 30px 28px; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.25); animation:eb-closed-pop .25s ease-out; }
+      @keyframes eb-closed-pop { from { opacity:0; transform:scale(.92); } to { opacity:1; transform:scale(1); } }
+      .eb-closed-modal__icon { width:72px; height:72px; margin:0 auto 18px; border-radius:50%; background:#fff4e5; color:#e08a00;
+        display:flex; align-items:center; justify-content:center; font-size:30px; }
+      .eb-closed-modal__title { font-size:22px; line-height:1.3; margin:0 0 12px; color:#1e2a1e; }
+      .eb-closed-modal__text { font-size:15px; line-height:1.7; color:#626f62; margin:0 0 24px; }
+      .eb-closed-modal__actions { display:flex; flex-direction:column; gap:10px; }
+      .eb-closed-modal__actions .grdeen-btn { width:100%; justify-content:center; }
+      .eb-closed-modal__dismiss { background:none; border:0; font:inherit; font-size:14px; color:#626f62; text-decoration:underline; cursor:pointer; padding:6px; }
+    </style>
+    <div class="eb-closed-modal" id="eb-closed-modal" role="dialog" aria-modal="true" aria-labelledby="eb-closed-title" hidden>
+        <div class="eb-closed-modal__backdrop" data-eb-close></div>
+        <div class="eb-closed-modal__box">
+            <div class="eb-closed-modal__icon"><i class="fas fa-hourglass-end" aria-hidden="true"></i></div>
+            <h3 class="eb-closed-modal__title" id="eb-closed-title">As inscrições antecipadas estão encerradas</h3>
+            <p class="eb-closed-modal__text">O prazo da inscrição antecipada terminou a <strong>25 de outubro de 2026</strong>. Ainda pode inscrever-se com a taxa normal até <strong>25 de novembro de 2026</strong>.</p>
+            <div class="eb-closed-modal__actions">
+                <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal" data-tier="Regular" data-eb-close><span>Inscrever-se com a taxa normal</span></a>
+                <button type="button" class="eb-closed-modal__dismiss" data-eb-close>Fechar</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function () {
+      // The Early Bird card's button opens this notice instead of the registration form.
+      var modal = document.getElementById('eb-closed-modal');
+      if (!modal) return;
+      function close() { modal.hidden = true; document.body.style.overflow = ''; }
+      document.querySelectorAll('.eb-closed-toggler').forEach(function (b) {
+        b.addEventListener('click', function (e) {
+          e.preventDefault();
+          modal.hidden = false;
+          document.body.style.overflow = 'hidden';
+          modal.querySelector('.eb-closed-modal__dismiss').focus();
+        });
+      });
+      // "Register at Regular Rate" closes this first, then the shared handler opens the registration form.
+      modal.querySelectorAll('[data-eb-close]').forEach(function (el) { el.addEventListener('click', close); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+    })();
+    </script>
+    <!-- /.eb-closed-modal -->
 
     <div class="event-register-modal" id="event-register-modal">
         <div class="event-register-modal__overlay"></div>

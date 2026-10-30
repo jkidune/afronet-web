@@ -106,34 +106,106 @@
             color: #0a6b10;
             text-shadow: 0 0 0.5px #0a6b10;
         }
+        /* "Call for Presentations" CTA: a one-line pill with a document icon, kept clear of the EN language pill */
+        .main-header__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            margin: 0 4px 0 16px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .main-header__btn::after {
+            content: "\f15c";
+            order: -1;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 1;
+            color: #b8860b;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        .main-header__btn:hover::after,
+        .main-header__btn:focus::after {
+            color: #fff;
+        }
+
+        /* Laptops: smaller menu text and language pill so everything fits on one line */
+        @media (max-width: 1500px) {
+            .main-header .main-menu .main-menu__list > li > a {
+                font-size: 15px;
+            }
+            .main-header .main-menu .main-menu__list > li.main-menu__lang > a {
+                padding: 4px 10px;
+                font-size: 13px;
+            }
+        }
+
+        /* Small laptops and below: the CTA becomes a round "call" icon; its label shows as a tooltip on hover/focus */
+        /* "Call for Presentations" CTA: a one-line pill with a document icon, kept clear of the EN language pill and the search icon */
+        .main-header__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            margin: 0 14px 0 16px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .main-header__btn::after {
+            content: "\f15c";
+            order: -1;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 1;
+            color: #b8860b;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        .main-header__btn:hover::after,
+        .main-header__btn:focus::after {
+            color: #fff;
+        }
+
+        /* Laptops: smaller menu text and language pill so everything fits on one line */
+        @media (max-width: 1500px) {
+            .main-header .main-menu .main-menu__list > li > a {
+                font-size: 15px;
+            }
+            .main-header .main-menu .main-menu__list > li.main-menu__lang > a {
+                padding: 4px 10px;
+                font-size: 13px;
+            }
+        }
+
+        /* Small laptops and below: the CTA becomes a round "call" icon; its label shows as a tooltip on hover/focus */
         @media (max-width: 1500px) {
             .main-header__btn {
                 width: 44px;
                 height: 44px;
                 padding: 0;
-                margin-right: 10px;
-                border-radius: 50%;
-                display: inline-flex;
-                align-items: center;
+                gap: 0;
                 justify-content: center;
                 overflow: visible;
                 transition: background-color 0.3s ease;
             }
-
             .main-header__btn::before {
                 display: none;
             }
-
             .main-header__btn:hover,
             .main-header__btn:focus {
                 background-color: var(--grdeen-black, #172000);
             }
-
-            .main-header__btn:hover::after,
-            .main-header__btn:focus::after {
-                color: #fff;
+            .main-header__btn::after {
+                content: "\f095";
+                font-size: 18px;
+                color: #d9a404;
             }
-
             .main-header__btn span {
                 position: absolute;
                 width: 1px;
@@ -145,22 +217,8 @@
                 white-space: nowrap;
                 border: 0;
             }
-
-            .main-header__btn::after {
-                content: "\f095";
-                font-family: "Font Awesome 5 Free";
-                font-weight: 900;
-                font-size: 18px;
-                line-height: 1;
-                color: #d9a404;
-                position: relative;
-                z-index: 2;
-                transition: color 0.3s ease;
-            }
-
             .main-header__btn:hover span,
             .main-header__btn:focus span {
-                position: absolute;
                 top: calc(100% + 10px);
                 left: 50%;
                 width: auto;
@@ -169,7 +227,6 @@
                 padding: 6px 14px;
                 clip: auto;
                 overflow: visible;
-                white-space: nowrap;
                 transform: translateX(-50%);
                 background-color: var(--grdeen-black, #172000);
                 color: #fff;
@@ -178,6 +235,74 @@
                 border-radius: 4px;
                 z-index: 20;
                 pointer-events: none;
+            }
+        }
+
+        /* FR/PT menu labels are longer, so their CTA stays an icon up to 1599px */
+        @media (min-width: 1501px) and (max-width: 1599px) {
+            html:not([lang="en"]) .main-header__btn {
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                gap: 0;
+                justify-content: center;
+                overflow: visible;
+                transition: background-color 0.3s ease;
+            }
+            html:not([lang="en"]) .main-header__btn::before {
+                display: none;
+            }
+            html:not([lang="en"]) .main-header__btn:hover,
+            html:not([lang="en"]) .main-header__btn:focus {
+                background-color: var(--grdeen-black, #172000);
+            }
+            html:not([lang="en"]) .main-header__btn::after {
+                content: "\f095";
+                font-size: 18px;
+                color: #d9a404;
+            }
+            html:not([lang="en"]) .main-header__btn span {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+            html:not([lang="en"]) .main-header__btn:hover span,
+            html:not([lang="en"]) .main-header__btn:focus span {
+                top: calc(100% + 10px);
+                left: 50%;
+                width: auto;
+                height: auto;
+                margin: 0;
+                padding: 6px 14px;
+                clip: auto;
+                overflow: visible;
+                transform: translateX(-50%);
+                background-color: var(--grdeen-black, #172000);
+                color: #fff;
+                font-size: 12px;
+                font-weight: 600;
+                border-radius: 4px;
+                z-index: 20;
+                pointer-events: none;
+            }
+        }
+
+        /* 992-1099: smallest desktop range, so menu text and both logos shrink a little more (FR labels are longest) */
+        @media (min-width: 992px) and (max-width: 1099px) {
+            .main-header .main-menu .main-menu__list > li > a {
+                font-size: 14px;
+            }
+            .main-header .main-header__logo img {
+                max-height: 64px;
+            }
+            .main-header .main-header__logo--secondary img {
+                max-height: 34px;
             }
         }
 
@@ -205,9 +330,9 @@
             }
             .main-header .main-menu .main-menu__list {
                 height: 100%;
-                justify-content: center;
+                justify-content: space-evenly;
                 align-items: stretch;
-                column-gap: clamp(28px, 3.4vw, 48px);
+                column-gap: clamp(16px, calc(4.4vw - 40px), 48px);
             }
             .main-header .main-menu .main-menu__list > li {
                 display: flex;
