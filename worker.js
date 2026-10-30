@@ -37,6 +37,11 @@ export default {
     }
 
     if (target.href !== url.href) return Response.redirect(target.href, 301);
+
+    // html_handling would 307 these to their extensionless path; serve them in place instead.
+    if (KEEP_AS_IS.includes(url.pathname)) {
+      return env.ASSETS.fetch(new Request(new URL(url.pathname.slice(0, -5), url), request));
+    }
     return env.ASSETS.fetch(request);
   },
 };
