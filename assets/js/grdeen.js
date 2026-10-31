@@ -1172,16 +1172,71 @@
     update();
   })();
 
-  /*-- Promo popups: shown one after another; each poster comes back once a day after it was closed --*/
+  /*-- 6AOC daily countdown poster: one poster per Lusaka calendar day from 1 Nov to the opening day, added to the promo popups below --*/
+  (function () {
+    var LUSAKA_OFFSET_MS = 2 * 60 * 60 * 1000;
+    var REGULAR_END = Date.parse("2026-11-25T23:59:59+02:00");
+    if (/\/404(\.html)?$/.test(window.location.pathname) || document.title.indexOf("Page Not Found") === 0) return;
+
+    // Testing only: ?aocnow=2026-11-15T10:00:00%2B02:00 pretends the page opened at that moment
+    var at = Date.now();
+    var simulated = /[?&]aocnow=([^&]+)/.exec(window.location.search);
+    if (simulated) {
+      var simulatedTime = Date.parse(decodeURIComponent(simulated[1]));
+      if (!isNaN(simulatedTime)) at = simulatedTime;
+    }
+
+    // day-01 … day-30 are 1–30 November ("30 days to go" … "1 day to go"), day-31 is 1 December ("The very day")
+    var day = new Date(at + LUSAKA_OFFSET_MS).toISOString().slice(0, 10);
+    var n = day === "2026-12-01" ? 31 : day.slice(0, 8) === "2026-11-" ? parseInt(day.slice(8), 10) : 0;
+    if (!n) return;
+
+    var lang = (document.documentElement.lang || "en").slice(0, 2);
+    var prefix = lang === "en" ? "/" : "/" + lang + "/";
+    var registrationOpen = at <= REGULAR_END;
+    var href = prefix + (registrationOpen ? "6aoc-registration" : "6aoc");
+    var label = registrationOpen ? t("Register now") : t("Explore 6AOC");
+
+    var popup = document.createElement("div");
+    popup.className = "promo-popup promo-popup--countdown";
+    popup.setAttribute("role", "dialog");
+    popup.setAttribute("aria-modal", "true");
+    popup.setAttribute("aria-label", t("6AOC countdown poster"));
+    popup.setAttribute("data-storage-key", "afronet6aocCountdownSeen");
+    popup.setAttribute("data-once-per-session", "");
+    popup.innerHTML = '<div class="promo-popup__overlay"></div>' +
+      '<div class="promo-popup__content promo-popup__content--poster promo-popup__content--countdown">' +
+      '<button type="button" class="promo-popup__close"><span aria-hidden="true">&times;</span></button>' +
+      '<a class="promo-popup__poster-link"><img class="promo-popup__poster-img" width="1080" height="1350"></a>' +
+      '<a class="grdeen-btn promo-popup__countdown-cta"><span></span></a>' +
+      "</div>";
+    popup.querySelector(".promo-popup__close").setAttribute("aria-label", t("Close"));
+    var links = popup.querySelectorAll("a");
+    for (var i = 0; i < links.length; i++) links[i].setAttribute("href", href);
+    popup.querySelector(".promo-popup__countdown-cta span").textContent = label;
+    var img = popup.querySelector("img");
+    img.alt = t("6AOC countdown poster");
+    // A missing poster never leaves an empty box behind
+    img.onerror = function () { popup.remove(); };
+    img.src = "/assets/images/6aoc-countdown/day-" + (n < 10 ? "0" : "") + n + ".webp";
+    // First in line, ahead of any page's own promo posters
+    document.body.insertBefore(popup, document.body.firstChild);
+  })();
+
+  /*-- Promo popups: shown one after another; each poster comes back once a day after it was closed (once per session with data-once-per-session) --*/
   (function () {
     var RESHOW_AFTER_MS = 24 * 60 * 60 * 1000;
 
     function keyOf(el) {
       return $(el).data("storage-key") || "afronet6aocPosterPopupDismissed";
     }
+    function perSession(el) {
+      return el.hasAttribute("data-once-per-session");
+    }
     // Stores the time the poster was closed; older "1" flags read as long expired, so those visitors see it again
     function isDismissed(el) {
       try {
+        if (perSession(el)) return !!sessionStorage.getItem(keyOf(el));
         var closedAt = parseInt(localStorage.getItem(keyOf(el)), 10);
         return closedAt > 0 && Date.now() - closedAt < RESHOW_AFTER_MS;
       } catch (e) {
@@ -1190,7 +1245,7 @@
     }
     function markDismissed(el) {
       try {
-        localStorage.setItem(keyOf(el), String(Date.now()));
+        (perSession(el) ? sessionStorage : localStorage).setItem(keyOf(el), String(Date.now()));
       } catch (e) {}
     }
 
@@ -1204,6 +1259,9 @@
     function openNext() {
       var next = queue.shift();
       if (!next) return;
+      if (!document.body.contains(next)) return openNext();
+      // A once-per-session poster counts as seen as soon as it opens, even if the visitor just navigates on
+      if (perSession(next)) markDismissed(next);
       $current = $(next).addClass("is-open");
     }
 

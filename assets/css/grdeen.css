@@ -11182,6 +11182,29 @@ body.megamenu-popup-active .mobile-nav__content {
     max-width: 540px;
   }
 }
+/* 6AOC daily countdown poster: the poster with a register button underneath */
+.promo-popup__content--countdown {
+  flex-direction: column;
+  max-height: none;
+  /* As wide as the 4:5 poster can be in the height left over after the button */
+  max-width: min(480px, calc((90vh - 76px) * 0.8));
+  max-width: min(480px, calc((90dvh - 76px) * 0.8));
+  background: #fff;
+}
+.promo-popup__content--countdown .promo-popup__poster-link,
+.promo-popup__content--countdown .promo-popup__poster-img {
+  width: 100%;
+}
+.promo-popup__content--countdown .promo-popup__poster-img {
+  max-height: calc(90vh - 76px);
+  max-height: calc(90dvh - 76px);
+}
+.promo-popup__countdown-cta {
+  align-self: stretch;
+  justify-content: center;
+  margin: 12px;
+  border-radius: 999px;
+}
 @media (hover: none) {
   .promo-popup__close {
     width: 40px;
