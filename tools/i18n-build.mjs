@@ -29,7 +29,7 @@ const INLINE = new Set(["a", "abbr", "b", "bdi", "bdo", "br", "cite", "code", "d
 const RAW = new Set(["script", "style", "textarea"]);
 const OPAQUE = new Set(["svg", "img", "br", "wbr"]);
 const TEXT_ATTRS = ["alt", "title", "placeholder", "aria-label", "data-caption"];
-const META_CONTENT = /^(description|og:title|og:description|twitter:title|twitter:description)$/;
+const META_CONTENT = /^(description|og:title|og:description|og:image:alt|twitter:title|twitter:description)$/;
 
 /* ---------- small helpers ---------- */
 const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", middot: "·", ndash: "–", mdash: "—", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", hellip: "…", copy: "©", reg: "®", trade: "™", rarr: "→", larr: "←", times: "×", bull: "•", eacute: "é", egrave: "è", agrave: "à", ccedil: "ç", ocirc: "ô", ecirc: "ê", euml: "ë", iuml: "ï", deg: "°", laquo: "«", raquo: "»" };
