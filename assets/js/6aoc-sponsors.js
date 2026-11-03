@@ -34,6 +34,42 @@
       name: "Biovision Africa Trust",
       logo: "https://cms.afronet.bio/wp-content/uploads/2026/10/BvAT_Logo-removebg-preview.png",
       url: "https://www.biovisionafrica.org/"
+    },
+    {
+      short: "ASARECA",
+      name: "Association for Strengthening Agricultural Research in Eastern and Central Africa",
+      logo: "https://cms.afronet.bio/wp-content/uploads/2026/11/New-ASARECA-Logo-15-Countries_0-scaled.jpg",
+      url: "https://www.asareca.org/"
+    },
+    {
+      short: "INOFO Africa",
+      name: "Intercontinental Network of Organic Farmers Organisations – Africa",
+      logo: "https://cms.afronet.bio/wp-content/uploads/2026/11/INOFO-AFRICA-LOGO-Latest.jpeg",
+      url: "https://inofo.org/"
+    },
+    {
+      short: "AUC",
+      name: "African Union Commission",
+      logo: "https://cms.afronet.bio/wp-content/uploads/2026/11/AUC-LOGO_jpg-Picsart-.png",
+      url: "https://au.int/"
+    },
+    {
+      short: "EOA-I",
+      name: "Ecological Organic Agriculture Initiative",
+      logo: "https://cms.afronet.bio/wp-content/uploads/2026/11/EOAI_Logo_3-removebg-preview-.png",
+      url: "https://eoai-africa.org/"
+    },
+    {
+      short: "ISOFAR",
+      name: "International Society of Organic Agriculture Research",
+      logo: "https://cms.afronet.bio/wp-content/uploads/2026/11/ISOFAR-LOGO.jpg",
+      url: "https://www.isofar.org/"
+    },
+    {
+      short: "PAFO",
+      name: "Pan-African Farmers' Organization",
+      logo: "https://cms.afronet.bio/wp-content/uploads/2026/11/PAFO-LOGO.png",
+      url: "https://pafo-africa.org/"
     }
   ];
 

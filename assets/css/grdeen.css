@@ -19089,7 +19089,7 @@ body.boxed-wrapper .main-header__wellcome__tagline {
   align-items: center;
   width: -moz-max-content;
   width: max-content;
-  animation: partnersMarqueeScroll 32s linear infinite;
+  animation: partnersMarqueeScroll 64s linear infinite;
 }
 .partners-marquee__wrapper:hover .partners-marquee__track {
   animation-play-state: paused;
