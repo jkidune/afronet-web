@@ -20124,3 +20124,64 @@ html:not([lang="en"]) .main-header__btn {
   padding-left: 22px;
   padding-right: 22px;
 }
+
+/* 6AOC landing page: band linking to the pre-conference webinars */
+.aoc-webinar-band {
+  padding: 22px 0;
+  background: linear-gradient(135deg, #07370a 0%, #1a9120 100%);
+  border-top: 3px solid #d9a404;
+}
+.aoc-webinar-band__inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.aoc-webinar-band__icon {
+  flex: 0 0 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d9a404;
+  color: #172000;
+  font-size: 20px;
+}
+.aoc-webinar-band__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.aoc-webinar-band__eyebrow {
+  display: block;
+  color: #f5d56b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.aoc-webinar-band__title {
+  margin: 2px 0 0;
+  color: #fff;
+  font-family: var(--grdeen-heading-font, "DM Sans", sans-serif);
+  font-size: clamp(15px, 1.4vw, 19px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.aoc-webinar-band__btn {
+  flex: 0 0 auto;
+  background-color: #d9a404;
+  color: #172000;
+}
+@media (max-width: 767px) {
+  .aoc-webinar-band__inner {
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  .aoc-webinar-band__icon {
+    display: none;
+  }
+  .aoc-webinar-band__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
