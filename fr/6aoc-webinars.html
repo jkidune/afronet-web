@@ -1239,6 +1239,215 @@
                 margin: 4px auto 0;
             }
         }
+
+        /* ---------- Keynote video: thumbnail player + popup ---------- */
+        .aoc-wb-player {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+        }
+        .aoc-wb-player img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0 !important;
+            transition: transform 0.6s ease;
+        }
+        .aoc-wb-player:not(.is-playing) img {
+            cursor: pointer;
+        }
+        .aoc-wb-player::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.38) 100%);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .aoc-wb-player.is-playing::after {
+            display: none;
+        }
+        .aoc-wb-player:hover img {
+            transform: scale(1.03);
+        }
+        .aoc-wb-player iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .aoc-wb-player__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 2;
+            width: 76px;
+            height: 76px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: transparent;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+        .aoc-wb-player__play[hidden] {
+            display: none;
+        }
+        .aoc-wb-player__icon {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.42);
+            border: 1.5px solid rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            color: var(--grdeen-base, #1a9120);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+        }
+        .aoc-wb-player__icon svg {
+            display: block;
+            width: 36%;
+            height: 36%;
+            margin: 0;
+            fill: currentColor;
+        }
+        .aoc-wb-player__play:hover .aoc-wb-player__icon,
+        .aoc-wb-player__play:focus-visible .aoc-wb-player__icon,
+        .aoc-wb-player img:hover + .aoc-wb-player__play .aoc-wb-player__icon {
+            transform: scale(1.08);
+            background: var(--grdeen-base, #1a9120);
+            color: #fff;
+        }
+        .aoc-wb-player__play:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+        .aoc-wb-player__ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 0 1px rgba(var(--grdeen-base-rgb, 26, 145, 32), 0.35);
+            opacity: 0;
+            animation: aoc-wb-pulse 3s cubic-bezier(0.2, 0.6, 0.35, 1) infinite;
+            pointer-events: none;
+        }
+        .aoc-wb-player__ring:nth-child(2) { animation-delay: 0.6s; }
+        .aoc-wb-player__ring:nth-child(3) { animation-delay: 1.2s; }
+        .aoc-wb-player__ring:nth-child(4) { animation-delay: 1.8s; }
+        .aoc-wb-player__ring:nth-child(5) { animation-delay: 2.4s; }
+        @keyframes aoc-wb-pulse {
+            0% { transform: scale(1); opacity: 0.85; }
+            100% { transform: scale(2.6); opacity: 0; }
+        }
+        .aoc-wb-watch .fa-play {
+            position: relative;
+            margin-right: 4px;
+            font-size: 0.85em;
+        }
+        .aoc-wb-watch .fa-play::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1.9em;
+            height: 1.9em;
+            margin: -0.95em 0 0 -0.95em;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            animation: aoc-wb-pulse 2.4s ease-out infinite;
+        }
+        .aoc-wb-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background: rgba(6, 18, 8, 0.82);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            animation: aoc-wb-fade 0.25s ease;
+        }
+        .aoc-wb-modal[hidden] {
+            display: none;
+        }
+        .aoc-wb-modal__box {
+            position: relative;
+            width: min(960px, 100%);
+        }
+        .aoc-wb-modal__frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+        }
+        .aoc-wb-modal__frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .aoc-wb-modal__close {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 50%;
+            background: #fff;
+            color: #0d1f0f;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .aoc-wb-modal__close:hover,
+        .aoc-wb-modal__close:focus-visible {
+            background: var(--grdeen-base, #1a9120);
+            color: #fff;
+        }
+        .aoc-wb-modal-open,
+        .aoc-wb-modal-open body {
+            overflow: hidden;
+        }
+        @keyframes aoc-wb-fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 575px) {
+            .aoc-wb-player__play {
+                width: 58px;
+                height: 58px;
+            }
+            .aoc-wb-modal {
+                padding: 10px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .aoc-wb-player__ring,
+            .aoc-wb-watch .fa-play::after {
+                animation: none;
+            }
+            .aoc-wb-player__ring:nth-child(1) { opacity: 0.6; transform: scale(1.3); }
+            .aoc-wb-player__ring:nth-child(2) { opacity: 0.3; transform: scale(1.6); }
+            .aoc-wb-watch .fa-play::after { opacity: 0.4; }
+        }
     </style>
 
     <link rel="canonical" href="https://afronet.bio/fr/6aoc-webinars" />
@@ -1428,7 +1637,7 @@
             var WEBINARS = {
                 webinar1: {
                     status: "completed",      // "upcoming", "live" or "completed"
-                    recordingUrl: "",         // YouTube link, e.g. https://youtu.be/XXXXXXXXXXX (empty = "coming soon")
+                    recordingUrl: "https://youtu.be/uRylOVZBA9M", // YouTube link, e.g. https://youtu.be/XXXXXXXXXXX (empty = "coming soon")
                     slidesUrl: "/assets/webinars/webinar1-amudavi.pdf" // button only shows once this file exists
                 },
                 webinar2: {
@@ -1488,7 +1697,13 @@
                                     <cite>— Dr David Amudavi</cite>
                                 </blockquote>
                                 <figure class="aoc-wb-figure">
-                                    <img src="https://cms.afronet.bio/wp-content/uploads/2026/11/Screenshot-2026-11-10-163115.png" alt="Le Dr David Amudavi lors de son discours principal sur Zoom" width="1920" height="1080" loading="lazy" decoding="async">
+                                    <div class="aoc-wb-player" data-wb-player>
+                                        <img src="https://cms.afronet.bio/wp-content/uploads/2026/11/Screenshot-2026-11-10-163115.png" alt="Le Dr David Amudavi lors de son discours principal sur Zoom" width="1920" height="1080" loading="lazy" decoding="async">
+                                        <button type="button" class="aoc-wb-player__play" data-wb-play aria-label="Lire l’enregistrement du discours principal" hidden>
+                                            <span class="aoc-wb-player__ring"></span><span class="aoc-wb-player__ring"></span><span class="aoc-wb-player__ring"></span><span class="aoc-wb-player__ring"></span><span class="aoc-wb-player__ring"></span>
+                                            <span class="aoc-wb-player__icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.9-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"/></svg></span>
+                                        </button>
+                                    </div>
                                     <figcaption>Le Dr David Amudavi lors de son discours principal, 10 novembre 2026</figcaption>
                                 </figure>
                                 </div>
@@ -1538,9 +1753,8 @@
                                     <li>Le succès doit se mesurer à la nutrition, à la santé des sols, à la résilience et au revenu des agriculteurs — pas seulement au rendement.</li>
                                 </ul>
                                 <div class="aoc-wb-actions">
-                                    <a href="#" class="grdeen-btn" data-wb-recording><span><i class="fab fa-youtube" aria-hidden="true"></i> Voir l'enregistrement</span></a> <span class="grdeen-btn is-disabled" data-wb-recording-soon hidden><span>Enregistrement bientôt disponible</span></span> <a href="#" class="grdeen-btn grdeen-btn--outline" data-wb-slides target="_blank" rel="noopener" download hidden><span><i class="far fa-file-pdf" aria-hidden="true"></i> Télécharger la présentation (PDF)</span></a>
+                                    <a href="#" class="grdeen-btn aoc-wb-watch" data-wb-recording><span><i class="fas fa-play" aria-hidden="true"></i> Voir l'enregistrement</span></a> <span class="grdeen-btn is-disabled" data-wb-recording-soon hidden><span>Enregistrement bientôt disponible</span></span> <a href="#" class="grdeen-btn grdeen-btn--outline" data-wb-slides target="_blank" rel="noopener" download hidden><span><i class="far fa-file-pdf" aria-hidden="true"></i> Télécharger la présentation (PDF)</span></a>
                                 </div>
-                                <div class="aoc-wb-video" data-wb-video hidden></div>
                             </article>
 
                             <!-- EDIT: Webinar 2 -->
@@ -1603,10 +1817,46 @@
             </div>
         </section>
 
+        <div class="aoc-wb-modal" data-wb-modal role="dialog" aria-modal="true" aria-label="Lire l’enregistrement du discours principal" hidden>
+            <div class="aoc-wb-modal__box">
+                <button type="button" class="aoc-wb-modal__close" data-wb-modal-close aria-label="Fermer la vidéo"><i class="fas fa-times" aria-hidden="true"></i></button>
+                <div class="aoc-wb-modal__frame" data-wb-modal-frame></div>
+            </div>
+        </div>
+
         <script>
             // Applies the WEBINARS settings above: status badges, recording, slides, Zoom link and the countdown
             (function () {
                 function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+                var modal = document.querySelector("[data-wb-modal]");
+                var modalFrame = modal && modal.querySelector("[data-wb-modal-frame]");
+                var modalClose = modal && modal.querySelector("[data-wb-modal-close]");
+                var modalOpener = null;
+                function closeModal() {
+                    if (!modal || modal.hidden) return;
+                    modal.hidden = true;
+                    modalFrame.innerHTML = "";
+                    document.documentElement.classList.remove("aoc-wb-modal-open");
+                    if (modalOpener) modalOpener.focus();
+                }
+                function openModal(frame, opener) {
+                    if (!modal) return;
+                    modalOpener = opener;
+                    modalFrame.innerHTML = "";
+                    modalFrame.appendChild(frame);
+                    modal.hidden = false;
+                    document.documentElement.classList.add("aoc-wb-modal-open");
+                    modalClose.focus();
+                }
+                if (modal) {
+                    modalClose.addEventListener("click", closeModal);
+                    modal.addEventListener("click", function (e) {
+                        if (e.target === modal) closeModal();
+                    });
+                    document.addEventListener("keydown", function (e) {
+                        if (e.key === "Escape") closeModal();
+                    });
+                }
                 function youtubeId(url) {
                     var m = /(?:youtu\.be\/|v=|\/embed\/|\/live\/|\/shorts\/)([\w-]{11})/.exec(url || "");
                     return m ? m[1] : "";
@@ -1618,23 +1868,47 @@
                     });
 
                     var rec = card.querySelector("[data-wb-recording]");
+                    var id = youtubeId(cfg.recordingUrl);
+                    var player = card.querySelector("[data-wb-player]");
+                    var playBtn = player && player.querySelector("[data-wb-play]");
+                    function makeFrame(title) {
+                        var frame = document.createElement("iframe");
+                        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+                        frame.title = title;
+                        frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+                        frame.referrerPolicy = "strict-origin-when-cross-origin";
+                        frame.allowFullscreen = true;
+                        return frame;
+                    }
+                    var playerHtml = player ? player.innerHTML : "";
+                    function stopInline() {
+                        if (player && player.classList.contains("is-playing")) {
+                            player.classList.remove("is-playing");
+                            player.innerHTML = playerHtml;
+                            bindInline();
+                        }
+                    }
+                    function bindInline() {
+                        var btn = player.querySelector("[data-wb-play]");
+                        btn.hidden = false;
+                        var title = btn.getAttribute("aria-label");
+                        var start = function () {
+                            player.classList.add("is-playing");
+                            player.innerHTML = "";
+                            player.appendChild(makeFrame(title));
+                        };
+                        btn.addEventListener("click", start);
+                        player.querySelector("img").addEventListener("click", start);
+                    }
+                    if (id && playBtn) bindInline();
+
                     if (rec) {
-                        var id = youtubeId(cfg.recordingUrl);
-                        var video = card.querySelector("[data-wb-video]");
                         if (id) {
                             rec.href = cfg.recordingUrl;
                             rec.addEventListener("click", function (e) {
                                 e.preventDefault();
-                                if (!video.firstChild) {
-                                    var frame = document.createElement("iframe");
-                                    frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
-                                    frame.title = rec.textContent.trim();
-                                    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                                    frame.allowFullscreen = true;
-                                    video.appendChild(frame);
-                                }
-                                video.hidden = false;
-                                video.scrollIntoView({ behavior: "smooth", block: "center" });
+                                stopInline();
+                                openModal(makeFrame(rec.textContent.trim()), rec);
                             });
                         } else {
                             rec.hidden = true;
