@@ -223,7 +223,7 @@
       iframe: {
         patterns: {
           youtube: {
-            src: "//www.youtube.com/embed/%id%?autoplay=1&start=89"
+            src: "//www.youtube.com/embed/%id%?autoplay=1&start=9"
           }
         }
       }
