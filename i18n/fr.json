@@ -1451,7 +1451,10 @@
     "Distances are approximate and rates are indicative only. Please confirm prices and availability directly with the hotel when booking. AfrONet does not handle hotel bookings.": "Les distances sont approximatives et les tarifs donnés à titre indicatif. Veuillez confirmer les prix et la disponibilité directement auprès de l’hôtel lors de la réservation. AfrONet ne gère pas les réservations d’hôtel.",
     "The conference venue is Mika Convention Centre (MCC) in Chongwe. Recommended hotels near the venue, with indicative rates and contact details, are listed below under <0>Where to Stay</0>. Further travel guidance will be shared with registered participants.": "La conférence se tiendra au Mika Convention Centre (MCC), à Chongwe. Les hôtels recommandés à proximité, avec leurs tarifs indicatifs et leurs coordonnées, figurent ci-dessous dans la rubrique <0>Où séjourner</0>. Des informations pratiques complémentaires sur le voyage seront communiquées aux participants inscrits.",
     "<0>Budget</0><1>USD 40 or less</1><2/>": "<0>Économique</0><1>40 USD ou moins</1><2/>",
-    "Budget (USD 40 or less)": "Économique (40 USD ou moins)"
+    "Budget (USD 40 or less)": "Économique (40 USD ou moins)",
+    "Delegates who need a visa can apply online through the official Zambia Department of Immigration e-Services portal. Many African nationals are visa-exempt. Check your country's status before applying.": "Les délégués ayant besoin d'un visa peuvent en faire la demande en ligne via le portail officiel e-Services du Département de l'immigration de Zambie. De nombreux ressortissants africains sont exemptés de visa. Vérifiez la situation de votre pays avant de faire votre demande.",
+    "<0> <1><2/>Apply for a Zambia e-Visa (Official Portal)</1> </0> <3>Check visa-exempt countries <4/></3>": "<0> <1><2/>Demander un e-Visa pour la Zambie (portail officiel)</1> </0> <3>Vérifier les pays exemptés de visa <4/></3>",
+    "<0/><1>Only use websites ending in <2>.gov.zm</2>. Unofficial look-alike sites charge extra fees.</1>": "<0/><1>Utilisez uniquement les sites se terminant par <2>.gov.zm</2>. Les sites non officiels qui les imitent facturent des frais supplémentaires.</1>"
   },
   "script": {
     "Mika Convention Centre – stay on-site": "Mika Convention Centre – logement sur place",

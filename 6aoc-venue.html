@@ -477,6 +477,76 @@
             }
         }
 
+        /* ---------- Official e-Visa portal (Visa Requirements) ---------- */
+        .aoc-evisa {
+            margin-top: 28px;
+            padding: 22px 24px;
+            border-left: 4px solid var(--grdeen-base, #1a9120);
+            border-radius: 12px;
+            background: #f3f8f2;
+        }
+        .aoc-evisa__text {
+            margin: 0 0 16px;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.8;
+        }
+        .aoc-evisa__actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 22px;
+        }
+        .aoc-evisa__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--grdeen-base, #1a9120);
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .aoc-evisa__link i {
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+        .aoc-evisa__link:hover,
+        .aoc-evisa__link:focus-visible {
+            color: var(--grdeen-text-dark, #07370a);
+            text-decoration: underline;
+        }
+        .aoc-evisa__link:hover i {
+            transform: translateX(3px);
+        }
+        .aoc-evisa__note {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin: 16px 0 0;
+            color: #6b5a2a;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+        .aoc-evisa__note i {
+            margin-top: 3px;
+            color: #c99800;
+        }
+        .aoc-evisa__note strong {
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        @media (max-width: 575px) {
+            .aoc-evisa {
+                padding: 18px 16px;
+            }
+            .aoc-evisa__actions .grdeen-btn {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                white-space: normal;
+            }
+            .aoc-evisa__actions .grdeen-btn span {
+                white-space: normal;
+            }
+        }
+
         /* ---------- Where to Stay (accommodation) ---------- */
         .aoc-stay__eyebrow {
             display: inline-block;
@@ -1485,6 +1555,16 @@
                         <a href="https://cms.afronet.bio/wp-content/uploads/2026/10/VISA-REQUIREMENTS-TO-ZAMBIA.pdf" target="_blank" rel="noopener" class="grdeen-btn">
                             <span><i class="fas fa-file-pdf" style="margin-right:8px;"></i>Download Visa Requirements (PDF)</span>
                         </a>
+                        <div class="aoc-evisa">
+                            <p class="aoc-evisa__text">Delegates who need a visa can apply online through the official Zambia Department of Immigration e-Services portal. Many African nationals are visa-exempt. Check your country's status before applying.</p>
+                            <div class="aoc-evisa__actions">
+                                <a href="https://eservices.zambiaimmigration.gov.zm/#/home" class="grdeen-btn" target="_blank" rel="noopener noreferrer">
+                                    <span><i class="fas fa-passport" style="margin-right:8px;"></i>Apply for a Zambia e-Visa (Official Portal)</span>
+                                </a>
+                                <a href="https://www.zambiaimmigration.gov.zm/" class="aoc-evisa__link" target="_blank" rel="noopener noreferrer">Check visa-exempt countries <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                            <p class="aoc-evisa__note"><i class="fas fa-shield-alt" aria-hidden="true"></i><span>Only use websites ending in <strong>.gov.zm</strong>. Unofficial look-alike sites charge extra fees.</span></p>
+                        </div>
                     </div>
                 </div>
             </div>

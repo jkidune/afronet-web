@@ -1451,7 +1451,10 @@
     "Distances are approximate and rates are indicative only. Please confirm prices and availability directly with the hotel when booking. AfrONet does not handle hotel bookings.": "As distâncias são aproximadas e as tarifas meramente indicativas. Confirme os preços e a disponibilidade diretamente com o hotel no momento da reserva. A AfrONet não trata de reservas de hotel.",
     "The conference venue is Mika Convention Centre (MCC) in Chongwe. Recommended hotels near the venue, with indicative rates and contact details, are listed below under <0>Where to Stay</0>. Further travel guidance will be shared with registered participants.": "A conferência decorre no Mika Convention Centre (MCC), em Chongwe. Os hotéis recomendados perto do local, com tarifas indicativas e contactos, estão listados abaixo em <0>Onde ficar</0>. Mais orientações de viagem serão partilhadas com os participantes inscritos.",
     "<0>Budget</0><1>USD 40 or less</1><2/>": "<0>Económico</0><1>40 USD ou menos</1><2/>",
-    "Budget (USD 40 or less)": "Económico (40 USD ou menos)"
+    "Budget (USD 40 or less)": "Económico (40 USD ou menos)",
+    "Delegates who need a visa can apply online through the official Zambia Department of Immigration e-Services portal. Many African nationals are visa-exempt. Check your country's status before applying.": "Os delegados que precisam de visto podem candidatar-se online através do portal oficial e-Services do Departamento de Imigração da Zâmbia. Muitos cidadãos africanos estão isentos de visto. Verifique a situação do seu país antes de se candidatar.",
+    "<0> <1><2/>Apply for a Zambia e-Visa (Official Portal)</1> </0> <3>Check visa-exempt countries <4/></3>": "<0> <1><2/>Pedir um e-Visto para a Zâmbia (portal oficial)</1> </0> <3>Verificar os países isentos de visto <4/></3>",
+    "<0/><1>Only use websites ending in <2>.gov.zm</2>. Unofficial look-alike sites charge extra fees.</1>": "<0/><1>Utilize apenas sites terminados em <2>.gov.zm</2>. Os sites não oficiais que os imitam cobram taxas adicionais.</1>"
   },
   "script": {
     "Mika Convention Centre – stay on-site": "Mika Convention Centre – alojamento no local",
