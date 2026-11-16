@@ -1120,12 +1120,12 @@
                                             <td>$225</td>
                                         </tr>
                                         <tr>
-                                            <td>Student &ndash; up to Master's level</td>
+                                            <td>Farmer/Student (Up to Masters)</td>
                                             <td>$20</td>
                                             <td>$90</td>
                                         </tr>
                                         <tr>
-                                            <td>Exhibition</td>
+                                            <td>Exhibitor (for your exhibition booth)</td>
                                             <td>$180</td>
                                             <td>$270</td>
                                         </tr>
@@ -1155,12 +1155,12 @@
                                             <td>ZMK 1,000</td>
                                         </tr>
                                         <tr>
-                                            <td>Student &ndash; up to Master's level</td>
+                                            <td>Farmer/Student (Up to Masters)</td>
                                             <td>ZMK 100</td>
                                             <td>ZMK 200</td>
                                         </tr>
                                         <tr>
-                                            <td>Exhibition</td>
+                                            <td>Exhibitor (for your exhibition booth)</td>
                                             <td>ZMK 650</td>
                                             <td>ZMK 1,300</td>
                                         </tr>
@@ -1200,12 +1200,12 @@
                                             <td>$250</td>
                                         </tr>
                                         <tr>
-                                            <td>Student &ndash; up to Master's level</td>
+                                            <td>Farmer/Student (Up to Masters)</td>
                                             <td>$25</td>
                                             <td>$100</td>
                                         </tr>
                                         <tr>
-                                            <td>Exhibition</td>
+                                            <td>Exhibitor (for your exhibition booth)</td>
                                             <td>$200</td>
                                             <td>$300</td>
                                         </tr>
@@ -1235,12 +1235,12 @@
                                             <td>ZMK 3,050</td>
                                         </tr>
                                         <tr>
-                                            <td>Student &ndash; up to Master's level</td>
+                                            <td>Farmer/Student (Up to Masters)</td>
                                             <td>ZMK 300</td>
                                             <td>ZMK 1,215</td>
                                         </tr>
                                         <tr>
-                                            <td>Exhibition</td>
+                                            <td>Exhibitor (for your exhibition booth)</td>
                                             <td>ZMK 2,400</td>
                                             <td>ZMK 3,645</td>
                                         </tr>
@@ -1742,10 +1742,11 @@
                     <select id="aoc-category" name="category" required>
                       <option value="">Select...</option>
                       <option value="individual">Individual</option>
-                      <option value="student">Student (up to Master's level)</option>
-                      <option value="exhibition">Exhibition</option>
+                      <option value="student">Farmer/Student (Up to Masters)</option>
+                      <option value="exhibition">Exhibitor (for your exhibition booth)</option>
                       <option value="side">Side Event (per day)</option>
                     </select>
+                    <p class="aoc-exhibitor-note" data-exhibitor-note hidden style="margin:6px 0 0; font-size:12.5px; line-height:1.45; color:#6b7280;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>This fee covers your exhibition booth only.</p>
                   </div>
 
                   <!-- Registration tier is set by date, not chosen by the registrant -->
@@ -1822,7 +1823,7 @@
                     feeLine = '<span>Amount due</span><span>Side Event is not available at the national Early Bird rate</span>';
                     btn.disabled = true;
                   } else {
-                    feeLine = '<span>Amount due' + (cat === 'side' ? ' (per day)' : '') + '</span>' +
+                    feeLine = '<span>Amount due' + (cat === 'side' ? ' (per day)' : cat === 'exhibition' ? ' (exhibition booth)' : '') + '</span>' +
                               '<span class="aoc-amount">' + money(cur, row[part]) + '</span>';
                   }
                 }
@@ -1833,6 +1834,10 @@
                   '</span></div>' +
                   '<div class="aoc-fee-row" style="align-items:baseline">' + feeLine + '</div>';
               }
+
+              // Exhibitor helper note follows the category choice
+              const exNote = form.querySelector('[data-exhibitor-note]');
+              $('aoc-category').addEventListener('change', () => { exNote.hidden = $('aoc-category').value !== 'exhibition'; });
 
               ['aoc-country', 'aoc-participation', 'aoc-category'].forEach(id => {
                 $(id).addEventListener('input', update);
@@ -1978,9 +1983,10 @@
                   <div class="aocg-field"><label for="aocg-dcat">Category</label>
                     <select id="aocg-dcat"><option value="">Select...</option>
                       <option value="individual">Individual</option>
-                      <option value="student">Student (up to MSc)</option>
-                      <option value="exhibition">Exhibition</option>
-                      <option value="side">Side Event (per day)</option></select></div>
+                      <option value="student">Farmer/Student (Up to Masters)</option>
+                      <option value="exhibition">Exhibitor (for your exhibition booth)</option>
+                      <option value="side">Side Event (per day)</option></select>
+                    <p class="aocg-hint" data-exhibitor-note hidden style="margin:6px 0 0;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>This fee covers your exhibition booth only.</p></div>
                 </div>
 
                 <div class="aocg-h" id="aocg-mhead">Members</div>
@@ -2031,8 +2037,8 @@
                   <div class="aocg-field"><label>Category</label>
                     <select data-f="category" data-d="aocg-dcat"><option value="">Select...</option>
                       <option value="individual">Individual</option>
-                      <option value="student">Student (up to MSc)</option>
-                      <option value="exhibition">Exhibition</option>
+                      <option value="student">Farmer/Student (Up to Masters)</option>
+                      <option value="exhibition">Exhibitor (for your exhibition booth)</option>
                       <option value="side">Side Event (per day)</option></select></div>
                 </div>
               </div>
@@ -2102,6 +2108,10 @@
                 return node;
               }
 
+              // Exhibitor helper note follows the default category choice
+              const exNoteG = form.querySelector('[data-exhibitor-note]');
+              $('aocg-dcat').addEventListener('change', () => { exNoteG.hidden = $('aocg-dcat').value !== 'exhibition'; });
+
               // A member's country/participation/category follow the defaults until changed by hand.
               DEFAULTS.forEach(id => {
                 const src = $(id);
@@ -2124,7 +2134,7 @@
                   out.className = 'aocg-member-fee';
                   if (!fee) out.textContent = '';
                   else if (fee.amount == null) { out.classList.add('is-warn'); out.textContent = 'Side Event not available at the national Early Bird rate'; }
-                  else out.textContent = money(fee.currency, fee.amount) + (field(row, 'category').value === 'side' ? ' / day' : '');
+                  else out.textContent = money(fee.currency, fee.amount) + (field(row, 'category').value === 'side' ? ' / day' : field(row, 'category').value === 'exhibition' ? ' / booth' : '');
                 });
 
                 sum.className = 'aocg-sum';

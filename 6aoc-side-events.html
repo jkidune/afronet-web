@@ -583,6 +583,118 @@
             max-height: 220px;
             overflow-y: auto;
         }
+
+        /* Host / attend choice */
+        .aoc-se-choose {
+            margin: 0 0 12px;
+            color: var(--grdeen-text-dark, #07370a);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .aoc-se-attend {
+            width: 100%;
+            margin-top: 12px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        /* Side events schedule */
+        .aoc-se-schedule__intro {
+            margin: 0 auto 26px;
+            max-width: 680px;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.8;
+            text-align: center;
+        }
+        .aoc-se-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+        .aoc-se-grid[hidden] {
+            display: none;
+        }
+        .aoc-se-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 20px 22px;
+            border: 1px solid #e4ece4;
+            border-top: 4px solid var(--grdeen-base, #1a9120);
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 14px rgba(7, 55, 10, 0.05);
+        }
+        .aoc-se-card__time {
+            align-self: flex-start;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(244, 196, 48, 0.2);
+            color: #7a5c00;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .aoc-se-card__title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        .aoc-se-card__meta {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin: 0;
+            color: var(--grdeen-text-dark, #07370a);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .aoc-se-card__meta i {
+            width: 16px;
+            color: var(--grdeen-base, #1a9120);
+            text-align: center;
+        }
+        .aoc-se-card__text {
+            margin: 0;
+            color: var(--grdeen-text, #626f62);
+            font-size: 14.5px;
+            line-height: 1.65;
+        }
+        .aoc-se-empty {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto;
+            max-width: 680px;
+            padding: 18px 22px;
+            border: 1px dashed #cfdccf;
+            border-radius: 12px;
+            background: #f6f9f5;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.7;
+        }
+        .aoc-se-empty[hidden] {
+            display: none;
+        }
+        .aoc-se-empty i {
+            margin-top: 5px;
+            color: var(--grdeen-base, #1a9120);
+        }
+        .aoc-se-empty a {
+            color: var(--grdeen-base, #1a9120);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        @media (max-width: 767px) {
+            .aoc-se-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .aoc-se-empty {
+                padding: 16px;
+            }
+        }
     </style>
 
     <link rel="canonical" href="https://afronet.bio/6aoc-side-events" />
@@ -772,14 +884,92 @@
                         <div class="fee-card" style="text-align:center;">
                             <h3 class="fee-card__title" style="margin-bottom:16px;">Apply to Host</h3>
                             <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Tell us about your proposed side event and we'll follow up with requirements via email.</p>
+                            <p class="aoc-se-choose">Hosting or attending? Choose an option below.</p>
                             <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-sideevent-modal" style="width:100%; text-align:center; justify-content:center;">
                                 <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Apply to Host a Side Event</span>
+                            </a>
+                            <a href="/6aoc-registration#register" class="grdeen-btn grdeen-btn--outline aoc-se-attend">
+                                <span><i class="fas fa-user-check" style="margin-right:8px;"></i>Register to Attend a Side Event</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="section-space aoc-se-schedule" id="side-events-schedule" style="padding-top:0;">
+            <div class="container">
+                <div class="sec-title sec-title--two text-center">
+                    <span class="sec-title__tagline">Day 3</span>
+                    <h2 class="sec-title__title">Side Events Schedule</h2>
+                </div><!-- /.sec-title -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <p class="aoc-se-schedule__intro">Side events take place on Thursday, 3 December 2026, 11:30–13:30, with up to 6 parallel sessions hosted by partners.</p>
+                        <div class="aoc-se-grid" data-side-events></div>
+                        <p class="aoc-se-empty" data-side-events-empty hidden><i class="far fa-calendar-alt" aria-hidden="true"></i><span>Confirmed side events will be listed here shortly. Interested in hosting? <a href="#" class="event-register-toggler" data-modal-target="#event-sideevent-modal">Apply above</a>.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            /* =====================================================================
+               SIDE EVENTS SCHEDULE: add one entry per side event. Only entries with
+               status "Confirmed" are shown; the cards build themselves.
+               Example (copy, paste inside the [ ] and edit):
+                 {
+                     title: "Scaling organic seed systems",
+                     host: "Name of host organisation",
+                     description: "One or two sentences about the session.",
+                     time: "Thursday, 3 December 2026, 11:30–13:30",   // optional, defaults to 11:30–13:30
+                     room: "Hall B",            // optional, leave "" if not known
+                     status: "Confirmed"        // anything else keeps it hidden
+                 },
+               ===================================================================== */
+            var SIDE_EVENTS = [
+                {
+                    title: "Side Event hosted by KHSA",
+                    host: "KHSA / Sustainability Institute, South Africa",
+                    description: "Session details will be announced soon.",
+                    time: "Thursday, 3 December 2026, 11:30–13:30",
+                    room: "",
+                    status: "Confirmed"
+                }
+            ];
+
+            (function () {
+                var grid = document.querySelector("[data-side-events]");
+                var empty = document.querySelector("[data-side-events-empty]");
+                if (!grid) return;
+                var LABEL_ROOM = "Room";
+                function el(tag, cls, text) {
+                    var n = document.createElement(tag);
+                    if (cls) n.className = cls;
+                    if (text) n.textContent = text;
+                    return n;
+                }
+                function meta(icon, text) {
+                    var p = el("p", "aoc-se-card__meta");
+                    var i = el("i", icon);
+                    i.setAttribute("aria-hidden", "true");
+                    p.appendChild(i);
+                    p.appendChild(document.createTextNode(text));
+                    return p;
+                }
+                var confirmed = SIDE_EVENTS.filter(function (e) { return e && e.status === "Confirmed"; });
+                confirmed.forEach(function (e) {
+                    var card = el("article", "aoc-se-card");
+                    card.appendChild(el("span", "aoc-se-card__time", e.time || "11:30–13:30"));
+                    card.appendChild(el("h3", "aoc-se-card__title", e.title));
+                    if (e.host) card.appendChild(meta("fas fa-users", e.host));
+                    if (e.room) card.appendChild(meta("fas fa-door-open", LABEL_ROOM + ": " + e.room));
+                    if (e.description) card.appendChild(el("p", "aoc-se-card__text", e.description));
+                    grid.appendChild(card);
+                });
+                grid.hidden = confirmed.length === 0;
+                empty.hidden = confirmed.length > 0;
+            })();
+        </script>
 
         <section class="section-space" style="background-color:var(--grdeen-gray, #f6f7f2);">
             <div class="container">

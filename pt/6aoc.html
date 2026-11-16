@@ -1110,12 +1110,12 @@
                                             <td>$225</td>
                                         </tr>
                                         <tr>
-                                            <td>Estudante – até mestrado</td>
+                                            <td>Agricultor/Estudante (até mestrado)</td>
                                             <td>$20</td>
                                             <td>$90</td>
                                         </tr>
                                         <tr>
-                                            <td>Exposição</td>
+                                            <td>Expositor (para o seu stand de exposição)</td>
                                             <td>$180</td>
                                             <td>$270</td>
                                         </tr>
@@ -1145,12 +1145,12 @@
                                             <td>ZMK 1000</td>
                                         </tr>
                                         <tr>
-                                            <td>Estudante – até mestrado</td>
+                                            <td>Agricultor/Estudante (até mestrado)</td>
                                             <td>ZMK 100</td>
                                             <td>ZMK 200</td>
                                         </tr>
                                         <tr>
-                                            <td>Exposição</td>
+                                            <td>Expositor (para o seu stand de exposição)</td>
                                             <td>ZMK 650</td>
                                             <td>ZMK 1300</td>
                                         </tr>
@@ -1190,12 +1190,12 @@
                                             <td>$250</td>
                                         </tr>
                                         <tr>
-                                            <td>Estudante – até mestrado</td>
+                                            <td>Agricultor/Estudante (até mestrado)</td>
                                             <td>$25</td>
                                             <td>$100</td>
                                         </tr>
                                         <tr>
-                                            <td>Exposição</td>
+                                            <td>Expositor (para o seu stand de exposição)</td>
                                             <td>$200</td>
                                             <td>$300</td>
                                         </tr>
@@ -1225,12 +1225,12 @@
                                             <td>ZMK 3050</td>
                                         </tr>
                                         <tr>
-                                            <td>Estudante – até mestrado</td>
+                                            <td>Agricultor/Estudante (até mestrado)</td>
                                             <td>ZMK 300</td>
                                             <td>ZMK 1215</td>
                                         </tr>
                                         <tr>
-                                            <td>Exposição</td>
+                                            <td>Expositor (para o seu stand de exposição)</td>
                                             <td>ZMK 2400</td>
                                             <td>ZMK 3645</td>
                                         </tr>
@@ -1727,10 +1727,11 @@
                     <select id="aoc-category" name="category" required>
                       <option value="">Selecionar…</option>
                       <option value="individual">Individual</option>
-                      <option value="student">Estudante (até mestrado)</option>
-                      <option value="exhibition">Exposição</option>
+                      <option value="student">Agricultor/Estudante (até mestrado)</option>
+                      <option value="exhibition">Expositor (para o seu stand de exposição)</option>
                       <option value="side">Evento paralelo (por dia)</option>
                     </select>
+                    <p class="aoc-exhibitor-note" data-exhibitor-note hidden style="margin:6px 0 0; font-size:12.5px; line-height:1.45; color:#6b7280;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>Esta taxa cobre apenas o seu stand de exposição.</p>
                   </div>
 
                   <!-- Registration tier is set by date, not chosen by the registrant -->
@@ -1806,7 +1807,7 @@
                     feeLine = '<span>Valor a pagar</span><span>O evento paralelo não está disponível no preço nacional de inscrição antecipada</span>';
                     btn.disabled = true;
                   } else {
-                    feeLine = '<span>Valor a pagar' + (cat === 'side' ? ' (por dia)' : '') + '</span>' +
+                    feeLine = '<span>Valor a pagar' + (cat === 'side' ? ' (por dia)' : cat === 'exhibition' ? ' (stand de exposição)' : '') + '</span>' +
                               '<span class="aoc-amount">' + money(cur, row[part]) + '</span>';
                   }
                 }
@@ -1817,6 +1818,10 @@
                   '</span></div>' +
                   '<div class="aoc-fee-row" style="align-items:baseline">' + feeLine + '</div>';
               }
+
+              // Exhibitor helper note follows the category choice
+              const exNote = form.querySelector('[data-exhibitor-note]');
+              $('aoc-category').addEventListener('change', () => { exNote.hidden = $('aoc-category').value !== 'exhibition'; });
 
               ['aoc-country', 'aoc-participation', 'aoc-category'].forEach(id => {
                 $(id).addEventListener('input', update);
@@ -1962,9 +1967,10 @@
                   <div class="aocg-field"><label for="aocg-dcat">Categoria</label>
                     <select id="aocg-dcat"><option value="">Selecionar…</option>
                       <option value="individual">Individual</option>
-                      <option value="student">Estudante (até mestrado)</option>
-                      <option value="exhibition">Exposição</option>
-                      <option value="side">Evento paralelo (por dia)</option></select></div>
+                      <option value="student">Agricultor/Estudante (até mestrado)</option>
+                      <option value="exhibition">Expositor (para o seu stand de exposição)</option>
+                      <option value="side">Evento paralelo (por dia)</option></select>
+                    <p class="aocg-hint" data-exhibitor-note hidden style="margin:6px 0 0;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>Esta taxa cobre apenas o seu stand de exposição.</p></div>
                 </div>
 
                 <div class="aocg-h" id="aocg-mhead">Membros</div>
@@ -2012,8 +2018,8 @@
                   <div class="aocg-field"><label>Categoria</label>
                     <select data-f="category" data-d="aocg-dcat"><option value="">Selecionar…</option>
                       <option value="individual">Individual</option>
-                      <option value="student">Estudante (até mestrado)</option>
-                      <option value="exhibition">Exposição</option>
+                      <option value="student">Agricultor/Estudante (até mestrado)</option>
+                      <option value="exhibition">Expositor (para o seu stand de exposição)</option>
                       <option value="side">Evento paralelo (por dia)</option></select></div>
                 </div>
               </div>
@@ -2083,6 +2089,10 @@
                 return node;
               }
 
+              // Exhibitor helper note follows the default category choice
+              const exNoteG = form.querySelector('[data-exhibitor-note]');
+              $('aocg-dcat').addEventListener('change', () => { exNoteG.hidden = $('aocg-dcat').value !== 'exhibition'; });
+
               // A member's country/participation/category follow the defaults until changed by hand.
               DEFAULTS.forEach(id => {
                 const src = $(id);
@@ -2105,7 +2115,7 @@
                   out.className = 'aocg-member-fee';
                   if (!fee) out.textContent = '';
                   else if (fee.amount == null) { out.classList.add('is-warn'); out.textContent = 'Evento paralelo indisponível no preço nacional de inscrição antecipada'; }
-                  else out.textContent = money(fee.currency, fee.amount) + (field(row, 'category').value === 'side' ? ' / dia' : '');
+                  else out.textContent = money(fee.currency, fee.amount) + (field(row, 'category').value === 'side' ? ' / dia' : field(row, 'category').value === 'exhibition' ? ' / stand' : '');
                 });
 
                 sum.className = 'aocg-sum';
