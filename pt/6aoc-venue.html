@@ -1171,6 +1171,15 @@
                 grid-area: cat;
                 padding-top: 8px !important;
             }
+            /* Hotels without a distance or category: no empty column or gap */
+            .aoc-hotel--nodist {
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-areas: "main" "cat" "contact";
+            }
+            .aoc-hotel__dist:empty,
+            .aoc-hotel__cat:empty {
+                display: none;
+            }
             .aoc-hotel__contact {
                 grid-area: contact;
                 padding-top: 10px !important;
@@ -1383,9 +1392,9 @@
                             <div>
                                 <h2 style="font-family:var(--grdeen-heading-font, 'DM Sans', sans-serif); font-size:34px; font-weight:800; line-height:1.2; color:var(--grdeen-text-dark, #07370a); margin-bottom:20px;">Local e alojamento</h2>
                                 <p style="color:var(--grdeen-text-dark, #07370a); font-size:22px; font-weight:700; margin-bottom:10px;"><i class="fas fa-map-marker-alt" style="color:var(--grdeen-base, #1a9120); margin-right:8px;"></i>Chongwe, Lusaka, Zâmbia</p>
-                                <p class="aoc-venue-address">Mika Convention Centre, Meanwood, Off Great East Road, Plot 34A Sub 9, Waterfalls, Chongwe, Província de Lusaca, Zâmbia.</p>
+                                <p class="aoc-venue-address">Mika Convention Center, Meanwood, Off Great East Road, Plot 34A Sub 9, Waterfalls, Chongwe, Província de Lusaca, Zâmbia.</p>
                                 <p style="color:var(--grdeen-text, #626f62); line-height:1.85; margin-bottom:16px;">A 6.ª Conferência Africana de Agricultura Biológica realizar-se-á em Chongwe, Lusaka (Zâmbia), acolhida pela Associação de Produtores e Transformadores Biológicos da Zâmbia (OPPAZ).</p>
-                                <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">A conferência decorre no Mika Convention Centre (MCC), em Chongwe. Os hotéis recomendados perto do local, com tarifas indicativas e contactos, estão listados abaixo em <a href="#accommodation" style="color:var(--grdeen-base, #1a9120); font-weight:600;">Onde ficar</a>. Mais orientações de viagem serão partilhadas com os participantes inscritos.</p>
+                                <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">A conferência decorre no Mika Convention Center (MCC), em Chongwe. Os hotéis recomendados perto do local, com tarifas indicativas e contactos, estão listados abaixo em <a href="#accommodation" style="color:var(--grdeen-base, #1a9120); font-weight:600;">Onde ficar</a>. Mais orientações de viagem serão partilhadas com os participantes inscritos.</p>
                                 <div style="margin-top:20px;">
                                     <a href="/pt/6aoc-registration" class="grdeen-btn">
                                         <span>Inscreva-se na 6AOC</span>
@@ -1410,11 +1419,11 @@
                     <div class="col-lg-10">
                         <span class="aoc-stay__eyebrow">Alojamento</span>
                         <h2 class="aoc-stay__title">Onde ficar</h2>
-                        <p class="aoc-stay__intro">Alojamento recomendado perto do local da conferência, o Mika Convention Centre (MCC), Chongwe, Lusaca, Zâmbia.</p>
+                        <p class="aoc-stay__intro">Alojamento recomendado perto do local da conferência, o Mika Convention Center (MCC), Chongwe, Lusaca, Zâmbia.</p>
                         <div class="aoc-stay__featured" data-stay-featured></div>
 
                         <h3 class="aoc-stay__subtitle">Outros alojamentos</h3>
-                        <p class="aoc-stay__distnote"><i class="fas fa-route" aria-hidden="true"></i><span>Todas as distâncias são aproximadas e medidas a partir do Mika Convention Centre (local da conferência).</span></p>
+                        <p class="aoc-stay__distnote"><i class="fas fa-route" aria-hidden="true"></i><span>Todas as distâncias são aproximadas e medidas a partir do Mika Convention Center (local da conferência).</span></p>
                         <div class="aoc-stay__filters" role="group" aria-label="Filtrar hotéis">
                             <button type="button" class="is-active" data-filter="all" aria-pressed="true"><span>Todos</span><span class="aoc-stay__count" data-count></span></button>
                             <button type="button" data-filter="near" aria-pressed="false"><span>Menos de 5 km</span><span class="aoc-stay__count" data-count></span></button>
@@ -1424,7 +1433,7 @@
                         </div>
                         <div class="aoc-hotels" role="table" aria-label="Outros alojamentos">
                             <div class="aoc-hotels__head" role="row">
-                                <span role="columnheader">Distância do Mika Convention Centre</span> <span role="columnheader">Hotel</span> <span role="columnheader">Categoria</span> <span role="columnheader">Contacto</span>
+                                <span role="columnheader">Distância do Mika Convention Center</span> <span role="columnheader">Hotel</span> <span role="columnheader">Categoria</span> <span role="columnheader">Contacto</span>
                             </div>
                             <div class="aoc-hotels__body" data-stay-grid></div>
                         </div>
@@ -1440,7 +1449,7 @@
 
                         <div class="aoc-getting-there" id="getting-there">
                             <h3 class="aoc-stay__subtitle"><i class="fas fa-plane-arrival" aria-hidden="true"></i>Como chegar</h3>
-                            <p>O Aeroporto Internacional Kenneth Kaunda (LUN) fica a cerca de 10 km do Mika Convention Centre. Recomendamos que combine antecipadamente o transfer do aeroporto com o seu hotel.</p>
+                            <p>O Aeroporto Internacional Kenneth Kaunda (LUN) fica a cerca de 10 km do Mika Convention Center. Recomendamos que combine antecipadamente o transfer do aeroporto com o seu hotel.</p>
                             <p class="aoc-getting-there__help">Precisa de ajuda? Contacte <a href="mailto:info@afronet.bio">info@afronet.bio</a>.</p>
                         </div>
                     </div>
@@ -1452,8 +1461,9 @@
                EDIT ACCOMMODATION HERE. The cards, filters and counts update themselves.
                venue:  the conference venue card at the top.
                hotels: one line per hotel.
-                 - km:        distance from Mika Convention Centre (number; sorting + "Under 5 km" filter)
+                 - km:        distance from Mika Convention Center (number; sorting + "Under 5 km" filter)
                  - category:  "budget", "mid-range" or "premium" (drives the filters and the tag)
+                   (km: null and category: "" hide them; such hotels list after the others)
                  - price:     indicative rate text, or "" to hide it
                  - phone / websiteUrl: leave "" to hide them
                  - badge:     optional gold label, e.g. "6AOC rate"
@@ -1463,8 +1473,8 @@
                 venue: {
                     tag: "No local da conferência",
                     heading: "Ficar no local da conferência",
-                    name: "Mika Convention Centre",
-                    address: "Mika Convention Centre, Meanwood, Off Great East Road, Plot 34A Sub 9, Waterfalls, Chongwe, Província de Lusaca, Zâmbia.",
+                    name: "Mika Convention Center",
+                    address: "Mika Convention Center, Meanwood, Off Great East Road, Plot 34A Sub 9, Waterfalls, Chongwe, Província de Lusaca, Zâmbia.",
                     price: "a partir de ~52–95 USD/noite, pequeno-almoço incluído",
                     email: "reservations@mikahotels.com",
                     phones: ["+260 961 876 570", "+260 211 849 021"],
@@ -1479,7 +1489,10 @@
                     { name: "Waterfalls Hotel", km: 3.9, category: "budget", price: "a partir de ~40 USD/noite (individual)", phone: "+260 97 8991900", websiteUrl: "https://www.zambiatourism.com/accommodation/lusaka/waterfalls-hotel/", badge: "" },
                     { name: "Salama Blue Lodge", km: 4.3, category: "budget", price: "~30 USD/noite (duplo standard)", phone: "+260 57 2348483", websiteUrl: "https://www.salamabluelodge.net/rooms", badge: "" },
                     { name: "M'kango Golfview Hotel", km: 8.4, category: "premium", price: "~69 USD/noite (individual)", phone: "+260 97 9727715", websiteUrl: "https://golfview-hotels.com/", badge: "" },
-                    { name: "Chamba Valley Exotic Hotel", km: 8.7, category: "premium", price: "~70 USD/noite", phone: "+260 97 8749943", websiteUrl: "https://mikahotels.com/chamba-valley-exotic-hotel/", badge: "" }
+                    { name: "Chamba Valley Exotic Hotel", km: 8.7, category: "premium", price: "~70 USD/noite", phone: "+260 97 8749943", websiteUrl: "https://mikahotels.com/chamba-valley-exotic-hotel/", badge: "" },
+                    { name: "Kwithu Lodge", km: null, category: "", price: "", phone: "", websiteUrl: "", badge: "" },
+                    { name: "Mika Lodge Jesmondine", km: null, category: "", price: "", phone: "", websiteUrl: "", badge: "" },
+                    { name: "Palm Kalash Resort", km: null, category: "", price: "", phone: "", websiteUrl: "https://palmkalash.com/", badge: "" }
                 ]
             };
 
@@ -1488,7 +1501,7 @@
                 var section = document.getElementById("accommodation");
                 if (!section) return;
                 var T = {
-                    book: "Reservar no Mika Convention Centre",
+                    book: "Reservar no Mika Convention Center",
                     viewMap: "Ver no mapa",
                     map: "Mapa",
                     site: "Site",
@@ -1548,7 +1561,7 @@
                     place.appendChild(icon("fas fa-map-marker-alt"));
                     var placeText = el("span");
                     placeText.appendChild(el("strong", "", v.name));
-                    placeText.appendChild(document.createTextNode(" · " + v.address.replace(/^Mika Convention Centre,\s*/, "")));
+                    placeText.appendChild(document.createTextNode(" · " + v.address.replace(/^Mika Convention Center,\s*/, "")));
                     place.appendChild(placeText);
                     info.appendChild(place);
                     var facts = el("ul", "aoc-stay-venue__facts");
@@ -1586,8 +1599,12 @@
                     r.setAttribute("role", "row");
                     var dist = el("div", "aoc-hotel__dist");
                     dist.setAttribute("role", "cell");
-                    dist.appendChild(el("span", "aoc-hotel__km", String(h.km)));
-                    dist.appendChild(el("span", "aoc-hotel__unit", "km"));
+                    if (typeof h.km === "number") {
+                        dist.appendChild(el("span", "aoc-hotel__km", String(h.km)));
+                        dist.appendChild(el("span", "aoc-hotel__unit", "km"));
+                    } else {
+                        r.className += " aoc-hotel--nodist";
+                    }
                     r.appendChild(dist);
 
                     var main = el("div", "aoc-hotel__main");
@@ -1624,10 +1641,11 @@
                 }
 
                 var grid = section.querySelector("[data-stay-grid]");
-                var rows = STAY.hotels.slice().sort(function (a, b) { return a.km - b.km; }).map(function (h) {
+                function km(h) { return typeof h.km === "number" ? h.km : Infinity; }
+                var rows = STAY.hotels.slice().sort(function (a, b) { return km(a) - km(b); }).map(function (h) {
                     var r = row(h);
                     r.setAttribute("data-category", h.category || "");
-                    r.setAttribute("data-near", h.km < 5 ? "1" : "0");
+                    r.setAttribute("data-near", km(h) < 5 ? "1" : "0");
                     grid.appendChild(r);
                     return r;
                 });
