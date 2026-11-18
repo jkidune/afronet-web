@@ -1641,7 +1641,8 @@
                     slidesUrl: "/assets/webinars/webinar1-amudavi.pdf" // button only shows once this file exists
                 },
                 webinar2: {
-                    status: "upcoming",
+                    status: "completed",
+                    recordingUrl: "https://www.youtube.com/watch?v=8thzIIFB2c8&t=11s", // "t=11s" starts the video at 0:11
                     zoomUrl: "https://us06web.zoom.us/meeting/register/QFfVqS6PR2uTVdOr6wJrNA", // Zoom registration link (empty = "coming soon")
                     startsAt: "2026-11-17T15:00:00+03:00" // 3:00 PM EAT, drives the countdown
                 }
@@ -1793,7 +1794,7 @@
                                     <p class="aoc-hero-countdown__message" data-wb-started hidden>O webinar já começou — junte-se a nós em direto</p>
                                 </div>
                                 <div class="aoc-wb-actions">
-                                    <a href="#" class="grdeen-btn" data-wb-zoom target="_blank" rel="noopener"><span><i class="fas fa-video" aria-hidden="true"></i> Inscrever-se (Zoom)</span></a> <span class="grdeen-btn is-disabled" data-wb-zoom-soon hidden><span>Link de inscrição disponível em breve</span></span>
+                                    <a href="#" class="grdeen-btn aoc-wb-watch" data-wb-recording><span><i class="fas fa-play" aria-hidden="true"></i> Ver a gravação</span></a> <span class="grdeen-btn is-disabled" data-wb-recording-soon hidden><span>Gravação disponível em breve</span></span> <a href="#" class="grdeen-btn" data-wb-zoom target="_blank" rel="noopener"><span><i class="fas fa-video" aria-hidden="true"></i> Inscrever-se (Zoom)</span></a> <span class="grdeen-btn is-disabled" data-wb-zoom-soon hidden><span>Link de inscrição disponível em breve</span></span>
                                 </div>
                                 </div>
                                 <a class="aoc-wb-flier" href="https://cms.afronet.bio/wp-content/uploads/2026/11/updated-conference-flier.png" target="_blank" rel="noopener">
@@ -1869,11 +1870,12 @@
 
                     var rec = card.querySelector("[data-wb-recording]");
                     var id = youtubeId(cfg.recordingUrl);
+                    var startAt = (/[?&#](?:t|start)=(\d+)s?(?:&|$)/.exec(cfg.recordingUrl || "") || [])[1] || "";
                     var player = card.querySelector("[data-wb-player]");
                     var playBtn = player && player.querySelector("[data-wb-play]");
                     function makeFrame(title) {
                         var frame = document.createElement("iframe");
-                        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+                        frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0" + (startAt ? "&start=" + startAt : "");
                         frame.title = title;
                         frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
                         frame.referrerPolicy = "strict-origin-when-cross-origin";
@@ -1928,7 +1930,11 @@
 
                     var zoom = card.querySelector("[data-wb-zoom]");
                     if (zoom) {
-                        if (cfg.zoomUrl) {
+                        if (cfg.status === "completed") {
+                            // Registration is closed once the webinar has taken place
+                            zoom.hidden = true;
+                            card.querySelector("[data-wb-zoom-soon]").hidden = true;
+                        } else if (cfg.zoomUrl) {
                             zoom.href = cfg.zoomUrl;
                         } else {
                             zoom.hidden = true;
