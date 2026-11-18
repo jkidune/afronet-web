@@ -975,6 +975,52 @@
             color: var(--grdeen-text, #626f62);
             font-size: 13.5px;
         }
+        .aoc-hotel__price + .aoc-hotel__price {
+            margin-top: 4px;
+        }
+        /* Optional "All room rates" toggle */
+        .aoc-hotel__rates {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px dashed #e4ece4;
+            font-size: 13px;
+        }
+        .aoc-hotel__rates summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            cursor: pointer;
+            list-style: none;
+            color: var(--grdeen-base, #1a9120);
+            font-weight: 700;
+        }
+        .aoc-hotel__rates summary::-webkit-details-marker {
+            display: none;
+        }
+        .aoc-hotel__rates summary i {
+            font-size: 11px;
+            transition: transform 0.2s ease;
+        }
+        .aoc-hotel__rates[open] summary i {
+            transform: rotate(180deg);
+        }
+        .aoc-hotel__rates-list {
+            margin: 8px 0 0;
+        }
+        .aoc-hotel__rates-list dt {
+            font-weight: 600;
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        .aoc-hotel__rates-list dd {
+            margin: 0 0 6px;
+            color: var(--grdeen-text, #626f62);
+        }
+        .aoc-hotel__rates-note {
+            margin: 8px 0 0;
+            color: var(--grdeen-text, #626f62);
+            font-size: 12.5px;
+            font-style: italic;
+        }
         .aoc-hotel__price i,
         .aoc-hotel__phone i {
             color: var(--grdeen-base, #1a9120);
@@ -1469,6 +1515,8 @@
                  - price:     indicative rate text, or "" to hide it
                  - phone / websiteUrl: leave "" to hide them
                  - badge:     optional gold label, e.g. "6AOC rate"
+                 - optional:  email, location, travel, description (extra lines),
+                              rates: [["Room", "Rate"], ...] + note (shown in an "All room rates" toggle)
                The Map link is built from the hotel name automatically. To remove a hotel, delete its line.
                ===================================================================== */
             var STAY = {
@@ -1490,6 +1538,22 @@
                     { name: "Skyview Lodge at the Barn", km: 2.5, category: "mid-range", price: "from ~USD 42/night", phone: "+260 97 4772969", websiteUrl: "", badge: "" },
                     { name: "Waterfalls Hotel", km: 3.9, category: "budget", price: "from ~USD 40/night (single)", phone: "+260 97 8991900", websiteUrl: "https://www.zambiatourism.com/accommodation/lusaka/waterfalls-hotel/", badge: "" },
                     { name: "Salama Blue Lodge", km: 4.3, category: "budget", price: "~USD 30/night (standard double)", phone: "+260 57 2348483", websiteUrl: "https://www.salamabluelodge.net/rooms", badge: "" },
+                    {
+                        name: "Lusaka Legacy Resort & Conference Centre", km: 6.5, category: "premium",
+                        price: "From K 2,500 per night (breakfast included)",
+                        phone: "+260 762 350 720", websiteUrl: "https://lusakalegacyresort.com", badge: "",
+                        email: "reservations@llhcc.com",
+                        location: "Meanwood Ibex Hill, off Great East Road, Chongwe (just past the airport roundabout heading towards Chongwe)",
+                        travel: "About 17 minutes by car",
+                        description: "Hilltop resort with infinity pool, restaurant, gym and spa. 83 rooms.",
+                        rates: [
+                            ["Garden Facing Standard Room", "Single K 2,500 | Double K 2,750"],
+                            ["Valley View Standard Room", "Single K 2,800 | Double K 3,200"],
+                            ["Junior Suite (single/double)", "K 4,000"],
+                            ["Presidential Suite (single/double)", "K 7,000 (breakfast for up to 4 guests)"]
+                        ],
+                        note: "Rates as quoted by the hotel, November 2026. Delegates book and pay the hotel directly."
+                    },
                     { name: "M'kango Golfview Hotel", km: 8.4, category: "premium", price: "~USD 69/night (single)", phone: "+260 97 9727715", websiteUrl: "https://golfview-hotels.com/", badge: "" },
                     { name: "Chamba Valley Exotic Hotel", km: 8.7, category: "premium", price: "~USD 70/night", phone: "+260 97 8749943", websiteUrl: "https://mikahotels.com/chamba-valley-exotic-hotel/", badge: "" },
                     { name: "Kwithu Lodge", km: null, category: "", price: "", phone: "", websiteUrl: "", badge: "" },
@@ -1507,6 +1571,7 @@
                     viewMap: "View on Map",
                     map: "Map",
                     site: "Website",
+                    rates: "All room rates",
                     budget: "Budget",
                     midrange: "Mid-range",
                     premium: "Premium"
@@ -1618,6 +1683,27 @@
                         price.appendChild(document.createTextNode(h.price));
                         main.appendChild(price);
                     }
+                    [["location", "fas fa-map-marker-alt"], ["travel", "fas fa-car"], ["description", "fas fa-concierge-bell"]].forEach(function (f) {
+                        if (!h[f[0]]) return;
+                        var line = el("p", "aoc-hotel__price");
+                        line.appendChild(icon(f[1]));
+                        line.appendChild(document.createTextNode(h[f[0]]));
+                        main.appendChild(line);
+                    });
+                    if (h.rates && h.rates.length) {
+                        var det = el("details", "aoc-hotel__rates");
+                        var sum = el("summary", "", T.rates);
+                        sum.appendChild(icon("fas fa-chevron-down"));
+                        det.appendChild(sum);
+                        var dl = el("dl", "aoc-hotel__rates-list");
+                        h.rates.forEach(function (rt) {
+                            dl.appendChild(el("dt", "", rt[0]));
+                            dl.appendChild(el("dd", "", rt[1]));
+                        });
+                        det.appendChild(dl);
+                        if (h.note) det.appendChild(el("p", "aoc-hotel__rates-note", h.note));
+                        main.appendChild(det);
+                    }
                     r.appendChild(main);
 
                     var cat = el("div", "aoc-hotel__cat");
@@ -1633,6 +1719,14 @@
                         ph.appendChild(icon("fas fa-phone-alt"));
                         ph.appendChild(telLink(h.phone));
                         contact.appendChild(ph);
+                    }
+                    if (h.email) {
+                        var em = el("p", "aoc-hotel__phone");
+                        em.appendChild(icon("fas fa-envelope"));
+                        var ma = el("a", "", h.email);
+                        ma.href = "mailto:" + h.email;
+                        em.appendChild(ma);
+                        contact.appendChild(em);
                     }
                     var actions = el("div", "aoc-hotel__actions");
                     if (h.websiteUrl) actions.appendChild(btn(h.websiteUrl, "", "fas fa-globe", T.site));

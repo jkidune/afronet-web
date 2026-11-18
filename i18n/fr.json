@@ -1552,7 +1552,20 @@
     "Room": "Salle",
     "Side Event hosted by KHSA": "Événement parallèle organisé par KHSA",
     "Session details will be announced soon.": "Les détails de la session seront annoncés prochainement.",
-    "Thursday, 3 December 2026, 11:30–13:30": "Jeudi 3 décembre 2026, 11h30–13h30"
+    "Thursday, 3 December 2026, 11:30–13:30": "Jeudi 3 décembre 2026, 11h30–13h30",
+    "All room rates": "Tous les tarifs des chambres",
+    "From K 2,500 per night (breakfast included)": "À partir de K 2 500 par nuit (petit-déjeuner inclus)",
+    "About 17 minutes by car": "Environ 17 minutes en voiture",
+    "Hilltop resort with infinity pool, restaurant, gym and spa. 83 rooms.": "Complexe hôtelier perché sur une colline, avec piscine à débordement, restaurant, salle de sport et spa. 83 chambres.",
+    "Rates as quoted by the hotel, November 2026. Delegates book and pay the hotel directly.": "Tarifs communiqués par l'hôtel, novembre 2026. Les délégués réservent et paient directement auprès de l'hôtel.",
+    "Garden Facing Standard Room": "Chambre standard côté jardin",
+    "Valley View Standard Room": "Chambre standard vue sur la vallée",
+    "Junior Suite (single/double)": "Suite junior (simple/double)",
+    "Presidential Suite (single/double)": "Suite présidentielle (simple/double)",
+    "Single K 2,500 | Double K 2,750": "Simple K 2 500 | Double K 2 750",
+    "Single K 2,800 | Double K 3,200": "Simple K 2 800 | Double K 3 200",
+    "K 4,000": "K 4 000",
+    "K 7,000 (breakfast for up to 4 guests)": "K 7 000 (petit-déjeuner pour 4 personnes maximum)"
   },
   "js": {
     "Early Bird ends": "Fin du tarif préférentiel",
