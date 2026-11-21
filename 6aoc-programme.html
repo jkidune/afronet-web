@@ -659,6 +659,58 @@
                 padding: 0 12px 6px;
             }
         }
+        /* The Organic Innovations Poster Gallery callout */
+        .aoc-prog-gallery {
+            display: flex;
+            gap: 16px;
+            margin: 30px 0 0;
+            padding: 20px 22px;
+            border: 1px solid rgba(26, 145, 32, 0.25);
+            border-left: 4px solid var(--grdeen-base, #1a9120);
+            border-radius: 10px;
+            background: rgba(26, 145, 32, 0.06);
+        }
+        .aoc-prog-gallery__icon {
+            flex: 0 0 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--grdeen-base, #1a9120);
+            color: #fff;
+            font-size: 18px;
+        }
+        .aoc-prog-gallery__title {
+            margin: 0 0 6px;
+            font-family: var(--grdeen-heading-font, 'DM Sans', sans-serif);
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.3;
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        .aoc-prog-gallery p {
+            margin: 0;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.7;
+        }
+        .aoc-prog-gallery__where {
+            margin-top: 8px !important;
+            color: var(--grdeen-text-dark, #07370a) !important;
+            font-weight: 600;
+        }
+        .aoc-prog-gallery__where i {
+            margin-right: 6px;
+            color: var(--grdeen-base, #1a9120);
+        }
+        @media (max-width: 575px) {
+            .aoc-prog-gallery {
+                flex-direction: column;
+                gap: 12px;
+                padding: 18px 16px;
+            }
+        }
         .aoc-prog-note {
             margin-top: 22px;
             color: var(--grdeen-text, #626f62);
@@ -893,7 +945,7 @@
                                     <tr>
                                         <td style="white-space:nowrap;">Day 1</td>
                                         <td style="white-space:nowrap;">1 December 2026</td>
-                                        <td>Inaugural session, Plenary I and Track Sessions Block 1</td>
+                                        <td>Inaugural session, Plenary I and Track Sessions Block 1<br>Continuous: The Organic Innovations Poster Gallery (open Days 1&ndash;3)</td>
                                     </tr>
                                     <tr>
                                         <td style="white-space:nowrap;">Day 2</td>
@@ -912,6 +964,15 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="aoc-prog-gallery">
+                            <span class="aoc-prog-gallery__icon"><i class="fas fa-images" aria-hidden="true"></i></span>
+                            <div>
+                                <h3 class="aoc-prog-gallery__title">The Organic Innovations Poster Gallery</h3>
+                                <p>A continuous poster exhibition running throughout the conference (Days 1&ndash;3, 1&ndash;3 December 2026), showcasing research, innovations and practical experiences in organic agriculture and agroecology from across Africa. Delegates can view the posters and meet the presenters during refreshment breaks and lunch.</p>
+                                <p class="aoc-prog-gallery__where"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Location: Mika Convention Center (exact area to be confirmed)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -947,7 +1008,7 @@
                                             <li><time>08:50 &ndash; 09:15</time> Welcome Remarks (AfrONet President and OPPAZ Chair)</li>
                                             <li><time>09:15 &ndash; 09:35</time> Welcome Address (Minister of Agriculture, Zambia)</li>
                                             <li><time>09:35 &ndash; 10:00</time> Keynote Address and Official Opening (The Republican Vice President of Zambia)</li>
-                                            <li><time>10:00 &ndash; 10:30</time> VIP Tour of Exhibition Booths and Poster Area</li>
+                                            <li><time>10:00 &ndash; 10:30</time> VIP Tour of Exhibition Booths and The Organic Innovations Poster Gallery</li>
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
@@ -966,7 +1027,7 @@
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
-                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Lunch Break and Poster Viewing</p>
+                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Lunch Break and Poster Viewing (Organic Innovations Poster Gallery)</p>
                                     </div>
                                     <div class="aoc-prog-session">
                                         <p class="aoc-prog-session__head"><time>14:00 &ndash; 16:00</time>Track Sessions Block 1 (Concurrent Thematic Rooms &ndash; 120-minute block)</p>
@@ -997,7 +1058,7 @@
                             <ul class="aoc-prog-list">
                                 <li><time>08:30 &ndash; 09:00</time><span>Welcome Coffee and Delegate Networking</span></li>
                                 <li><time>09:00 &ndash; 11:00</time><span><strong>Plenary II:</strong> Policy Experiences and Continental Standards</span></li>
-                                <li><time>11:00 &ndash; 11:30</time><span>Refreshment Break and Structured B2B Exhibition</span></li>
+                                <li><time>11:00 &ndash; 11:30</time><span>Refreshment Break and Structured B2B Exhibition and Poster Gallery</span></li>
                                 <li><time>11:30 &ndash; 13:00</time><span><strong>Track Sessions Block 2:</strong> Parallel Sessions (Tracks A, B, C, D)</span></li>
                                 <li><time>13:00 &ndash; 14:00</time><span>Lunch Break</span></li>
                                 <li><time>14:00 &ndash; 16:00</time><span><strong>Track Sessions Block 3:</strong> Parallel Sessions (Tracks A, B, C, D)</span></li>
@@ -1023,7 +1084,7 @@
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
-                                        <p class="aoc-prog-session__head"><time>11:00 &ndash; 11:30</time>Refreshment Break and Structured B2B Exhibition Matchmaking</p>
+                                        <p class="aoc-prog-session__head"><time>11:00 &ndash; 11:30</time>Refreshment Break and Structured B2B Exhibition Matchmaking and Poster Gallery</p>
                                     </div>
                                     <div class="aoc-prog-session">
                                         <p class="aoc-prog-session__head"><time>11:30 &ndash; 13:00</time>Track Sessions Block 2 (Concurrent Thematic Rooms &ndash; 90-minute block)</p>
@@ -1036,7 +1097,7 @@
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
-                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Lunch Break and Exhibition Walkthrough</p>
+                                        <p class="aoc-prog-session__head"><time>13:00 &ndash; 14:00</time>Lunch Break and Exhibition Walkthrough and Poster Gallery</p>
                                     </div>
                                     <div class="aoc-prog-session">
                                         <p class="aoc-prog-session__head"><time>14:00 &ndash; 16:00</time>Track Sessions Block 3 (Concurrent Thematic Rooms &ndash; 120-minute block)</p>
@@ -1066,7 +1127,7 @@
                             <ul class="aoc-prog-list">
                                 <li><time>08:30 &ndash; 09:00</time><span>Welcome Coffee and Delegate Networking</span></li>
                                 <li><time>09:00 &ndash; 11:00</time><span><strong>Plenary III:</strong> Marketing, Trade, and Value Addition</span></li>
-                                <li><time>11:00 &ndash; 11:30</time><span>Refreshment Break and Structured B2B Exhibition</span></li>
+                                <li><time>11:00 &ndash; 11:30</time><span>Refreshment Break and Structured B2B Exhibition and Poster Gallery</span></li>
                                 <li><time>11:30 &ndash; 13:00</time><span><strong>Track Sessions Block 4:</strong> Parallel Sessions (Tracks A, B, C, D)</span></li>
                                 <li><time>13:00 &ndash; 14:00</time><span>Lunch Break</span></li>
                                 <li><time>14:00 &ndash; 15:30</time><span>Side Events and Regional Network Meetings</span></li>

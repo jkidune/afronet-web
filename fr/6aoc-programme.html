@@ -659,6 +659,58 @@
                 padding: 0 12px 6px;
             }
         }
+        /* The Organic Innovations Poster Gallery callout */
+        .aoc-prog-gallery {
+            display: flex;
+            gap: 16px;
+            margin: 30px 0 0;
+            padding: 20px 22px;
+            border: 1px solid rgba(26, 145, 32, 0.25);
+            border-left: 4px solid var(--grdeen-base, #1a9120);
+            border-radius: 10px;
+            background: rgba(26, 145, 32, 0.06);
+        }
+        .aoc-prog-gallery__icon {
+            flex: 0 0 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--grdeen-base, #1a9120);
+            color: #fff;
+            font-size: 18px;
+        }
+        .aoc-prog-gallery__title {
+            margin: 0 0 6px;
+            font-family: var(--grdeen-heading-font, 'DM Sans', sans-serif);
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.3;
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        .aoc-prog-gallery p {
+            margin: 0;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.7;
+        }
+        .aoc-prog-gallery__where {
+            margin-top: 8px !important;
+            color: var(--grdeen-text-dark, #07370a) !important;
+            font-weight: 600;
+        }
+        .aoc-prog-gallery__where i {
+            margin-right: 6px;
+            color: var(--grdeen-base, #1a9120);
+        }
+        @media (max-width: 575px) {
+            .aoc-prog-gallery {
+                flex-direction: column;
+                gap: 12px;
+                padding: 18px 16px;
+            }
+        }
         .aoc-prog-note {
             margin-top: 22px;
             color: var(--grdeen-text, #626f62);
@@ -895,7 +947,7 @@
                                     <tr>
                                         <td style="white-space:nowrap;">Jour 1</td>
                                         <td style="white-space:nowrap;">1er décembre 2026</td>
-                                        <td>Séance inaugurale, plénière I et sessions thématiques – bloc 1</td>
+                                        <td>Séance inaugurale, plénière I et sessions thématiques – bloc 1<br>En continu : la Galerie de posters « Organic Innovations » (ouverte les jours 1 à 3)</td>
                                     </tr>
                                     <tr>
                                         <td style="white-space:nowrap;">Jour 2</td>
@@ -914,6 +966,15 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="aoc-prog-gallery">
+                            <span class="aoc-prog-gallery__icon"><i class="fas fa-images" aria-hidden="true"></i></span>
+                            <div>
+                                <h3 class="aoc-prog-gallery__title">La Galerie de posters « Organic Innovations »</h3>
+                                <p>Une exposition de posters ouverte pendant toute la conférence (jours 1 à 3, du 1er au 3 décembre 2026), qui présente des travaux de recherche, des innovations et des expériences pratiques en agriculture biologique et en agroécologie venus de toute l'Afrique. Les délégués peuvent consulter les posters et rencontrer leurs auteurs pendant les pauses et le déjeuner.</p>
+                                <p class="aoc-prog-gallery__where"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Lieu : Mika Convention Center (emplacement exact à confirmer)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -949,7 +1010,7 @@
                                             <li><time>08:50 – 09:15</time> Mot de bienvenue (président d'AfrONet et président de l'OPPAZ)</li>
                                             <li><time>09:15 – 09:35</time> Discours de bienvenue (ministre de l'Agriculture de Zambie)</li>
                                             <li><time>09:35 – 10:00</time> Discours d'ouverture et ouverture officielle (vice-président de la République de Zambie)</li>
-                                            <li><time>10:00 – 10:30</time> Visite officielle des stands d'exposition et de l'espace posters</li>
+                                            <li><time>10:00 – 10:30</time> Visite officielle des stands d'exposition et de la Galerie de posters « Organic Innovations »</li>
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
@@ -968,7 +1029,7 @@
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
-                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Déjeuner et visite des posters</p>
+                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Déjeuner et visite des posters (Galerie de posters « Organic Innovations »)</p>
                                     </div>
                                     <div class="aoc-prog-session">
                                         <p class="aoc-prog-session__head"><time>14:00 – 16:00</time>Sessions thématiques – bloc 1 (salles thématiques en parallèle – 120 minutes)</p>
@@ -999,7 +1060,7 @@
                             <ul class="aoc-prog-list">
                                 <li><time>08:30 – 09:00</time><span>Café d'accueil et réseautage</span></li>
                                 <li><time>09:00 – 11:00</time><span><strong>Plénière II :</strong> Expériences politiques et normes continentales</span></li>
-                                <li><time>11:00 – 11:30</time><span>Pause et rencontres B2B organisées à l'exposition</span></li>
+                                <li><time>11:00 – 11:30</time><span>Pause et rencontres B2B organisées à l'exposition et Galerie de posters</span></li>
                                 <li><time>11:30 – 13:00</time><span><strong>Sessions thématiques – bloc 2 :</strong> sessions parallèles (volets A, B, C, D)</span></li>
                                 <li><time>13:00 – 14:00</time><span>Déjeuner</span></li>
                                 <li><time>14:00 – 16:00</time><span><strong>Sessions thématiques – bloc 3 :</strong> sessions parallèles (volets A, B, C, D)</span></li>
@@ -1025,7 +1086,7 @@
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
-                                        <p class="aoc-prog-session__head"><time>11:00 – 11:30</time>Pause et rendez-vous B2B organisés à l'exposition</p>
+                                        <p class="aoc-prog-session__head"><time>11:00 – 11:30</time>Pause et rendez-vous B2B organisés à l'exposition et Galerie de posters</p>
                                     </div>
                                     <div class="aoc-prog-session">
                                         <p class="aoc-prog-session__head"><time>11:30 – 13:00</time>Sessions thématiques – bloc 2 (salles thématiques en parallèle – 90 minutes)</p>
@@ -1038,7 +1099,7 @@
                                         </ul>
                                     </div>
                                     <div class="aoc-prog-session">
-                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Déjeuner et visite de l'exposition</p>
+                                        <p class="aoc-prog-session__head"><time>13:00 – 14:00</time>Déjeuner, visite de l'exposition et Galerie de posters</p>
                                     </div>
                                     <div class="aoc-prog-session">
                                         <p class="aoc-prog-session__head"><time>14:00 – 16:00</time>Sessions thématiques – bloc 3 (salles thématiques en parallèle – 120 minutes)</p>
@@ -1068,7 +1129,7 @@
                             <ul class="aoc-prog-list">
                                 <li><time>08:30 – 09:00</time><span>Café d'accueil et réseautage</span></li>
                                 <li><time>09:00 – 11:00</time><span><strong>Plénière III :</strong> Commercialisation, échanges et valorisation</span></li>
-                                <li><time>11:00 – 11:30</time><span>Pause et rencontres B2B organisées à l'exposition</span></li>
+                                <li><time>11:00 – 11:30</time><span>Pause et rencontres B2B organisées à l'exposition et Galerie de posters</span></li>
                                 <li><time>11:30 – 13:00</time><span><strong>Sessions thématiques – bloc 4 :</strong> sessions parallèles (volets A, B, C, D)</span></li>
                                 <li><time>13:00 – 14:00</time><span>Déjeuner</span></li>
                                 <li><time>14:00 – 15:30</time><span>Événements parallèles et réunions des réseaux régionaux</span></li>
