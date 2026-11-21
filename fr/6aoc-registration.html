@@ -790,7 +790,7 @@
                                             <td>$225</td>
                                         </tr>
                                         <tr>
-                                            <td>Agriculteur/Étudiant (jusqu'au master)</td>
+                                            <td>Étudiant (jusqu'au master)</td>
                                             <td>$20</td>
                                             <td>$90</td>
                                         </tr>
@@ -800,7 +800,7 @@
                                             <td>$270</td>
                                         </tr>
                                         <tr>
-                                            <td>Événement parallèle / jour</td>
+                                            <td>Organisateur/Hôte d'événement parallèle (par jour)</td>
                                             <td>$450</td>
                                             <td>$900</td>
                                         </tr>
@@ -825,7 +825,7 @@
                                             <td>ZMK 1 000</td>
                                         </tr>
                                         <tr>
-                                            <td>Agriculteur/Étudiant (jusqu'au master)</td>
+                                            <td>Étudiant (jusqu'au master)</td>
                                             <td>ZMK 100</td>
                                             <td>ZMK 200</td>
                                         </tr>
@@ -835,7 +835,7 @@
                                             <td>ZMK 1 300</td>
                                         </tr>
                                         <tr>
-                                            <td>Événement parallèle / jour</td>
+                                            <td>Organisateur/Hôte d'événement parallèle (par jour)</td>
                                             <td class="fee-na">N/A</td>
                                             <td class="fee-na">N/A</td>
                                         </tr>
@@ -870,7 +870,7 @@
                                             <td>$250</td>
                                         </tr>
                                         <tr>
-                                            <td>Agriculteur/Étudiant (jusqu'au master)</td>
+                                            <td>Étudiant (jusqu'au master)</td>
                                             <td>$25</td>
                                             <td>$100</td>
                                         </tr>
@@ -880,7 +880,7 @@
                                             <td>$300</td>
                                         </tr>
                                         <tr>
-                                            <td>Événement parallèle / jour</td>
+                                            <td>Organisateur/Hôte d'événement parallèle (par jour)</td>
                                             <td>$500</td>
                                             <td>$1,000</td>
                                         </tr>
@@ -905,7 +905,7 @@
                                             <td>ZMK 3 050</td>
                                         </tr>
                                         <tr>
-                                            <td>Agriculteur/Étudiant (jusqu'au master)</td>
+                                            <td>Étudiant (jusqu'au master)</td>
                                             <td>ZMK 300</td>
                                             <td>ZMK 1 215</td>
                                         </tr>
@@ -915,7 +915,7 @@
                                             <td>ZMK 3 645</td>
                                         </tr>
                                         <tr>
-                                            <td>Événement parallèle / jour</td>
+                                            <td>Organisateur/Hôte d'événement parallèle (par jour)</td>
                                             <td>ZMK 6 100</td>
                                             <td>ZMK 12 150</td>
                                         </tr>
@@ -1303,11 +1303,11 @@
                     <select id="aoc-category" name="category" required>
                       <option value="">Choisir…</option>
                       <option value="individual">Individuel</option>
-                      <option value="student">Agriculteur/Étudiant (jusqu'au master)</option>
+                      <option value="student">Étudiant (jusqu'au master)</option>
                       <option value="exhibition">Exposant (pour votre stand d'exposition)</option>
-                      <option value="side">Événement parallèle (par jour)</option>
+                      <option value="side">Organisateur/Hôte d'événement parallèle (par jour)</option>
                     </select>
-                    <p class="aoc-exhibitor-note" data-exhibitor-note hidden style="margin:6px 0 0; font-size:12.5px; line-height:1.45; color:#6b7280;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>Ce tarif couvre uniquement votre stand d'exposition.</p>
+                    <p class="aoc-exhibitor-note" data-exhibitor-note hidden style="margin:6px 0 0; font-size:12.5px; line-height:1.45; color:#6b7280;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>Ce tarif couvre uniquement votre stand d'exposition. La taille des stands et les prestations incluses seront confirmées prochainement.</p>
                   </div>
 
                   <!-- Registration tier is set by date, not chosen by the registrant -->
@@ -1380,7 +1380,7 @@
                   const row = FEES[tier][type][cat];
                   if (!row) {
                     feeBox.classList.add('is-warn');
-                    feeLine = '<span>Montant dû</span><span>L\'événement parallèle n\'est pas disponible au tarif préférentiel national</span>';
+                    feeLine = '<span>Montant dû</span><span>Le tarif Organisateur/Hôte d\'événement parallèle n\'est pas disponible au tarif préférentiel national</span>';
                     btn.disabled = true;
                   } else {
                     feeLine = '<span>Montant dû' + (cat === 'side' ? ' (par jour)' : cat === 'exhibition' ? ' (stand d\'exposition)' : '') + '</span>' +
@@ -1543,10 +1543,10 @@
                   <div class="aocg-field"><label for="aocg-dcat">Catégorie</label>
                     <select id="aocg-dcat"><option value="">Choisir…</option>
                       <option value="individual">Individuel</option>
-                      <option value="student">Agriculteur/Étudiant (jusqu'au master)</option>
+                      <option value="student">Étudiant (jusqu'au master)</option>
                       <option value="exhibition">Exposant (pour votre stand d'exposition)</option>
-                      <option value="side">Événement parallèle (par jour)</option></select>
-                    <p class="aocg-hint" data-exhibitor-note hidden style="margin:6px 0 0;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>Ce tarif couvre uniquement votre stand d'exposition.</p></div>
+                      <option value="side">Organisateur/Hôte d'événement parallèle (par jour)</option></select>
+                    <p class="aocg-hint" data-exhibitor-note hidden style="margin:6px 0 0;"><i class="fas fa-info-circle" aria-hidden="true" style="color:#1f8f23; margin-right:5px;"></i>Ce tarif couvre uniquement votre stand d'exposition. La taille des stands et les prestations incluses seront confirmées prochainement.</p></div>
                 </div>
 
                 <div class="aocg-h" id="aocg-mhead">Membres</div>
@@ -1594,9 +1594,9 @@
                   <div class="aocg-field"><label>Catégorie</label>
                     <select data-f="category" data-d="aocg-dcat"><option value="">Choisir…</option>
                       <option value="individual">Individuel</option>
-                      <option value="student">Agriculteur/Étudiant (jusqu'au master)</option>
+                      <option value="student">Étudiant (jusqu'au master)</option>
                       <option value="exhibition">Exposant (pour votre stand d'exposition)</option>
-                      <option value="side">Événement parallèle (par jour)</option></select></div>
+                      <option value="side">Organisateur/Hôte d'événement parallèle (par jour)</option></select></div>
                 </div>
               </div>
             </template>
@@ -1690,7 +1690,7 @@
                   const out = row.querySelector('.aocg-member-fee');
                   out.className = 'aocg-member-fee';
                   if (!fee) out.textContent = '';
-                  else if (fee.amount == null) { out.classList.add('is-warn'); out.textContent = 'Événement parallèle non disponible au tarif préférentiel national'; }
+                  else if (fee.amount == null) { out.classList.add('is-warn'); out.textContent = 'Organisateur/Hôte d\'événement parallèle non disponible au tarif préférentiel national'; }
                   else out.textContent = money(fee.currency, fee.amount) + (field(row, 'category').value === 'side' ? ' / jour' : field(row, 'category').value === 'exhibition' ? ' / stand' : '');
                 });
 

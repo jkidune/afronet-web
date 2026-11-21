@@ -597,6 +597,37 @@
             text-align: center;
             justify-content: center;
         }
+        /* "Side events are free" notice */
+        .aoc-se-free {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 0 0 32px;
+            padding: 16px 20px;
+            border: 1px solid rgba(26, 145, 32, 0.25);
+            border-left: 4px solid var(--grdeen-base, #1a9120);
+            border-radius: 10px;
+            background: rgba(26, 145, 32, 0.06);
+            color: var(--grdeen-text-dark, #07370a);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+        .aoc-se-free i {
+            margin-top: 4px;
+            color: var(--grdeen-base, #1a9120);
+        }
+        .aoc-se-free a,
+        .aoc-se-free-note a {
+            color: var(--grdeen-base, #1a9120);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        .aoc-se-free-note {
+            margin: 12px 0 0;
+            color: var(--grdeen-text, #626f62);
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
 
         /* Side events schedule */
         .aoc-se-schedule__intro {
@@ -871,26 +902,28 @@
 
         <section class="section-space">
             <div class="container">
+                <p class="aoc-se-free"><i class="fas fa-info-circle" aria-hidden="true"></i><span>Side events are free for all registered 6AOC delegates. Choose the sessions you wish to attend. Not yet registered? <a href="/6aoc-registration">Register for 6AOC first</a>.</span></p>
                 <div class="row gutter-y-40 align-items-center">
                     <div class="col-lg-7">
                         <div class="sec-title sec-title--two">
                             <span class="sec-title__tagline">Convene</span>
-                            <h2 class="sec-title__title">Host a Side Event</h2>
+                            <h2 class="sec-title__title">Become a Side Event Organizer/Host</h2>
                         </div>
                         <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Day 3 of the 6AOC is reserved for side events, business discourse, and field visits — a chance to go beyond the presentation tracks and see organic agriculture in action. Organisations, networks, development partners and other groups may apply to organise side events alongside the main conference programme. Side events provide an opportunity to convene targeted discussions, launch initiatives, share research, conduct stakeholder meetings or explore specific areas of organic agriculture and agroecology.</p>
-                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Organisations interested in hosting a side event can register at the Side Event rate listed on the <a href="/6aoc-registration">Registration &amp; Fees</a> page.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">Organisations interested in hosting a side event can register at the Side Event Organizer/Host rate listed on the <a href="/6aoc-registration">Registration &amp; Fees</a> page.</p>
                     </div>
                     <div class="col-lg-5">
                         <div class="fee-card" style="text-align:center;">
-                            <h3 class="fee-card__title" style="margin-bottom:16px;">Apply to Host</h3>
+                            <h3 class="fee-card__title" style="margin-bottom:16px;">Side Event Organizer/Host</h3>
                             <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Tell us about your proposed side event and we'll follow up with requirements via email.</p>
                             <p class="aoc-se-choose">Hosting or attending? Choose an option below.</p>
                             <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-sideevent-modal" style="width:100%; text-align:center; justify-content:center;">
-                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Apply to Host a Side Event</span>
+                                <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Apply as a Side Event Organizer/Host</span>
                             </a>
                             <a href="/6aoc-registration#register" class="grdeen-btn grdeen-btn--outline aoc-se-attend">
                                 <span><i class="fas fa-user-check" style="margin-right:8px;"></i>Register to Attend a Side Event</span>
                             </a>
+                            <p class="aoc-se-free-note">Side events are free for all registered 6AOC delegates. Choose the sessions you wish to attend. Not yet registered? <a href="/6aoc-registration">Register for 6AOC first</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -928,9 +961,17 @@
                ===================================================================== */
             var SIDE_EVENTS = [
                 {
-                    title: "Side Event hosted by KHSA",
-                    host: "KHSA / Sustainability Institute, South Africa",
-                    description: "Session details will be announced soon.",
+                    title: "KHSA / Sustainability Institute (South Africa)",
+                    host: "",
+                    description: "Title and description coming soon.",
+                    time: "Thursday, 3 December 2026, 11:30–13:30",
+                    room: "",
+                    status: "Confirmed"
+                },
+                {
+                    title: "Confirmed side event",
+                    host: "",
+                    description: "Details coming soon.",
                     time: "Thursday, 3 December 2026, 11:30–13:30",
                     room: "",
                     status: "Confirmed"
@@ -1158,7 +1199,7 @@
         <div class="event-register-modal__overlay"></div>
         <div class="event-register-modal__content">
             <button type="button" class="event-register-modal__close" aria-label="Close">&times;</button>
-            <h3 class="event-register-modal__title">Apply to Host a Side Event</h3>
+            <h3 class="event-register-modal__title">Apply as a Side Event Organizer/Host</h3>
             <p class="event-register-modal__subtitle">Fill in your details below — submitting opens Gmail with your details pre-filled, ready to send.</p>
             <form id="event-sideevent-form">
                 <div class="event-register-modal__row">

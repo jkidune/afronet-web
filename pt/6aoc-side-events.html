@@ -597,6 +597,37 @@
             text-align: center;
             justify-content: center;
         }
+        /* "Side events are free" notice */
+        .aoc-se-free {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 0 0 32px;
+            padding: 16px 20px;
+            border: 1px solid rgba(26, 145, 32, 0.25);
+            border-left: 4px solid var(--grdeen-base, #1a9120);
+            border-radius: 10px;
+            background: rgba(26, 145, 32, 0.06);
+            color: var(--grdeen-text-dark, #07370a);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+        .aoc-se-free i {
+            margin-top: 4px;
+            color: var(--grdeen-base, #1a9120);
+        }
+        .aoc-se-free a,
+        .aoc-se-free-note a {
+            color: var(--grdeen-base, #1a9120);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        .aoc-se-free-note {
+            margin: 12px 0 0;
+            color: var(--grdeen-text, #626f62);
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
 
         /* Side events schedule */
         .aoc-se-schedule__intro {
@@ -873,21 +904,23 @@
 
         <section class="section-space">
             <div class="container">
+                <p class="aoc-se-free"><i class="fas fa-info-circle" aria-hidden="true"></i><span>Os eventos paralelos são gratuitos para todos os delegados inscritos na 6AOC. Escolha as sessões em que deseja participar. Ainda não se inscreveu? <a href="/pt/6aoc-registration">Inscreva-se primeiro na 6AOC</a>.</span></p>
                 <div class="row gutter-y-40 align-items-center">
                     <div class="col-lg-7">
                         <div class="sec-title sec-title--two">
                             <span class="sec-title__tagline">Organizar</span>
-                            <h2 class="sec-title__title">Organizar um evento paralelo</h2>
+                            <h2 class="sec-title__title">Torne-se organizador/anfitrião de um evento paralelo</h2>
                         </div>
                         <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">O 3.º dia da 6AOC é dedicado a eventos paralelos, encontros de negócios e visitas de campo — uma oportunidade para ir além dos eixos de apresentações e ver a agricultura biológica em ação. Organizações, redes, parceiros de desenvolvimento e outros grupos podem candidatar-se a organizar eventos paralelos à margem do programa principal. Os eventos paralelos permitem promover debates específicos, lançar iniciativas, partilhar investigação, realizar reuniões com partes interessadas ou aprofundar temas concretos da agricultura biológica e da agroecologia.</p>
-                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">As organizações interessadas em organizar um evento paralelo podem inscrever-se ao preço de «evento paralelo» indicado na página <a href="/pt/6aoc-registration">Inscrição e preços</a>.</p>
+                        <p style="color:var(--grdeen-text, #626f62); line-height:1.85;">As organizações interessadas em organizar um evento paralelo podem inscrever-se ao preço de «Organizador/Anfitrião de evento paralelo» indicado na página <a href="/pt/6aoc-registration">Inscrição e preços</a>.</p>
                     </div>
                     <div class="col-lg-5">
                         <div class="fee-card" style="text-align:center;">
-                            <h3 class="fee-card__title" style="margin-bottom:16px;">Candidatar-se</h3>
+                            <h3 class="fee-card__title" style="margin-bottom:16px;">Organizador/Anfitrião de evento paralelo</h3>
                             <p style="color:var(--grdeen-text, #626f62); margin-bottom:24px;">Apresente-nos a sua proposta de evento paralelo e enviaremos os requisitos por e-mail.</p>
                             <p class="aoc-se-choose">Vai organizar ou participar? Escolha uma opção abaixo.</p>
-                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-sideevent-modal" style="width:100%; text-align:center; justify-content:center;"> <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Candidatar-se para organizar um evento paralelo</span> </a> <a href="/pt/6aoc-registration#register" class="grdeen-btn grdeen-btn--outline aoc-se-attend"> <span><i class="fas fa-user-check" style="margin-right:8px;"></i>Inscrever-se para assistir a um evento paralelo</span> </a>
+                            <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-sideevent-modal" style="width:100%; text-align:center; justify-content:center;"> <span><i class="fas fa-envelope" style="margin-right:8px;"></i>Candidatar-se como organizador/anfitrião de um evento paralelo</span> </a> <a href="/pt/6aoc-registration#register" class="grdeen-btn grdeen-btn--outline aoc-se-attend"> <span><i class="fas fa-user-check" style="margin-right:8px;"></i>Inscrever-se para assistir a um evento paralelo</span> </a>
+                            <p class="aoc-se-free-note">Os eventos paralelos são gratuitos para todos os delegados inscritos na 6AOC. Escolha as sessões em que deseja participar. Ainda não se inscreveu? <a href="/pt/6aoc-registration">Inscreva-se primeiro na 6AOC</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -925,9 +958,17 @@
                ===================================================================== */
             var SIDE_EVENTS = [
                 {
-                    title: "Evento paralelo organizado pela KHSA",
-                    host: "KHSA / Sustainability Institute, South Africa",
-                    description: "Os detalhes da sessão serão anunciados em breve.",
+                    title: "KHSA / Sustainability Institute (África do Sul)",
+                    host: "",
+                    description: "Título e descrição disponíveis em breve.",
+                    time: "Quinta-feira, 3 de dezembro de 2026, 11h30–13h30",
+                    room: "",
+                    status: "Confirmed"
+                },
+                {
+                    title: "Evento paralelo confirmado",
+                    host: "",
+                    description: "Detalhes disponíveis em breve.",
                     time: "Quinta-feira, 3 de dezembro de 2026, 11h30–13h30",
                     room: "",
                     status: "Confirmed"
@@ -1155,7 +1196,7 @@
         <div class="event-register-modal__overlay"></div>
         <div class="event-register-modal__content">
             <button type="button" class="event-register-modal__close" aria-label="Fechar">&times;</button>
-            <h3 class="event-register-modal__title">Propor um evento paralelo</h3>
+            <h3 class="event-register-modal__title">Candidatar-se como organizador/anfitrião de um evento paralelo</h3>
             <p class="event-register-modal__subtitle">Preencha os seus dados abaixo — ao submeter, o Gmail abre com os dados já preenchidos, pronto a enviar.</p>
             <form id="event-sideevent-form">
                 <div class="event-register-modal__row">
