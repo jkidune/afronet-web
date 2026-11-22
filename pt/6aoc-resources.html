@@ -472,6 +472,42 @@
             background: var(--grdeen-gray, #f6f7f2);
             color: var(--grdeen-text-dark, #07370a);
         }
+
+        /* Phones: one card per document, full-width download button */
+        @media (max-width: 575px) {
+            .aoc-resources-table thead {
+                display: none;
+            }
+            .aoc-resources-table,
+            .aoc-resources-table tbody,
+            .aoc-resources-table tr,
+            .aoc-resources-table td {
+                display: block;
+                width: 100%;
+            }
+            .aoc-resources-table tr {
+                margin-bottom: 14px;
+                border: 1px solid #e2e6e0;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .aoc-resources-table td {
+                border: 0;
+                padding: 4px 16px;
+            }
+            .aoc-resources-table td:first-child {
+                padding-top: 14px;
+                font-weight: 700;
+                color: var(--grdeen-text-dark, #07370a);
+            }
+            .aoc-resources-table td:last-child {
+                padding: 10px 16px 16px;
+            }
+            .aoc-resources-table td:last-child .grdeen-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 
     <link rel="canonical" href="https://afronet.bio/pt/6aoc-resources" />
@@ -663,6 +699,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <td>Guia de preparação dos delegados 6AOC</td>
+                                        <td>Guia prático de viagem e preparação para os delegados: vistos, febre amarela, validade do passaporte, alojamento, como chegar ao Mika Convention Center e o que levar.<br><span style="color:var(--grdeen-text, #626f62); font-size:13px;">PDF · 10 páginas</span></td>
+                                        <td><a href="https://cms.afronet.bio/wp-content/uploads/2026/11/6AOC-readiness-toolkit.pdf" target="_blank" rel="noopener noreferrer" class="grdeen-btn grdeen-btn--outline" style="padding:6px 16px; white-space:nowrap;"><span>Descarregar (PDF)</span></a></td>
+                                    </tr>
                                     <tr>
                                         <td>Programa de eventos da 6AOC</td>
                                         <td>Programa resumido e programa técnico detalhado dos quatro dias da conferência, 1–4 de dezembro de 2026</td>

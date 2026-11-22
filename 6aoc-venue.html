@@ -1061,6 +1061,82 @@
             background: rgba(7, 55, 10, 0.05);
             color: var(--grdeen-text-dark, #07370a);
         }
+        .aoc-stay-tag--apartment {
+            border-color: rgba(26, 145, 32, 0.4);
+            background: rgba(26, 145, 32, 0.08);
+            color: var(--grdeen-base, #1a9120);
+        }
+        /* Delegate Readiness Toolkit download */
+        .aoc-toolkit {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 24px 28px;
+            border: 1px solid rgba(26, 145, 32, 0.25);
+            border-left: 5px solid #f4c430;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(26, 145, 32, 0.07), rgba(244, 196, 48, 0.08));
+            box-shadow: 0 6px 20px rgba(7, 55, 10, 0.06);
+        }
+        .aoc-toolkit__icon {
+            flex: 0 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--grdeen-base, #1a9120);
+            color: #fff;
+            font-size: 24px;
+        }
+        .aoc-toolkit__body {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        .aoc-toolkit__title {
+            margin: 0 0 6px;
+            font-family: var(--grdeen-heading-font, 'DM Sans', sans-serif);
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 1.3;
+            color: var(--grdeen-text-dark, #07370a);
+        }
+        .aoc-toolkit__text {
+            margin: 0;
+            color: var(--grdeen-text, #626f62);
+            line-height: 1.7;
+        }
+        .aoc-toolkit__action {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+        .aoc-toolkit__meta {
+            margin: 8px 0 0;
+            color: var(--grdeen-text, #626f62);
+            font-size: 12.5px;
+            letter-spacing: 0.3px;
+        }
+        .aoc-toolkit-bottom {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 1px solid #e4ece4;
+            text-align: center;
+        }
+        @media (max-width: 767px) {
+            .aoc-toolkit {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+                padding: 20px 18px;
+            }
+            .aoc-toolkit__action,
+            .aoc-toolkit__action .grdeen-btn,
+            .aoc-toolkit-bottom .grdeen-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
         .aoc-hotel__phone {
             display: flex;
             align-items: center;
@@ -1457,6 +1533,27 @@
             </div>
         </section>
 
+        <!-- Delegate Readiness Toolkit -->
+        <section class="section-space" style="padding-top:0;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="aoc-toolkit">
+                            <span class="aoc-toolkit__icon" aria-hidden="true"><i class="fas fa-book"></i></span>
+                            <div class="aoc-toolkit__body">
+                                <h2 class="aoc-toolkit__title">6AOC Delegate Readiness Toolkit</h2>
+                                <p class="aoc-toolkit__text">Everything you need before travelling to Lusaka: visas, yellow fever, passport validity, accommodation, getting to the venue and what to bring.</p>
+                            </div>
+                            <div class="aoc-toolkit__action">
+                                <a href="https://cms.afronet.bio/wp-content/uploads/2026/11/6AOC-readiness-toolkit.pdf" target="_blank" rel="noopener noreferrer" class="grdeen-btn"><span><i class="fas fa-file-pdf" aria-hidden="true" style="margin-right:8px;"></i>Download Toolkit (PDF)</span></a>
+                                <p class="aoc-toolkit__meta">PDF · 10 pages</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Accommodation: hotel data is in the STAY list in the script right below this section -->
         <section class="section-space aoc-stay" id="accommodation" style="padding-top:0;">
             <div class="container">
@@ -1464,7 +1561,7 @@
                     <div class="col-lg-10">
                         <span class="aoc-stay__eyebrow">Accommodation</span>
                         <h2 class="aoc-stay__title">Where to Stay</h2>
-                        <p class="aoc-stay__intro">Recommended accommodation near the conference venue, Mika Convention Center (MCC), Chongwe, Lusaka, Zambia.</p>
+                        <p class="aoc-stay__intro">Recommended hotels and apartments near the conference venue, Mika Convention Center (MCC), Chongwe, Lusaka, Zambia. Distances are approximate. Rates are indicative only; please confirm prices and availability directly with the provider when booking. AfrONet does not handle accommodation bookings.</p>
                         <div class="aoc-stay__featured" data-stay-featured></div>
 
                         <h3 class="aoc-stay__subtitle">Other accommodation</h3>
@@ -1475,6 +1572,7 @@
                             <button type="button" data-filter="budget" aria-pressed="false"><span>Budget</span><span class="aoc-stay__count" data-count></span></button>
                             <button type="button" data-filter="mid-range" aria-pressed="false"><span>Mid-range</span><span class="aoc-stay__count" data-count></span></button>
                             <button type="button" data-filter="premium" aria-pressed="false"><span>Premium</span><span class="aoc-stay__count" data-count></span></button>
+                            <button type="button" data-filter="apartment" aria-pressed="false"><span>Apartments</span><span class="aoc-stay__count" data-count></span></button>
                         </div>
                         <div class="aoc-hotels" role="table" aria-label="Other accommodation">
                             <div class="aoc-hotels__head" role="row">
@@ -1500,6 +1598,11 @@
                             <p>Kenneth Kaunda International Airport (LUN) is about 10 km from Mika Convention Center. We recommend arranging airport transfers with your hotel in advance.</p>
                             <p class="aoc-getting-there__help">Need help? Contact <a href="mailto:info@afronet.bio">info@afronet.bio</a>.</p>
                         </div>
+
+                        <div class="aoc-toolkit-bottom">
+                            <a href="https://cms.afronet.bio/wp-content/uploads/2026/11/6AOC-readiness-toolkit.pdf" target="_blank" rel="noopener noreferrer" class="grdeen-btn"><span><i class="fas fa-file-pdf" aria-hidden="true" style="margin-right:8px;"></i>Download Toolkit (PDF)</span></a>
+                            <p class="aoc-toolkit__meta">PDF · 10 pages</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1510,12 +1613,13 @@
                venue:  the conference venue card at the top.
                hotels: one line per hotel.
                  - km:        distance from Mika Convention Center (number; sorting + "Under 5 km" filter)
-                 - category:  "budget", "mid-range" or "premium" (drives the filters and the tag)
+                 - category:  "budget", "mid-range", "premium" or "apartment" (drives the filters and the tag)
                    (km: null and category: "" hide them; such hotels list after the others)
                  - price:     indicative rate text, or "" to hide it
                  - phone / websiteUrl: leave "" to hide them
                  - badge:     optional gold label, e.g. "6AOC rate"
-                 - optional:  email, location, travel, description (extra lines),
+                 - optional:  mapUrl (exact Google Maps link; otherwise a search by name),
+                              email, location, travel, description (extra lines),
                               rates: [["Room", "Rate"], ...] + note (shown in an "All room rates" toggle)
                The Map link is built from the hotel name automatically. To remove a hotel, delete its line.
                ===================================================================== */
@@ -1535,6 +1639,12 @@
                 },
                 hotels: [
                     { name: "Rugems Executive Lodge", km: 2.1, category: "budget", price: "~USD 25/night (self-contained double)", phone: "+260 97 9585832", websiteUrl: "https://rugemsexecutivelodge.net/book", badge: "" },
+                    {
+                        name: "JRK Apartments", km: 2.4, category: "apartment", price: "from ~USD 63/night",
+                        phone: "+260 77 3968234", websiteUrl: "", badge: "",
+                        description: "Apartments – good for groups, families and longer stays",
+                        mapUrl: "https://www.google.com/maps/search/?api=1&query=JRK+Apartments&query_place_id=ChIJf0l4s7GJQBkR7PghLMYIMlg"
+                    },
                     { name: "Skyview Lodge at the Barn", km: 2.5, category: "mid-range", price: "from ~USD 42/night", phone: "+260 97 4772969", websiteUrl: "", badge: "" },
                     { name: "Waterfalls Hotel", km: 3.9, category: "budget", price: "from ~USD 40/night (single)", phone: "+260 97 8991900", websiteUrl: "https://www.zambiatourism.com/accommodation/lusaka/waterfalls-hotel/", badge: "" },
                     { name: "Salama Blue Lodge", km: 4.3, category: "budget", price: "~USD 30/night (standard double)", phone: "+260 57 2348483", websiteUrl: "https://www.salamabluelodge.net/rooms", badge: "" },
@@ -1574,9 +1684,10 @@
                     rates: "All room rates",
                     budget: "Budget",
                     midrange: "Mid-range",
-                    premium: "Premium"
+                    premium: "Premium",
+                    apartment: "Apartment"
                 };
-                var CATEGORY = { "budget": T.budget, "mid-range": T.midrange, "premium": T.premium };
+                var CATEGORY = { "budget": T.budget, "mid-range": T.midrange, "premium": T.premium, "apartment": T.apartment };
                 function el(tag, cls, text) {
                     var n = document.createElement(tag);
                     if (cls) n.className = cls;
@@ -1730,7 +1841,7 @@
                     }
                     var actions = el("div", "aoc-hotel__actions");
                     if (h.websiteUrl) actions.appendChild(btn(h.websiteUrl, "", "fas fa-globe", T.site));
-                    actions.appendChild(btn(mapsSearch(h.name), "aoc-stay-btn--outline", "fas fa-map-marker-alt", T.map));
+                    actions.appendChild(btn(h.mapUrl || mapsSearch(h.name), "aoc-stay-btn--outline", "fas fa-map-marker-alt", T.map));
                     contact.appendChild(actions);
                     r.appendChild(contact);
                     return r;

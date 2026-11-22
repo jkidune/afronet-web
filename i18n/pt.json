@@ -1431,7 +1431,6 @@
     "<0>All</0><1/>": "<0>Todos</0><1/>",
     "<0>Under 5 km</0><1/>": "<0>Menos de 5 km</0><1/>",
     "<0>Premium</0><1/>": "<0>Premium</0><1/>",
-    "Recommended accommodation near the conference venue, Mika Convention Center (MCC), Chongwe, Lusaka, Zambia.": "Alojamento recomendado perto do local da conferência, o Mika Convention Center (MCC), Chongwe, Lusaca, Zâmbia.",
     "Booking information": "Informações sobre reservas",
     "The conference venue is Mika Convention Center (MCC) in Chongwe. Recommended hotels near the venue, with indicative rates and contact details, are listed below under <0>Where to Stay</0>. Further travel guidance will be shared with registered participants.": "A conferência decorre no Mika Convention Center (MCC), em Chongwe. Os hotéis recomendados perto do local, com tarifas indicativas e contactos, estão listados abaixo em <0>Onde ficar</0>. Mais orientações de viagem serão partilhadas com os participantes inscritos.",
     "Delegates who need a visa can apply online through the official Zambia Department of Immigration e-Services portal. Many African nationals are visa-exempt. Check your country's status before applying.": "Os delegados que precisam de visto podem candidatar-se online através do portal oficial e-Services do Departamento de Imigração da Zâmbia. Muitos cidadãos africanos estão isentos de visto. Verifique a situação do seu país antes de se candidatar.",
@@ -1472,7 +1471,15 @@
     "<0>13:00 – 14:00</0>Lunch Break and Poster Viewing (Organic Innovations Poster Gallery)": "<0>13:00 – 14:00</0>Almoço e visita aos pósteres (Galeria de Pósteres «Organic Innovations»)",
     "<0>11:00 – 11:30</0><1>Refreshment Break and Structured B2B Exhibition and Poster Gallery</1>": "<0>11:00 – 11:30</0><1>Pausa e encontros B2B organizados na exposição e Galeria de Pósteres</1>",
     "<0>11:00 – 11:30</0>Refreshment Break and Structured B2B Exhibition Matchmaking and Poster Gallery": "<0>11:00 – 11:30</0>Pausa e encontros B2B organizados na exposição e Galeria de Pósteres",
-    "<0>13:00 – 14:00</0>Lunch Break and Exhibition Walkthrough and Poster Gallery": "<0>13:00 – 14:00</0>Almoço, visita à exposição e Galeria de Pósteres"
+    "<0>13:00 – 14:00</0>Lunch Break and Exhibition Walkthrough and Poster Gallery": "<0>13:00 – 14:00</0>Almoço, visita à exposição e Galeria de Pósteres",
+    "6AOC Delegate Readiness Toolkit": "Guia de preparação dos delegados 6AOC",
+    "Practical travel and preparation guide for delegates: visas, yellow fever, passport validity, accommodation, getting to Mika Convention Center and what to bring.<0/><1>PDF · 10 pages</1>": "Guia prático de viagem e preparação para os delegados: vistos, febre amarela, validade do passaporte, alojamento, como chegar ao Mika Convention Center e o que levar.<0/><1>PDF · 10 páginas</1>",
+    "Download (PDF)": "Descarregar (PDF)",
+    "Everything you need before travelling to Lusaka: visas, yellow fever, passport validity, accommodation, getting to the venue and what to bring.": "Tudo o que precisa antes de viajar para Lusaca: vistos, febre amarela, validade do passaporte, alojamento, como chegar ao local da conferência e o que levar.",
+    "<0/>Download Toolkit (PDF)": "<0/>Descarregar o guia (PDF)",
+    "PDF · 10 pages": "PDF · 10 páginas",
+    "Recommended hotels and apartments near the conference venue, Mika Convention Center (MCC), Chongwe, Lusaka, Zambia. Distances are approximate. Rates are indicative only; please confirm prices and availability directly with the provider when booking. AfrONet does not handle accommodation bookings.": "Hotéis e apartamentos recomendados perto do local da conferência, o Mika Convention Center (MCC), Chongwe, Lusaca, Zâmbia. As distâncias são aproximadas. As tarifas são apenas indicativas; confirme os preços e a disponibilidade diretamente com o estabelecimento no momento da reserva. A AfrONet não trata de reservas de alojamento.",
+    "<0>Apartments</0><1/>": "<0>Apartamentos</0><1/>"
   },
   "script": {
     "At the venue": "No local da conferência",
@@ -1571,7 +1578,10 @@
     "KHSA / Sustainability Institute (South Africa)": "KHSA / Sustainability Institute (África do Sul)",
     "Title and description coming soon.": "Título e descrição disponíveis em breve.",
     "Confirmed side event": "Evento paralelo confirmado",
-    "Details coming soon.": "Detalhes disponíveis em breve."
+    "Details coming soon.": "Detalhes disponíveis em breve.",
+    "Apartment": "Apartamento",
+    "Apartments – good for groups, families and longer stays": "Apartamentos – ideais para grupos, famílias e estadias mais longas",
+    "from ~USD 63/night": "a partir de ~63 USD/noite"
   },
   "js": {
     "Early Bird ends": "A inscrição antecipada termina",

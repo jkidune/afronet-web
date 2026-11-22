@@ -472,6 +472,42 @@
             background: var(--grdeen-gray, #f6f7f2);
             color: var(--grdeen-text-dark, #07370a);
         }
+
+        /* Phones: one card per document, full-width download button */
+        @media (max-width: 575px) {
+            .aoc-resources-table thead {
+                display: none;
+            }
+            .aoc-resources-table,
+            .aoc-resources-table tbody,
+            .aoc-resources-table tr,
+            .aoc-resources-table td {
+                display: block;
+                width: 100%;
+            }
+            .aoc-resources-table tr {
+                margin-bottom: 14px;
+                border: 1px solid #e2e6e0;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .aoc-resources-table td {
+                border: 0;
+                padding: 4px 16px;
+            }
+            .aoc-resources-table td:first-child {
+                padding-top: 14px;
+                font-weight: 700;
+                color: var(--grdeen-text-dark, #07370a);
+            }
+            .aoc-resources-table td:last-child {
+                padding: 10px 16px 16px;
+            }
+            .aoc-resources-table td:last-child .grdeen-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 
     <link rel="canonical" href="https://afronet.bio/6aoc-resources" />
@@ -661,6 +697,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <td>6AOC Delegate Readiness Toolkit</td>
+                                        <td>Practical travel and preparation guide for delegates: visas, yellow fever, passport validity, accommodation, getting to Mika Convention Center and what to bring.<br><span style="color:var(--grdeen-text, #626f62); font-size:13px;">PDF · 10 pages</span></td>
+                                        <td><a href="https://cms.afronet.bio/wp-content/uploads/2026/11/6AOC-readiness-toolkit.pdf" target="_blank" rel="noopener noreferrer" class="grdeen-btn grdeen-btn--outline" style="padding:6px 16px; white-space:nowrap;"><span>Download (PDF)</span></a></td>
+                                    </tr>
                                     <tr>
                                         <td>6AOC Programme of Events</td>
                                         <td>Summary and detailed technical programme for the four conference days, 1&ndash;4 December 2026</td>
