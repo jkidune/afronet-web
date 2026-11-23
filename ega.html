@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="robots" content="noindex, nofollow">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#07370a">
     <title>AfrONet 2026 EGA — Official Ballot</title>
     <link rel="canonical" href="https://afronet.bio/ega" />
     <!-- i18n:alternates --><!-- /i18n:alternates -->
@@ -16,352 +18,650 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
+        /* ================= Tokens ================= */
         :root {
             --green: #1a9120;
+            --green-strong: #157a1a;
             --green-dark: #07370a;
-            --green-soft: #eef6ed;
+            --green-soft: #eaf5e9;
+            --green-line: rgba(26, 145, 32, 0.35);
             --gold: #f4c430;
+            --gold-soft: #fff7dd;
+            --ink: #0f2a11;
             --text: #3f4a3f;
-            --muted: #626f62;
-            --line: #dfe7de;
-            --bg: #f6f7f2;
-            --white: #fff;
+            --muted: #5f6b5f;
+            --line: #dde6dc;
+            --bg: #f4f6f1;
+            --surface: #ffffff;
+            --surface-2: #f8faf7;
             --red: #b42318;
-            --red-soft: #fdecea;
-            --amber: #8a5a00;
-            --amber-soft: #fff6dc;
-            --radius: 14px;
+            --red-soft: #fdeceb;
+            --amber: #7a4f00;
+            --amber-soft: #fff4d6;
+            --grey: #4b5563;
+            --grey-soft: #eef0f3;
+            --on-green: #ffffff;
+            --hero: #07370a;
+            --id-bg: #07370a;
+            --id-fg: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(7, 55, 10, 0.06), 0 2px 8px rgba(7, 55, 10, 0.05);
+            --shadow-md: 0 8px 28px rgba(7, 55, 10, 0.10);
+            --r-sm: 10px;
+            --r-md: 14px;
+            --r-lg: 20px;
+            --gap: clamp(12px, 2.6vw, 20px);
+            --pad: clamp(16px, 4vw, 28px);
             --heading: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
             --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --mono: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+            --safe-b: env(safe-area-inset-bottom, 0px);
+            --safe-l: env(safe-area-inset-left, 0px);
+            --safe-r: env(safe-area-inset-right, 0px);
+            --topbar-h: 60px;
         }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --green: #4cc152;
+                --green-strong: #62d067;
+                --green-dark: #cfeccc;
+                --green-soft: #15301a;
+                --green-line: rgba(76, 193, 82, 0.45);
+                --gold: #f4c430;
+                --gold-soft: #2e2810;
+                --ink: #eef5ec;
+                --text: #d3dcd2;
+                --muted: #9fad9e;
+                --line: #2a3a2b;
+                --bg: #0c140d;
+                --surface: #131d14;
+                --surface-2: #172318;
+                --red: #ff8a7f;
+                --red-soft: #3a1714;
+                --amber: #ffcf66;
+                --amber-soft: #33270b;
+                --grey: #c3c8cf;
+                --grey-soft: #23292f;
+                --on-green: #06210a;
+                --hero: #0a2a0d;
+                --id-bg: #2b4a2e;
+                --id-fg: #e8f5e6;
+                --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+                --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+            }
+        }
+
+        /* ================= Base ================= */
         *, *::before, *::after { box-sizing: border-box; }
-        html { -webkit-text-size-adjust: 100%; }
+        html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--topbar-h) + 16px); }
         body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--body);
-            font-size: 16px;
-            line-height: 1.6;
+            margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;
+            background: var(--bg); color: var(--text); font-family: var(--body);
+            font-size: clamp(15px, 1.2vw + 12px, 16.5px); line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        a { color: var(--green); }
-        h1, h2, h3, legend { font-family: var(--heading); color: var(--green-dark); }
-        :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+        a { color: var(--green); text-underline-offset: 2px; }
+        h1, h2, h3, legend { font-family: var(--heading); color: var(--ink); letter-spacing: -0.01em; }
+        img, svg { display: block; max-width: 100%; }
+        button { font: inherit; }
+        :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
         [hidden] { display: none !important; }
-        .wrap { width: 100%; max-width: 820px; margin: 0 auto; padding: 0 16px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding-left: max(16px, var(--safe-l)); padding-right: max(16px, var(--safe-r)); }
+        .narrow { max-width: 760px; margin-left: auto; margin-right: auto; }
+        .ico { width: 1.15em; height: 1.15em; flex: 0 0 auto; }
+        .skip { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; border-radius: var(--r-sm); background: var(--gold); color: #2b2100; font-weight: 700; text-decoration: none; }
+        .skip:focus { top: 10px; }
 
-        /* Header */
-        .ega-top { background: var(--white); border-bottom: 4px solid var(--gold); }
-        .ega-top__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; }
-        .ega-top__logo img { display: block; height: 44px; width: auto; }
-        .ega-lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--bg); }
-        .ega-lang button {
-            min-width: 48px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 999px;
-            background: transparent; color: var(--green-dark); font: 700 14px var(--body); cursor: pointer;
+        /* ================= Top bar + hero ================= */
+        .topbar {
+            position: sticky; top: 0; z-index: 40; background: var(--surface); background: color-mix(in srgb, var(--surface) 92%, transparent);
+            -webkit-backdrop-filter: saturate(160%) blur(10px); backdrop-filter: saturate(160%) blur(10px);
+            border-bottom: 1px solid var(--line);
         }
-        .ega-lang button[aria-pressed="true"] { background: var(--green); color: #fff; }
-        .ega-hero { background: var(--green-dark); color: #fff; padding: 26px 0 28px; }
-        .ega-hero__eyebrow { margin: 0 0 6px; color: var(--gold); font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-        .ega-hero h1 { margin: 0; color: #fff; font-size: clamp(22px, 5vw, 30px); line-height: 1.25; }
-        .ega-hero__sub { margin: 6px 0 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(16px, 3.6vw, 19px); font-weight: 500; }
+        .topbar__in { display: flex; align-items: center; gap: 12px; min-height: var(--topbar-h); }
+        .topbar__logo { display: flex; align-items: center; flex: 0 0 auto; }
+        .topbar__logo img { height: 38px; width: auto; }
+        @media (prefers-color-scheme: dark) { .topbar__logo img { filter: brightness(0) invert(1); opacity: 0.92; } }
+        .topbar__title { flex: 1 1 auto; min-width: 0; margin: 0; padding-left: 12px; border-left: 1px solid var(--line); color: var(--ink); font: 700 14.5px/1.25 var(--heading); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .lang { display: inline-flex; flex: 0 0 auto; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-2); }
+        .lang button { min-width: 46px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font-weight: 700; font-size: 14px; cursor: pointer; }
+        .lang button[aria-pressed="true"] { background: var(--green); color: var(--on-green); }
+        .hero { background: var(--hero); color: #fff; position: relative; overflow: hidden; }
+        .hero::after { content: ""; position: absolute; inset: auto -10% -60% auto; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(244, 196, 48, 0.22), transparent 65%); pointer-events: none; }
+        .hero__in { position: relative; z-index: 1; padding-top: clamp(22px, 4vw, 40px); padding-bottom: clamp(24px, 4.5vw, 44px); }
+        .hero__eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px; background: rgba(244, 196, 48, 0.16); color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; }
+        .hero h1 { margin: 0; color: #fff; font-size: clamp(22px, 3.4vw + 10px, 38px); line-height: 1.18; max-width: 22ch; }
+        .hero__sub { margin: 8px 0 0; color: rgba(255, 255, 255, 0.8); font-size: clamp(15.5px, 1vw + 12px, 19px); font-weight: 500; }
 
-        main { padding: 22px 0 40px; }
+        main { flex: 1 0 auto; padding-top: var(--gap); padding-bottom: clamp(28px, 5vw, 48px); }
 
-        /* Status banner */
-        .ega-status {
-            margin-bottom: 20px; padding: 18px 20px; border-radius: var(--radius);
-            border: 1px solid var(--line); border-left: 6px solid var(--green); background: var(--white);
+        /* ================= Cards ================= */
+        .card { margin-bottom: var(--gap); padding: var(--pad); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-sm); }
+        .card__head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+        .card__icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 42px; height: 42px; border-radius: 12px; background: var(--green-soft); color: var(--green); }
+        .card__icon .ico { width: 22px; height: 22px; }
+        .card h2 { margin: 0; font-size: clamp(19px, 1.2vw + 14px, 23px); line-height: 1.25; }
+        .card__intro { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+
+        /* ================= Status ================= */
+        .status { position: relative; overflow: hidden; }
+        .status::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: var(--green); }
+        .status--soon::before { background: var(--gold); }
+        .status--closed::before, .status--error::before { background: var(--red); }
+        .status__top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 12px; }
+        .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; }
+        .chip--open { background: var(--green-soft); color: var(--green); }
+        .chip--soon { background: var(--gold-soft); color: var(--amber); }
+        .chip--closed { background: var(--red-soft); color: var(--red); }
+        .chip__dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+        .chip--open .chip__dot { animation: pulse 1.8s ease-in-out infinite; }
+        @keyframes pulse { 50% { opacity: 0.35; } }
+        .status__title { margin: 0; font: 800 clamp(18px, 1vw + 14px, 21px)/1.25 var(--heading); color: var(--ink); }
+        .times { display: grid; gap: 10px; margin: 0 0 14px; }
+        .time { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: baseline; padding: 10px 12px; border-radius: var(--r-sm); background: var(--surface-2); border: 1px solid var(--line); }
+        .time__label { grid-row: span 2; align-self: center; min-width: 68px; color: var(--muted); font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .time__main { color: var(--ink); font-weight: 700; }
+        .time__sub { color: var(--muted); font-size: 13.5px; }
+        .count__cap { margin: 0 0 6px; color: var(--muted); font-size: 13px; font-weight: 600; }
+        .count { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; max-width: 420px; }
+        .count__box { padding: 10px 4px 8px; border-radius: 12px; background: var(--green-soft); text-align: center; }
+        .count__num { display: block; font: 800 clamp(20px, 2vw + 14px, 28px)/1.05 var(--heading); color: var(--ink); font-variant-numeric: tabular-nums; }
+        .count__unit { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; }
+        .status__note { margin: 14px 0 0; color: var(--text); }
+        .skel { display: block; height: 14px; margin: 8px 0; border-radius: 6px; background: linear-gradient(90deg, var(--line) 0%, var(--surface-2) 50%, var(--line) 100%); background-size: 200% 100%; animation: shimmer 1.3s linear infinite; }
+        @keyframes shimmer { to { background-position: -200% 0; } }
+
+        /* ================= Stepper ================= */
+        .stepper { margin: 0 0 var(--gap); }
+        .stepper ol { display: flex; margin: 0; padding: 0; list-style: none; }
+        .stepper li { position: relative; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; font-weight: 600; text-align: center; }
+        .stepper li::before { content: ""; position: absolute; top: 17px; left: calc(-50% + 22px); right: calc(50% + 22px); height: 3px; border-radius: 3px; background: var(--line); }
+        .stepper li:first-child::before { display: none; }
+        .stepper li.is-done::before, .stepper li.is-current::before { background: var(--green); }
+        .stepper__dot { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); color: var(--muted); font: 800 15px var(--heading); }
+        .stepper li.is-current { color: var(--ink); }
+        .stepper li.is-current .stepper__dot { border-color: var(--green); background: var(--green); color: var(--on-green); box-shadow: 0 0 0 5px var(--green-soft); }
+        .stepper li.is-done .stepper__dot { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+        .stepper__m { display: none; }
+        .stepper__m p { display: flex; justify-content: space-between; gap: 8px; margin: 0 0 6px; color: var(--ink); font-weight: 700; font-size: 14px; }
+        .stepper__m p span:last-child { color: var(--muted); font-weight: 600; }
+        .bar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+        .bar__fill { height: 100%; width: 0; border-radius: inherit; background: var(--green); transition: width 0.3s ease; }
+
+        /* ================= Forms ================= */
+        .field { margin-bottom: 16px; }
+        .field label, .label { display: block; margin-bottom: 6px; color: var(--ink); font-weight: 600; font-size: 15px; }
+        .req { color: var(--red); }
+        .input, select.input, textarea.input {
+            width: 100%; min-height: 52px; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px;
+            background: var(--surface); color: var(--ink); font: 16px/1.4 var(--body); transition: border-color 0.15s, box-shadow 0.15s;
         }
-        .ega-status--not-open { border-left-color: var(--gold); }
-        .ega-status--closed, .ega-status--error { border-left-color: var(--red); }
-        .ega-status__title { margin: 0 0 4px; font-family: var(--heading); font-size: 19px; font-weight: 800; color: var(--green-dark); }
-        .ega-status__line { margin: 0; color: var(--text); }
-        .ega-status__line strong { color: var(--green-dark); }
-        .ega-count { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; max-width: 340px; margin-top: 12px; }
-        .ega-count__box { min-width: 0; padding: 8px 4px; border-radius: 10px; background: var(--green-soft); text-align: center; }
-        .ega-count__num { display: block; font-family: var(--heading); font-size: 22px; font-weight: 800; line-height: 1.1; color: var(--green-dark); font-variant-numeric: tabular-nums; }
-        .ega-count__label { display: block; font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .ega-count__caption { grid-column: 1 / -1; margin: 0 0 -2px; font-size: 13px; font-weight: 600; color: var(--muted); }
+        select.input { appearance: none; -webkit-appearance: none; padding-right: 42px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235f6b5f' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+        textarea.input { min-height: 120px; resize: vertical; }
+        .input:hover { border-color: #b9c8b8; }
+        .input:focus { border-color: var(--green); outline: none; box-shadow: 0 0 0 4px var(--green-soft); }
+        .input.is-invalid { border-color: var(--red); box-shadow: 0 0 0 4px var(--red-soft); }
+        .field-err { display: flex; align-items: center; gap: 6px; margin: 6px 0 0; color: var(--red); font-size: 13.5px; font-weight: 600; }
+        .field-err:empty { display: none; }
+        .grid2 { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
+        .hint { margin: 6px 0 0; color: var(--muted); font-size: 13px; text-align: right; }
+        .code-row { display: flex; gap: 10px; }
+        .code-input { position: relative; flex: 1 1 auto; min-width: 0; }
+        .code-input .ico { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+        .code-input .input { padding-left: 44px; font: 700 clamp(17px, 1vw + 14px, 20px)/1.2 var(--mono); letter-spacing: 1.5px; text-transform: uppercase; }
+        .code-input .input::placeholder { color: #a9b5a8; letter-spacing: 1.5px; font-weight: 500; }
+        .verified { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 14px 16px; border: 1px solid var(--green-line); border-radius: var(--r-md); background: var(--green-soft); }
+        .verified__icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: var(--on-green); }
+        .verified__body { flex: 1 1 auto; min-width: 0; }
+        .verified__label { display: block; color: var(--muted); font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .verified__org { display: block; color: var(--ink); font: 800 17px/1.3 var(--heading); word-break: break-word; }
+        .verified__meta { display: block; color: var(--muted); font-size: 13.5px; }
+        .check { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1.5px solid var(--line); border-radius: var(--r-md); background: var(--surface-2); cursor: pointer; font-size: 15px; color: var(--ink); transition: border-color 0.15s, background 0.15s; }
+        .check:hover { border-color: #b9c8b8; }
+        .check input { flex: 0 0 auto; width: 26px; height: 26px; margin: 1px 0 0; accent-color: var(--green); cursor: pointer; }
+        .check.is-checked { border-color: var(--green); background: var(--green-soft); }
+        .check.is-invalid { border-color: var(--red); background: var(--red-soft); }
 
-        /* Steps */
-        .ega-steps { display: flex; gap: 6px; margin: 0 0 18px; padding: 0; list-style: none; counter-reset: s; }
-        .ega-steps li {
-            flex: 1 1 0; padding: 8px 6px; border-radius: 10px; background: #e7ece6; color: var(--muted);
-            font-size: 12.5px; font-weight: 600; text-align: center; line-height: 1.3;
+        /* ================= Buttons ================= */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 24px; border: 2px solid var(--green); border-radius: 12px; background: var(--green); color: var(--on-green); font-weight: 700; font-size: 16px; line-height: 1.2; text-decoration: none; cursor: pointer; transition: background 0.15s, border-color 0.15s, transform 0.1s; -webkit-tap-highlight-color: transparent; }
+        .btn:hover { background: var(--green-strong); border-color: var(--green-strong); }
+        .btn:active { transform: translateY(1px); }
+        .btn--ghost { background: transparent; color: var(--green); }
+        .btn--ghost:hover { background: var(--green-soft); color: var(--green); }
+        .btn--block { width: 100%; }
+        .btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+        .btn--sm { min-height: 44px; padding: 0 16px; font-size: 14.5px; }
+        .link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 4px; border: 0; background: none; color: var(--green); font-weight: 600; font-size: 14.5px; text-decoration: underline; cursor: pointer; }
+        .spinner { width: 18px; height: 18px; border: 3px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ================= Alerts ================= */
+        .alert { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 0; padding: 12px 14px; border-radius: var(--r-sm); font-size: 15px; font-weight: 500; }
+        .alert:empty { display: none; }
+        .alert--error { background: var(--red-soft); color: var(--red); }
+        .alert--warn { background: var(--amber-soft); color: var(--amber); }
+        .alert .ico { margin-top: 2px; }
+        .errors { margin: 0 0 var(--gap); padding: 16px 18px; border: 1px solid color-mix(in srgb, var(--red) 35%, transparent); border-radius: var(--r-md); background: var(--red-soft); color: var(--red); }
+        .errors p { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-weight: 700; }
+        .errors ul { margin: 0; padding-left: 22px; }
+        .errors li { margin: 3px 0; }
+        .errors a { color: var(--red); font-weight: 600; }
+
+        /* ================= Voting layout ================= */
+        .vote-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gap); align-items: start; }
+        .panel { display: none; }
+        .amend { position: relative; min-width: 0; margin: 0 0 14px; padding: clamp(16px, 3vw, 22px); border: 1.5px solid var(--line); border-radius: var(--r-md); background: var(--surface); transition: border-color 0.2s, box-shadow 0.2s; }
+        .amend.is-answered { border-color: var(--green-line); }
+        .amend.is-invalid { border-color: var(--red); box-shadow: 0 0 0 4px var(--red-soft); }
+        .amend legend { float: left; width: 100%; padding: 0; margin: 0 0 8px; }
+        .amend legend + * { clear: both; }
+        .amend__head { display: flex; align-items: flex-start; gap: 10px; }
+        .amend__id { flex: 0 0 auto; margin-top: 2px; padding: 2px 10px; border-radius: 999px; background: var(--id-bg); color: var(--id-fg); font: 800 13px/1.6 var(--heading); }
+        .amend.is-answered .amend__id { background: var(--green); color: var(--on-green); }
+        .amend__title { flex: 1 1 auto; min-width: 0; font-size: clamp(16.5px, 0.6vw + 14px, 18.5px); font-weight: 800; line-height: 1.35; color: var(--ink); }
+        .amend__done { flex: 0 0 auto; display: none; color: var(--green); }
+        .amend.is-answered .amend__done { display: block; }
+        .amend__sum { margin: 0 0 10px; }
+        .amend__sum summary { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; color: var(--green); font-size: 14px; font-weight: 600; cursor: pointer; list-style: none; }
+        .amend__sum summary::-webkit-details-marker { display: none; }
+        .amend__sum summary .ico { transition: transform 0.2s; }
+        .amend__sum[open] summary .ico { transform: rotate(180deg); }
+        .amend__sum p { margin: 2px 0 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--surface-2); color: var(--text); font-size: 14.5px; }
+        .amend__q { margin: 0 0 12px; color: var(--ink); font-weight: 600; font-size: 15px; }
+        .opts { display: grid; grid-template-columns: 1fr; gap: 8px; }
+        .opt { position: relative; display: flex; align-items: center; gap: 10px; min-height: 54px; padding: 10px 14px; border: 2px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); cursor: pointer; font-weight: 700; font-size: 15px; line-height: 1.25; transition: border-color 0.15s, background 0.15s, color 0.15s; -webkit-tap-highlight-color: transparent; }
+        .opt:hover { border-color: #b9c8b8; }
+        .opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+        .opt__mark { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--line); color: transparent; transition: inherit; }
+        .opt__mark .ico { width: 16px; height: 16px; }
+        .opt:has(input:focus-visible) { outline: 3px solid var(--gold); outline-offset: 2px; }
+        .opt--YES.is-checked { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+        .opt--YES.is-checked .opt__mark { border-color: var(--green); background: var(--green); color: var(--on-green); }
+        .opt--NO.is-checked { border-color: var(--red); background: var(--red-soft); color: var(--red); }
+        .opt--NO.is-checked .opt__mark { border-color: var(--red); background: var(--red); color: #fff; }
+        .opt--ABSTAIN.is-checked { border-color: var(--grey); background: var(--grey-soft); color: var(--grey); }
+        .opt--ABSTAIN.is-checked .opt__mark { border-color: var(--grey); background: var(--grey); color: var(--surface); }
+
+        /* Chips navigator */
+        .chips { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+        .chips button { min-height: 40px; padding: 0; border: 1.5px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--muted); font: 700 13px var(--heading); cursor: pointer; }
+        .chips button.is-done { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+        .chips button.is-YES { background: var(--green); color: var(--on-green); border-color: var(--green); }
+        .chips button.is-NO { background: var(--red); color: #fff; border-color: var(--red); }
+        .chips button.is-ABSTAIN { background: var(--grey); color: var(--surface); border-color: var(--grey); }
+        .tally { display: flex; flex-wrap: wrap; gap: 6px; }
+        .badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+        .badge--YES { background: var(--green-soft); color: var(--green); }
+        .badge--NO { background: var(--red-soft); color: var(--red); }
+        .badge--ABSTAIN { background: var(--grey-soft); color: var(--grey); }
+
+        /* Desktop side panel */
+        .panel__card { padding: 20px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-md); }
+        .ring { position: relative; width: 108px; height: 108px; margin: 0 auto 10px; }
+        .ring svg { width: 108px; height: 108px; transform: rotate(-90deg); }
+        .ring circle { fill: none; stroke-width: 10; }
+        .ring__bg { stroke: var(--line); }
+        .ring__fg { stroke: var(--green); stroke-linecap: round; transition: stroke-dashoffset 0.35s ease; }
+        .ring__txt { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .ring__n { font: 800 26px/1 var(--heading); color: var(--ink); font-variant-numeric: tabular-nums; }
+        .ring__of { color: var(--muted); font-size: 12px; font-weight: 600; }
+        .panel__label { margin: 14px 0 8px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        /* Mobile dock + sheet */
+        .dock {
+            position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: none;
+            padding: 10px max(14px, var(--safe-r)) calc(10px + var(--safe-b)) max(14px, var(--safe-l));
+            border-top: 1px solid var(--line); background: var(--surface); background: color-mix(in srgb, var(--surface) 94%, transparent);
+            -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 -6px 24px rgba(7, 55, 10, 0.10);
         }
-        .ega-steps li.is-current { background: var(--green); color: #fff; }
-        .ega-steps li.is-done { background: var(--green-soft); color: var(--green-dark); }
+        .dock__in { display: flex; align-items: center; gap: 12px; max-width: 760px; margin: 0 auto; }
+        .dock__count { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding: 4px 6px; border: 0; border-radius: 10px; background: none; color: var(--ink); text-align: left; cursor: pointer; }
+        .dock__count strong { display: flex; align-items: center; gap: 6px; font-size: 14.5px; }
+        .dock .btn { flex: 0 0 auto; }
+        body.is-voting .dock { display: block; }
+        body.is-voting main { padding-bottom: calc(96px + var(--safe-b)); }
+        .sheet-back { position: fixed; inset: 0; z-index: 60; background: rgba(4, 20, 6, 0.45); }
+        .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-height: 80dvh; overflow: auto; padding: 8px max(18px, var(--safe-r)) calc(20px + var(--safe-b)) max(18px, var(--safe-l)); border-radius: 22px 22px 0 0; background: var(--surface); box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.25); animation: sheet-in 0.22s ease; }
+        @keyframes sheet-in { from { transform: translateY(30px); opacity: 0; } }
+        .sheet__grip { width: 44px; height: 5px; margin: 4px auto 12px; border-radius: 999px; background: var(--line); }
+        .sheet__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+        .sheet__head h2 { margin: 0; font-size: 18px; }
+        .iconbtn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--ink); cursor: pointer; }
 
-        /* Cards */
-        .ega-card { margin-bottom: 18px; padding: 22px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
-        .ega-card h2 { margin: 0 0 4px; font-size: 21px; }
-        .ega-card__intro { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
-        .ega-field { margin-bottom: 14px; }
-        .ega-field label, .ega-label { display: block; margin-bottom: 5px; color: var(--green-dark); font-weight: 600; font-size: 15px; }
-        .ega-field .req { color: var(--red); }
-        input[type="text"], input[type="email"], select, textarea {
-            width: 100%; min-height: 48px; padding: 10px 12px; border: 1.5px solid #c9d4c8; border-radius: 10px;
-            background: #fff; color: var(--text); font: 16px var(--body);
+        /* ================= Review + confirmation ================= */
+        .summary { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface-2); font-size: 15px; }
+        .summary dt { color: var(--muted); }
+        .summary dd { margin: 0; color: var(--ink); font-weight: 600; word-break: break-word; }
+        .rows { margin: 16px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+        .rows li { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto auto; align-items: center; gap: 6px 12px; padding: 12px 4px; border-bottom: 1px solid var(--line); }
+        .rows__id { color: var(--ink); font: 800 14.5px var(--heading); }
+        .rows__title { color: var(--text); font-size: 14.5px; }
+        .rows .link { min-height: 40px; }
+        .rows--plain li { grid-template-columns: 56px minmax(0, 1fr) auto; }
+        .note-box { margin: 16px 0 0; padding: 12px 14px; border-radius: var(--r-sm); background: var(--surface-2); color: var(--text); font-size: 14.5px; white-space: pre-wrap; }
+        .warn-box { display: flex; gap: 10px; align-items: center; margin: 18px 0 0; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--amber) 30%, transparent); border-radius: var(--r-md); background: var(--amber-soft); color: var(--amber); font-weight: 700; }
+        .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+        .done { text-align: center; }
+        .done__check { display: inline-flex; align-items: center; justify-content: center; width: 76px; height: 76px; margin: 4px auto 10px; border-radius: 50%; background: var(--green); color: var(--on-green); box-shadow: 0 0 0 10px var(--green-soft); animation: pop 0.45s cubic-bezier(.2, 1.4, .4, 1); }
+        .done__check .ico { width: 40px; height: 40px; }
+        @keyframes pop { from { transform: scale(0.4); opacity: 0; } }
+        .receipt { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin: 8px 0 2px; }
+        .receipt__code { padding: 12px 18px; border: 2px dashed var(--green); border-radius: 14px; background: var(--green-soft); color: var(--ink); font: 800 clamp(19px, 2vw + 14px, 26px)/1.2 var(--mono); letter-spacing: 1.5px; word-break: break-all; }
+        .done__text { max-width: 640px; margin: 18px auto 0; text-align: left; }
+        .done .summary, .done .rows { text-align: left; }
+        .print-only { display: none; }
+
+        footer { padding: 22px 0 calc(26px + var(--safe-b)); border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; text-align: center; }
+        footer p { margin: 3px 0; }
+
+        /* ================= Breakpoints ================= */
+        @media (min-width: 380px) {
+            .opts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .opt { flex-direction: column; justify-content: center; gap: 6px; min-height: 76px; padding: 10px 6px; text-align: center; font-size: 14px; }
         }
-        textarea { min-height: 110px; resize: vertical; }
-        input:focus, select:focus, textarea:focus { border-color: var(--green); outline: none; box-shadow: 0 0 0 3px rgba(26, 145, 32, 0.2); }
-        .is-invalid { border-color: var(--red) !important; box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.15) !important; }
-        .ega-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
-        .ega-code { display: flex; gap: 10px; }
-        .ega-code input { flex: 1 1 auto; font-family: ui-monospace, Consolas, monospace; font-size: 18px; letter-spacing: 1px; text-transform: uppercase; }
-        .ega-verified {
-            display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 12px; padding: 12px 14px;
-            border-radius: 10px; background: var(--green-soft); color: var(--green-dark);
+        @media (min-width: 560px) {
+            .opt { flex-direction: row; min-height: 58px; padding: 10px 12px; text-align: left; font-size: 15px; }
         }
-        .ega-verified strong { font-family: var(--heading); font-size: 17px; }
-        .ega-linkbtn { padding: 6px 2px; border: 0; background: none; color: var(--green); font: 600 14px var(--body); text-decoration: underline; cursor: pointer; }
-        .ega-check {
-            display: flex; gap: 12px; align-items: flex-start; padding: 14px; border: 1.5px solid #c9d4c8; border-radius: 10px;
-            background: #fbfcfa; cursor: pointer; font-size: 15px;
+        @media (min-width: 768px) {
+            .grid2 { grid-template-columns: 1fr 1fr; }
+            .topbar__logo img { height: 42px; }
+            .topbar__title { font-size: 15.5px; }
         }
-        .ega-check input { flex: 0 0 auto; width: 24px; height: 24px; margin-top: 2px; accent-color: var(--green); }
-
-        /* Buttons */
-        .ega-btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px;
-            border: 2px solid var(--green); border-radius: 10px; background: var(--green); color: #fff;
-            font: 700 16px var(--body); text-decoration: none; cursor: pointer;
+        @media (min-width: 1024px) {
+            .vote-layout { grid-template-columns: minmax(0, 1fr) 300px; }
+            .panel { display: block; position: sticky; top: calc(var(--topbar-h) + 16px); }
+            body.is-voting .dock { display: none; }
+            body.is-voting main { padding-bottom: clamp(28px, 5vw, 48px); }
         }
-        .ega-btn:hover { background: #157a1a; border-color: #157a1a; }
-        .ega-btn--outline { background: #fff; color: var(--green); }
-        .ega-btn--outline:hover { background: var(--green-soft); color: var(--green-dark); }
-        .ega-btn--block { width: 100%; }
-        .ega-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
-        .ega-spinner { width: 18px; height: 18px; border: 3px solid rgba(255, 255, 255, 0.45); border-top-color: #fff; border-radius: 50%; animation: ega-spin 0.8s linear infinite; }
-        @keyframes ega-spin { to { transform: rotate(360deg); } }
-
-        /* Messages */
-        .ega-msg { margin: 12px 0 0; padding: 12px 14px; border-radius: 10px; font-size: 15px; }
-        .ega-msg:empty { display: none; }
-        .ega-msg--error { background: var(--red-soft); color: var(--red); }
-        .ega-msg--warn { background: var(--amber-soft); color: var(--amber); }
-        .ega-errors { margin: 0 0 16px; padding: 14px 16px; border: 1px solid #f3c1bc; border-radius: 10px; background: var(--red-soft); color: var(--red); }
-        .ega-errors p { margin: 0 0 6px; font-weight: 700; }
-        .ega-errors ul { margin: 0; padding-left: 20px; }
-        .ega-errors a { color: var(--red); }
-
-        /* Amendments */
-        .ega-amend { min-width: 0; margin: 0 0 14px; padding: 18px 16px; border: 1.5px solid var(--line); border-radius: var(--radius); background: #fff; scroll-margin-top: 16px; }
-        .ega-amend.is-answered { border-color: rgba(26, 145, 32, 0.45); }
-        .ega-amend.is-invalid { border-color: var(--red); background: #fffafa; }
-        .ega-amend legend { float: left; width: 100%; padding: 0; margin: 0 0 6px; font-size: 17.5px; font-weight: 800; line-height: 1.35; }
-        .ega-amend legend + * { clear: both; }
-        .ega-amend__id { display: inline-block; margin-right: 6px; padding: 1px 9px; border-radius: 999px; background: var(--green-dark); color: #fff; font-size: 13px; vertical-align: 2px; }
-        .ega-amend__summary { margin: 0 0 10px; color: var(--muted); font-size: 14.5px; }
-        .ega-amend__q { margin: 0 0 12px; color: var(--green-dark); font-weight: 600; font-size: 15px; }
-        .ega-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .ega-opt {
-            position: relative; display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 12px;
-            border: 2px solid #c9d4c8; border-radius: 10px; background: #fff; cursor: pointer; font-weight: 700; font-size: 15px; line-height: 1.25;
+        @media (max-width: 767px) {
+            .stepper ol { display: none; }
+            .stepper__m { display: block; }
+            .summary { grid-template-columns: 1fr; gap: 0; }
+            .summary dd { margin-bottom: 8px; }
+            .rows li { grid-template-columns: 48px minmax(0, 1fr) auto; grid-template-areas: "id title title" "id badge edit"; row-gap: 6px; }
+            .rows--plain li { grid-template-areas: "id title" "id badge"; grid-template-columns: 48px minmax(0, 1fr); }
+            .rows__id { grid-area: id; align-self: start; }
+            .rows__title { grid-area: title; }
+            .rows__badge { grid-area: badge; justify-self: start; }
+            .rows__edit { grid-area: edit; justify-self: end; }
+            .actions .btn { width: 100%; }
         }
-        .ega-opt input { flex: 0 0 auto; width: 22px; height: 22px; margin: 0; accent-color: var(--green-dark); }
-        .ega-opt:hover { border-color: #9fb59d; }
-        .ega-opt--yes.is-checked { border-color: var(--green); background: #e9f6e8; color: #0f5e13; }
-        .ega-opt--no.is-checked { border-color: var(--red); background: var(--red-soft); color: var(--red); }
-        .ega-opt--abstain.is-checked { border-color: #6b7280; background: #f1f2f4; color: #374151; }
-        .ega-opt:focus-within { outline: 3px solid var(--gold); outline-offset: 2px; }
-
-        /* Progress (sticky at the bottom while voting) */
-        .ega-progress {
-            position: sticky; bottom: 0; z-index: 5; display: flex; align-items: center; gap: 12px; margin: 0 -4px 14px; padding: 10px 14px;
-            border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.96); box-shadow: 0 -4px 16px rgba(7, 55, 10, 0.08);
+        @media (max-width: 479px) {
+            .topbar__title { display: none; }
+            .code-row { flex-direction: column; }
+            .code-row .btn { width: 100%; }
+            .card__icon { width: 36px; height: 36px; }
+            .count { gap: 6px; }
         }
-        .ega-progress__text { flex: 0 0 auto; font-weight: 700; color: var(--green-dark); font-size: 14.5px; }
-        .ega-progress__bar { flex: 1 1 auto; height: 10px; border-radius: 999px; background: #e3e9e2; overflow: hidden; }
-        .ega-progress__fill { height: 100%; width: 0; background: var(--green); transition: width 0.25s ease; }
-        .ega-counter { margin-top: 4px; color: var(--muted); font-size: 13px; text-align: right; }
-
-        /* Review */
-        .ega-table { width: 100%; border-collapse: collapse; font-size: 15px; }
-        .ega-table th, .ega-table td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-        .ega-table th { color: var(--muted); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .ega-table td:first-child { white-space: nowrap; font-weight: 700; color: var(--green-dark); }
-        .ega-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; }
-        .ega-badge--YES { background: #e9f6e8; color: #0f5e13; }
-        .ega-badge--NO { background: var(--red-soft); color: var(--red); }
-        .ega-badge--ABSTAIN { background: #f1f2f4; color: #374151; }
-        .ega-dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0 0 16px; font-size: 15px; }
-        .ega-dl dt { color: var(--muted); }
-        .ega-dl dd { margin: 0; color: var(--green-dark); font-weight: 600; word-break: break-word; }
-        .ega-warning { margin: 16px 0; padding: 12px 14px; border-radius: 10px; background: var(--amber-soft); color: var(--amber); font-weight: 700; }
-        .ega-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-
-        /* Confirmation */
-        .ega-done { text-align: center; }
-        .ega-done__icon { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; margin-bottom: 8px; border-radius: 50%; background: var(--green); color: #fff; font-size: 34px; font-weight: 800; }
-        .ega-receipt { display: inline-block; margin: 10px 0 4px; padding: 10px 18px; border: 2px dashed var(--green); border-radius: 12px; font-family: ui-monospace, Consolas, monospace; font-size: 22px; font-weight: 700; color: var(--green-dark); letter-spacing: 1px; }
-        .ega-done__text { max-width: 620px; margin: 14px auto 0; text-align: left; }
-        .ega-done .ega-table { margin-top: 18px; text-align: left; }
-
-        footer { padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; text-align: center; }
-        footer p { margin: 2px 0; }
-
-        @media (max-width: 600px) {
-            .ega-row { grid-template-columns: 1fr; }
-            .ega-opts { grid-template-columns: 1fr; }
-            .ega-code { flex-direction: column; }
-            .ega-steps li { font-size: 11.5px; padding: 7px 4px; }
-            .ega-card { padding: 18px 14px; }
-            .ega-table { font-size: 14px; }
-            .ega-actions .ega-btn { width: 100%; }
-            .ega-dl { grid-template-columns: 1fr; gap: 0; }
-            .ega-dl dd { margin-bottom: 8px; }
+        @media (max-width: 359px) {
+            .topbar__logo img { height: 32px; }
+            .lang button { min-width: 42px; padding: 0 9px; }
+            .count__unit { font-size: 10px; letter-spacing: 0; }
+        }
+        @media (orientation: landscape) and (max-height: 500px) {
+            .hero__in { padding-top: 14px; padding-bottom: 16px; }
+            .hero h1 { font-size: 22px; max-width: none; }
+            .topbar { position: static; }
+            html { scroll-padding-top: 16px; }
+            .dock { padding-top: 6px; padding-bottom: calc(6px + var(--safe-b)); }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
         }
+        @media (forced-colors: active) {
+            .opt.is-checked, .chips button.is-done, .lang button[aria-pressed="true"] { outline: 3px solid CanvasText; }
+            .opt__mark { forced-color-adjust: none; }
+        }
+
+        /* ================= Print ================= */
         @media print {
-            body { background: #fff; }
-            .ega-top, .ega-hero, .ega-status, .ega-steps, footer, .no-print, #s-code, #s-form, #s-review { display: none !important; }
-            .ega-card { border: 0; padding: 0; }
+            @page { size: A4; margin: 16mm; }
+            :root { --surface: #fff; --surface-2: #fff; --ink: #000; --text: #111; --muted: #444; --line: #bbb; --green-soft: #fff; }
+            body { background: #fff; display: block; }
+            .topbar, .hero, .stepper, footer, .dock, .sheet, .sheet-back, .no-print, #status, #s-code, #s-form, #s-review, .skip { display: none !important; }
             main { padding: 0; }
+            .card { border: 0; box-shadow: none; padding: 0; }
+            .print-only { display: block; text-align: left; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #000; }
+            .print-only img { height: 40px; width: auto; margin-bottom: 6px; }
+            .done__check { display: none; }
+            .receipt__code { border: 2px solid #000; background: #fff; }
+            .badge { border: 1px solid #000; background: #fff !important; color: #000 !important; }
+            .rows li { break-inside: avoid; }
         }
     </style>
 </head>
 
 <body>
-    <header class="ega-top">
-        <div class="wrap ega-top__bar">
-            <a class="ega-top__logo" href="/" aria-label="AfrONet"><img src="/assets/images/logo-dark.png" alt="AfrONet — African Organic Network" width="155" height="44"></a>
-            <div class="ega-lang" role="group" aria-label="Language / Langue">
+    <a class="skip" href="#main" data-t="skip"></a>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+        <symbol id="i-dash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M6 12h12"/></symbol>
+        <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L20 3M16 7l3 3M14 9l2 2"/></g></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></g></symbol>
+        <symbol id="i-ballot" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8l1.5 1.5L12 7M8 15l1.5 1.5L12 14M14 8.5h2.5M14 15.5h2.5"/></g></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16.5v.5"/></g></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></g></symbol>
+        <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></g></symbol>
+        <symbol id="i-print" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></g></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></g></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
+    </svg>
+
+    <header class="topbar">
+        <div class="wrap topbar__in">
+            <a class="topbar__logo" href="/" aria-label="AfrONet"><img src="/assets/images/logo-dark.png" alt="AfrONet — African Organic Network" width="155" height="44"></a>
+            <p class="topbar__title" data-t="short"></p>
+            <div class="lang" role="group" aria-label="Language / Langue">
                 <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
                 <button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button>
             </div>
         </div>
     </header>
-    <div class="ega-hero">
-        <div class="wrap">
-            <p class="ega-hero__eyebrow" data-t="eyebrow"></p>
-            <h1 data-t="title"></h1>
-            <p class="ega-hero__sub" data-t="subtitle"></p>
+    <div class="hero">
+        <div class="wrap hero__in">
+            <div class="narrow">
+                <p class="hero__eyebrow"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><span data-t="eyebrow"></span></p>
+                <h1 data-t="title"></h1>
+                <p class="hero__sub" data-t="subtitle"></p>
+            </div>
         </div>
     </div>
 
-    <main class="wrap" id="main">
-        <div class="ega-status" id="status" role="status" aria-live="polite">
-            <p class="ega-status__title" data-t="loading"></p>
-        </div>
+    <main class="wrap" id="main" tabindex="-1">
+        <div class="narrow">
+            <section class="card status" id="status" aria-live="polite" aria-busy="true">
+                <span class="sr-only" data-t="loading"></span>
+                <span class="skel" style="width:30%"></span>
+                <span class="skel" style="width:70%; height:20px"></span>
+                <span class="skel" style="width:90%"></span>
+                <span class="skel" style="width:60%"></span>
+            </section>
 
-        <ol class="ega-steps" id="steps" hidden>
-            <li data-step="1"><span data-t="step1"></span></li>
-            <li data-step="2"><span data-t="step2"></span></li>
-            <li data-step="3"><span data-t="step3"></span></li>
-            <li data-step="4"><span data-t="step4"></span></li>
-        </ol>
-
-        <!-- Step 1: voter code -->
-        <section class="ega-card" id="s-code" hidden aria-labelledby="h-code">
-            <h2 id="h-code" data-t="codeTitle"></h2>
-            <p class="ega-card__intro" data-t="codeIntro"></p>
-            <form id="code-form" novalidate>
-                <label class="ega-label" for="code" data-t="codeLabel"></label>
-                <div class="ega-code">
-                    <input type="text" id="code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text" placeholder="EGA-XXXX-XXXX" aria-describedby="code-msg" required>
-                    <button type="submit" class="ega-btn" id="verify-btn"><span data-t="verify"></span></button>
+            <nav class="stepper" id="steps" aria-label="Progress" hidden>
+                <ol>
+                    <li data-step="1"><span class="stepper__dot">1</span><span data-t="step1"></span></li>
+                    <li data-step="2"><span class="stepper__dot">2</span><span data-t="step2"></span></li>
+                    <li data-step="3"><span class="stepper__dot">3</span><span data-t="step3"></span></li>
+                    <li data-step="4"><span class="stepper__dot">4</span><span data-t="step4"></span></li>
+                </ol>
+                <div class="stepper__m" aria-hidden="true">
+                    <p><span id="step-m-name"></span><span id="step-m-of"></span></p>
+                    <div class="bar"><div class="bar__fill" id="step-m-fill"></div></div>
                 </div>
-                <div class="ega-msg ega-msg--error" id="code-msg" role="alert"></div>
-            </form>
-            <div class="ega-verified" id="verified" hidden>
-                <span><span data-t="votingFor"></span> <strong id="verified-org"></strong></span>
-                <button type="button" class="ega-linkbtn" id="change-code" data-t="changeCode"></button>
-            </div>
-        </section>
+            </nav>
+
+            <!-- Step 1 -->
+            <section class="card" id="s-code" hidden aria-labelledby="h-code">
+                <div class="card__head">
+                    <span class="card__icon" aria-hidden="true"><svg class="ico"><use href="#i-key"/></svg></span>
+                    <div><h2 id="h-code" data-t="codeTitle"></h2><p class="card__intro" data-t="codeIntro"></p></div>
+                </div>
+                <form id="code-form" novalidate>
+                    <label class="label" for="code" data-t="codeLabel"></label>
+                    <div class="code-row">
+                        <div class="code-input">
+                            <svg class="ico" aria-hidden="true"><use href="#i-key"/></svg>
+                            <input class="input" type="text" id="code" name="code" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="EGA-XXXX-XXXX" aria-describedby="code-msg" required>
+                        </div>
+                        <button type="submit" class="btn" id="verify-btn"><span data-t="verify"></span></button>
+                    </div>
+                    <div class="alert alert--error" id="code-msg" role="alert"></div>
+                </form>
+                <div class="verified" id="verified" hidden>
+                    <span class="verified__icon" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></span>
+                    <div class="verified__body">
+                        <span class="verified__label" data-t="votingFor"></span>
+                        <span class="verified__org" id="verified-org"></span>
+                        <span class="verified__meta" id="verified-meta"></span>
+                    </div>
+                </div>
+                <button type="button" class="link" id="change-code" hidden data-t="changeCode"></button>
+            </section>
+        </div>
 
         <!-- Steps 2 and 3 -->
         <form id="s-form" novalidate hidden>
-            <div class="ega-errors" id="form-errors" tabindex="-1" hidden></div>
+            <div class="vote-layout">
+                <div class="vote-main">
+                    <div class="errors" id="form-errors" tabindex="-1" hidden></div>
 
-            <section class="ega-card" aria-labelledby="h-auth">
-                <h2 id="h-auth" data-t="authTitle"></h2>
-                <p class="ega-card__intro" data-t="authIntro"></p>
-                <div class="ega-field">
-                    <label for="organisation"><span data-t="organisation"></span> <span class="req" aria-hidden="true">*</span></label>
-                    <input type="text" id="organisation" name="organisation" autocomplete="organization" required>
-                </div>
-                <div class="ega-row">
-                    <div class="ega-field">
-                        <label for="country"><span data-t="country"></span> <span class="req" aria-hidden="true">*</span></label>
-                        <input type="text" id="country" name="country" autocomplete="country-name" required>
-                    </div>
-                    <div class="ega-field">
-                        <label for="region"><span data-t="region"></span> <span class="req" aria-hidden="true">*</span></label>
-                        <select id="region" name="region" required></select>
-                    </div>
-                </div>
-                <div class="ega-field">
-                    <label for="representative"><span data-t="representative"></span> <span class="req" aria-hidden="true">*</span></label>
-                    <input type="text" id="representative" name="representative" autocomplete="name" required>
-                </div>
-                <div class="ega-field">
-                    <label for="email"><span data-t="email"></span> <span class="req" aria-hidden="true">*</span></label>
-                    <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
-                </div>
-                <label class="ega-check" id="declaration-wrap" for="declaration">
-                    <input type="checkbox" id="declaration" name="declaration" required>
-                    <span data-t="declaration"></span>
-                </label>
-            </section>
+                    <section class="card" aria-labelledby="h-auth">
+                        <div class="card__head">
+                            <span class="card__icon" aria-hidden="true"><svg class="ico"><use href="#i-user"/></svg></span>
+                            <div><h2 id="h-auth" data-t="authTitle"></h2><p class="card__intro" data-t="authIntro"></p></div>
+                        </div>
+                        <div class="field">
+                            <label for="organisation"><span data-t="organisation"></span> <span class="req" aria-hidden="true">*</span></label>
+                            <input class="input" type="text" id="organisation" name="organisation" autocomplete="organization" required aria-describedby="err-organisation">
+                            <p class="field-err" id="err-organisation"></p>
+                        </div>
+                        <div class="grid2">
+                            <div class="field">
+                                <label for="country"><span data-t="country"></span> <span class="req" aria-hidden="true">*</span></label>
+                                <input class="input" type="text" id="country" name="country" autocomplete="country-name" required aria-describedby="err-country">
+                                <p class="field-err" id="err-country"></p>
+                            </div>
+                            <div class="field">
+                                <label for="region"><span data-t="region"></span> <span class="req" aria-hidden="true">*</span></label>
+                                <select class="input" id="region" name="region" required aria-describedby="err-region"></select>
+                                <p class="field-err" id="err-region"></p>
+                            </div>
+                        </div>
+                        <div class="grid2">
+                            <div class="field">
+                                <label for="representative"><span data-t="representative"></span> <span class="req" aria-hidden="true">*</span></label>
+                                <input class="input" type="text" id="representative" name="representative" autocomplete="name" required aria-describedby="err-representative">
+                                <p class="field-err" id="err-representative"></p>
+                            </div>
+                            <div class="field">
+                                <label for="email"><span data-t="email"></span> <span class="req" aria-hidden="true">*</span></label>
+                                <input class="input" type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required aria-describedby="err-email">
+                                <p class="field-err" id="err-email"></p>
+                            </div>
+                        </div>
+                        <label class="check" id="declaration-wrap" for="declaration">
+                            <input type="checkbox" id="declaration" name="declaration" required>
+                            <span data-t="declaration"></span>
+                        </label>
+                    </section>
 
-            <section class="ega-card" aria-labelledby="h-ballot">
-                <h2 id="h-ballot" data-t="ballotTitle"></h2>
-                <p class="ega-card__intro" data-t="ballotIntro"></p>
-                <div id="amendments"></div>
-                <div class="ega-progress" aria-live="polite">
-                    <span class="ega-progress__text" id="progress-text"></span>
-                    <span class="ega-progress__bar" aria-hidden="true"><span class="ega-progress__fill" id="progress-fill"></span></span>
+                    <section class="card" aria-labelledby="h-ballot">
+                        <div class="card__head">
+                            <span class="card__icon" aria-hidden="true"><svg class="ico"><use href="#i-ballot"/></svg></span>
+                            <div><h2 id="h-ballot" data-t="ballotTitle"></h2><p class="card__intro" data-t="ballotIntro"></p></div>
+                        </div>
+                        <div id="amendments"></div>
+                        <div class="field" style="margin-top:6px;">
+                            <label for="comment" data-t="commentLabel"></label>
+                            <textarea class="input" id="comment" name="comment" maxlength="1000"></textarea>
+                            <p class="hint"><span id="comment-count">0</span> / 1000</p>
+                        </div>
+                        <button type="submit" class="btn btn--block"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg><span data-t="reviewBtn"></span></button>
+                    </section>
                 </div>
-                <div class="ega-field">
-                    <label for="comment" data-t="commentLabel"></label>
-                    <textarea id="comment" name="comment" maxlength="1000"></textarea>
-                    <div class="ega-counter"><span id="comment-count">0</span> / 1000</div>
-                </div>
-                <button type="submit" class="ega-btn ega-btn--block"><span data-t="reviewBtn"></span></button>
-            </section>
+
+                <aside class="panel" aria-label="Ballot progress">
+                    <div class="panel__card">
+                        <div class="ring" aria-hidden="true">
+                            <svg viewBox="0 0 108 108"><circle class="ring__bg" cx="54" cy="54" r="45"/><circle class="ring__fg" id="ring-fg" cx="54" cy="54" r="45" stroke-dasharray="282.74" stroke-dashoffset="282.74"/></svg>
+                            <div class="ring__txt"><span class="ring__n" id="ring-n">0</span><span class="ring__of" id="ring-of"></span></div>
+                        </div>
+                        <p class="sr-only" id="panel-progress" aria-live="polite"></p>
+                        <div class="tally" id="panel-tally" style="justify-content:center;"></div>
+                        <p class="panel__label" data-t="jumpTo"></p>
+                        <div class="chips" id="panel-chips"></div>
+                        <button type="submit" class="btn btn--block" style="margin-top:16px;"><span data-t="reviewBtn"></span></button>
+                    </div>
+                </aside>
+            </div>
         </form>
 
-        <!-- Step 4: review -->
-        <section class="ega-card" id="s-review" hidden aria-labelledby="h-review" tabindex="-1">
-            <h2 id="h-review" data-t="reviewTitle"></h2>
-            <p class="ega-card__intro" data-t="reviewIntro"></p>
-            <dl class="ega-dl" id="review-who"></dl>
-            <div style="overflow-x:auto;">
-                <table class="ega-table">
-                    <thead><tr><th data-t="thAmendment"></th><th data-t="thTitle"></th><th data-t="thVote"></th><th><span class="sr-only" data-t="thEdit"></span></th></tr></thead>
-                    <tbody id="review-rows"></tbody>
-                </table>
-            </div>
-            <div id="review-comment"></div>
-            <p class="ega-warning" data-t="finalWarning"></p>
-            <div class="ega-msg" id="submit-msg" role="alert"></div>
-            <div class="ega-actions">
-                <button type="button" class="ega-btn" id="submit-btn"><span data-t="submitBtn"></span></button>
-                <button type="button" class="ega-btn ega-btn--outline" id="back-btn"><span data-t="backBtn"></span></button>
-            </div>
-        </section>
+        <div class="narrow">
+            <!-- Step 4 -->
+            <section class="card" id="s-review" hidden aria-labelledby="h-review" tabindex="-1">
+                <div class="card__head">
+                    <span class="card__icon" aria-hidden="true"><svg class="ico"><use href="#i-eye"/></svg></span>
+                    <div><h2 id="h-review" data-t="reviewTitle"></h2><p class="card__intro" data-t="reviewIntro"></p></div>
+                </div>
+                <dl class="summary" id="review-who"></dl>
+                <div class="tally" id="review-tally" style="margin-top:16px;"></div>
+                <ul class="rows" id="review-rows"></ul>
+                <div id="review-comment"></div>
+                <p class="warn-box"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><span data-t="finalWarning"></span></p>
+                <div class="alert" id="submit-msg" role="alert"></div>
+                <div class="actions">
+                    <button type="button" class="btn" id="submit-btn"><span data-t="submitBtn"></span></button>
+                    <button type="button" class="btn btn--ghost" id="back-btn"><span data-t="backBtn"></span></button>
+                </div>
+            </section>
 
-        <!-- Confirmation -->
-        <section class="ega-card ega-done" id="s-done" hidden aria-labelledby="h-done" tabindex="-1">
-            <div class="ega-done__icon" aria-hidden="true">&#10003;</div>
-            <h2 id="h-done" data-t="doneTitle"></h2>
-            <p style="margin:0;"><span data-t="receiptLabel"></span></p>
-            <div class="ega-receipt" id="done-receipt"></div>
-            <dl class="ega-dl" id="done-who" style="max-width:520px; margin:14px auto 0; text-align:left;"></dl>
-            <p class="ega-done__text" data-t="doneText"></p>
-            <table class="ega-table">
-                <thead><tr><th data-t="thAmendment"></th><th data-t="thTitle"></th><th data-t="thVote"></th></tr></thead>
-                <tbody id="done-rows"></tbody>
-            </table>
-            <div class="ega-actions no-print" style="justify-content:center;">
-                <button type="button" class="ega-btn" id="print-btn"><span data-t="printBtn"></span></button>
-            </div>
-        </section>
+            <!-- Confirmation -->
+            <section class="card done" id="s-done" hidden aria-labelledby="h-done" tabindex="-1">
+                <div class="print-only">
+                    <img src="/assets/images/logo-dark.png" alt="AfrONet" width="155" height="44">
+                    <strong data-t="title"></strong><br><span data-t="subtitle"></span>
+                </div>
+                <div class="done__check" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></div>
+                <h2 id="h-done" data-t="doneTitle"></h2>
+                <p style="margin:6px 0 0; color:var(--muted);" data-t="receiptLabel"></p>
+                <div class="receipt">
+                    <span class="receipt__code" id="done-receipt"></span>
+                    <button type="button" class="btn btn--ghost btn--sm no-print" id="copy-btn"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span id="copy-label" data-t="copy"></span></button>
+                </div>
+                <p class="done__text" data-t="doneText"></p>
+                <dl class="summary" id="done-who" style="margin-top:18px;"></dl>
+                <ul class="rows rows--plain" id="done-rows"></ul>
+                <div class="actions no-print" style="justify-content:center;">
+                    <button type="button" class="btn" id="print-btn"><svg class="ico" aria-hidden="true"><use href="#i-print"/></svg><span data-t="printBtn"></span></button>
+                </div>
+            </section>
+        </div>
     </main>
+
+    <!-- Mobile/tablet bottom dock -->
+    <div class="dock" id="dock">
+        <div class="dock__in">
+            <button type="button" class="dock__count" id="dock-count" aria-haspopup="dialog" aria-controls="sheet">
+                <strong><svg class="ico" aria-hidden="true"><use href="#i-grid"/></svg><span id="dock-text"></span></strong>
+                <span class="bar" style="width:100%"><span class="bar__fill" id="dock-fill" style="display:block"></span></span>
+            </button>
+            <button type="button" class="btn btn--sm" id="dock-review"><span data-t="review"></span></button>
+        </div>
+    </div>
+    <div class="sheet-back" id="sheet-back" hidden></div>
+    <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+        <div class="sheet__grip" aria-hidden="true"></div>
+        <div class="sheet__head">
+            <h2 id="sheet-title" data-t="jumpTo"></h2>
+            <button type="button" class="iconbtn" id="sheet-close" aria-label="Close"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="tally" id="sheet-tally" style="margin-bottom:12px;"></div>
+        <div class="chips" id="sheet-chips"></div>
+    </div>
 
     <footer>
         <div class="wrap">
@@ -375,15 +675,20 @@
             "use strict";
             var API = "https://script.google.com/macros/s/AKfycbzZD0S5BOSL-yS4l0TQHWWRFKVMi0QukgLcXvF2fGKBWP3UETXvw1AxZqp4JDD3Ly21sA/exec";
             var CHOICES = ["YES", "NO", "ABSTAIN"];
+            var ICON = { YES: "i-check", NO: "i-x", ABSTAIN: "i-dash" };
 
             var S = {
                 en: {
                     docTitle: "AfrONet 2026 EGA — Official Ballot",
+                    skip: "Skip to the ballot",
+                    short: "EGA 2026 · Official Ballot",
                     eyebrow: "Members only · Official ballot",
                     title: "AfrONet 2026 Extraordinary General Assembly",
                     subtitle: "Official Constitutional Amendment Ballot",
                     loading: "Loading the ballot…",
-                    step1: "1. Voter code", step2: "2. Your details", step3: "3. Vote", step4: "4. Review",
+                    step1: "Voter code", step2: "Your details", step3: "Vote", step4: "Review",
+                    stepOf: "Step {n} of 4",
+                    chipOpen: "Open", chipSoon: "Opens soon", chipClosed: "Closed", chipError: "Unavailable",
                     statusOpen: "Voting is open",
                     statusNotOpen: "Voting has not opened yet",
                     statusClosed: "Voting has closed",
@@ -393,13 +698,13 @@
                     notOpenText: "This page will open the ballot automatically at the time shown. You will need your organisation's voter code.",
                     loadError: "The ballot could not be loaded. Check your internet connection and try again.",
                     retry: "Retry",
-                    d: "Days", h: "Hours", m: "Minutes", s: "Seconds",
+                    d: "Days", h: "Hours", m: "Min", s: "Sec",
                     codeTitle: "Enter your voter code",
                     codeIntro: "Use the voter code sent to your organisation by the EGA Secretariat. Each code can submit one ballot only.",
                     codeLabel: "Voter code",
                     verify: "Verify",
                     verifying: "Checking…",
-                    votingFor: "Voting for:",
+                    votingFor: "Voting for",
                     changeCode: "Use a different code",
                     authTitle: "Your organisation and representative",
                     authIntro: "Check the details below. All fields are required.",
@@ -412,10 +717,13 @@
                     declaration: "I confirm that I am the duly authorized representative of an eligible Full or Founding Member of AfrONet submitting one official ballot on behalf of my organization.",
                     ballotTitle: "Constitutional amendments",
                     ballotIntro: "Answer every amendment. Choose YES, NO or ABSTAIN for each.",
-                    amendment: "Amendment",
+                    readSummary: "Read summary",
                     question: "Do you approve Amendment {id} as presented in the Comparative Table and the finalized 2024/2026 Redline v2 Constitution?",
                     YES: "YES — Accept", NO: "NO — Reject", ABSTAIN: "ABSTAIN",
                     progress: "{n} of {t} answered",
+                    of: "of {t}",
+                    jumpTo: "Jump to an amendment",
+                    review: "Review",
                     commentLabel: "If you voted NO on any amendment, you may briefly note the Amendment Number and your concern for the EGA record. (Optional)",
                     reviewBtn: "Review my ballot",
                     errorsTitle: "Please complete the following before continuing:",
@@ -425,7 +733,6 @@
                     errVote: "Choose an answer for Amendment {id}.",
                     reviewTitle: "Review your ballot",
                     reviewIntro: "Check every answer. Use Edit to change one before you submit.",
-                    thAmendment: "Amendment", thTitle: "Title", thVote: "Your vote", thEdit: "Edit",
                     edit: "Edit",
                     yourComment: "Your comment",
                     finalWarning: "Your ballot cannot be changed after submission.",
@@ -433,7 +740,8 @@
                     submitting: "Submitting…",
                     backBtn: "Back to the ballot",
                     doneTitle: "Ballot recorded",
-                    receiptLabel: "Your receipt number:",
+                    receiptLabel: "Your receipt number",
+                    copy: "Copy", copied: "Copied",
                     recordedAt: "Recorded at",
                     doneText: "Thank you. Your organization's official ballot for the 2026 AfrONet EGA has been recorded. Independent Scrutineers will audit all ballots after the strict closing deadline on Thursday, 26 November 2026 at 5:00 PM EAT, and present the verified results at the Zoom EGA on Friday, 27 November 2026.",
                     printBtn: "Print / Save as PDF",
@@ -454,11 +762,15 @@
                 },
                 fr: {
                     docTitle: "AGE d'AfrONet 2026 — Bulletin de vote officiel",
+                    skip: "Aller au bulletin",
+                    short: "AGE 2026 · Bulletin officiel",
                     eyebrow: "Réservé aux membres · Bulletin officiel",
                     title: "Assemblée Générale Extraordinaire d'AfrONet 2026",
                     subtitle: "Bulletin de Vote Officiel",
                     loading: "Chargement du bulletin…",
-                    step1: "1. Code de vote", step2: "2. Vos informations", step3: "3. Vote", step4: "4. Vérification",
+                    step1: "Code de vote", step2: "Vos informations", step3: "Vote", step4: "Vérification",
+                    stepOf: "Étape {n} sur 4",
+                    chipOpen: "Ouvert", chipSoon: "Bientôt ouvert", chipClosed: "Clos", chipError: "Indisponible",
                     statusOpen: "Le vote est ouvert",
                     statusNotOpen: "Le vote n'est pas encore ouvert",
                     statusClosed: "Le vote est clos",
@@ -468,13 +780,13 @@
                     notOpenText: "Cette page ouvrira automatiquement le bulletin à l'heure indiquée. Vous aurez besoin du code de vote de votre organisation.",
                     loadError: "Le bulletin n'a pas pu être chargé. Vérifiez votre connexion Internet et réessayez.",
                     retry: "Réessayer",
-                    d: "Jours", h: "Heures", m: "Minutes", s: "Secondes",
+                    d: "Jours", h: "Heures", m: "Min", s: "Sec",
                     codeTitle: "Saisissez votre code de vote",
                     codeIntro: "Utilisez le code de vote envoyé à votre organisation par le Secrétariat de l'AGE. Chaque code ne permet de soumettre qu'un seul bulletin.",
                     codeLabel: "Code de vote",
                     verify: "Vérifier",
                     verifying: "Vérification…",
-                    votingFor: "Vote au nom de :",
+                    votingFor: "Vote au nom de",
                     changeCode: "Utiliser un autre code",
                     authTitle: "Votre organisation et votre représentant",
                     authIntro: "Vérifiez les informations ci-dessous. Tous les champs sont obligatoires.",
@@ -487,10 +799,13 @@
                     declaration: "Je confirme être le représentant dûment autorisé d'un Membre Effectif ou Fondateur éligible d'AfrONet soumettant un seul bulletin officiel au nom de mon organisation.",
                     ballotTitle: "Amendements constitutionnels",
                     ballotIntro: "Répondez à chaque amendement en choisissant OUI, NON ou ABSTENTION.",
-                    amendment: "Amendement",
+                    readSummary: "Lire le résumé",
                     question: "Approuvez-vous l'Amendement {id} tel que présenté dans le Tableau comparatif et la Constitution révisée 2024/2026 (Redline v2) ?",
                     YES: "OUI — Accepter", NO: "NON — Rejeter", ABSTAIN: "ABSTENTION",
                     progress: "{n} sur {t} répondus",
+                    of: "sur {t}",
+                    jumpTo: "Aller à un amendement",
+                    review: "Vérifier",
                     commentLabel: "Si vous avez voté NON à un amendement, vous pouvez indiquer brièvement le numéro de l'amendement et votre préoccupation pour le procès-verbal de l'AGE. (Facultatif)",
                     reviewBtn: "Vérifier mon bulletin",
                     errorsTitle: "Veuillez compléter les éléments suivants avant de continuer :",
@@ -500,7 +815,6 @@
                     errVote: "Choisissez une réponse pour l'Amendement {id}.",
                     reviewTitle: "Vérifiez votre bulletin",
                     reviewIntro: "Vérifiez chaque réponse. Utilisez « Modifier » pour en changer une avant de soumettre.",
-                    thAmendment: "Amendement", thTitle: "Titre", thVote: "Votre vote", thEdit: "Modifier",
                     edit: "Modifier",
                     yourComment: "Votre commentaire",
                     finalWarning: "Votre bulletin ne pourra plus être modifié après sa soumission.",
@@ -508,7 +822,8 @@
                     submitting: "Envoi en cours…",
                     backBtn: "Retour au bulletin",
                     doneTitle: "Bulletin enregistré",
-                    receiptLabel: "Votre numéro de reçu :",
+                    receiptLabel: "Votre numéro de reçu",
+                    copy: "Copier", copied: "Copié",
                     recordedAt: "Enregistré le",
                     doneText: "Merci. Le bulletin officiel de votre organisation pour l'AGE 2026 d'AfrONet a été enregistré. Des scrutateurs indépendants vérifieront tous les bulletins après la clôture stricte du scrutin le jeudi 26 novembre 2026 à 17 h 00 EAT, et présenteront les résultats vérifiés lors de l'AGE sur Zoom le vendredi 27 novembre 2026.",
                     printBtn: "Imprimer / Enregistrer en PDF",
@@ -530,11 +845,13 @@
             };
 
             var state = {
-                lang: "en", cfg: null, offset: 0, view: "loading",
+                lang: "en", cfg: null, offset: 0, view: "loading", step: 0,
                 code: "", verified: null, votes: {}, inflight: false, submitted: false, result: null, timer: null, refetched: false
             };
+            var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
             function $(id) { return document.getElementById(id); }
+            function each(list, fn) { Array.prototype.forEach.call(list, fn); }
             function t(k, vars) {
                 var s = S[state.lang][k];
                 if (s === undefined) s = S.en[k];
@@ -548,26 +865,40 @@
                 if (text != null) n.textContent = text;
                 return n;
             }
+            function icon(id, cls) {
+                var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                s.setAttribute("class", "ico" + (cls ? " " + cls : ""));
+                s.setAttribute("aria-hidden", "true");
+                var u = document.createElementNS("http://www.w3.org/2000/svg", "use");
+                u.setAttribute("href", "#" + id);
+                s.appendChild(u);
+                return s;
+            }
+            function amendments() { return (state.cfg && state.cfg.amendments) || []; }
             function amendTitle(a) { return state.lang === "fr" ? (a.title_fr || a.title_en) : a.title_en; }
             function amendSummary(a) { return state.lang === "fr" ? (a.summary_fr || a.summary_en) : a.summary_en; }
+            function setVoting(on) { document.body.classList.toggle("is-voting", !!on); if (!on) closeSheet(); }
+            function scrollToEl(node, block) { node.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: block || "center" }); }
 
             /* ---------- language ---------- */
             try { var saved = localStorage.getItem("afronetEgaLang"); if (saved === "fr" || saved === "en") state.lang = saved; } catch (e) {}
             function applyLang() {
                 document.documentElement.lang = state.lang;
                 document.title = t("docTitle");
-                Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function (n) { n.textContent = t(n.getAttribute("data-t")); });
-                Array.prototype.forEach.call(document.querySelectorAll(".ega-lang button"), function (b) {
+                each(document.querySelectorAll("[data-t]"), function (n) { n.textContent = t(n.getAttribute("data-t")); });
+                each(document.querySelectorAll(".lang button"), function (b) {
                     b.setAttribute("aria-pressed", b.getAttribute("data-lang") === state.lang ? "true" : "false");
                 });
                 fillRegions();
                 renderAmendments();
                 renderStatus();
+                if (state.step) setStep(state.step);
+                if (state.verified) renderVerified();
                 if (state.view === "review") renderReview();
                 if (state.view === "done") renderDone();
                 if (!$("form-errors").hidden) validate(false);
             }
-            Array.prototype.forEach.call(document.querySelectorAll(".ega-lang button"), function (b) {
+            each(document.querySelectorAll(".lang button"), function (b) {
                 b.addEventListener("click", function () {
                     state.lang = b.getAttribute("data-lang");
                     try { localStorage.setItem("afronetEgaLang", state.lang); } catch (e) {}
@@ -585,11 +916,8 @@
                 if (state.lang === "fr") return new Intl.DateTimeFormat("fr-FR", { timeZone: tz, hour: "2-digit", minute: "2-digit" }).format(new Date(iso)).replace(":", " h ").replace(/^0/, "");
                 return new Intl.DateTimeFormat("en-US", { timeZone: tz, hour: "numeric", minute: "2-digit", hour12: true }).format(new Date(iso));
             }
-            function whenLine(iso) {
-                return fmtDate(iso) + ", " + fmtTime(iso, "Africa/Nairobi") + " EAT / " + fmtTime(iso, "Africa/Lagos") + " WAT / " + fmtTime(iso, "Africa/Lusaka") + " CAT";
-            }
 
-            /* ---------- status banner ---------- */
+            /* ---------- status ---------- */
             function currentStatus() {
                 var c = state.cfg;
                 if (!c) return null;
@@ -599,67 +927,82 @@
                 if (c.status === "NOT_OPEN") return "NOT_OPEN_DUE";
                 return "OPEN";
             }
+            function timeRow(label, iso) {
+                var row = el("div", "time");
+                row.appendChild(el("span", "time__label", label));
+                row.appendChild(el("span", "time__main", fmtDate(iso) + " · " + fmtTime(iso, "Africa/Nairobi") + " EAT"));
+                row.appendChild(el("span", "time__sub", fmtTime(iso, "Africa/Lagos") + " WAT · " + fmtTime(iso, "Africa/Lusaka") + " CAT"));
+                return row;
+            }
             function countdown(target, caption) {
-                var wrap = el("div", "ega-count");
-                wrap.appendChild(el("p", "ega-count__caption", caption));
+                var wrap = el("div");
+                wrap.appendChild(el("p", "count__cap", caption));
+                var grid = el("div", "count");
+                grid.setAttribute("role", "timer");
                 var left = Math.max(0, Math.floor((Date.parse(target) - now()) / 1000));
                 [["d", Math.floor(left / 86400)], ["h", Math.floor(left % 86400 / 3600)], ["m", Math.floor(left % 3600 / 60)], ["s", left % 60]].forEach(function (u) {
-                    var box = el("div", "ega-count__box");
-                    box.appendChild(el("span", "ega-count__num", (u[0] === "d" ? "" : (u[1] < 10 ? "0" : "")) + u[1]));
-                    box.appendChild(el("span", "ega-count__label", t(u[0])));
-                    wrap.appendChild(box);
+                    var box = el("div", "count__box");
+                    box.appendChild(el("span", "count__num", (u[0] === "d" ? "" : (u[1] < 10 ? "0" : "")) + u[1]));
+                    box.appendChild(el("span", "count__unit", t(u[0])));
+                    grid.appendChild(box);
                 });
+                wrap.appendChild(grid);
                 return wrap;
             }
-            function line(label, iso) {
-                var p = el("p", "ega-status__line");
-                p.appendChild(el("strong", "", label + (state.lang === "fr" ? " : " : ": ")));
-                p.appendChild(document.createTextNode(whenLine(iso)));
-                return p;
+            function statusTop(kind, chipKey, titleKey) {
+                var top = el("div", "status__top");
+                var chip = el("span", "chip chip--" + kind);
+                chip.appendChild(el("span", "chip__dot"));
+                chip.appendChild(document.createTextNode(t(chipKey)));
+                top.appendChild(chip);
+                var h = el("h2", "status__title", t(titleKey));
+                top.appendChild(h);
+                return top;
             }
             function renderStatus() {
                 var box = $("status");
                 if (state.view === "loading") return;
+                box.removeAttribute("aria-busy");
+                box.innerHTML = "";
                 if (state.view === "error") {
-                    box.className = "ega-status ega-status--error";
-                    box.innerHTML = "";
-                    box.appendChild(el("p", "ega-status__title", t("loadError")));
-                    var r = el("button", "ega-btn ega-btn--outline", t("retry"));
+                    box.className = "card status status--error";
+                    box.appendChild(statusTop("closed", "chipError", "loadError"));
+                    var r = el("button", "btn btn--ghost btn--sm");
                     r.type = "button";
-                    r.style.marginTop = "10px";
-                    r.addEventListener("click", loadConfig);
+                    r.appendChild(el("span", "", t("retry")));
+                    r.addEventListener("click", function () { state.view = "loading"; loadConfig(); });
                     box.appendChild(r);
                     return;
                 }
                 var st = currentStatus(), c = state.cfg;
-                box.innerHTML = "";
+                var times = el("div", "times");
                 if (st === "NOT_OPEN" || st === "NOT_OPEN_DUE") {
-                    box.className = "ega-status ega-status--not-open";
-                    box.appendChild(el("p", "ega-status__title", t("statusNotOpen")));
-                    box.appendChild(line(t("opensLine"), c.opensAt));
-                    box.appendChild(line(t("closesLine"), c.closesAt));
+                    box.className = "card status status--soon";
+                    box.appendChild(statusTop("soon", "chipSoon", "statusNotOpen"));
+                    times.appendChild(timeRow(t("opensLine"), c.opensAt));
+                    times.appendChild(timeRow(t("closesLine"), c.closesAt));
+                    box.appendChild(times);
                     box.appendChild(countdown(c.opensAt, t("countOpens")));
-                    box.appendChild(el("p", "ega-status__line", t("notOpenText"))).style.marginTop = "10px";
+                    box.appendChild(el("p", "status__note", t("notOpenText")));
                 } else if (st === "CLOSED") {
-                    box.className = "ega-status ega-status--closed";
-                    box.appendChild(el("p", "ega-status__title", t("statusClosed")));
-                    box.appendChild(el("p", "ega-status__line", t("closedText")));
+                    box.className = "card status status--closed";
+                    box.appendChild(statusTop("closed", "chipClosed", "statusClosed"));
+                    box.appendChild(el("p", "status__note", t("closedText")));
                 } else {
-                    box.className = "ega-status";
-                    box.appendChild(el("p", "ega-status__title", t("statusOpen")));
-                    box.appendChild(line(t("closesLine"), c.closesAt));
+                    box.className = "card status";
+                    box.appendChild(statusTop("open", "chipOpen", "statusOpen"));
+                    times.appendChild(timeRow(t("closesLine"), c.closesAt));
+                    box.appendChild(times);
                     box.appendChild(countdown(c.closesAt, t("countCloses")));
                 }
             }
+            function hideFlow() {
+                ["s-code", "s-form", "s-review", "steps"].forEach(function (id) { $(id).hidden = true; });
+                setVoting(false);
+            }
             function applyStatusToViews() {
-                var st = currentStatus();
-                var open = st === "OPEN";
                 if (state.view === "done") return;
-                if (!open) {
-                    ["s-code", "s-form", "s-review", "steps"].forEach(function (id) { $(id).hidden = true; });
-                    state.view = "status";
-                    return;
-                }
+                if (currentStatus() !== "OPEN") { hideFlow(); state.view = "status"; return; }
                 if (state.view === "status" || state.view === "loading") {
                     state.view = "code";
                     $("steps").hidden = false;
@@ -692,7 +1035,6 @@
                 });
             }
             function loadConfig() {
-                state.view = state.view === "error" ? "loading" : state.view;
                 request(API + "?action=config").then(function (c) {
                     if (!c || !c.ok) throw new Error("config");
                     state.cfg = c;
@@ -707,16 +1049,23 @@
                 });
             }
 
-            /* ---------- steps ---------- */
+            /* ---------- stepper ---------- */
             function setStep(n) {
-                Array.prototype.forEach.call(document.querySelectorAll("#steps li"), function (li) {
+                state.step = n;
+                each(document.querySelectorAll("#steps li"), function (li) {
                     var s = +li.getAttribute("data-step");
                     li.className = s === n ? "is-current" : (s < n ? "is-done" : "");
                     if (s === n) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+                    var dot = li.querySelector(".stepper__dot");
+                    dot.innerHTML = "";
+                    if (s < n) dot.appendChild(icon("i-check")); else dot.textContent = s;
                 });
+                $("step-m-name").textContent = t("step" + n);
+                $("step-m-of").textContent = t("stepOf", { n: n });
+                $("step-m-fill").style.width = (n / 4 * 100) + "%";
             }
 
-            /* ---------- step 1: code ---------- */
+            /* ---------- step 1 ---------- */
             var codeInput = $("code");
             codeInput.addEventListener("input", function () {
                 var pos = codeInput.selectionStart;
@@ -725,41 +1074,59 @@
                 codeInput.classList.remove("is-invalid");
                 $("code-msg").textContent = "";
             });
+            function codeError(text) {
+                var m = $("code-msg");
+                m.innerHTML = "";
+                m.appendChild(icon("i-alert"));
+                m.appendChild(el("span", "", text));
+                codeInput.classList.add("is-invalid");
+            }
+            function renderVerified() {
+                var r = state.verified;
+                $("verified-org").textContent = r.organisation || "";
+                $("verified-meta").textContent = [r.country, r.region].filter(Boolean).join(" · ");
+            }
             $("code-form").addEventListener("submit", function (e) {
                 e.preventDefault();
+                if (state.verified) return;
                 var code = codeInput.value.toUpperCase().replace(/\s+/g, "");
-                var msg = $("code-msg");
-                if (!code) { msg.textContent = errText("EMPTY_CODE"); codeInput.classList.add("is-invalid"); codeInput.focus(); return; }
+                if (!code) { codeError(errText("EMPTY_CODE")); codeInput.focus(); return; }
                 var btn = $("verify-btn");
                 btn.disabled = true;
-                btn.firstChild.textContent = t("verifying");
-                msg.textContent = "";
+                btn.innerHTML = "";
+                btn.appendChild(el("span", "spinner"));
+                btn.appendChild(el("span", "", t("verifying")));
+                $("code-msg").textContent = "";
                 request(API + "?action=verify&code=" + encodeURIComponent(code)).then(function (r) {
                     if (r && r.ok) {
                         state.code = code;
                         state.verified = r;
                         codeInput.readOnly = true;
-                        btn.hidden = true;
-                        $("verified-org").textContent = r.organisation || "";
+                        $("code-form").hidden = true;
+                        renderVerified();
                         $("verified").hidden = false;
+                        $("change-code").hidden = false;
                         if (r.organisation) $("organisation").value = r.organisation;
                         if (r.country) $("country").value = r.country;
                         if (r.region) $("region").value = r.region;
                         $("s-form").hidden = false;
                         state.view = "form";
+                        setVoting(true);
+                        updateProgress();
                         setStep(2);
-                        $("representative").focus();
+                        $("representative").focus({ preventScroll: true });
+                        scrollToEl($("verified"), "start");
                     } else {
-                        var code2 = r && r.error;
-                        msg.textContent = errText(code2 || "SERVER_ERROR");
-                        codeInput.classList.add("is-invalid");
-                        if (code2 === "BALLOT_CLOSED" || code2 === "BALLOT_NOT_OPEN") loadConfig();
+                        var c2 = r && r.error;
+                        codeError(errText(c2 || "SERVER_ERROR"));
+                        if (c2 === "BALLOT_CLOSED" || c2 === "BALLOT_NOT_OPEN") loadConfig();
                     }
                 }).catch(function () {
-                    msg.textContent = errText("NETWORK");
+                    codeError(errText("NETWORK"));
                 }).then(function () {
                     btn.disabled = false;
-                    btn.firstChild.textContent = t("verify");
+                    btn.innerHTML = "";
+                    btn.appendChild(el("span", "", t("verify")));
                 });
             });
             $("change-code").addEventListener("click", function () {
@@ -767,16 +1134,18 @@
                 state.verified = null;
                 codeInput.readOnly = false;
                 codeInput.value = "";
-                $("verify-btn").hidden = false;
+                $("code-form").hidden = false;
                 $("verified").hidden = true;
+                $("change-code").hidden = true;
                 $("s-form").hidden = true;
                 $("s-review").hidden = true;
                 state.view = "code";
+                setVoting(false);
                 setStep(1);
                 codeInput.focus();
             });
 
-            /* ---------- step 2/3: form ---------- */
+            /* ---------- step 2/3 ---------- */
             function fillRegions() {
                 var sel = $("region"), cur = sel.value;
                 sel.innerHTML = "";
@@ -790,23 +1159,45 @@
                 });
                 sel.value = cur;
             }
+            function nextUnanswered(afterId) {
+                var list = amendments(), start = 0;
+                list.forEach(function (a, i) { if (a.id === afterId) start = i + 1; });
+                for (var i = 0; i < list.length; i++) {
+                    var a = list[(start + i) % list.length];
+                    if (!state.votes[a.id]) return a.id;
+                }
+                return null;
+            }
             function renderAmendments() {
                 var box = $("amendments");
-                var list = (state.cfg && state.cfg.amendments) || [];
                 box.innerHTML = "";
-                list.forEach(function (a) {
-                    var fs = el("fieldset", "ega-amend");
+                var small = window.innerWidth < 600;
+                amendments().forEach(function (a) {
+                    var fs = el("fieldset", "amend");
                     fs.id = "amend-" + a.id;
                     var lg = el("legend");
-                    lg.appendChild(el("span", "ega-amend__id", a.id));
-                    lg.appendChild(document.createTextNode(amendTitle(a)));
+                    var head = el("span", "amend__head");
+                    head.appendChild(el("span", "amend__id", a.id));
+                    head.appendChild(el("span", "amend__title", amendTitle(a)));
+                    var done = icon("i-check", "amend__done");
+                    head.appendChild(done);
+                    lg.appendChild(head);
                     fs.appendChild(lg);
                     var sum = amendSummary(a);
-                    if (sum) fs.appendChild(el("p", "ega-amend__summary", sum));
-                    fs.appendChild(el("p", "ega-amend__q", t("question", { id: a.id })));
-                    var opts = el("div", "ega-opts");
+                    if (sum) {
+                        var det = el("details", "amend__sum");
+                        if (!small || sum.length < 140) det.open = true;
+                        var s = el("summary");
+                        s.appendChild(el("span", "", t("readSummary")));
+                        s.appendChild(icon("i-chev"));
+                        det.appendChild(s);
+                        det.appendChild(el("p", "", sum));
+                        fs.appendChild(det);
+                    }
+                    fs.appendChild(el("p", "amend__q", t("question", { id: a.id })));
+                    var opts = el("div", "opts");
                     CHOICES.forEach(function (c) {
-                        var lab = el("label", "ega-opt ega-opt--" + c.toLowerCase());
+                        var lab = el("label", "opt opt--" + c);
                         var inp = el("input");
                         inp.type = "radio";
                         inp.name = "vote-" + a.id;
@@ -814,14 +1205,22 @@
                         inp.required = true;
                         if (state.votes[a.id] === c) { inp.checked = true; lab.className += " is-checked"; }
                         inp.addEventListener("change", function () {
+                            var first = !state.votes[a.id];
                             state.votes[a.id] = c;
-                            Array.prototype.forEach.call(opts.children, function (l) { l.classList.toggle("is-checked", l === lab); });
+                            each(opts.children, function (l) { l.classList.toggle("is-checked", l === lab); });
                             fs.classList.add("is-answered");
                             fs.classList.remove("is-invalid");
                             updateProgress();
                             if (!$("form-errors").hidden) validate(false);
+                            if (first && !reduceMotion && inp.matches(":focus-visible") === false) {
+                                var nx = nextUnanswered(a.id);
+                                if (nx) setTimeout(function () { var n = $("amend-" + nx); if (n) scrollToEl(n, "center"); }, 280);
+                            }
                         });
+                        var mark = el("span", "opt__mark");
+                        mark.appendChild(icon(ICON[c]));
                         lab.appendChild(inp);
+                        lab.appendChild(mark);
                         lab.appendChild(el("span", "", t(c)));
                         opts.appendChild(lab);
                     });
@@ -831,31 +1230,97 @@
                 });
                 updateProgress();
             }
+            function tallies() {
+                var c = { YES: 0, NO: 0, ABSTAIN: 0 };
+                Object.keys(state.votes).forEach(function (k) { c[state.votes[k]]++; });
+                return c;
+            }
+            function renderTally(target) {
+                var box = $(target), c = tallies();
+                box.innerHTML = "";
+                CHOICES.forEach(function (k) {
+                    var b = el("span", "badge badge--" + k);
+                    b.appendChild(icon(ICON[k]));
+                    b.appendChild(document.createTextNode(t(k).split(" — ")[0] + " · " + c[k]));
+                    box.appendChild(b);
+                });
+            }
+            function renderChips(target) {
+                var box = $(target);
+                box.innerHTML = "";
+                amendments().forEach(function (a) {
+                    var v = state.votes[a.id];
+                    var b = el("button", v ? "is-done is-" + v : "", a.id.replace(/^A0?/, ""));
+                    b.type = "button";
+                    b.setAttribute("aria-label", a.id + (v ? " — " + t(v) : ""));
+                    b.addEventListener("click", function () {
+                        closeSheet();
+                        var n = $("amend-" + a.id);
+                        scrollToEl(n, "start");
+                        var inp = n.querySelector("input:checked") || n.querySelector("input");
+                        setTimeout(function () { inp.focus({ preventScroll: true }); }, reduceMotion ? 0 : 350);
+                    });
+                    box.appendChild(b);
+                });
+            }
             function updateProgress() {
-                var total = ((state.cfg && state.cfg.amendments) || []).length;
+                var total = amendments().length;
                 var n = Object.keys(state.votes).length;
-                $("progress-text").textContent = t("progress", { n: n, t: total });
-                $("progress-fill").style.width = total ? (n / total * 100) + "%" : "0";
+                var pct = total ? n / total : 0;
+                $("dock-text").textContent = t("progress", { n: n, t: total });
+                $("dock-fill").style.width = (pct * 100) + "%";
+                $("ring-n").textContent = n;
+                $("ring-of").textContent = t("of", { t: total });
+                $("ring-fg").setAttribute("stroke-dashoffset", String(282.74 * (1 - pct)));
+                $("panel-progress").textContent = t("progress", { n: n, t: total });
+                renderTally("panel-tally");
+                renderTally("sheet-tally");
+                renderChips("panel-chips");
+                renderChips("sheet-chips");
                 if (state.view === "form") setStep(n ? 3 : 2);
             }
             $("comment").addEventListener("input", function () { $("comment-count").textContent = this.value.length; });
+            $("declaration").addEventListener("change", function () { $("declaration-wrap").classList.toggle("is-checked", this.checked); });
 
+            /* bottom sheet */
+            var sheetOpener = null;
+            function openSheet() {
+                sheetOpener = document.activeElement;
+                $("sheet-back").hidden = false;
+                $("sheet").hidden = false;
+                var first = $("sheet-chips").querySelector("button");
+                if (first) first.focus();
+            }
+            function closeSheet() {
+                if ($("sheet").hidden) return;
+                $("sheet-back").hidden = true;
+                $("sheet").hidden = true;
+                if (sheetOpener && document.body.contains(sheetOpener)) sheetOpener.focus({ preventScroll: true });
+            }
+            $("dock-count").addEventListener("click", openSheet);
+            $("sheet-close").addEventListener("click", closeSheet);
+            $("sheet-back").addEventListener("click", closeSheet);
+            document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeSheet(); });
+            $("dock-review").addEventListener("click", function () { $("s-form").requestSubmit ? $("s-form").requestSubmit() : $("s-form").dispatchEvent(new Event("submit", { cancelable: true })); });
+
+            /* validation */
             var FIELDS = ["organisation", "country", "region", "representative", "email"];
-            function fieldLabel(f) { return t(f); }
             function validate(focus) {
                 var problems = [];
                 FIELDS.forEach(function (f) {
-                    var inp = $(f), v = inp.value.trim();
-                    var bad = !v;
-                    if (f === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { bad = true; problems.push({ id: f, text: t("errEmail") }); }
-                    else if (bad) problems.push({ id: f, text: t("errRequired", { field: fieldLabel(f) }) });
-                    inp.classList.toggle("is-invalid", bad);
-                    inp.setAttribute("aria-invalid", bad ? "true" : "false");
+                    var inp = $(f), v = inp.value.trim(), msg = "";
+                    if (!v) msg = t("errRequired", { field: t(f) });
+                    else if (f === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) msg = t("errEmail");
+                    inp.classList.toggle("is-invalid", !!msg);
+                    inp.setAttribute("aria-invalid", msg ? "true" : "false");
+                    var err = $("err-" + f);
+                    err.innerHTML = "";
+                    if (msg) { err.appendChild(icon("i-alert")); err.appendChild(el("span", "", msg)); problems.push({ id: f, text: msg }); }
                 });
                 var dec = $("declaration");
                 $("declaration-wrap").classList.toggle("is-invalid", !dec.checked);
                 if (!dec.checked) problems.push({ id: "declaration", text: t("errDeclaration") });
-                ((state.cfg && state.cfg.amendments) || []).forEach(function (a) {
+                amendments().forEach(function (a) {
                     var missing = !state.votes[a.id];
                     $("amend-" + a.id).classList.toggle("is-invalid", missing);
                     if (missing) problems.push({ id: "amend-" + a.id, text: t("errVote", { id: a.id }) });
@@ -863,12 +1328,15 @@
                 var box = $("form-errors");
                 box.innerHTML = "";
                 if (!problems.length) { box.hidden = true; return true; }
-                box.appendChild(el("p", "", t("errorsTitle")));
+                var p = el("p");
+                p.appendChild(icon("i-alert"));
+                p.appendChild(el("span", "", t("errorsTitle")));
+                box.appendChild(p);
                 var ul = el("ul");
-                problems.forEach(function (p) {
-                    var li = el("li"), a = el("a", "", p.text);
-                    a.href = "#" + p.id;
-                    a.addEventListener("click", function (e) { e.preventDefault(); goTo(p.id); });
+                problems.forEach(function (pr) {
+                    var li = el("li"), a = el("a", "", pr.text);
+                    a.href = "#" + pr.id;
+                    a.addEventListener("click", function (e) { e.preventDefault(); goTo(pr.id); });
                     li.appendChild(a);
                     ul.appendChild(li);
                 });
@@ -880,9 +1348,9 @@
             function goTo(id) {
                 var target = $(id);
                 if (!target) return;
-                target.scrollIntoView({ behavior: "smooth", block: "center" });
+                scrollToEl(target, "center");
                 var focusable = target.matches("input, select, textarea") ? target : target.querySelector("input");
-                if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 350);
+                if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, reduceMotion ? 0 : 380);
             }
             FIELDS.concat(["declaration"]).forEach(function (f) {
                 $(f).addEventListener(f === "declaration" || f === "region" ? "change" : "input", function () {
@@ -898,7 +1366,8 @@
                 $("s-form").hidden = true;
                 $("s-review").hidden = false;
                 $("submit-msg").textContent = "";
-                $("submit-msg").className = "ega-msg";
+                $("submit-msg").className = "alert";
+                setVoting(false);
                 setStep(4);
                 window.scrollTo(0, 0);
                 $("s-review").focus({ preventScroll: true });
@@ -914,37 +1383,39 @@
                     dl.appendChild(el("dd", "", p[1]));
                 });
             }
-            function voteRows(tbody, withEdit) {
-                var body = $(tbody);
-                body.innerHTML = "";
-                ((state.cfg && state.cfg.amendments) || []).forEach(function (a) {
-                    var tr = el("tr");
-                    tr.appendChild(el("td", "", a.id));
-                    tr.appendChild(el("td", "", amendTitle(a)));
-                    var td = el("td");
-                    td.appendChild(el("span", "ega-badge ega-badge--" + state.votes[a.id], t(state.votes[a.id])));
-                    tr.appendChild(td);
+            function voteRows(target, withEdit) {
+                var list = $(target);
+                list.innerHTML = "";
+                amendments().forEach(function (a) {
+                    var v = state.votes[a.id];
+                    var li = el("li");
+                    li.appendChild(el("span", "rows__id", a.id));
+                    li.appendChild(el("span", "rows__title", amendTitle(a)));
+                    var bw = el("span", "rows__badge");
+                    var b = el("span", "badge badge--" + v);
+                    b.appendChild(icon(ICON[v]));
+                    b.appendChild(document.createTextNode(t(v)));
+                    bw.appendChild(b);
+                    li.appendChild(bw);
                     if (withEdit) {
-                        var te = el("td"), b = el("button", "ega-linkbtn", t("edit"));
-                        b.type = "button";
-                        b.setAttribute("aria-label", t("edit") + " " + a.id);
-                        b.addEventListener("click", function () { backToForm("amend-" + a.id); });
-                        te.appendChild(b);
-                        tr.appendChild(te);
+                        var ed = el("button", "link rows__edit", t("edit"));
+                        ed.type = "button";
+                        ed.setAttribute("aria-label", t("edit") + " " + a.id);
+                        ed.addEventListener("click", function () { backToForm("amend-" + a.id); });
+                        li.appendChild(ed);
                     }
-                    body.appendChild(tr);
+                    list.appendChild(li);
                 });
             }
             function renderReview() {
                 whoList("review-who");
+                renderTally("review-tally");
                 voteRows("review-rows", true);
                 var c = $("comment").value.trim(), rc = $("review-comment");
                 rc.innerHTML = "";
                 if (c) {
-                    rc.appendChild(el("p", "ega-label", t("yourComment")));
-                    var q = el("p", "", c);
-                    q.style.cssText = "margin:0; white-space:pre-wrap; color:var(--muted);";
-                    rc.appendChild(q);
+                    rc.appendChild(el("p", "label", t("yourComment"))).style.marginTop = "16px";
+                    rc.appendChild(el("p", "note-box", c)).style.marginTop = "0";
                 }
             }
             function backToForm(id) {
@@ -952,6 +1423,7 @@
                 $("s-review").hidden = true;
                 $("s-code").hidden = false;
                 $("s-form").hidden = false;
+                setVoting(true);
                 updateProgress();
                 setStep(3);
                 goTo(id || "amendments");
@@ -963,14 +1435,16 @@
                 var b = $("submit-btn");
                 b.disabled = on;
                 b.innerHTML = "";
-                if (on) b.appendChild(el("span", "ega-spinner"));
+                if (on) b.appendChild(el("span", "spinner"));
                 b.appendChild(el("span", "", on ? t("submitting") : t("submitBtn")));
                 $("back-btn").disabled = on;
             }
             function showSubmitError(code, retryable) {
                 var m = $("submit-msg");
-                m.className = "ega-msg " + (retryable ? "ega-msg--warn" : "ega-msg--error");
-                m.textContent = errText(code);
+                m.className = "alert " + (retryable ? "alert--warn" : "alert--error");
+                m.innerHTML = "";
+                m.appendChild(icon("i-alert"));
+                m.appendChild(el("span", "", errText(code)));
                 var b = $("submit-btn");
                 b.innerHTML = "";
                 b.appendChild(el("span", "", retryable ? t("retry") : t("submitBtn")));
@@ -981,9 +1455,9 @@
                 state.inflight = true;
                 setSubmitting(true);
                 $("submit-msg").textContent = "";
-                $("submit-msg").className = "ega-msg";
+                $("submit-msg").className = "alert";
                 var votes = {};
-                ((state.cfg && state.cfg.amendments) || []).forEach(function (a) { votes[a.id] = state.votes[a.id]; });
+                amendments().forEach(function (a) { votes[a.id] = state.votes[a.id]; });
                 var body = {
                     action: "vote",
                     code: state.code,
@@ -1029,7 +1503,7 @@
                     }
                     var retryable = code === "BUSY_TRY_AGAIN" || code === "SERVER_ERROR" || code === "BAD_REQUEST";
                     showSubmitError(code, retryable);
-                    if (!retryable) { $("back-btn").hidden = true; }
+                    if (!retryable) $("back-btn").hidden = true;
                 }).catch(function () {
                     state.inflight = false;
                     setSubmitting(false);
@@ -1046,6 +1520,23 @@
                 if (r.organisation) $("done-who").children[1].textContent = r.organisation;
                 voteRows("done-rows", false);
             }
+            $("copy-btn").addEventListener("click", function () {
+                var code = $("done-receipt").textContent;
+                function ok() {
+                    $("copy-label").textContent = t("copied");
+                    setTimeout(function () { $("copy-label").textContent = t("copy"); }, 2200);
+                }
+                function fallback() {
+                    var range = document.createRange();
+                    range.selectNodeContents($("done-receipt"));
+                    var sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                    try { if (document.execCommand("copy")) ok(); } catch (e) {}
+                }
+                if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(code).then(ok, fallback);
+                else fallback();
+            });
             $("print-btn").addEventListener("click", function () { window.print(); });
 
             window.addEventListener("beforeunload", function (e) {
