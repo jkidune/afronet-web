@@ -943,6 +943,87 @@
             align-self: stretch;
             background: rgba(26, 145, 32, 0.06);
         }
+        /* Location photos */
+        .aoc-photo {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #e9f1e8;
+            aspect-ratio: 4 / 3;
+        }
+        .aoc-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+        a.aoc-photo:hover img {
+            transform: scale(1.04);
+        }
+        .aoc-photo__credit {
+            position: absolute;
+            right: 6px;
+            bottom: 6px;
+            max-width: calc(100% - 12px);
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            font-size: 10px;
+            line-height: 1.5;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        a.aoc-photo:hover .aoc-photo__credit,
+        a.aoc-photo:focus-visible .aoc-photo__credit {
+            opacity: 1;
+        }
+        .aoc-photo--none {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px;
+            border: 1px dashed rgba(26, 145, 32, 0.35);
+            background: rgba(26, 145, 32, 0.05);
+            color: var(--grdeen-base, #1a9120);
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.35;
+            text-align: center;
+        }
+        .aoc-photo--none i {
+            font-size: 20px;
+        }
+        .aoc-photo--none:hover {
+            background: rgba(26, 145, 32, 0.1);
+            color: var(--grdeen-base, #1a9120);
+        }
+        .aoc-hotel__dist .aoc-photo {
+            width: 100%;
+        }
+        .aoc-hotel__distance {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+        .aoc-stay__photonote {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin: 12px 0 0;
+            color: var(--grdeen-text, #626f62);
+            font-size: 13px;
+        }
+        .aoc-stay__photonote i {
+            color: var(--grdeen-base, #1a9120);
+        }
         .aoc-hotel__km {
             font-family: var(--grdeen-heading-font, 'DM Sans', sans-serif);
             font-size: 26px;
@@ -957,7 +1038,10 @@
             text-transform: uppercase;
         }
         .aoc-hotel__dist {
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 10px;
         }
         .aoc-hotel__name {
             margin: 0 0 4px;
@@ -1189,9 +1273,30 @@
             font-weight: 600;
         }
 
+        /* Venue card with photo: text left, photo and buttons right */
+        .aoc-stay-venue {
+            grid-template-columns: minmax(0, 1fr) 280px;
+            grid-template-areas: "info photo" "info actions";
+            align-items: start;
+        }
+        .aoc-stay-venue__info {
+            grid-area: info;
+            align-self: center;
+        }
+        .aoc-stay-venue__photo {
+            grid-area: photo;
+            border: 2px solid rgba(255, 255, 255, 0.18);
+        }
+        .aoc-stay-venue__actions {
+            grid-area: actions;
+        }
         @media (max-width: 991px) {
             .aoc-stay-venue {
                 grid-template-columns: minmax(0, 1fr);
+                grid-template-areas: "photo" "info" "actions";
+            }
+            .aoc-stay-venue__photo {
+                aspect-ratio: 16 / 9;
             }
             .aoc-stay-venue__actions {
                 flex-direction: row;
@@ -1258,8 +1363,8 @@
                 gap: 12px;
             }
             .aoc-hotel {
-                grid-template-columns: 78px minmax(0, 1fr);
-                grid-template-areas: "dist main" "dist cat" "dist contact";
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-areas: "dist" "main" "cat" "contact";
                 align-items: start;
                 border: 1px solid #e4ece4;
                 border-radius: 14px;
@@ -1273,17 +1378,43 @@
             .aoc-hotel > div {
                 padding: 0 16px;
             }
+            /* Phones: photo across the top of the card, distance as a badge on it */
             .aoc-hotel__dist {
                 grid-area: dist;
-                flex-direction: column;
-                justify-content: center;
-                gap: 2px;
-                padding: 16px 6px !important;
-                border-right: 1px solid #e4ece4;
-                text-align: center;
+                position: relative;
+                display: block;
+                padding: 0 !important;
+                background: none;
+            }
+            .aoc-hotel__dist .aoc-photo {
+                border-radius: 0;
+                aspect-ratio: 16 / 9;
+            }
+            .aoc-hotel__dist .aoc-photo--none {
+                aspect-ratio: auto;
+                min-height: 92px;
+                border: 0;
+                border-bottom: 1px dashed rgba(26, 145, 32, 0.35);
+                padding-bottom: 30px;
+            }
+            .aoc-photo__credit {
+                top: 8px;
+                bottom: auto;
+                max-width: calc(100% - 16px);
+                opacity: 1;
+                font-size: 9.5px;
+            }
+            .aoc-hotel__distance {
+                position: absolute;
+                left: 12px;
+                bottom: 10px;
+                padding: 4px 11px;
+                border-radius: 999px;
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
             }
             .aoc-hotel__km {
-                font-size: 24px;
+                font-size: 18px;
             }
             .aoc-hotel__main {
                 grid-area: main;
@@ -1582,6 +1713,7 @@
                             <div class="aoc-hotels__body" data-stay-grid></div>
                         </div>
                         <p class="aoc-stay__empty" data-stay-empty hidden>Nenhum hotel corresponde a este filtro.</p>
+                        <p class="aoc-stay__photonote"><i class="fas fa-camera" aria-hidden="true"></i><span>As fotografias provêm do site oficial de cada estabelecimento. Se não houver nenhuma, toque no quadro para ver fotografias no Google Maps.</span></p>
 
                         <div class="aoc-stay__notice" role="note">
                             <span class="aoc-stay__notice-icon" aria-hidden="true"><i class="fas fa-info"></i></span>
@@ -1616,6 +1748,9 @@
                  - price:     indicative rate text, or "" to hide it
                  - phone / websiteUrl: leave "" to hide them
                  - badge:     optional gold label, e.g. "6AOC rate"
+                 - kmLabel:   optional text for the distance, e.g. "7.1–8.1" (km still sorts)
+                 - photo:     optional exterior photo (in /assets/images/stay/), credited to photoSource or the hotel;
+                              without one, the tile links to the place's photos on Google Maps
                  - optional:  mapUrl (exact Google Maps link; otherwise a search by name),
                               email, location, travel, description (extra lines),
                               rates: [["Sala", "Rate"], ...] + note (shown in an "Todas as tarifas dos quartos" toggle)
@@ -1632,11 +1767,18 @@
                     phones: ["+260 961 876 570", "+260 211 849 021"],
                     offer: "Pergunte pela tarifa especial para os delegados da 6.ª CAO.",
                     note: "Todas as sessões a pé. 80 quartos; reserve cedo.",
+                    photo: "/assets/images/stay/mika-convention-center.jpg",
+                    photoSource: "Mika Hotels",
                     bookUrl: "https://mikahotels.com/mika-convention-center-meanwood/",
                     mapUrl: "https://www.google.com/maps/search/?api=1&query=Mika+Convention+Center&query_place_id=ChIJm7KoxfWJQBkROG1k8gb3gjg"
                 },
                 hotels: [
-                    { name: "Rugems Executive Lodge", km: 2.1, category: "budget", price: "~25 USD/noite (duplo com casa de banho privativa)", phone: "+260 97 9585832", websiteUrl: "https://rugemsexecutivelodge.net/book", badge: "" },
+                    {
+                        name: "Rugems Executive Lodge", km: 6.1, category: "budget", price: "~25 USD/noite (duplo com casa de banho privativa)",
+                        phone: "+260 97 9585832", websiteUrl: "https://rugemsexecutivelodge.net/book", badge: "",
+                        travel: "Cerca de 13 minutos de carro",
+                        photo: "/assets/images/stay/rugems-executive-lodge.jpg"
+                    },
                     {
                         name: "JRK Apartments", km: 2.4, category: "apartment", price: "a partir de ~63 USD/noite",
                         phone: "+260 77 3968234", websiteUrl: "", badge: "",
@@ -1644,29 +1786,60 @@
                         mapUrl: "https://www.google.com/maps/search/?api=1&query=JRK+Apartments&query_place_id=ChIJf0l4s7GJQBkR7PghLMYIMlg"
                     },
                     { name: "Skyview Lodge at the Barn", km: 2.5, category: "mid-range", price: "a partir de ~42 USD/noite", phone: "+260 97 4772969", websiteUrl: "", badge: "" },
-                    { name: "Waterfalls Hotel", km: 3.9, category: "budget", price: "a partir de ~40 USD/noite (individual)", phone: "+260 97 8991900", websiteUrl: "https://www.zambiatourism.com/accommodation/lusaka/waterfalls-hotel/", badge: "" },
-                    { name: "Salama Blue Lodge", km: 4.3, category: "budget", price: "~30 USD/noite (duplo standard)", phone: "+260 57 2348483", websiteUrl: "https://www.salamabluelodge.net/rooms", badge: "" },
+                    {
+                        name: "Waterfalls Hotel", km: 5.4, category: "budget", price: "a partir de ~40 USD/noite (individual)",
+                        phone: "+260 97 8991900", websiteUrl: "https://www.zambiatourism.com/accommodation/lusaka/waterfalls-hotel/", badge: "",
+                        travel: "Cerca de 12 minutos de carro pela Great East Rd/T4"
+                    },
+                    {
+                        name: "Salama Blue Lodge", km: 7.1, kmLabel: "7.1–8.1", category: "budget", price: "~30 USD/noite (duplo standard)",
+                        phone: "+260 57 2348483", websiteUrl: "https://www.salamabluelodge.net/rooms", badge: "",
+                        travel: "Cerca de 15 a 17 minutos de carro, consoante o percurso",
+                        photo: "/assets/images/stay/salama-blue-lodge.jpg"
+                    },
                     {
                         name: "Lusaka Legacy Resort & Conference Centre", km: 6.5, category: "premium",
-                        price: "A partir de K 2.500 por noite (pequeno-almoço incluído)",
+                        price: "A partir de K 2.500 (≈ 121 USD) por noite (pequeno-almoço incluído)",
                         phone: "+260 762 350 720", websiteUrl: "https://lusakalegacyresort.com", badge: "",
                         email: "reservations@llhcc.com",
                         location: "Meanwood Ibex Hill, off Great East Road, Chongwe (just past the airport roundabout heading towards Chongwe)",
                         travel: "Cerca de 17 minutos de carro",
                         description: "Resort no topo de uma colina com piscina infinita, restaurante, ginásio e spa. 83 quartos.",
                         rates: [
-                            ["Quarto standard com vista para o jardim", "Individual K 2.500 | Duplo K 2.750"],
-                            ["Quarto standard com vista para o vale", "Individual K 2.800 | Duplo K 3.200"],
-                            ["Suíte júnior (individual/duplo)", "K 4.000"],
-                            ["Suíte presidencial (individual/duplo)", "K 7.000 (pequeno-almoço para até 4 hóspedes)"]
+                            ["Quarto standard com vista para o jardim", "Individual K 2.500 (≈ 121 USD) | Duplo K 2.750 (≈ 134 USD)"],
+                            ["Quarto standard com vista para o vale", "Individual K 2.800 (≈ 136 USD) | Duplo K 3.200 (≈ 155 USD)"],
+                            ["Suíte júnior (individual/duplo)", "K 4.000 (≈ 194 USD)"],
+                            ["Suíte presidencial (individual/duplo)", "K 7.000 (≈ 340 USD) (pequeno-almoço para até 4 hóspedes)"]
                         ],
-                        note: "Tarifas indicadas pelo hotel, novembro de 2026. Os delegados reservam e pagam diretamente ao hotel."
+                        note: "Tarifas indicadas pelo hotel, novembro de 2026. Os delegados reservam e pagam diretamente ao hotel. Os valores em USD são aproximados, à taxa de K 20,58 = 1 USD (taxa do Banco da Zâmbia, 20 de novembro de 2026); o hotel cobra em kwacha.",
+                        photo: "/assets/images/stay/lusaka-legacy-resort.jpg"
                     },
-                    { name: "M'kango Golfview Hotel", km: 8.4, category: "premium", price: "~69 USD/noite (individual)", phone: "+260 97 9727715", websiteUrl: "https://golfview-hotels.com/", badge: "" },
-                    { name: "Chamba Valley Exotic Hotel", km: 8.7, category: "premium", price: "~70 USD/noite", phone: "+260 97 8749943", websiteUrl: "https://mikahotels.com/chamba-valley-exotic-hotel/", badge: "" },
-                    { name: "Kwithu Lodge", km: null, category: "", price: "", phone: "", websiteUrl: "", badge: "" },
-                    { name: "Mika Lodge Jesmondine", km: null, category: "", price: "", phone: "", websiteUrl: "", badge: "" },
-                    { name: "Palm Kalash Resort", km: null, category: "", price: "", phone: "", websiteUrl: "https://palmkalash.com/", badge: "" }
+                    {
+                        name: "M'kango Golfview Hotel", km: 10.3, category: "premium", price: "~69 USD/noite (individual)",
+                        phone: "+260 97 9727715", websiteUrl: "https://golfview-hotels.com/", badge: "",
+                        travel: "Cerca de 20 minutos de carro, consoante o trânsito",
+                        photo: "/assets/images/stay/mkango-golfview-hotel.jpg"
+                    },
+                    {
+                        name: "Chamba Valley Exotic Hotel", km: 10.8, category: "premium", price: "~70 USD/noite",
+                        phone: "+260 97 8749943", websiteUrl: "https://mikahotels.com/chamba-valley-exotic-hotel/", badge: "",
+                        photo: "/assets/images/stay/chamba-valley-exotic-hotel.jpg", photoSource: "Mika Hotels"
+                    },
+                    {
+                        name: "Kwithu Lodge", km: 4.9, category: "", price: "", phone: "", websiteUrl: "https://www.kwithulodgezambia.com/", badge: "",
+                        travel: "Cerca de 10 minutos de carro pela Great East Rd/T4 (a cerca de 8 km do aeroporto KKIA)",
+                        photo: "/assets/images/stay/kwithu-lodge.jpg"
+                    },
+                    {
+                        name: "Mika Lodge Jesmondine", km: 10, category: "budget", price: "~35 USD individual / 55 USD duplo", phone: "",
+                        websiteUrl: "https://mikalodge.com/welcome-to-mika-lodge-jesmondine/accommodations-2/", badge: "",
+                        travel: "Cerca de 16 a 25 minutos de carro, consoante o trânsito"
+                    },
+                    {
+                        name: "Palm Kalash Resort", km: 4.2, category: "", price: "", phone: "", websiteUrl: "https://palmkalash.com/places/", badge: "",
+                        travel: "Cerca de 8 minutos de carro pela Palm Drive e pela Great East Rd/T4",
+                        photo: "/assets/images/stay/palm-kalash-resort.jpg"
+                    }
                 ]
             };
 
@@ -1683,7 +1856,10 @@
                     budget: "Económico",
                     midrange: "Gama média",
                     premium: "Premium",
-                    apartment: "Apartamento"
+                    apartment: "Apartamento",
+                    photoBy: "Foto:",
+                    officialSite: "site oficial",
+                    noPhoto: "Ver fotografias no Google Maps"
                 };
                 var CATEGORY = { "budget": T.budget, "mid-range": T.midrange, "premium": T.premium, "apartment": T.apartment };
                 function el(tag, cls, text) {
@@ -1723,11 +1899,42 @@
                 function mapsSearch(name) {
                     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(name + " Lusaka").replace(/%20/g, "+");
                 }
+                // Exterior photo (opens in the site lightbox), or a tile linking to the place's photos on Google Maps
+                function photoFor(item, mapUrl) {
+                    if (item.photo) {
+                        var credit = T.photoBy + " " + (item.photoSource || item.name) + " (" + T.officialSite + ")";
+                        var a = el("a", "aoc-photo img-popup");
+                        a.href = item.photo;
+                        a.title = item.name + " · " + credit;
+                        var img = el("img");
+                        img.src = item.photo;
+                        img.alt = item.name + " – exterior";
+                        img.width = 800;
+                        img.height = 600;
+                        img.loading = "lazy";
+                        img.decoding = "async";
+                        a.appendChild(img);
+                        a.appendChild(el("span", "aoc-photo__credit", credit));
+                        return a;
+                    }
+                    var none = el("a", "aoc-photo aoc-photo--none");
+                    none.href = mapUrl;
+                    none.target = "_blank";
+                    none.rel = "noopener noreferrer";
+                    none.appendChild(icon("fas fa-images"));
+                    none.appendChild(el("span", "", T.noPhoto));
+                    return none;
+                }
 
                 // Venue card
                 (function (v) {
                     var box = el("div", "aoc-stay-venue");
-                    var info = el("div");
+                    if (v.photo) {
+                        var media = photoFor(v, v.mapUrl);
+                        media.className += " aoc-stay-venue__photo";
+                        box.appendChild(media);
+                    }
+                    var info = el("div", "aoc-stay-venue__info");
                     var tag = el("span", "aoc-stay-venue__tag");
                     tag.appendChild(icon("fas fa-star"));
                     tag.appendChild(document.createTextNode(v.tag));
@@ -1775,11 +1982,13 @@
                     r.setAttribute("role", "row");
                     var dist = el("div", "aoc-hotel__dist");
                     dist.setAttribute("role", "cell");
+                    var mapUrl = h.mapUrl || mapsSearch(h.name);
+                    dist.appendChild(photoFor(h, mapUrl));
                     if (typeof h.km === "number") {
-                        dist.appendChild(el("span", "aoc-hotel__km", String(h.km)));
-                        dist.appendChild(el("span", "aoc-hotel__unit", "km"));
-                    } else {
-                        r.className += " aoc-hotel--nodist";
+                        var d = el("span", "aoc-hotel__distance");
+                        d.appendChild(el("span", "aoc-hotel__km", h.kmLabel || String(h.km)));
+                        d.appendChild(el("span", "aoc-hotel__unit", "km"));
+                        dist.appendChild(d);
                     }
                     r.appendChild(dist);
 
@@ -1839,7 +2048,7 @@
                     }
                     var actions = el("div", "aoc-hotel__actions");
                     if (h.websiteUrl) actions.appendChild(btn(h.websiteUrl, "", "fas fa-globe", T.site));
-                    actions.appendChild(btn(h.mapUrl || mapsSearch(h.name), "aoc-stay-btn--outline", "fas fa-map-marker-alt", T.map));
+                    actions.appendChild(btn(mapUrl, "aoc-stay-btn--outline", "fas fa-map-marker-alt", T.map));
                     contact.appendChild(actions);
                     r.appendChild(contact);
                     return r;
