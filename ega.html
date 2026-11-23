@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>AfrONet 2026 EGA — Official Ballot</title>
+    <link rel="canonical" href="https://afronet.bio/ega" />
+    <!-- i18n:alternates --><!-- /i18n:alternates -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #1a9120;
+            --green-dark: #07370a;
+            --green-soft: #eef6ed;
+            --gold: #f4c430;
+            --text: #3f4a3f;
+            --muted: #626f62;
+            --line: #dfe7de;
+            --bg: #f6f7f2;
+            --white: #fff;
+            --red: #b42318;
+            --red-soft: #fdecea;
+            --amber: #8a5a00;
+            --amber-soft: #fff6dc;
+            --radius: 14px;
+            --heading: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--body);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        a { color: var(--green); }
+        h1, h2, h3, legend { font-family: var(--heading); color: var(--green-dark); }
+        :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+        [hidden] { display: none !important; }
+        .wrap { width: 100%; max-width: 820px; margin: 0 auto; padding: 0 16px; }
+
+        /* Header */
+        .ega-top { background: var(--white); border-bottom: 4px solid var(--gold); }
+        .ega-top__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; }
+        .ega-top__logo img { display: block; height: 44px; width: auto; }
+        .ega-lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--bg); }
+        .ega-lang button {
+            min-width: 48px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 999px;
+            background: transparent; color: var(--green-dark); font: 700 14px var(--body); cursor: pointer;
+        }
+        .ega-lang button[aria-pressed="true"] { background: var(--green); color: #fff; }
+        .ega-hero { background: var(--green-dark); color: #fff; padding: 26px 0 28px; }
+        .ega-hero__eyebrow { margin: 0 0 6px; color: var(--gold); font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .ega-hero h1 { margin: 0; color: #fff; font-size: clamp(22px, 5vw, 30px); line-height: 1.25; }
+        .ega-hero__sub { margin: 6px 0 0; color: rgba(255, 255, 255, 0.82); font-size: clamp(16px, 3.6vw, 19px); font-weight: 500; }
+
+        main { padding: 22px 0 40px; }
+
+        /* Status banner */
+        .ega-status {
+            margin-bottom: 20px; padding: 18px 20px; border-radius: var(--radius);
+            border: 1px solid var(--line); border-left: 6px solid var(--green); background: var(--white);
+        }
+        .ega-status--not-open { border-left-color: var(--gold); }
+        .ega-status--closed, .ega-status--error { border-left-color: var(--red); }
+        .ega-status__title { margin: 0 0 4px; font-family: var(--heading); font-size: 19px; font-weight: 800; color: var(--green-dark); }
+        .ega-status__line { margin: 0; color: var(--text); }
+        .ega-status__line strong { color: var(--green-dark); }
+        .ega-count { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; max-width: 340px; margin-top: 12px; }
+        .ega-count__box { min-width: 0; padding: 8px 4px; border-radius: 10px; background: var(--green-soft); text-align: center; }
+        .ega-count__num { display: block; font-family: var(--heading); font-size: 22px; font-weight: 800; line-height: 1.1; color: var(--green-dark); font-variant-numeric: tabular-nums; }
+        .ega-count__label { display: block; font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .ega-count__caption { grid-column: 1 / -1; margin: 0 0 -2px; font-size: 13px; font-weight: 600; color: var(--muted); }
+
+        /* Steps */
+        .ega-steps { display: flex; gap: 6px; margin: 0 0 18px; padding: 0; list-style: none; counter-reset: s; }
+        .ega-steps li {
+            flex: 1 1 0; padding: 8px 6px; border-radius: 10px; background: #e7ece6; color: var(--muted);
+            font-size: 12.5px; font-weight: 600; text-align: center; line-height: 1.3;
+        }
+        .ega-steps li.is-current { background: var(--green); color: #fff; }
+        .ega-steps li.is-done { background: var(--green-soft); color: var(--green-dark); }
+
+        /* Cards */
+        .ega-card { margin-bottom: 18px; padding: 22px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+        .ega-card h2 { margin: 0 0 4px; font-size: 21px; }
+        .ega-card__intro { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+        .ega-field { margin-bottom: 14px; }
+        .ega-field label, .ega-label { display: block; margin-bottom: 5px; color: var(--green-dark); font-weight: 600; font-size: 15px; }
+        .ega-field .req { color: var(--red); }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%; min-height: 48px; padding: 10px 12px; border: 1.5px solid #c9d4c8; border-radius: 10px;
+            background: #fff; color: var(--text); font: 16px var(--body);
+        }
+        textarea { min-height: 110px; resize: vertical; }
+        input:focus, select:focus, textarea:focus { border-color: var(--green); outline: none; box-shadow: 0 0 0 3px rgba(26, 145, 32, 0.2); }
+        .is-invalid { border-color: var(--red) !important; box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.15) !important; }
+        .ega-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+        .ega-code { display: flex; gap: 10px; }
+        .ega-code input { flex: 1 1 auto; font-family: ui-monospace, Consolas, monospace; font-size: 18px; letter-spacing: 1px; text-transform: uppercase; }
+        .ega-verified {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 12px; padding: 12px 14px;
+            border-radius: 10px; background: var(--green-soft); color: var(--green-dark);
+        }
+        .ega-verified strong { font-family: var(--heading); font-size: 17px; }
+        .ega-linkbtn { padding: 6px 2px; border: 0; background: none; color: var(--green); font: 600 14px var(--body); text-decoration: underline; cursor: pointer; }
+        .ega-check {
+            display: flex; gap: 12px; align-items: flex-start; padding: 14px; border: 1.5px solid #c9d4c8; border-radius: 10px;
+            background: #fbfcfa; cursor: pointer; font-size: 15px;
+        }
+        .ega-check input { flex: 0 0 auto; width: 24px; height: 24px; margin-top: 2px; accent-color: var(--green); }
+
+        /* Buttons */
+        .ega-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px;
+            border: 2px solid var(--green); border-radius: 10px; background: var(--green); color: #fff;
+            font: 700 16px var(--body); text-decoration: none; cursor: pointer;
+        }
+        .ega-btn:hover { background: #157a1a; border-color: #157a1a; }
+        .ega-btn--outline { background: #fff; color: var(--green); }
+        .ega-btn--outline:hover { background: var(--green-soft); color: var(--green-dark); }
+        .ega-btn--block { width: 100%; }
+        .ega-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+        .ega-spinner { width: 18px; height: 18px; border: 3px solid rgba(255, 255, 255, 0.45); border-top-color: #fff; border-radius: 50%; animation: ega-spin 0.8s linear infinite; }
+        @keyframes ega-spin { to { transform: rotate(360deg); } }
+
+        /* Messages */
+        .ega-msg { margin: 12px 0 0; padding: 12px 14px; border-radius: 10px; font-size: 15px; }
+        .ega-msg:empty { display: none; }
+        .ega-msg--error { background: var(--red-soft); color: var(--red); }
+        .ega-msg--warn { background: var(--amber-soft); color: var(--amber); }
+        .ega-errors { margin: 0 0 16px; padding: 14px 16px; border: 1px solid #f3c1bc; border-radius: 10px; background: var(--red-soft); color: var(--red); }
+        .ega-errors p { margin: 0 0 6px; font-weight: 700; }
+        .ega-errors ul { margin: 0; padding-left: 20px; }
+        .ega-errors a { color: var(--red); }
+
+        /* Amendments */
+        .ega-amend { min-width: 0; margin: 0 0 14px; padding: 18px 16px; border: 1.5px solid var(--line); border-radius: var(--radius); background: #fff; scroll-margin-top: 16px; }
+        .ega-amend.is-answered { border-color: rgba(26, 145, 32, 0.45); }
+        .ega-amend.is-invalid { border-color: var(--red); background: #fffafa; }
+        .ega-amend legend { float: left; width: 100%; padding: 0; margin: 0 0 6px; font-size: 17.5px; font-weight: 800; line-height: 1.35; }
+        .ega-amend legend + * { clear: both; }
+        .ega-amend__id { display: inline-block; margin-right: 6px; padding: 1px 9px; border-radius: 999px; background: var(--green-dark); color: #fff; font-size: 13px; vertical-align: 2px; }
+        .ega-amend__summary { margin: 0 0 10px; color: var(--muted); font-size: 14.5px; }
+        .ega-amend__q { margin: 0 0 12px; color: var(--green-dark); font-weight: 600; font-size: 15px; }
+        .ega-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .ega-opt {
+            position: relative; display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 12px;
+            border: 2px solid #c9d4c8; border-radius: 10px; background: #fff; cursor: pointer; font-weight: 700; font-size: 15px; line-height: 1.25;
+        }
+        .ega-opt input { flex: 0 0 auto; width: 22px; height: 22px; margin: 0; accent-color: var(--green-dark); }
+        .ega-opt:hover { border-color: #9fb59d; }
+        .ega-opt--yes.is-checked { border-color: var(--green); background: #e9f6e8; color: #0f5e13; }
+        .ega-opt--no.is-checked { border-color: var(--red); background: var(--red-soft); color: var(--red); }
+        .ega-opt--abstain.is-checked { border-color: #6b7280; background: #f1f2f4; color: #374151; }
+        .ega-opt:focus-within { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+        /* Progress (sticky at the bottom while voting) */
+        .ega-progress {
+            position: sticky; bottom: 0; z-index: 5; display: flex; align-items: center; gap: 12px; margin: 0 -4px 14px; padding: 10px 14px;
+            border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.96); box-shadow: 0 -4px 16px rgba(7, 55, 10, 0.08);
+        }
+        .ega-progress__text { flex: 0 0 auto; font-weight: 700; color: var(--green-dark); font-size: 14.5px; }
+        .ega-progress__bar { flex: 1 1 auto; height: 10px; border-radius: 999px; background: #e3e9e2; overflow: hidden; }
+        .ega-progress__fill { height: 100%; width: 0; background: var(--green); transition: width 0.25s ease; }
+        .ega-counter { margin-top: 4px; color: var(--muted); font-size: 13px; text-align: right; }
+
+        /* Review */
+        .ega-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        .ega-table th, .ega-table td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+        .ega-table th { color: var(--muted); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ega-table td:first-child { white-space: nowrap; font-weight: 700; color: var(--green-dark); }
+        .ega-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+        .ega-badge--YES { background: #e9f6e8; color: #0f5e13; }
+        .ega-badge--NO { background: var(--red-soft); color: var(--red); }
+        .ega-badge--ABSTAIN { background: #f1f2f4; color: #374151; }
+        .ega-dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0 0 16px; font-size: 15px; }
+        .ega-dl dt { color: var(--muted); }
+        .ega-dl dd { margin: 0; color: var(--green-dark); font-weight: 600; word-break: break-word; }
+        .ega-warning { margin: 16px 0; padding: 12px 14px; border-radius: 10px; background: var(--amber-soft); color: var(--amber); font-weight: 700; }
+        .ega-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        /* Confirmation */
+        .ega-done { text-align: center; }
+        .ega-done__icon { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; margin-bottom: 8px; border-radius: 50%; background: var(--green); color: #fff; font-size: 34px; font-weight: 800; }
+        .ega-receipt { display: inline-block; margin: 10px 0 4px; padding: 10px 18px; border: 2px dashed var(--green); border-radius: 12px; font-family: ui-monospace, Consolas, monospace; font-size: 22px; font-weight: 700; color: var(--green-dark); letter-spacing: 1px; }
+        .ega-done__text { max-width: 620px; margin: 14px auto 0; text-align: left; }
+        .ega-done .ega-table { margin-top: 18px; text-align: left; }
+
+        footer { padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; text-align: center; }
+        footer p { margin: 2px 0; }
+
+        @media (max-width: 600px) {
+            .ega-row { grid-template-columns: 1fr; }
+            .ega-opts { grid-template-columns: 1fr; }
+            .ega-code { flex-direction: column; }
+            .ega-steps li { font-size: 11.5px; padding: 7px 4px; }
+            .ega-card { padding: 18px 14px; }
+            .ega-table { font-size: 14px; }
+            .ega-actions .ega-btn { width: 100%; }
+            .ega-dl { grid-template-columns: 1fr; gap: 0; }
+            .ega-dl dd { margin-bottom: 8px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+        }
+        @media print {
+            body { background: #fff; }
+            .ega-top, .ega-hero, .ega-status, .ega-steps, footer, .no-print, #s-code, #s-form, #s-review { display: none !important; }
+            .ega-card { border: 0; padding: 0; }
+            main { padding: 0; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="ega-top">
+        <div class="wrap ega-top__bar">
+            <a class="ega-top__logo" href="/" aria-label="AfrONet"><img src="/assets/images/logo-dark.png" alt="AfrONet — African Organic Network" width="155" height="44"></a>
+            <div class="ega-lang" role="group" aria-label="Language / Langue">
+                <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
+                <button type="button" data-lang="fr" aria-pressed="false" lang="fr">FR</button>
+            </div>
+        </div>
+    </header>
+    <div class="ega-hero">
+        <div class="wrap">
+            <p class="ega-hero__eyebrow" data-t="eyebrow"></p>
+            <h1 data-t="title"></h1>
+            <p class="ega-hero__sub" data-t="subtitle"></p>
+        </div>
+    </div>
+
+    <main class="wrap" id="main">
+        <div class="ega-status" id="status" role="status" aria-live="polite">
+            <p class="ega-status__title" data-t="loading"></p>
+        </div>
+
+        <ol class="ega-steps" id="steps" hidden>
+            <li data-step="1"><span data-t="step1"></span></li>
+            <li data-step="2"><span data-t="step2"></span></li>
+            <li data-step="3"><span data-t="step3"></span></li>
+            <li data-step="4"><span data-t="step4"></span></li>
+        </ol>
+
+        <!-- Step 1: voter code -->
+        <section class="ega-card" id="s-code" hidden aria-labelledby="h-code">
+            <h2 id="h-code" data-t="codeTitle"></h2>
+            <p class="ega-card__intro" data-t="codeIntro"></p>
+            <form id="code-form" novalidate>
+                <label class="ega-label" for="code" data-t="codeLabel"></label>
+                <div class="ega-code">
+                    <input type="text" id="code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text" placeholder="EGA-XXXX-XXXX" aria-describedby="code-msg" required>
+                    <button type="submit" class="ega-btn" id="verify-btn"><span data-t="verify"></span></button>
+                </div>
+                <div class="ega-msg ega-msg--error" id="code-msg" role="alert"></div>
+            </form>
+            <div class="ega-verified" id="verified" hidden>
+                <span><span data-t="votingFor"></span> <strong id="verified-org"></strong></span>
+                <button type="button" class="ega-linkbtn" id="change-code" data-t="changeCode"></button>
+            </div>
+        </section>
+
+        <!-- Steps 2 and 3 -->
+        <form id="s-form" novalidate hidden>
+            <div class="ega-errors" id="form-errors" tabindex="-1" hidden></div>
+
+            <section class="ega-card" aria-labelledby="h-auth">
+                <h2 id="h-auth" data-t="authTitle"></h2>
+                <p class="ega-card__intro" data-t="authIntro"></p>
+                <div class="ega-field">
+                    <label for="organisation"><span data-t="organisation"></span> <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="organisation" name="organisation" autocomplete="organization" required>
+                </div>
+                <div class="ega-row">
+                    <div class="ega-field">
+                        <label for="country"><span data-t="country"></span> <span class="req" aria-hidden="true">*</span></label>
+                        <input type="text" id="country" name="country" autocomplete="country-name" required>
+                    </div>
+                    <div class="ega-field">
+                        <label for="region"><span data-t="region"></span> <span class="req" aria-hidden="true">*</span></label>
+                        <select id="region" name="region" required></select>
+                    </div>
+                </div>
+                <div class="ega-field">
+                    <label for="representative"><span data-t="representative"></span> <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="representative" name="representative" autocomplete="name" required>
+                </div>
+                <div class="ega-field">
+                    <label for="email"><span data-t="email"></span> <span class="req" aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
+                </div>
+                <label class="ega-check" id="declaration-wrap" for="declaration">
+                    <input type="checkbox" id="declaration" name="declaration" required>
+                    <span data-t="declaration"></span>
+                </label>
+            </section>
+
+            <section class="ega-card" aria-labelledby="h-ballot">
+                <h2 id="h-ballot" data-t="ballotTitle"></h2>
+                <p class="ega-card__intro" data-t="ballotIntro"></p>
+                <div id="amendments"></div>
+                <div class="ega-progress" aria-live="polite">
+                    <span class="ega-progress__text" id="progress-text"></span>
+                    <span class="ega-progress__bar" aria-hidden="true"><span class="ega-progress__fill" id="progress-fill"></span></span>
+                </div>
+                <div class="ega-field">
+                    <label for="comment" data-t="commentLabel"></label>
+                    <textarea id="comment" name="comment" maxlength="1000"></textarea>
+                    <div class="ega-counter"><span id="comment-count">0</span> / 1000</div>
+                </div>
+                <button type="submit" class="ega-btn ega-btn--block"><span data-t="reviewBtn"></span></button>
+            </section>
+        </form>
+
+        <!-- Step 4: review -->
+        <section class="ega-card" id="s-review" hidden aria-labelledby="h-review" tabindex="-1">
+            <h2 id="h-review" data-t="reviewTitle"></h2>
+            <p class="ega-card__intro" data-t="reviewIntro"></p>
+            <dl class="ega-dl" id="review-who"></dl>
+            <div style="overflow-x:auto;">
+                <table class="ega-table">
+                    <thead><tr><th data-t="thAmendment"></th><th data-t="thTitle"></th><th data-t="thVote"></th><th><span class="sr-only" data-t="thEdit"></span></th></tr></thead>
+                    <tbody id="review-rows"></tbody>
+                </table>
+            </div>
+            <div id="review-comment"></div>
+            <p class="ega-warning" data-t="finalWarning"></p>
+            <div class="ega-msg" id="submit-msg" role="alert"></div>
+            <div class="ega-actions">
+                <button type="button" class="ega-btn" id="submit-btn"><span data-t="submitBtn"></span></button>
+                <button type="button" class="ega-btn ega-btn--outline" id="back-btn"><span data-t="backBtn"></span></button>
+            </div>
+        </section>
+
+        <!-- Confirmation -->
+        <section class="ega-card ega-done" id="s-done" hidden aria-labelledby="h-done" tabindex="-1">
+            <div class="ega-done__icon" aria-hidden="true">&#10003;</div>
+            <h2 id="h-done" data-t="doneTitle"></h2>
+            <p style="margin:0;"><span data-t="receiptLabel"></span></p>
+            <div class="ega-receipt" id="done-receipt"></div>
+            <dl class="ega-dl" id="done-who" style="max-width:520px; margin:14px auto 0; text-align:left;"></dl>
+            <p class="ega-done__text" data-t="doneText"></p>
+            <table class="ega-table">
+                <thead><tr><th data-t="thAmendment"></th><th data-t="thTitle"></th><th data-t="thVote"></th></tr></thead>
+                <tbody id="done-rows"></tbody>
+            </table>
+            <div class="ega-actions no-print" style="justify-content:center;">
+                <button type="button" class="ega-btn" id="print-btn"><span data-t="printBtn"></span></button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <p>&copy; 2026 African Organic Network (AfrONet)</p>
+            <p><span data-t="help"></span> <a href="mailto:info@afronet.bio">info@afronet.bio</a></p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            "use strict";
+            var API = "https://script.google.com/macros/s/AKfycbzZD0S5BOSL-yS4l0TQHWWRFKVMi0QukgLcXvF2fGKBWP3UETXvw1AxZqp4JDD3Ly21sA/exec";
+            var CHOICES = ["YES", "NO", "ABSTAIN"];
+
+            var S = {
+                en: {
+                    docTitle: "AfrONet 2026 EGA — Official Ballot",
+                    eyebrow: "Members only · Official ballot",
+                    title: "AfrONet 2026 Extraordinary General Assembly",
+                    subtitle: "Official Constitutional Amendment Ballot",
+                    loading: "Loading the ballot…",
+                    step1: "1. Voter code", step2: "2. Your details", step3: "3. Vote", step4: "4. Review",
+                    statusOpen: "Voting is open",
+                    statusNotOpen: "Voting has not opened yet",
+                    statusClosed: "Voting has closed",
+                    opensLine: "Opens", closesLine: "Closes",
+                    countOpens: "Voting opens in", countCloses: "Time remaining",
+                    closedText: "The ballot closed on Thursday, 26 November 2026 at 5:00 PM EAT. Independent Scrutineers will present the verified results at the Zoom EGA on Friday, 27 November 2026.",
+                    notOpenText: "This page will open the ballot automatically at the time shown. You will need your organisation's voter code.",
+                    loadError: "The ballot could not be loaded. Check your internet connection and try again.",
+                    retry: "Retry",
+                    d: "Days", h: "Hours", m: "Minutes", s: "Seconds",
+                    codeTitle: "Enter your voter code",
+                    codeIntro: "Use the voter code sent to your organisation by the EGA Secretariat. Each code can submit one ballot only.",
+                    codeLabel: "Voter code",
+                    verify: "Verify",
+                    verifying: "Checking…",
+                    votingFor: "Voting for:",
+                    changeCode: "Use a different code",
+                    authTitle: "Your organisation and representative",
+                    authIntro: "Check the details below. All fields are required.",
+                    organisation: "Organisation name",
+                    country: "Country",
+                    region: "Region",
+                    regionPick: "Select your region",
+                    representative: "Representative's full name and title",
+                    email: "Representative's email",
+                    declaration: "I confirm that I am the duly authorized representative of an eligible Full or Founding Member of AfrONet submitting one official ballot on behalf of my organization.",
+                    ballotTitle: "Constitutional amendments",
+                    ballotIntro: "Answer every amendment. Choose YES, NO or ABSTAIN for each.",
+                    amendment: "Amendment",
+                    question: "Do you approve Amendment {id} as presented in the Comparative Table and the finalized 2024/2026 Redline v2 Constitution?",
+                    YES: "YES — Accept", NO: "NO — Reject", ABSTAIN: "ABSTAIN",
+                    progress: "{n} of {t} answered",
+                    commentLabel: "If you voted NO on any amendment, you may briefly note the Amendment Number and your concern for the EGA record. (Optional)",
+                    reviewBtn: "Review my ballot",
+                    errorsTitle: "Please complete the following before continuing:",
+                    errRequired: "{field} is required.",
+                    errEmail: "Enter a valid email address.",
+                    errDeclaration: "Tick the declaration to confirm you are the authorised representative.",
+                    errVote: "Choose an answer for Amendment {id}.",
+                    reviewTitle: "Review your ballot",
+                    reviewIntro: "Check every answer. Use Edit to change one before you submit.",
+                    thAmendment: "Amendment", thTitle: "Title", thVote: "Your vote", thEdit: "Edit",
+                    edit: "Edit",
+                    yourComment: "Your comment",
+                    finalWarning: "Your ballot cannot be changed after submission.",
+                    submitBtn: "Submit official ballot",
+                    submitting: "Submitting…",
+                    backBtn: "Back to the ballot",
+                    doneTitle: "Ballot recorded",
+                    receiptLabel: "Your receipt number:",
+                    recordedAt: "Recorded at",
+                    doneText: "Thank you. Your organization's official ballot for the 2026 AfrONet EGA has been recorded. Independent Scrutineers will audit all ballots after the strict closing deadline on Thursday, 26 November 2026 at 5:00 PM EAT, and present the verified results at the Zoom EGA on Friday, 27 November 2026.",
+                    printBtn: "Print / Save as PDF",
+                    help: "Questions about the ballot? Contact the EGA Secretariat:",
+                    leaveWarning: "Your ballot has not been submitted yet.",
+                    err: {
+                        INVALID_CODE: "This voter code was not recognised. Check it and try again, or contact the EGA Secretariat at info@afronet.bio.",
+                        ALREADY_VOTED: "A ballot has already been recorded for this voter code. Each organisation can vote only once.",
+                        BALLOT_NOT_OPEN: "Voting has not opened yet. Please come back when the ballot opens.",
+                        BALLOT_CLOSED: "Voting has closed. Ballots can no longer be submitted.",
+                        INCOMPLETE: "Some required answers are missing. Please complete the highlighted items.",
+                        BUSY_TRY_AGAIN: "The ballot server is busy. Your answers are kept. Please press Retry in a few seconds.",
+                        BAD_REQUEST: "The server could not read your ballot. Please press Retry. If it keeps failing, contact the EGA Secretariat at info@afronet.bio.",
+                        SERVER_ERROR: "The ballot server had a problem. Your answers are kept. Please press Retry.",
+                        NETWORK: "Could not reach the ballot server. Check your internet connection. Your answers are kept.",
+                        EMPTY_CODE: "Enter your voter code."
+                    }
+                },
+                fr: {
+                    docTitle: "AGE d'AfrONet 2026 — Bulletin de vote officiel",
+                    eyebrow: "Réservé aux membres · Bulletin officiel",
+                    title: "Assemblée Générale Extraordinaire d'AfrONet 2026",
+                    subtitle: "Bulletin de Vote Officiel",
+                    loading: "Chargement du bulletin…",
+                    step1: "1. Code de vote", step2: "2. Vos informations", step3: "3. Vote", step4: "4. Vérification",
+                    statusOpen: "Le vote est ouvert",
+                    statusNotOpen: "Le vote n'est pas encore ouvert",
+                    statusClosed: "Le vote est clos",
+                    opensLine: "Ouverture", closesLine: "Clôture",
+                    countOpens: "Ouverture du vote dans", countCloses: "Temps restant",
+                    closedText: "Le scrutin a été clos le jeudi 26 novembre 2026 à 17 h 00 EAT. Les scrutateurs indépendants présenteront les résultats vérifiés lors de l'AGE sur Zoom le vendredi 27 novembre 2026.",
+                    notOpenText: "Cette page ouvrira automatiquement le bulletin à l'heure indiquée. Vous aurez besoin du code de vote de votre organisation.",
+                    loadError: "Le bulletin n'a pas pu être chargé. Vérifiez votre connexion Internet et réessayez.",
+                    retry: "Réessayer",
+                    d: "Jours", h: "Heures", m: "Minutes", s: "Secondes",
+                    codeTitle: "Saisissez votre code de vote",
+                    codeIntro: "Utilisez le code de vote envoyé à votre organisation par le Secrétariat de l'AGE. Chaque code ne permet de soumettre qu'un seul bulletin.",
+                    codeLabel: "Code de vote",
+                    verify: "Vérifier",
+                    verifying: "Vérification…",
+                    votingFor: "Vote au nom de :",
+                    changeCode: "Utiliser un autre code",
+                    authTitle: "Votre organisation et votre représentant",
+                    authIntro: "Vérifiez les informations ci-dessous. Tous les champs sont obligatoires.",
+                    organisation: "Nom de l'organisation",
+                    country: "Pays",
+                    region: "Région",
+                    regionPick: "Sélectionnez votre région",
+                    representative: "Nom complet et fonction du représentant",
+                    email: "Adresse e-mail du représentant",
+                    declaration: "Je confirme être le représentant dûment autorisé d'un Membre Effectif ou Fondateur éligible d'AfrONet soumettant un seul bulletin officiel au nom de mon organisation.",
+                    ballotTitle: "Amendements constitutionnels",
+                    ballotIntro: "Répondez à chaque amendement en choisissant OUI, NON ou ABSTENTION.",
+                    amendment: "Amendement",
+                    question: "Approuvez-vous l'Amendement {id} tel que présenté dans le Tableau comparatif et la Constitution révisée 2024/2026 (Redline v2) ?",
+                    YES: "OUI — Accepter", NO: "NON — Rejeter", ABSTAIN: "ABSTENTION",
+                    progress: "{n} sur {t} répondus",
+                    commentLabel: "Si vous avez voté NON à un amendement, vous pouvez indiquer brièvement le numéro de l'amendement et votre préoccupation pour le procès-verbal de l'AGE. (Facultatif)",
+                    reviewBtn: "Vérifier mon bulletin",
+                    errorsTitle: "Veuillez compléter les éléments suivants avant de continuer :",
+                    errRequired: "Le champ « {field} » est obligatoire.",
+                    errEmail: "Saisissez une adresse e-mail valide.",
+                    errDeclaration: "Cochez la déclaration pour confirmer que vous êtes le représentant autorisé.",
+                    errVote: "Choisissez une réponse pour l'Amendement {id}.",
+                    reviewTitle: "Vérifiez votre bulletin",
+                    reviewIntro: "Vérifiez chaque réponse. Utilisez « Modifier » pour en changer une avant de soumettre.",
+                    thAmendment: "Amendement", thTitle: "Titre", thVote: "Votre vote", thEdit: "Modifier",
+                    edit: "Modifier",
+                    yourComment: "Votre commentaire",
+                    finalWarning: "Votre bulletin ne pourra plus être modifié après sa soumission.",
+                    submitBtn: "Soumettre le bulletin officiel",
+                    submitting: "Envoi en cours…",
+                    backBtn: "Retour au bulletin",
+                    doneTitle: "Bulletin enregistré",
+                    receiptLabel: "Votre numéro de reçu :",
+                    recordedAt: "Enregistré le",
+                    doneText: "Merci. Le bulletin officiel de votre organisation pour l'AGE 2026 d'AfrONet a été enregistré. Des scrutateurs indépendants vérifieront tous les bulletins après la clôture stricte du scrutin le jeudi 26 novembre 2026 à 17 h 00 EAT, et présenteront les résultats vérifiés lors de l'AGE sur Zoom le vendredi 27 novembre 2026.",
+                    printBtn: "Imprimer / Enregistrer en PDF",
+                    help: "Des questions sur le scrutin ? Contactez le Secrétariat de l'AGE :",
+                    leaveWarning: "Votre bulletin n'a pas encore été soumis.",
+                    err: {
+                        INVALID_CODE: "Ce code de vote n'a pas été reconnu. Vérifiez-le et réessayez, ou contactez le Secrétariat de l'AGE à info@afronet.bio.",
+                        ALREADY_VOTED: "Un bulletin a déjà été enregistré pour ce code de vote. Chaque organisation ne peut voter qu'une seule fois.",
+                        BALLOT_NOT_OPEN: "Le vote n'est pas encore ouvert. Veuillez revenir à l'ouverture du scrutin.",
+                        BALLOT_CLOSED: "Le vote est clos. Les bulletins ne peuvent plus être soumis.",
+                        INCOMPLETE: "Certaines réponses obligatoires manquent. Veuillez compléter les éléments signalés.",
+                        BUSY_TRY_AGAIN: "Le serveur du scrutin est occupé. Vos réponses sont conservées. Appuyez sur « Réessayer » dans quelques secondes.",
+                        BAD_REQUEST: "Le serveur n'a pas pu lire votre bulletin. Appuyez sur « Réessayer ». Si le problème persiste, contactez le Secrétariat de l'AGE à info@afronet.bio.",
+                        SERVER_ERROR: "Le serveur du scrutin a rencontré un problème. Vos réponses sont conservées. Appuyez sur « Réessayer ».",
+                        NETWORK: "Impossible de joindre le serveur du scrutin. Vérifiez votre connexion Internet. Vos réponses sont conservées.",
+                        EMPTY_CODE: "Saisissez votre code de vote."
+                    }
+                }
+            };
+
+            var state = {
+                lang: "en", cfg: null, offset: 0, view: "loading",
+                code: "", verified: null, votes: {}, inflight: false, submitted: false, result: null, timer: null, refetched: false
+            };
+
+            function $(id) { return document.getElementById(id); }
+            function t(k, vars) {
+                var s = S[state.lang][k];
+                if (s === undefined) s = S.en[k];
+                if (vars) Object.keys(vars).forEach(function (v) { s = s.split("{" + v + "}").join(vars[v]); });
+                return s;
+            }
+            function errText(code) { return S[state.lang].err[code] || S[state.lang].err.SERVER_ERROR; }
+            function el(tag, cls, text) {
+                var n = document.createElement(tag);
+                if (cls) n.className = cls;
+                if (text != null) n.textContent = text;
+                return n;
+            }
+            function amendTitle(a) { return state.lang === "fr" ? (a.title_fr || a.title_en) : a.title_en; }
+            function amendSummary(a) { return state.lang === "fr" ? (a.summary_fr || a.summary_en) : a.summary_en; }
+
+            /* ---------- language ---------- */
+            try { var saved = localStorage.getItem("afronetEgaLang"); if (saved === "fr" || saved === "en") state.lang = saved; } catch (e) {}
+            function applyLang() {
+                document.documentElement.lang = state.lang;
+                document.title = t("docTitle");
+                Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function (n) { n.textContent = t(n.getAttribute("data-t")); });
+                Array.prototype.forEach.call(document.querySelectorAll(".ega-lang button"), function (b) {
+                    b.setAttribute("aria-pressed", b.getAttribute("data-lang") === state.lang ? "true" : "false");
+                });
+                fillRegions();
+                renderAmendments();
+                renderStatus();
+                if (state.view === "review") renderReview();
+                if (state.view === "done") renderDone();
+                if (!$("form-errors").hidden) validate(false);
+            }
+            Array.prototype.forEach.call(document.querySelectorAll(".ega-lang button"), function (b) {
+                b.addEventListener("click", function () {
+                    state.lang = b.getAttribute("data-lang");
+                    try { localStorage.setItem("afronetEgaLang", state.lang); } catch (e) {}
+                    applyLang();
+                });
+            });
+
+            /* ---------- time ---------- */
+            function now() { return Date.now() + state.offset; }
+            function fmtDate(iso) {
+                var loc = state.lang === "fr" ? "fr-FR" : "en-GB";
+                return new Intl.DateTimeFormat(loc, { timeZone: "Africa/Nairobi", weekday: "short", day: "numeric", month: "short", year: "numeric" }).format(new Date(iso)).replace(/^([^\s,]+),/, "$1");
+            }
+            function fmtTime(iso, tz) {
+                if (state.lang === "fr") return new Intl.DateTimeFormat("fr-FR", { timeZone: tz, hour: "2-digit", minute: "2-digit" }).format(new Date(iso)).replace(":", " h ").replace(/^0/, "");
+                return new Intl.DateTimeFormat("en-US", { timeZone: tz, hour: "numeric", minute: "2-digit", hour12: true }).format(new Date(iso));
+            }
+            function whenLine(iso) {
+                return fmtDate(iso) + ", " + fmtTime(iso, "Africa/Nairobi") + " EAT / " + fmtTime(iso, "Africa/Lagos") + " WAT / " + fmtTime(iso, "Africa/Lusaka") + " CAT";
+            }
+
+            /* ---------- status banner ---------- */
+            function currentStatus() {
+                var c = state.cfg;
+                if (!c) return null;
+                var n = now();
+                if (c.status === "CLOSED" || (c.closesAt && n >= Date.parse(c.closesAt))) return "CLOSED";
+                if (c.status === "NOT_OPEN" && n < Date.parse(c.opensAt)) return "NOT_OPEN";
+                if (c.status === "NOT_OPEN") return "NOT_OPEN_DUE";
+                return "OPEN";
+            }
+            function countdown(target, caption) {
+                var wrap = el("div", "ega-count");
+                wrap.appendChild(el("p", "ega-count__caption", caption));
+                var left = Math.max(0, Math.floor((Date.parse(target) - now()) / 1000));
+                [["d", Math.floor(left / 86400)], ["h", Math.floor(left % 86400 / 3600)], ["m", Math.floor(left % 3600 / 60)], ["s", left % 60]].forEach(function (u) {
+                    var box = el("div", "ega-count__box");
+                    box.appendChild(el("span", "ega-count__num", (u[0] === "d" ? "" : (u[1] < 10 ? "0" : "")) + u[1]));
+                    box.appendChild(el("span", "ega-count__label", t(u[0])));
+                    wrap.appendChild(box);
+                });
+                return wrap;
+            }
+            function line(label, iso) {
+                var p = el("p", "ega-status__line");
+                p.appendChild(el("strong", "", label + (state.lang === "fr" ? " : " : ": ")));
+                p.appendChild(document.createTextNode(whenLine(iso)));
+                return p;
+            }
+            function renderStatus() {
+                var box = $("status");
+                if (state.view === "loading") return;
+                if (state.view === "error") {
+                    box.className = "ega-status ega-status--error";
+                    box.innerHTML = "";
+                    box.appendChild(el("p", "ega-status__title", t("loadError")));
+                    var r = el("button", "ega-btn ega-btn--outline", t("retry"));
+                    r.type = "button";
+                    r.style.marginTop = "10px";
+                    r.addEventListener("click", loadConfig);
+                    box.appendChild(r);
+                    return;
+                }
+                var st = currentStatus(), c = state.cfg;
+                box.innerHTML = "";
+                if (st === "NOT_OPEN" || st === "NOT_OPEN_DUE") {
+                    box.className = "ega-status ega-status--not-open";
+                    box.appendChild(el("p", "ega-status__title", t("statusNotOpen")));
+                    box.appendChild(line(t("opensLine"), c.opensAt));
+                    box.appendChild(line(t("closesLine"), c.closesAt));
+                    box.appendChild(countdown(c.opensAt, t("countOpens")));
+                    box.appendChild(el("p", "ega-status__line", t("notOpenText"))).style.marginTop = "10px";
+                } else if (st === "CLOSED") {
+                    box.className = "ega-status ega-status--closed";
+                    box.appendChild(el("p", "ega-status__title", t("statusClosed")));
+                    box.appendChild(el("p", "ega-status__line", t("closedText")));
+                } else {
+                    box.className = "ega-status";
+                    box.appendChild(el("p", "ega-status__title", t("statusOpen")));
+                    box.appendChild(line(t("closesLine"), c.closesAt));
+                    box.appendChild(countdown(c.closesAt, t("countCloses")));
+                }
+            }
+            function applyStatusToViews() {
+                var st = currentStatus();
+                var open = st === "OPEN";
+                if (state.view === "done") return;
+                if (!open) {
+                    ["s-code", "s-form", "s-review", "steps"].forEach(function (id) { $(id).hidden = true; });
+                    state.view = "status";
+                    return;
+                }
+                if (state.view === "status" || state.view === "loading") {
+                    state.view = "code";
+                    $("steps").hidden = false;
+                    $("s-code").hidden = false;
+                    setStep(1);
+                }
+            }
+            function tick() {
+                var before = state.view;
+                renderStatus();
+                var st = currentStatus();
+                if (st === "NOT_OPEN_DUE" && !state.refetched) { state.refetched = true; loadConfig(); return; }
+                if (st === "OPEN" && before === "status") applyStatusToViews();
+                if (st === "CLOSED" && before !== "done" && before !== "status") applyStatusToViews();
+            }
+
+            /* ---------- network ---------- */
+            function request(url, opts) {
+                var ctrl = window.AbortController ? new AbortController() : null;
+                var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 30000);
+                opts = opts || {};
+                if (ctrl) opts.signal = ctrl.signal;
+                opts.cache = "no-store";
+                return fetch(url, opts).then(function (r) { return r.json(); }).then(function (j) {
+                    clearTimeout(to);
+                    return j;
+                }, function (e) {
+                    clearTimeout(to);
+                    throw e;
+                });
+            }
+            function loadConfig() {
+                state.view = state.view === "error" ? "loading" : state.view;
+                request(API + "?action=config").then(function (c) {
+                    if (!c || !c.ok) throw new Error("config");
+                    state.cfg = c;
+                    if (c.serverTime) state.offset = Date.parse(c.serverTime) - Date.now();
+                    if (state.view === "loading" || state.view === "error") state.view = "status";
+                    applyLang();
+                    applyStatusToViews();
+                    renderStatus();
+                    if (!state.timer) state.timer = setInterval(tick, 1000);
+                }).catch(function () {
+                    if (!state.cfg) { state.view = "error"; renderStatus(); }
+                });
+            }
+
+            /* ---------- steps ---------- */
+            function setStep(n) {
+                Array.prototype.forEach.call(document.querySelectorAll("#steps li"), function (li) {
+                    var s = +li.getAttribute("data-step");
+                    li.className = s === n ? "is-current" : (s < n ? "is-done" : "");
+                    if (s === n) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+                });
+            }
+
+            /* ---------- step 1: code ---------- */
+            var codeInput = $("code");
+            codeInput.addEventListener("input", function () {
+                var pos = codeInput.selectionStart;
+                var v = codeInput.value.toUpperCase().replace(/\s+/g, "");
+                if (v !== codeInput.value) { codeInput.value = v; try { codeInput.setSelectionRange(pos, pos); } catch (e) {} }
+                codeInput.classList.remove("is-invalid");
+                $("code-msg").textContent = "";
+            });
+            $("code-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                var code = codeInput.value.toUpperCase().replace(/\s+/g, "");
+                var msg = $("code-msg");
+                if (!code) { msg.textContent = errText("EMPTY_CODE"); codeInput.classList.add("is-invalid"); codeInput.focus(); return; }
+                var btn = $("verify-btn");
+                btn.disabled = true;
+                btn.firstChild.textContent = t("verifying");
+                msg.textContent = "";
+                request(API + "?action=verify&code=" + encodeURIComponent(code)).then(function (r) {
+                    if (r && r.ok) {
+                        state.code = code;
+                        state.verified = r;
+                        codeInput.readOnly = true;
+                        btn.hidden = true;
+                        $("verified-org").textContent = r.organisation || "";
+                        $("verified").hidden = false;
+                        if (r.organisation) $("organisation").value = r.organisation;
+                        if (r.country) $("country").value = r.country;
+                        if (r.region) $("region").value = r.region;
+                        $("s-form").hidden = false;
+                        state.view = "form";
+                        setStep(2);
+                        $("representative").focus();
+                    } else {
+                        var code2 = r && r.error;
+                        msg.textContent = errText(code2 || "SERVER_ERROR");
+                        codeInput.classList.add("is-invalid");
+                        if (code2 === "BALLOT_CLOSED" || code2 === "BALLOT_NOT_OPEN") loadConfig();
+                    }
+                }).catch(function () {
+                    msg.textContent = errText("NETWORK");
+                }).then(function () {
+                    btn.disabled = false;
+                    btn.firstChild.textContent = t("verify");
+                });
+            });
+            $("change-code").addEventListener("click", function () {
+                state.code = "";
+                state.verified = null;
+                codeInput.readOnly = false;
+                codeInput.value = "";
+                $("verify-btn").hidden = false;
+                $("verified").hidden = true;
+                $("s-form").hidden = true;
+                $("s-review").hidden = true;
+                state.view = "code";
+                setStep(1);
+                codeInput.focus();
+            });
+
+            /* ---------- step 2/3: form ---------- */
+            function fillRegions() {
+                var sel = $("region"), cur = sel.value;
+                sel.innerHTML = "";
+                var first = el("option", "", t("regionPick"));
+                first.value = "";
+                sel.appendChild(first);
+                ((state.cfg && state.cfg.regions) || []).forEach(function (r) {
+                    var o = el("option", "", r);
+                    o.value = r;
+                    sel.appendChild(o);
+                });
+                sel.value = cur;
+            }
+            function renderAmendments() {
+                var box = $("amendments");
+                var list = (state.cfg && state.cfg.amendments) || [];
+                box.innerHTML = "";
+                list.forEach(function (a) {
+                    var fs = el("fieldset", "ega-amend");
+                    fs.id = "amend-" + a.id;
+                    var lg = el("legend");
+                    lg.appendChild(el("span", "ega-amend__id", a.id));
+                    lg.appendChild(document.createTextNode(amendTitle(a)));
+                    fs.appendChild(lg);
+                    var sum = amendSummary(a);
+                    if (sum) fs.appendChild(el("p", "ega-amend__summary", sum));
+                    fs.appendChild(el("p", "ega-amend__q", t("question", { id: a.id })));
+                    var opts = el("div", "ega-opts");
+                    CHOICES.forEach(function (c) {
+                        var lab = el("label", "ega-opt ega-opt--" + c.toLowerCase());
+                        var inp = el("input");
+                        inp.type = "radio";
+                        inp.name = "vote-" + a.id;
+                        inp.value = c;
+                        inp.required = true;
+                        if (state.votes[a.id] === c) { inp.checked = true; lab.className += " is-checked"; }
+                        inp.addEventListener("change", function () {
+                            state.votes[a.id] = c;
+                            Array.prototype.forEach.call(opts.children, function (l) { l.classList.toggle("is-checked", l === lab); });
+                            fs.classList.add("is-answered");
+                            fs.classList.remove("is-invalid");
+                            updateProgress();
+                            if (!$("form-errors").hidden) validate(false);
+                        });
+                        lab.appendChild(inp);
+                        lab.appendChild(el("span", "", t(c)));
+                        opts.appendChild(lab);
+                    });
+                    if (state.votes[a.id]) fs.classList.add("is-answered");
+                    fs.appendChild(opts);
+                    box.appendChild(fs);
+                });
+                updateProgress();
+            }
+            function updateProgress() {
+                var total = ((state.cfg && state.cfg.amendments) || []).length;
+                var n = Object.keys(state.votes).length;
+                $("progress-text").textContent = t("progress", { n: n, t: total });
+                $("progress-fill").style.width = total ? (n / total * 100) + "%" : "0";
+                if (state.view === "form") setStep(n ? 3 : 2);
+            }
+            $("comment").addEventListener("input", function () { $("comment-count").textContent = this.value.length; });
+
+            var FIELDS = ["organisation", "country", "region", "representative", "email"];
+            function fieldLabel(f) { return t(f); }
+            function validate(focus) {
+                var problems = [];
+                FIELDS.forEach(function (f) {
+                    var inp = $(f), v = inp.value.trim();
+                    var bad = !v;
+                    if (f === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { bad = true; problems.push({ id: f, text: t("errEmail") }); }
+                    else if (bad) problems.push({ id: f, text: t("errRequired", { field: fieldLabel(f) }) });
+                    inp.classList.toggle("is-invalid", bad);
+                    inp.setAttribute("aria-invalid", bad ? "true" : "false");
+                });
+                var dec = $("declaration");
+                $("declaration-wrap").classList.toggle("is-invalid", !dec.checked);
+                if (!dec.checked) problems.push({ id: "declaration", text: t("errDeclaration") });
+                ((state.cfg && state.cfg.amendments) || []).forEach(function (a) {
+                    var missing = !state.votes[a.id];
+                    $("amend-" + a.id).classList.toggle("is-invalid", missing);
+                    if (missing) problems.push({ id: "amend-" + a.id, text: t("errVote", { id: a.id }) });
+                });
+                var box = $("form-errors");
+                box.innerHTML = "";
+                if (!problems.length) { box.hidden = true; return true; }
+                box.appendChild(el("p", "", t("errorsTitle")));
+                var ul = el("ul");
+                problems.forEach(function (p) {
+                    var li = el("li"), a = el("a", "", p.text);
+                    a.href = "#" + p.id;
+                    a.addEventListener("click", function (e) { e.preventDefault(); goTo(p.id); });
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+                box.appendChild(ul);
+                box.hidden = false;
+                if (focus) goTo(problems[0].id);
+                return false;
+            }
+            function goTo(id) {
+                var target = $(id);
+                if (!target) return;
+                target.scrollIntoView({ behavior: "smooth", block: "center" });
+                var focusable = target.matches("input, select, textarea") ? target : target.querySelector("input");
+                if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 350);
+            }
+            FIELDS.concat(["declaration"]).forEach(function (f) {
+                $(f).addEventListener(f === "declaration" || f === "region" ? "change" : "input", function () {
+                    if (!$("form-errors").hidden) validate(false);
+                });
+            });
+            $("s-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                if (!validate(true)) return;
+                state.view = "review";
+                renderReview();
+                $("s-code").hidden = true;
+                $("s-form").hidden = true;
+                $("s-review").hidden = false;
+                $("submit-msg").textContent = "";
+                $("submit-msg").className = "ega-msg";
+                setStep(4);
+                window.scrollTo(0, 0);
+                $("s-review").focus({ preventScroll: true });
+            });
+
+            /* ---------- review ---------- */
+            function whoList(target, extra) {
+                var dl = $(target);
+                dl.innerHTML = "";
+                [[t("organisation"), $("organisation").value.trim()], [t("country"), $("country").value.trim()], [t("region"), $("region").value],
+                    [t("representative"), $("representative").value.trim()], [t("email"), $("email").value.trim()]].concat(extra || []).forEach(function (p) {
+                    dl.appendChild(el("dt", "", p[0]));
+                    dl.appendChild(el("dd", "", p[1]));
+                });
+            }
+            function voteRows(tbody, withEdit) {
+                var body = $(tbody);
+                body.innerHTML = "";
+                ((state.cfg && state.cfg.amendments) || []).forEach(function (a) {
+                    var tr = el("tr");
+                    tr.appendChild(el("td", "", a.id));
+                    tr.appendChild(el("td", "", amendTitle(a)));
+                    var td = el("td");
+                    td.appendChild(el("span", "ega-badge ega-badge--" + state.votes[a.id], t(state.votes[a.id])));
+                    tr.appendChild(td);
+                    if (withEdit) {
+                        var te = el("td"), b = el("button", "ega-linkbtn", t("edit"));
+                        b.type = "button";
+                        b.setAttribute("aria-label", t("edit") + " " + a.id);
+                        b.addEventListener("click", function () { backToForm("amend-" + a.id); });
+                        te.appendChild(b);
+                        tr.appendChild(te);
+                    }
+                    body.appendChild(tr);
+                });
+            }
+            function renderReview() {
+                whoList("review-who");
+                voteRows("review-rows", true);
+                var c = $("comment").value.trim(), rc = $("review-comment");
+                rc.innerHTML = "";
+                if (c) {
+                    rc.appendChild(el("p", "ega-label", t("yourComment")));
+                    var q = el("p", "", c);
+                    q.style.cssText = "margin:0; white-space:pre-wrap; color:var(--muted);";
+                    rc.appendChild(q);
+                }
+            }
+            function backToForm(id) {
+                state.view = "form";
+                $("s-review").hidden = true;
+                $("s-code").hidden = false;
+                $("s-form").hidden = false;
+                updateProgress();
+                setStep(3);
+                goTo(id || "amendments");
+            }
+            $("back-btn").addEventListener("click", function () { backToForm(); });
+
+            /* ---------- submit ---------- */
+            function setSubmitting(on) {
+                var b = $("submit-btn");
+                b.disabled = on;
+                b.innerHTML = "";
+                if (on) b.appendChild(el("span", "ega-spinner"));
+                b.appendChild(el("span", "", on ? t("submitting") : t("submitBtn")));
+                $("back-btn").disabled = on;
+            }
+            function showSubmitError(code, retryable) {
+                var m = $("submit-msg");
+                m.className = "ega-msg " + (retryable ? "ega-msg--warn" : "ega-msg--error");
+                m.textContent = errText(code);
+                var b = $("submit-btn");
+                b.innerHTML = "";
+                b.appendChild(el("span", "", retryable ? t("retry") : t("submitBtn")));
+                b.hidden = !retryable;
+            }
+            $("submit-btn").addEventListener("click", function () {
+                if (state.inflight || state.submitted) return;
+                state.inflight = true;
+                setSubmitting(true);
+                $("submit-msg").textContent = "";
+                $("submit-msg").className = "ega-msg";
+                var votes = {};
+                ((state.cfg && state.cfg.amendments) || []).forEach(function (a) { votes[a.id] = state.votes[a.id]; });
+                var body = {
+                    action: "vote",
+                    code: state.code,
+                    organisation: $("organisation").value.trim(),
+                    country: $("country").value.trim(),
+                    region: $("region").value,
+                    representative: $("representative").value.trim(),
+                    email: $("email").value.trim(),
+                    declaration: $("declaration").checked,
+                    votes: votes,
+                    comment: $("comment").value.trim(),
+                    lang: state.lang
+                };
+                request(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body) }).then(function (r) {
+                    state.inflight = false;
+                    if (r && r.ok) {
+                        state.submitted = true;
+                        state.result = r;
+                        state.view = "done";
+                        renderDone();
+                        $("s-review").hidden = true;
+                        $("steps").hidden = true;
+                        $("s-done").hidden = false;
+                        window.scrollTo(0, 0);
+                        $("s-done").focus({ preventScroll: true });
+                        return;
+                    }
+                    setSubmitting(false);
+                    var code = (r && r.error) || "SERVER_ERROR";
+                    if (code === "INCOMPLETE") {
+                        backToForm();
+                        validate(false);
+                        (r.fields || []).forEach(function (f) {
+                            var target = $(f) || $("amend-" + f);
+                            if (target) target.classList.add("is-invalid");
+                        });
+                        var first = (r.fields || [])[0];
+                        if (first) goTo($(first) ? first : "amend-" + first);
+                        var box = $("form-errors");
+                        box.hidden = false;
+                        if (!box.firstChild) box.appendChild(el("p", "", errText("INCOMPLETE")));
+                        return;
+                    }
+                    var retryable = code === "BUSY_TRY_AGAIN" || code === "SERVER_ERROR" || code === "BAD_REQUEST";
+                    showSubmitError(code, retryable);
+                    if (!retryable) { $("back-btn").hidden = true; }
+                }).catch(function () {
+                    state.inflight = false;
+                    setSubmitting(false);
+                    showSubmitError("NETWORK", true);
+                });
+            });
+
+            /* ---------- confirmation ---------- */
+            function renderDone() {
+                var r = state.result;
+                if (!r) return;
+                $("done-receipt").textContent = r.receipt || "";
+                whoList("done-who", [[t("recordedAt"), r.recordedAt || ""]]);
+                if (r.organisation) $("done-who").children[1].textContent = r.organisation;
+                voteRows("done-rows", false);
+            }
+            $("print-btn").addEventListener("click", function () { window.print(); });
+
+            window.addEventListener("beforeunload", function (e) {
+                if (state.verified && !state.submitted && Object.keys(state.votes).length) {
+                    e.preventDefault();
+                    e.returnValue = t("leaveWarning");
+                    return e.returnValue;
+                }
+            });
+
+            applyLang();
+            loadConfig();
+        })();
+    </script>
+</body>
+
+</html>
