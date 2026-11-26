@@ -851,7 +851,7 @@
                     <div class="col-lg-6">
                         <div class="fee-card">
                             <h3 class="fee-card__title">Inscrição normal</h3>
-                            <p class="fee-card__deadline">Prazo: <strong>25 de novembro de 2026</strong></p>
+                            <p class="fee-card__deadline">Prazo: <strong>30 de novembro de 2026</strong></p>
 
                             <div class="fee-table-wrap">
                                 <table class="fee-table">
@@ -1010,7 +1010,7 @@
                                 <h6 class="footer-widget__title">Datas importantes</h6>
                                 <ul class="list-unstyled footer-widget__links">
                                     <li><strong>Fim da inscrição antecipada</strong><br>25 de outubro de 2026</li>
-                                    <li><strong>Prazo normal</strong><br>25 de novembro de 2026</li>
+                                    <li><strong>Prazo normal</strong><br>30 de novembro de 2026</li>
                                     <li><strong>Datas da conferência</strong><br>1–4 de dezembro de 2026</li>
                                     <li><strong>Local</strong><br>Chongwe, Lusaka, Zâmbia</li>
                                 </ul>
@@ -1120,7 +1120,7 @@
         <div class="eb-closed-modal__box">
             <div class="eb-closed-modal__icon"><i class="fas fa-hourglass-end" aria-hidden="true"></i></div>
             <h3 class="eb-closed-modal__title" id="eb-closed-title">As inscrições antecipadas estão encerradas</h3>
-            <p class="eb-closed-modal__text">O prazo da inscrição antecipada terminou a <strong>25 de outubro de 2026</strong>. Ainda pode inscrever-se com a taxa normal até <strong>25 de novembro de 2026</strong>.</p>
+            <p class="eb-closed-modal__text">O prazo da inscrição antecipada terminou a <strong>25 de outubro de 2026</strong>. Ainda pode inscrever-se com a taxa normal até <strong>30 de novembro de 2026</strong>.</p>
             <div class="eb-closed-modal__actions">
                 <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal" data-tier="Regular" data-eb-close><span>Inscrever-se com a taxa normal</span></a>
                 <button type="button" class="eb-closed-modal__dismiss" data-eb-close>Fechar</button>
@@ -1334,7 +1334,7 @@
 
               // Must match the Apps Script. Deadlines are end of day, Lusaka time.
               const EARLY_END   = new Date('2026-10-25T23:59:59+02:00');
-              const REGULAR_END = new Date('2026-11-25T23:59:59+02:00');
+              const REGULAR_END = new Date('2026-11-30T23:59:59+02:00');
               const FEES = {
                 early: {
                   international: { individual:{virtual:100,physical:225}, student:{virtual:20,physical:90},
@@ -1362,13 +1362,13 @@
                 feeBox.className = 'aoc-fee aoc-span';
                 if (!tier) {
                   feeBox.classList.add('is-closed');
-                  feeBox.innerHTML = '<strong>As inscrições estão encerradas.</strong> O prazo final era 25 de novembro de 2026.';
+                  feeBox.innerHTML = '<strong>As inscrições estão encerradas.</strong> O prazo final era 30 de novembro de 2026.';
                   btn.disabled = true;
                   return;
                 }
                 const tierText = tier === 'early'
                   ? 'Inscrição antecipada (até 25 de outubro de 2026)'
-                  : 'Inscrição normal (até 25 de novembro de 2026)';
+                  : 'Inscrição normal (até 30 de novembro de 2026)';
                 const country = $('aoc-country').value.trim();
                 const part = $('aoc-participation').value, cat = $('aoc-category').value;
                 const type = isNational(country) ? 'national' : 'international';
@@ -1608,7 +1608,7 @@
 
               // Must match the Apps Script. Deadlines are end of day, Lusaka time.
               const EARLY_END   = new Date('2026-10-25T23:59:59+02:00');
-              const REGULAR_END = new Date('2026-11-25T23:59:59+02:00');
+              const REGULAR_END = new Date('2026-11-30T23:59:59+02:00');
               const FEES = {
                 early: {
                   international: { individual:{virtual:100,physical:225}, student:{virtual:20,physical:90},
@@ -1697,7 +1697,7 @@
                 sum.className = 'aocg-sum';
                 if (!tier) {
                   sum.classList.add('is-closed');
-                  sum.innerHTML = '<strong>As inscrições estão encerradas.</strong> O prazo final era 25 de novembro de 2026.';
+                  sum.innerHTML = '<strong>As inscrições estão encerradas.</strong> O prazo final era 30 de novembro de 2026.';
                   btn.disabled = true;
                   return;
                 }
@@ -1715,7 +1715,7 @@
                 const individual = form.querySelector('input[name="aocg-mode"]:checked').value === 'individual';
                 sum.innerHTML =
                   '<div class="aocg-sum-row"><span>Modalidade</span><strong>' +
-                    (tier === 'early' ? 'Inscrição antecipada (até 25 de outubro de 2026)' : 'Inscrição normal (até 25 de novembro de 2026)') + '</strong></div>' +
+                    (tier === 'early' ? 'Inscrição antecipada (até 25 de outubro de 2026)' : 'Inscrição normal (até 30 de novembro de 2026)') + '</strong></div>' +
                   '<div class="aocg-sum-row"><span>Membros</span><span>' + all.length +
                     (priced < all.length ? ' (' + (all.length - priced) + ' ainda precisam de país, participação e categoria)' : '') + '</span></div>' +
                   '<div class="aocg-sum-row" style="align-items:baseline"><span>' +

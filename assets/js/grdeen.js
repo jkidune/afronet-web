@@ -1028,7 +1028,7 @@
   (function () {
     // Key dates, all in Lusaka time (UTC+02:00) so every visitor sees the same countdown
     var EARLY_BIRD_END = Date.parse("2026-10-25T23:59:59+02:00");
-    var REGULAR_END = Date.parse("2026-11-25T23:59:59+02:00");
+    var REGULAR_END = Date.parse("2026-11-30T23:59:59+02:00");
     var EVENT_START = Date.parse("2026-12-01T08:00:00+02:00");
     var EVENT_END = Date.parse("2026-12-04T18:00:00+02:00");
     var LUSAKA_OFFSET_MS = 2 * 60 * 60 * 1000;
@@ -1175,7 +1175,7 @@
   /*-- 6AOC daily countdown poster: one poster per Lusaka calendar day from 1 Nov to the opening day, added to the promo popups below --*/
   (function () {
     var LUSAKA_OFFSET_MS = 2 * 60 * 60 * 1000;
-    var REGULAR_END = Date.parse("2026-11-25T23:59:59+02:00");
+    var REGULAR_END = Date.parse("2026-11-30T23:59:59+02:00");
     if (/\/404(\.html)?$/.test(window.location.pathname) || document.title.indexOf("Page Not Found") === 0) return;
 
     // Testing only: ?aocnow=2026-11-15T10:00:00%2B02:00 pretends the page opened at that moment

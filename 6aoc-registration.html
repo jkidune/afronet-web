@@ -849,7 +849,7 @@
                     <div class="col-lg-6">
                         <div class="fee-card">
                             <h3 class="fee-card__title">Regular Registration</h3>
-                            <p class="fee-card__deadline">Deadline: <strong>25 November 2026</strong></p>
+                            <p class="fee-card__deadline">Deadline: <strong>30 November 2026</strong></p>
 
                             <div class="fee-table-wrap">
                                 <table class="fee-table">
@@ -1008,7 +1008,7 @@
                                 <h6 class="footer-widget__title">Key Dates</h6>
                                 <ul class="list-unstyled footer-widget__links">
                                     <li><strong>Early Bird Deadline</strong><br>25 October 2026</li>
-                                    <li><strong>Regular Deadline</strong><br>25 November 2026</li>
+                                    <li><strong>Regular Deadline</strong><br>30 November 2026</li>
                                     <li><strong>Conference Dates</strong><br>1&ndash;4 December 2026</li>
                                     <li><strong>Location</strong><br>Chongwe, Lusaka, Zambia</li>
                                 </ul>
@@ -1118,7 +1118,7 @@
         <div class="eb-closed-modal__box">
             <div class="eb-closed-modal__icon"><i class="fas fa-hourglass-end" aria-hidden="true"></i></div>
             <h3 class="eb-closed-modal__title" id="eb-closed-title">Early Bird Registration Has Closed</h3>
-            <p class="eb-closed-modal__text">The Early Bird deadline was <strong>25 October 2026</strong>. You can still register at the Regular rate until <strong>25 November 2026</strong>.</p>
+            <p class="eb-closed-modal__text">The Early Bird deadline was <strong>25 October 2026</strong>. You can still register at the Regular rate until <strong>30 November 2026</strong>.</p>
             <div class="eb-closed-modal__actions">
                 <a href="#" class="grdeen-btn event-register-toggler" data-modal-target="#event-register-modal" data-tier="Regular" data-eb-close><span>Register at Regular Rate</span></a>
                 <button type="button" class="eb-closed-modal__dismiss" data-eb-close>Close</button>
@@ -1336,7 +1336,7 @@
 
               // Must match the Apps Script. Deadlines are end of day, Lusaka time.
               const EARLY_END   = new Date('2026-10-25T23:59:59+02:00');
-              const REGULAR_END = new Date('2026-11-25T23:59:59+02:00');
+              const REGULAR_END = new Date('2026-11-30T23:59:59+02:00');
               const FEES = {
                 early: {
                   international: { individual:{virtual:100,physical:225}, student:{virtual:20,physical:90},
@@ -1364,13 +1364,13 @@
                 feeBox.className = 'aoc-fee aoc-span';
                 if (!tier) {
                   feeBox.classList.add('is-closed');
-                  feeBox.innerHTML = '<strong>Registration has closed.</strong> The final deadline was 25 November 2026.';
+                  feeBox.innerHTML = '<strong>Registration has closed.</strong> The final deadline was 30 November 2026.';
                   btn.disabled = true;
                   return;
                 }
                 const tierText = tier === 'early'
                   ? 'Early Bird (until 25 October 2026)'
-                  : 'Regular (until 25 November 2026)';
+                  : 'Regular (until 30 November 2026)';
                 const country = $('aoc-country').value.trim();
                 const part = $('aoc-participation').value, cat = $('aoc-category').value;
                 const type = isNational(country) ? 'national' : 'international';
@@ -1613,7 +1613,7 @@
 
               // Must match the Apps Script. Deadlines are end of day, Lusaka time.
               const EARLY_END   = new Date('2026-10-25T23:59:59+02:00');
-              const REGULAR_END = new Date('2026-11-25T23:59:59+02:00');
+              const REGULAR_END = new Date('2026-11-30T23:59:59+02:00');
               const FEES = {
                 early: {
                   international: { individual:{virtual:100,physical:225}, student:{virtual:20,physical:90},
@@ -1702,7 +1702,7 @@
                 sum.className = 'aocg-sum';
                 if (!tier) {
                   sum.classList.add('is-closed');
-                  sum.innerHTML = '<strong>Registration has closed.</strong> The final deadline was 25 November 2026.';
+                  sum.innerHTML = '<strong>Registration has closed.</strong> The final deadline was 30 November 2026.';
                   btn.disabled = true;
                   return;
                 }
@@ -1720,7 +1720,7 @@
                 const individual = form.querySelector('input[name="aocg-mode"]:checked').value === 'individual';
                 sum.innerHTML =
                   '<div class="aocg-sum-row"><span>Registration tier</span><strong>' +
-                    (tier === 'early' ? 'Early Bird (until 25 October 2026)' : 'Regular (until 25 November 2026)') + '</strong></div>' +
+                    (tier === 'early' ? 'Early Bird (until 25 October 2026)' : 'Regular (until 30 November 2026)') + '</strong></div>' +
                   '<div class="aocg-sum-row"><span>Members</span><span>' + all.length +
                     (priced < all.length ? ' (' + (all.length - priced) + ' still need country, participation and category)' : '') + '</span></div>' +
                   '<div class="aocg-sum-row" style="align-items:baseline"><span>' +
